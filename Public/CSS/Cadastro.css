@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Codigo para deixar a tela com o aspecto 3D */
+.containnerTodo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 0px;
+    box-shadow: 0 10px 20px rgb(0, 0, 0, 0.2);
+
+}
+
+.imagem {
+    margin: 0px;
+    grid-column: 1/2;
+    grid-row: 1;
+}
+
+.imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Isso mantém a proporção da imagem e cobre toda a área do contêiner */
+}
+
+.conteudo {
+    margin-left: 50px;
+    margin-right: 50px;
+    grid-column: 2 /2;
+    grid-row: 1;
+}
+
+.conteudo .titulo {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.conteudo .fraseBoaVindas {
+    font-size: 18px;
+}
+
+.conteudo label {
+    font-size: 16px;
+    margin-bottom: 10px;
+
+}
+
+.conteudo input {
+    margin-bottom: 4px;
+
+}
+
+.form-control-file {
+    margin-bottom: 15px !important;
+}
+
+.conteudo .linkEstilo {
+    /* Centralizando o meu Já tem Login */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.botaoCad {
+    background-color: #85BD06;
+    color: white;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+
+}

@@ -11,16 +11,16 @@ https://www.geeksforgeeks.org/how-to-upload-images-in-mysql-using-php-pdo/
 
 ### Geral
 ### Cadastro - Front-End
-  - [ ] Criar um componente **section**, pois ele será o esqueleto da página de Cadastro
-  - [ ] Dividir a seção em duas **div's**: uma para a imagem (**class="imagem"**) à esquerda e outra para o conteúdo (**class="conteudo"**) à direita.
-  - [ ] Adicionar uma imagem à div da esquerda.
-  - [ ] Inserir título e parágrafo de boas-vindas **conforme o protótipo de Telas**.
-  - [ ] Implementar o campo de upload de foto usando o componente de Upload de Arquivos do Bootstrap.
-  - [ ] Configurar o campo de e-mail utilizando o componente do Bootstrap para garantir a formatação correta.
-  - [ ] Adicionar campos de senha e confirmação de senha com rótulos correspondentes.
+  - [X] Criar um componente **section**, pois ele será o esqueleto da página de Cadastro
+  - [X] Dividir a seção em duas **div's**: uma para a imagem (**class="imagem"**) à esquerda e outra para o conteúdo (**class="conteudo"**) à direita.
+  - [X] Adicionar uma imagem à div da esquerda.
+  - [X] Inserir título e parágrafo de boas-vindas **conforme o protótipo de Telas**.
+  - [X] Implementar o campo de upload de foto usando o componente de Upload de Arquivos do Bootstrap.
+  - [X] Configurar o campo de e-mail utilizando o componente do Bootstrap para garantir a formatação correta.
+  - [X] Adicionar campos de senha e confirmação de senha com rótulos correspondentes.
   - [ ] Incluir um botão para realizar o cadastro. **Prototipação das telas**
   - [ ] Adicionar um parágrafo com um link para a tela de login.Conforme **Prototipação das telas**
-  - [ ] Lembre-se que a tela deverá ter a aparencia que está flutuando. Dando a impressão 3D - **Anna Karolynna** tem o código css para isso
+  - [X] Lembre-se que a tela deverá ter a aparencia que está flutuando. Dando a impressão 3D - **Anna Karolynna** tem o código css para isso
 
 ### Cadastro - Back-End
 - [ ] Na **pasta Model** criar a classe do Usuário, que deverá conter os atributos: id, foto, email,senha. **Seguir o diagrama de classes**
