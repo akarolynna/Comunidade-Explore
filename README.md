@@ -18,8 +18,8 @@ https://www.geeksforgeeks.org/how-to-upload-images-in-mysql-using-php-pdo/
   - [X] Implementar o campo de upload de foto usando o componente de Upload de Arquivos do Bootstrap.
   - [X] Configurar o campo de e-mail utilizando o componente do Bootstrap para garantir a formatação correta.
   - [X] Adicionar campos de senha e confirmação de senha com rótulos correspondentes.
-  - [ ] Incluir um botão para realizar o cadastro. **Prototipação das telas**
-  - [ ] Adicionar um parágrafo com um link para a tela de login.Conforme **Prototipação das telas**
+  - [ ] Incluir um botão para realizar o cadastro. **Prototipação das telas** - *Botão foi incluido, porém não estou conseguindo centraliza-lo*
+  - [ ] Adicionar um parágrafo com um link para a tela de login.Conforme **Prototipação das telas** - *Falta modificar a cor do Link do Login, pois não consegui fazer só que com ela mude*
   - [X] Lembre-se que a tela deverá ter a aparencia que está flutuando. Dando a impressão 3D - **Anna Karolynna** tem o código css para isso
 
 ### Cadastro - Back-End
