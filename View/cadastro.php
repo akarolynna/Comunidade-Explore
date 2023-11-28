@@ -18,25 +18,26 @@
             <h1 class="titulo">Bem Vindo </h1>
             <p class="fraseBoaV"> Crie uma conta pessoal:</p>
 
-            <form id="formularioMembro" action="../Controller/MembroController.class.php" enctype="multipart/form-data" class="formulario" method="post">
+            <form id="formularioMembro" action="../Controller/MembroController.class.php" enctype="multipart/form-data" class="formulario" method="post" >
                 <label for="foto">Foto:</label><br>
-                <input type="file" class="form-control-file" id="fotoUsuario"><br>
+                <input type="file" class="form-control-file" id="foto" name="foto"><br>
                 <label for="E-mail">Email</label><br>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email"><br>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Seu email"><br>
 
-                <label for="senha">Senha</label><br>
-                <input type="password" class="form-control" id="senha" placeholder="Senha"><br>
+                <label for="senha">Senha</label><br> 
+                <input type="password" class="form-control" id="senha" name ="senha" placeholder="Senha"><br>
 
                 <label for="ConfSenha">Confirmação da Senha</label><br>
                 <input type="password" class="form-control" id="confSenha" placeholder="Senha"><br>
 
                 <!-- Adicione o campo acao -->
-                <input type="hidden" name="acao" value="cadastro">
+
+               <input type="hidden" name="acao" value="cadastro">
                 <button type="submit" class="btn botaoCad mb-2">Cadastre-se</button>
             </form>
             <p><a href="login.php" class="linkEstilo">Já possui cadastro? Login</a></p>
         </div>
     </section>
 </body>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
