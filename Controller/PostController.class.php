@@ -27,8 +27,8 @@
         }
 
         public function buscarPosts() {
-            $posts = $this->postsDao->buscarPosts();
-            echo $posts;
+            $posts = $this->postDao->buscarPosts();
+            echo json_encode($posts);
         }
         
     }

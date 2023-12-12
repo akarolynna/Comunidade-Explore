@@ -79,7 +79,17 @@
                 <a href="" class="itemMenuPosts titulo">Guias</a>
             </div>    
         
-            <div class="listaPosts">
+            <div class="listaPosts" id="posts">
+                <div class="post">
+                    <p class="conteudoPost">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et harum laudantium fugiat quidem, quisquam, magni cumque ratione possimus dolorem quo iste totam error, explicabo aut aliquid. Aut, sit quam.
+                    </p>
+                </div>
+                <div class="post">
+                    <p class="conteudoPost">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et harum laudantium fugiat quidem, quisquam, magni cumque ratione possimus dolorem quo iste totam error, explicabo aut aliquid. Aut, sit quam.
+                    </p>
+                </div>
                 <div class="post">
                     <p class="conteudoPost">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et harum laudantium fugiat quidem, quisquam, magni cumque ratione possimus dolorem quo iste totam error, explicabo aut aliquid. Aut, sit quam.

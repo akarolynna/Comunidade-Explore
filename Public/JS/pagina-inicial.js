@@ -1,7 +1,7 @@
 $(document).ready(buscarPosts);
 
 function buscarPosts() {
-    const controllerUrl = '../Controller/DiarioViagemController.class.php';
+    const controllerUrl = '../Controller/PostController.class.php';
     $.ajax({
         url: controllerUrl,
         type: 'GET',
@@ -16,9 +16,17 @@ function buscarPosts() {
 function erroNaRequisicao(error) {
     console.log('ERRO');
     console.log(error);
+    console.log(error.responseText);
 }
 
 function sucessoAoBuscar(response) {
-    console.log('SUCESSO!');
-    console.log(response);
+    $('#posts').html('');
+    response.forEach(post => {
+        $('#posts').append(`
+            <div class="post">
+                <p class="conteudoPost">
+                    ${post.conteudo}
+                </p>
+            </div>`);
+    });
 }

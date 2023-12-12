@@ -11,15 +11,15 @@
 
         private function getResult($query, $fields) {
             $this->connection->connection();
-            $stm = $this->connection->prepareStm($query, $fields);
-            return $this->connection->executeQuery($stm);
+            $stm = $this->connection->prepareStatement($query, $fields);
+            return $this->connection->executeStatement($stm);
         }
 
         public function buscarPosts() {
             $query = "SELECT * FROM Post";
             $result = [];
             try {
-                $result = $this->getResult($query);
+                $result = $this->getResult($query, []);
             } catch (Exception $ex) {
                 throw new Exception($ex->getMessage());
             }
