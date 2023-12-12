@@ -6,7 +6,10 @@ class DBConfig{
     static $DB='comunidadeexplore';
     //Declarando o usuario do banco de dados
     static $USER= 'root';
-    static $PWD= '';
+    // static $PWD= '';
+
+    //O meu tem senha
+    static $PWD= 'mysql';
 }
 
 
