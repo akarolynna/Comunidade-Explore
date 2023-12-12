@@ -3,11 +3,13 @@ class Post {
     private $fotos;
     private $conteudo;
     private $diarioViagem;
+    private $data
 
-    public function __construct($fotos, $conteudo, $diarioViagem) {
+    public function __construct($fotos, $conteudo, $diarioViagem, $data) {
         $this->fotos = $fotos;
         $this->conteudo = $conteudo;
         $this->diarioViagem = $diarioViagem;
+        $this->data = $data;
     }
 
     // Métodos Set
@@ -23,6 +25,10 @@ class Post {
         $this->diarioViagem = $diarioViagem;
     }
 
+    public function setData($data) {
+        $this->data = $data;
+    }
+
     // Métodos Get
     public function getFotos() {
         return $this->fotos;
@@ -34,6 +40,10 @@ class Post {
 
     public function getDiarioViagem() {
         return $this->diarioViagem;
+    }
+
+    public function getData() {
+        return $this->data;
     }
 }
 ?>
