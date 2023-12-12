@@ -4,6 +4,17 @@ class MembroModel{
     private $foto;
     private $email;
     private $senha;
+	private $apresentacao;
+    private $aniversario;
+    private $telefone;
+    private $melhorViagem;
+    private $genero;
+    private $estilo;
+    private $diariosViagem = [];
+    private $eventos = [];
+    private $paginasDestino = [];
+    private $contribuicoes = [];
+    private $desafios = [];
 
 
     public function __construct($id,$foto,$email,$senha){
@@ -14,8 +25,12 @@ class MembroModel{
     }
     
 
-    //Métodos Getters and Setters
-    public function getId() {
+
+
+
+	   //Métodos Getters and Setters
+   
+	public function getId() {
 		return $this->id;
 	}
 
@@ -46,6 +61,96 @@ class MembroModel{
 	public function setSenha($senha) {
 		$this->senha = $senha;
 	}
+
+	public function getApresentacao() {
+		return $this->apresentacao;
+	}
+
+	public function setApresentacao($apresentacao) {
+		$this->apresentacao = $apresentacao;
+	}
+
+	public function getAniversario() {
+		return $this->aniversario;
+	}
+
+	public function setAniversario($aniversario) {
+		$this->aniversario = $aniversario;
+	}
+
+	public function getTelefone() {
+		return $this->telefone;
+	}
+
+	public function setTelefone($telefone) {
+		$this->telefone = $telefone;
+	}
+
+	public function getMelhorViagem() {
+		return $this->melhorViagem;
+	}
+
+	public function setMelhorViagem($melhorViagem) {
+		$this->melhorViagem = $melhorViagem;
+	}
+
+	public function getGenero() {
+		return $this->genero;
+	}
+
+	public function setGenero($genero) {
+		$this->genero = $genero;
+	}
+
+	public function getEstilo() {
+		return $this->estilo;
+	}
+
+	public function setEstilo($estilo) {
+		$this->estilo = $estilo;
+	}
+
+	public function getDiariosViagem() {
+		return $this->diariosViagem;
+	}
+
+	public function setDiariosViagem($diariosViagem) {
+		$this->diariosViagem = $diariosViagem;
+	}
+
+	public function getEventos() {
+		return $this->eventos;
+	}
+
+	public function setEventos($eventos) {
+		$this->eventos = $eventos;
+	}
+
+	public function getPaginasDestino() {
+		return $this->paginasDestino;
+	}
+
+	public function setPaginasDestino($paginasDestino) {
+		$this->paginasDestino = $paginasDestino;
+	}
+
+	public function getContribuicoes() {
+		return $this->contribuicoes;
+	}
+
+	public function setContribuicoes($contribuicoes) {
+		$this->contribuicoes = $contribuicoes;
+	}
+
+	public function getDesafios() {
+		return $this->desafios;
+	}
+
+	public function setDesafios($desafios) {
+		$this->desafios = $desafios;
+	}
+ 
+	
 
 }
 
