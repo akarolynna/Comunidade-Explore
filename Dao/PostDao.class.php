@@ -2,7 +2,7 @@
 
     require_once "../Dao/PDOConnection.class.php";
 
-    class DiarioViagemDao {
+    class PostDao {
         private $connection;
 
         public function __construct() {
@@ -15,8 +15,8 @@
             return $this->connection->executeQuery($stm);
         }
 
-        public function buscarDiariosViagem() {
-            $query = "SELECT * FROM DiarioViagem";
+        public function buscarPosts() {
+            $query = "SELECT * FROM Post";
             $result = [];
             try {
                 $result = $this->getResult($query);

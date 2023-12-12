@@ -1,6 +1,6 @@
-$(document).ready(buscarDiariosViagem);
+$(document).ready(buscarPosts);
 
-function buscarDiariosViagem() {
+function buscarPosts() {
     const controllerUrl = '../Controller/DiarioViagemController.class.php';
     $.ajax({
         url: controllerUrl,
