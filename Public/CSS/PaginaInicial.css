@@ -1,0 +1,37 @@
+@import './Cores.css';
+
+.menu {
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid var(--cor-cinza-claro);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .grupo {
+    display: flex;
+    align-items: center;
+}
+
+.menu .logo{
+    width: 55px;
+    margin: 10px;
+}
+
+.menu .titulo {
+    font-size: 30px;
+    color: var(--cor-cinza-escuro);
+    font-weight: normal;
+}
+
+.menu .imagemUsuario {
+    width: 45px;
+    margin: 10px;
+}
+
+.menu .botao {
+    background-color: #98C80B;
+    border: none;
+}
