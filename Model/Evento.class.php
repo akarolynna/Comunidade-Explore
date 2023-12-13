@@ -7,11 +7,11 @@ class Evento {
     private $descricao;
     private $imagens;
     private $maxParticipantes;
+    private $arquivado;
+    private $categoria;
     private $colaboradores;
-    private $tags;
     private $inscritos;
     private $criador;
-    private $arquivado;
 
     public function __construct(
         $titulo,
@@ -22,7 +22,7 @@ class Evento {
         $imagens,
         $maxParticipantes,
         $colaboradores,
-        $tags,
+        $categoria,
         $inscritos,
         $criador,
         $arquivado
@@ -35,7 +35,7 @@ class Evento {
         $this->imagens = $imagens;
         $this->maxParticipantes = $maxParticipantes;
         $this->colaboradores = $colaboradores;
-        $this->tags = $tags;
+        $this->categoria = $categoria;
         $this->inscritos = $inscritos;
         $this->criador = $criador;
         $this->arquivado = $arquivado;
@@ -58,8 +58,8 @@ class Evento {
         $this->colaboradores = $colaboradores;
     }
 
-    public function setTags($tags) {
-        $this->tags = $tags;
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
     }
 
     public function setInscritos($inscritos) {
@@ -91,8 +91,8 @@ class Evento {
         return $this->colaboradores;
     }
 
-    public function getTags() {
-        return $this->tags;
+    public function getCategoria() {
+        return $this->categoria;
     }
 
     public function getInscritos() {

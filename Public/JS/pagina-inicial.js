@@ -27,12 +27,6 @@ function buscarPublicacoes() {
     let tipo = $('.itemMenuAtivo').attr('id');
     let categoria = $('.categoriaAtiva').attr('id');
     let pesquisa = $('#inputPesquisa').val();
-
-    console.log('Buscando...');
-    console.log(`tipo: ${tipo}`);
-    console.log(`categoria: ${categoria}`);
-    console.log(`pesquisa: ${pesquisa}`);
-
     switch(tipo) {
         case 'diarios':
             buscarPosts(categoria, pesquisa);
@@ -49,9 +43,8 @@ function buscarPublicacoes() {
 }
 
 function buscarPosts(categoria, pesquisa) {
-    const categoriaformatada = categoria.substring(9).toLowerCase();
     $.ajax({
-        url: `../Controller/PostController.class.php?categoria=${categoriaformatada}&pesquisa=${pesquisa}`,
+        url: `../Controller/PostController.class.php?categoria=${formatarCategoria(categoria)}&pesquisa=${pesquisa}`,
         type: 'GET',
         dataType: 'JSON',
         // beforeSend: mostrarModalAguardar,
@@ -68,43 +61,44 @@ function erroNaRequisicao(error) {
 }
 
 function sucessoAoBuscarPosts(response) {
-    console.log(response);
     $('#publicacoes').html('');
-    response.forEach(post => {
-        $('#publicacoes').append(`
-            <div class="post">
-                <p>Post</p>
-                <p class="conteudoPost">
-                    ${post.conteudo}
-                </p>
-            </div>`);
+    $.isEmptyObject(response)
+        ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
+        : response.forEach(post => {
+            $('#publicacoes').append(`
+                <div class="post">
+                    <p>Post</p>
+                    <p class="conteudoPost">
+                        ${post.conteudo}
+                    </p>
+                </div>`);
     });
 }
 
 function buscarEventos(categoria, pesquisa) {
-    console.log(categoria);
-    $('#publicacoes').html('Oops! Não há nenhum evento publicado!');
-    // $.ajax({
-    //     url: '../Controller/EventoController.class.php',
-    //     type: 'GET',
-    //     dataType: 'JSON',
-    //     // beforeSend: mostrarModalAguardar,
-    //     // complete: fecharModalAguardar,
-    //     success: sucessoAoBuscarEventos,
-    //     error: erroNaRequisicao
-    // });
+    $.ajax({
+        url: `../Controller/EventoController.class.php?categoria=${formatarCategoria(categoria)}&pesquisa=${pesquisa}`,
+        type: 'GET',
+        dataType: 'JSON',
+        // beforeSend: mostrarModalAguardar,
+        // complete: fecharModalAguardar,
+        success: sucessoAoBuscarEventos,
+        error: erroNaRequisicao
+    });
 }
 
 function sucessoAoBuscarEventos(response) {
     $('#publicacoes').html('');
-    response.forEach(evento => {
-        $('#publicacoes').append(`
-            <div class="post">
-                <p>Evento</p>
-                <p class="conteudoPost">
-                    ${evento.titulo}
-                </p>
-            </div>`);
+    $.isEmptyObject(response)
+        ? $('#publicacoes').html('Oops! Não encontramos nenhum evento com esses filtros.')
+        : response.forEach(evento => {
+            $('#publicacoes').append(`
+                <div class="post">
+                    <p>Evento</p>
+                    <p class="conteudoPost">
+                        ${evento.titulo}
+                    </p>
+                </div>`);
     });
 }
 
@@ -133,4 +127,8 @@ function sucessoAoBuscarGuias(response) {
                 </p>
             </div>`);
     });
+}
+
+function formatarCategoria(categoria) {
+    return categoria.substring(9).toLowerCase();;
 }
