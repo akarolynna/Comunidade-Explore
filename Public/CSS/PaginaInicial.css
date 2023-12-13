@@ -139,4 +139,80 @@
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 15px !important;
+    display: flex;
+    height: 300px;
+}
+
+.imagemPost {
+    width: 45%;
+    background-color: var(--cor-cinza-claro);
+    border-radius: 15px;
+    margin-right: 5%;
+}
+
+.imagemPost img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.conteudoPost {
+    width: 50%;
+}
+
+.cabecalhoPost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecalhoPost img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.criadorPost {
+    display: flex;
+    align-items: center;
+}
+
+.cabecalhoPost p {
+    margin: 0;
+    margin-left: 5px;
+    font-size: 16px;
+    color: var(--cor-cinza-claro);
+}
+
+.descricaoPost {
+    color: var(--cor-cinza-escuro);
+}
+
+.tituloPost {
+    color: var(--cor-cinza-escuro);
+}
+
+.corCinzaClaro {
+    color: var(--cor-cinza-claro);
+}
+
+.dadosInteracao {
+    margin-left: 2px;
+    margin-right: 4px;
+}
+
+.teste {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.teste p {
+    margin: 0;
+    margin-left: 2px;
+    margin-right: 15px;
+}
+
+.cursorPointer {
+    cursor: pointer;
 }
