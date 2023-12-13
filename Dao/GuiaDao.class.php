@@ -3,7 +3,7 @@
     require_once "../Dao/PDOConnection.class.php";
     require_once "../Model/Categoria.enum.php";
 
-    class PostDao {
+    class GuiaDao {
         private $connection;
 
         public function __construct() {
@@ -16,16 +16,15 @@
             return $this->connection->executeStatement($stm);
         }
 
-        public function buscarPosts($categoria, $pesquisa) {
+        public function buscar($categoria, $pesquisa) {
             if($categoria == strtolower(Categoria::TODOS)) {
-                $query = "SELECT * FROM Post WHERE Post.conteudo LIKE CONCAT('%', :pesquisa, '%');";
+                $query = "SELECT * FROM Guia WHERE Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
                 $fields = array('pesquisa' => $pesquisa);
             } else {
-                $query = "SELECT * FROM Post
-                    INNER JOIN DiarioViagem ON Post.diario_id = DiarioViagem.id
-                    INNER JOIN Categoria ON DiarioViagem.categoria_id = Categoria.id
+                $query = "SELECT * FROM Guia
+                    INNER JOIN Categoria ON Guia.categoria_id = Categoria.id
                     WHERE Categoria.categoria = :categoria
-                    AND Post.conteudo LIKE CONCAT('%', :pesquisa, '%');";
+                    AND Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
                 $fields = array('categoria' => $categoria,
                                 'pesquisa' => $pesquisa);
             }
@@ -38,4 +37,5 @@
             return $result;
         }
     }
+
 ?>

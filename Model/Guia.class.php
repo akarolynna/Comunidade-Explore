@@ -6,12 +6,12 @@ class Guia {
     private $descricao;
     private $clima;
     private $epocaVisita;
-    private $areasContribuicao;
-    private $desafios;
     private $publico;
-    private $tags;
-    private $criador;
     private $arquivado;
+    private $areasContribuicao;
+    private $categoria;
+    private $criador;
+    private $desafios;
 
     public function __construct(
         $corPrincipal,
@@ -23,7 +23,7 @@ class Guia {
         $areasContribuicao,
         $desafios,
         $publico,
-        $tags,
+        $categoria,
         $criador,
         $arquivado
     ) {
@@ -36,7 +36,7 @@ class Guia {
         $this->areasContribuicao = $areasContribuicao;
         $this->desafios = $desafios;
         $this->publico = $publico;
-        $this->tags = $tags;
+        $this->categoria = $categoria;
         $this->criador = $criador;
         $this->arquivado = $arquivado;
     }
@@ -78,8 +78,8 @@ class Guia {
         $this->publico = $publico;
     }
 
-    public function setTags($tags) {
-        $this->tags = $tags;
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
     }
 
     public function setCriador($criador) {
@@ -127,8 +127,8 @@ class Guia {
         return $this->publico;
     }
 
-    public function getTags() {
-        return $this->tags;
+    public function getCategoria() {
+        return $this->categoria;
     }
 
     public function getCriador() {

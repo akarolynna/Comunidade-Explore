@@ -103,29 +103,29 @@ function sucessoAoBuscarEventos(response) {
 }
 
 function buscarGuias(categoria, pesquisa) {
-    console.log(categoria);
-    $('#publicacoes').html('Oops! Não há nenhum guia publicado!');
-    // $.ajax({
-    //     url: '../Controller/GuiaController.class.php',
-    //     type: 'GET',
-    //     dataType: 'JSON',
-    //     // beforeSend: mostrarModalAguardar,
-    //     // complete: fecharModalAguardar,
-    //     success: sucessoAoBuscarGuias,
-    //     error: erroNaRequisicao
-    // });
+    $.ajax({
+        url: `../Controller/GuiaController.class.php?categoria=${formatarCategoria(categoria)}&pesquisa=${pesquisa}`,
+        type: 'GET',
+        dataType: 'JSON',
+        // beforeSend: mostrarModalAguardar,
+        // complete: fecharModalAguardar,
+        success: sucessoAoBuscarGuias,
+        error: erroNaRequisicao
+    });
 }
 
 function sucessoAoBuscarGuias(response) {
     $('#publicacoes').html('');
-    response.forEach(guia => {
-        $('#publicacoes').append(`
-            <div class="post">
-                <p>Guia</p>
-                <p class="conteudoPost">
-                    ${guia.nomeDestino}
-                </p>
-            </div>`);
+    $.isEmptyObject(response)
+        ? $('#publicacoes').html('Oops! Não encontramos nenhum guia com esses filtros.')
+        : response.forEach(guia => {
+            $('#publicacoes').append(`
+                <div class="post">
+                    <p>Guia</p>
+                    <p class="conteudoPost">
+                        ${guia.nomeDestino}
+                    </p>
+                </div>`);
     });
 }
 
