@@ -1,7 +1,7 @@
 $(document).ready(
     function() {
         $('#categoriaTodos').addClass('categoriaAtiva');
-        buscarPosts();
+        buscarPosts('categoriaTodos');
     }
 );
 
@@ -47,9 +47,9 @@ function buscarPublicacoes() {
 
 
 function buscarPosts(categoria) {
-    console.log(categoria);
+    const categoriaformatada = categoria.substring(9).toLowerCase();
     $.ajax({
-        url: '../Controller/PostController.class.php',
+        url: '../Controller/PostController.class.php?categoria=' + categoriaformatada,
         type: 'GET',
         dataType: 'JSON',
         // beforeSend: mostrarModalAguardar,

@@ -54,10 +54,10 @@
                         echo 
                             "<div class='itemCategoria' id='categoria$categoria'>
                                 <div class='imagemCategoria'>                        
-                                    <img src='../Public/Imagens/Categoria$categoria.jpg' alt='$categoria'>
+                                    
                                 </div>
                                 <p class='nomeCategoria'>$categoria</p>
-                            </div>";
+                            </div>"; //<img src='../Public/Imagens/Categoria$categoria.jpg' alt='$categoria'>
 
                     } while($categoria != null);
                 ?>

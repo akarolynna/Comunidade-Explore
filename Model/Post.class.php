@@ -3,7 +3,7 @@ class Post {
     private $fotos;
     private $conteudo;
     private $diarioViagem;
-    private $data
+    private $data;
 
     public function __construct($fotos, $conteudo, $diarioViagem, $data) {
         $this->fotos = $fotos;
