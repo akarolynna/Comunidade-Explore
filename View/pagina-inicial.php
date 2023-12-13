@@ -50,9 +50,9 @@
                     $i = -1;
                     do {
                         $i++;
-                        $categoria = Categoria::getCategoria($i);
+                        $categoria = Categoria::getNome($i);
                         echo 
-                            "<div class='itemCategoria'>
+                            "<div class='itemCategoria' id='categoria$categoria'>
                                 <div class='imagemCategoria'>                        
                                     <img src='../Public/Imagens/Categoria$categoria.jpg' alt='$categoria'>
                                 </div>
@@ -65,29 +65,12 @@
         </div>
 
         <div class="blocoPosts">
-            <div class="menuPosts">
-                <a href="" class="itemMenuPosts titulo">Diários</a>
-                <a href="" class="itemMenuPosts titulo">Eventos</a>
-                <a href="" class="itemMenuPosts titulo">Guias</a>
+            <div class="menuPublicacoes">
+                <p class="itemMenuPublicacoes titulo itemMenuAtivo" id="diarios">Diários</p>
+                <p class="itemMenuPublicacoes titulo" id="eventos">Eventos</p>
+                <p class="itemMenuPublicacoes titulo" id="guias">Guias</p>
             </div>    
-        
-            <div class="listaPosts" id="posts">
-                <div class="post">
-                    <p class="conteudoPost">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et harum laudantium fugiat quidem, quisquam, magni cumque ratione possimus dolorem quo iste totam error, explicabo aut aliquid. Aut, sit quam.
-                    </p>
-                </div>
-                <div class="post">
-                    <p class="conteudoPost">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et harum laudantium fugiat quidem, quisquam, magni cumque ratione possimus dolorem quo iste totam error, explicabo aut aliquid. Aut, sit quam.
-                    </p>
-                </div>
-                <div class="post">
-                    <p class="conteudoPost">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et harum laudantium fugiat quidem, quisquam, magni cumque ratione possimus dolorem quo iste totam error, explicabo aut aliquid. Aut, sit quam.
-                    </p>
-                </div>
-            </div>
+            <div id="publicacoes"></div>
         </div>
     </div>
 </body>

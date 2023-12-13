@@ -92,6 +92,11 @@
     flex-direction: column;
     align-items: center;
     margin-right: 15px;
+    cursor: pointer;
+}
+
+.itemCategoria.categoriaAtiva .nomeCategoria {
+    color: #98C80B;
 }
 
 .imagemCategoria {
@@ -106,14 +111,18 @@
     background-size: cover;
 }
 
-.menuPosts {
+.menuPublicacoes {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.itemMenuPosts {
-    text-decoration: none;
+.itemMenuPublicacoes {
+    cursor: pointer;
+}
+
+.itemMenuPublicacoes.itemMenuAtivo {
+    color: #98C80B;
 }
 
 .post {
