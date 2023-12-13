@@ -39,7 +39,7 @@
                 </button>
             </div>
         </div>
-
+        
         <div class="blocoCategorias">
             <h2 class="titulo">Categorias</h2>
             <div class="opcoesCategorias">
@@ -51,10 +51,10 @@
                         echo 
                             "<div class='itemCategoria' id='categoria$categoria'>
                                 <div class='imagemCategoria'>                        
-                                    
+                                    <img src='../Public/Imagens/Categoria$categoria.jpg' alt='$categoria'>
                                 </div>
                                 <p class='nomeCategoria'>$categoria</p>
-                            </div>"; //<img src='../Public/Imagens/Categoria$categoria.jpg' alt='$categoria'>
+                            </div>";
 
                         $i++;
                         $categoria = Categoria::getNome($i);
