@@ -27,7 +27,7 @@
         }
 
         public function buscarPosts() {
-            $posts = $this->postDao->buscarPosts($_GET['categoria']);
+            $posts = $this->postDao->buscarPosts($_GET['categoria'], $_GET['pesquisa']);
             echo json_encode($posts);
         }
         

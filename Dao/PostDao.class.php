@@ -16,7 +16,7 @@
             return $this->connection->executeStatement($stm);
         }
 
-        public function buscarPosts($categoria) {
+        public function buscarPosts($categoria, $pesquisa) {
             if($categoria == strtolower(Categoria::TODOS)) {
                 $query = "SELECT * FROM Post";
                 $fields = array();
@@ -24,8 +24,10 @@
                 $query = "SELECT * FROM Post
                     INNER JOIN DiarioViagem ON Post.diario_id = DiarioViagem.id
                     INNER JOIN Categoria ON DiarioViagem.categoria_id = Categoria.id
-                    WHERE Categoria.categoria = :numCategoria;";
-                $fields = array('numCategoria' => $categoria);
+                    WHERE Categoria.categoria = :categoria
+                    AND Post.conteudo LIKE CONCAT('%', :pesquisa, '%');";
+                $fields = array('categoria' => $categoria,
+                                'pesquisa' => $pesquisa);
             }
 
             $result = [];

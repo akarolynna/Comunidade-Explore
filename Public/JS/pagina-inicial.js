@@ -7,6 +7,7 @@ $(document).ready(
 
 $('.itemCategoria').click(selecionarCategoria);
 $('.itemMenuPublicacoes').click(selecionarTipoPublicacao);
+$('#botaoPesquisa').click(buscarPublicacoes);
 
 function selecionarCategoria() {
     let categoria = $(this).attr('id');    
@@ -25,31 +26,27 @@ function selecionarTipoPublicacao() {
 function buscarPublicacoes() {
     let tipo = $('.itemMenuAtivo').attr('id');
     let categoria = $('.categoriaAtiva').attr('id');
+    let pesquisa = $('#inputPesquisa').val();
+    console.log(pesquisa);
     switch(tipo) {
         case 'diarios':
-            buscarPosts(categoria);
+            buscarPosts(categoria, pesquisa);
             break;
         case 'eventos':
-            buscarEventos(categoria);
+            buscarEventos(categoria, pesquisa);
             break;
         case 'guias':
-            buscarGuias(categoria);
+            buscarGuias(categoria, pesquisa);
             break;
         default:
             console.log('Erro ao buscar publicações: tipo de publicação inválido.');
     }
 }
 
-
-
-
-
-
-
-function buscarPosts(categoria) {
+function buscarPosts(categoria, pesquisa) {
     const categoriaformatada = categoria.substring(9).toLowerCase();
     $.ajax({
-        url: '../Controller/PostController.class.php?categoria=' + categoriaformatada,
+        url: `../Controller/PostController.class.php?categoria=${categoriaformatada}&pesquisa=${pesquisa}`,
         type: 'GET',
         dataType: 'JSON',
         // beforeSend: mostrarModalAguardar,
@@ -66,6 +63,7 @@ function erroNaRequisicao(error) {
 }
 
 function sucessoAoBuscarPosts(response) {
+    console.log(response);
     $('#publicacoes').html('');
     response.forEach(post => {
         $('#publicacoes').append(`
@@ -78,7 +76,7 @@ function sucessoAoBuscarPosts(response) {
     });
 }
 
-function buscarEventos(categoria) {
+function buscarEventos(categoria, pesquisa) {
     console.log(categoria);
     $('#publicacoes').html('Oops! Não há nenhum evento publicado!');
     // $.ajax({
@@ -105,7 +103,7 @@ function sucessoAoBuscarEventos(response) {
     });
 }
 
-function buscarGuias(categoria) {
+function buscarGuias(categoria, pesquisa) {
     console.log(categoria);
     $('#publicacoes').html('Oops! Não há nenhum guia publicado!');
     // $.ajax({

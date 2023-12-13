@@ -31,16 +31,14 @@
     </nav>
 
     <div class="blocoPrincipal">
-        <form class="formPesquisa">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control inputPesquisa" placeholder="Pesquisar">
-                <div class="input-group-append">
-                    <button class="botaoPesquisa">
-                        <img src="../Public/Imagens/IconePesquisa.png" alt="Icone de pesquisa">
-                    </button>
-                </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control inputPesquisa" placeholder="Pesquisar" id="inputPesquisa">
+            <div class="input-group-append" id="botaoPesquisa">
+                <button class="botaoPesquisa">
+                    <img src="../Public/Imagens/IconePesquisa.png" alt="Icone de pesquisa">
+                </button>
             </div>
-        </form>
+        </div>
 
         <div class="blocoCategorias">
             <h2 class="titulo">Categorias</h2>
