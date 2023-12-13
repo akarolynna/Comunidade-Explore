@@ -123,12 +123,12 @@ function sucessoAoBuscarGuias(response) {
                 <div class="post">
                     <p>Guia</p>
                     <p class="conteudoPost">
-                        ${guia.nomeDestino}
+                        ${guia.nome_destino}
                     </p>
                 </div>`);
     });
 }
 
 function formatarCategoria(categoria) {
-    return categoria.substring(9).toLowerCase();;
+    return categoria.substring(9).toLowerCase();
 }

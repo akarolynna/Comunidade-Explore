@@ -18,13 +18,13 @@
 
         public function buscar($categoria, $pesquisa) {
             if($categoria == strtolower(Categoria::TODOS)) {
-                $query = "SELECT * FROM Guia WHERE Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
+                $query = "SELECT * FROM Guia WHERE Guia.nome_destino LIKE CONCAT('%', :pesquisa, '%');";
                 $fields = array('pesquisa' => $pesquisa);
             } else {
                 $query = "SELECT * FROM Guia
                     INNER JOIN Categoria ON Guia.categoria_id = Categoria.id
                     WHERE Categoria.categoria = :categoria
-                    AND Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
+                    AND Guia.nome_destino LIKE CONCAT('%', :pesquisa, '%');";
                 $fields = array('categoria' => $categoria,
                                 'pesquisa' => $pesquisa);
             }
