@@ -1,29 +1,30 @@
 <?php
-enum Categoria {
-    case PRAIA;
-    case NEVE;
-    case URBANO;
-    case MONTANHA;
-    case NATUREZA;
-    case DESERTO;
-    case HISTORIA;
-    case AVENTURA;
-    case MERGULHO;
-    case ROMANCE;
 
-    public static function getNome(self $valor): string {
-        return match ($valor) {
-            self::PRAIA => 'Praia',
-            self::NEVE => 'Neve',
-            self::URBANO => 'Urbano',
-            self::MONTANHA => 'Montanha',
-            self::NATUREZA => 'Natureza',
-            self::DESERTO => 'Deserto',
-            self::HISTORIA => 'História',
-            self::AVENTURA => 'Aventura',
-            self::MERGULHO => 'Mergulho',
-            self::ROMANCE => 'Romance',
-        };
+class Categoria {
+    const PRAIA = 'Praia';
+    const NEVE = 'Neve';
+    const URBANO = 'Urbano';
+    const MONTANHA = 'Montanha';
+    const NATUREZA = 'Natureza';
+    const DESERTO = 'Deserto';
+    const HISTORIA = 'História';
+    const AVENTURA = 'Aventura';
+    const MERGULHO = 'Mergulho';
+    const ROMANCE = 'Romance';
+
+    public static function getCategoria(int $index): ?string {
+        $valores = [
+            self::PRAIA,
+            self::NEVE,
+            self::URBANO,
+            self::MONTANHA,
+            self::NATUREZA,
+            self::DESERTO,
+            self::HISTORIA,
+            self::AVENTURA,
+            self::MERGULHO,
+            self::ROMANCE,
+        ];
+        return $valores[$index] ?? null;
     }
 }
-?>

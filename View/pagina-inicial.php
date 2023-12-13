@@ -45,30 +45,22 @@
         <div class="blocoCategorias">
             <h2 class="titulo">Categorias</h2>
             <div class="opcoesCategorias">
-                <div class="itemCategoria">
-                    <div class="imagemCategoria"></div>
-                    <p class="nomeCategoria">Praia</p>
-                </div>
-                <div class="itemCategoria">
-                    <div class="imagemCategoria"></div>
-                    <p class="nomeCategoria">Neve</p>
-                </div>
-                <div class="itemCategoria">
-                    <div class="imagemCategoria"></div>
-                    <p class="nomeCategoria">Montanhas</p>
-                </div>
-                <div class="itemCategoria">
-                    <div class="imagemCategoria"></div>
-                    <p class="nomeCategoria">Esportes</p>
-                </div>
-                <div class="itemCategoria">
-                    <div class="imagemCategoria"></div>
-                    <p class="nomeCategoria">Natureza</p>
-                </div>
-                <div class="itemCategoria">
-                    <div class="imagemCategoria"></div>
-                    <p class="nomeCategoria">História</p>
-                </div>
+                <?php
+                    require_once "../Model/Categoria.enum.php";
+                    $i = -1;
+                    do {
+                        $i++;
+                        $categoria = Categoria::getCategoria($i);
+                        echo 
+                            "<div class='itemCategoria'>
+                                <div class='imagemCategoria'>                        
+                                    <img src='../Public/Imagens/Categoria$categoria.jpg' alt='$categoria'>
+                                </div>
+                                <p class='nomeCategoria'>$categoria</p>
+                            </div>";
+
+                    } while($categoria != null);
+                ?>
             </div>
         </div>
 

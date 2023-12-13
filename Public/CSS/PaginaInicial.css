@@ -99,6 +99,11 @@
     height: 70px;
     background-color: var(--cor-cinza-claro);
     border-radius: 15px;
+    overflow: hidden;
+}
+
+.imagemCategoria img {
+    background-size: cover;
 }
 
 .menuPosts {
