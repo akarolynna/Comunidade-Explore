@@ -18,8 +18,8 @@
 
         public function buscarPosts($categoria, $pesquisa) {
             if($categoria == strtolower(Categoria::TODOS)) {
-                $query = "SELECT * FROM Post";
-                $fields = array();
+                $query = "SELECT * FROM Post WHERE Post.conteudo LIKE CONCAT('%', :pesquisa, '%');";
+                $fields = array('pesquisa' => $pesquisa);
             } else {
                 $query = "SELECT * FROM Post
                     INNER JOIN DiarioViagem ON Post.diario_id = DiarioViagem.id

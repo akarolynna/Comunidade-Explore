@@ -1,7 +1,7 @@
 $(document).ready(
     function() {
         $('#categoriaTodos').addClass('categoriaAtiva');
-        buscarPosts('categoriaTodos');
+        buscarPublicacoes();
     }
 );
 
@@ -27,7 +27,12 @@ function buscarPublicacoes() {
     let tipo = $('.itemMenuAtivo').attr('id');
     let categoria = $('.categoriaAtiva').attr('id');
     let pesquisa = $('#inputPesquisa').val();
-    console.log(pesquisa);
+
+    console.log('Buscando...');
+    console.log(`tipo: ${tipo}`);
+    console.log(`categoria: ${categoria}`);
+    console.log(`pesquisa: ${pesquisa}`);
+
     switch(tipo) {
         case 'diarios':
             buscarPosts(categoria, pesquisa);
