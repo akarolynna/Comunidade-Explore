@@ -47,10 +47,9 @@
             <div class="opcoesCategorias">
                 <?php
                     require_once "../Model/Categoria.enum.php";
-                    $i = -1;
-                    do {
-                        $i++;
-                        $categoria = Categoria::getNome($i);
+                    $i = 0;
+                    $categoria = Categoria::getNome($i);
+                    while($categoria != null) {
                         echo 
                             "<div class='itemCategoria' id='categoria$categoria'>
                                 <div class='imagemCategoria'>                        
@@ -59,7 +58,9 @@
                                 <p class='nomeCategoria'>$categoria</p>
                             </div>"; //<img src='../Public/Imagens/Categoria$categoria.jpg' alt='$categoria'>
 
-                    } while($categoria != null);
+                        $i++;
+                        $categoria = Categoria::getNome($i);
+                    } 
                 ?>
             </div>
         </div>
