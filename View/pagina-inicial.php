@@ -9,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href='../Public/CSS/PaginaInicial.css'>
+    <link rel="stylesheet" href='../Public/CSS/Evento.css'>
 </head>
 <body class="pagina">
     <nav class="menu">
@@ -73,7 +74,7 @@
             </div>    
             <div id="publicacoes">
 
-                <div class="post">
+                <!-- <div class="post">
                     <div class="imagemPost">
                         <img src="../Public/Imagens/CategoriaPraia.jpg" alt="Imagem do Post">
                     </div>
@@ -97,14 +98,17 @@
                             <i class="corCinzaClaro cursorPointer far fa-bookmark fa-lg"></i>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
+                <!-- <div class="eventoCard">
+
+                </div> -->
             </div>
         </div>
     </div>
 </body>
 
-<!-- <script src="../Public/JS/pagina-inicial.js"></script> -->
+<script src="../Public/JS/pagina-inicial.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
