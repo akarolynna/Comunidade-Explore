@@ -17,11 +17,11 @@
         <div class="conteudo" id="conteudo">
             <h1 class="titulo">Bem Vindo </h1>
             <p class="fraseBoaV"> Crie uma conta pessoal:</p>
-           
+
             <form id="formularioMembro" action="../Controller/MembroController.class.php" enctype="multipart/form-data" class="formulario" method="post">
                 <label for="foto">Foto:</label><br>
                 <input type="file" class="form-control-file" id="foto" name="foto"><br>
-                
+
                 <label for="E-mail">Email</label><br>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Seu email"><br>
 
@@ -29,12 +29,11 @@
                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"><br>
 
                 <div class="btnCentralizar">
-                    <input type="hidden" name="acao" value="cadastro"> <!-- Adicione o campo acao -->
+                    <input type="hidden" name="_acao" value="cadastro"> <!-- Adicione o campo acao -->
                     <button type="submit" class="btn botaoCad mb-2">Cadastre-se</button>
                 </div>
 
             </form>
-            
             <p><a href="login.php" class="linkEstilo">Já possui cadastro? <span class="destaque">Login</span></a></p>
         </div>
     </section>
