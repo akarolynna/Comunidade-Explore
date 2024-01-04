@@ -21,14 +21,13 @@
        
 
       } catch (Exception $ex) {
-        throw new Exception("Erro ao tentar adicionar usuário no Banco de Dados" .$ex->getMessage());
+        throw new Exception("Erro ao tentar adicionar usuário no Banco de Dados <br>" .$ex->getMessage());
       }
     }
 
     public function autenticandoMembro( $email, $senha){
       $options = [
           'email' => $email,
-          // 'senha' => $senha
       ];
   
       $query = 'SELECT * FROM membro WHERE email = :email;';
@@ -42,7 +41,7 @@
         
             // Verifique a senha usando password_verify
             if (password_verify($senha, $usuarioDoBanco['senha'])) {
-              echo 'Autenticado bichaaa';
+              echo 'Autenticado';
               return true; // Senha válida, autenticação bem-sucedida
             } else {
               echo 'Senha inválida';

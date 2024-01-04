@@ -2,10 +2,12 @@
 require_once '../Dao/MembroDao.class.php';
 require_once '../Model/MembroModel.class.php';
 
+
+
 try {
     $membroController = new MembroController();
     $membroController->verificaAcao();
- } catch (Exception $ex) {
+} catch (Exception $ex) {
     // Trate exceções aqui
     echo "Erro ao autenticar o membro: " . $ex->getMessage();
     echo "<br>Trace: " . $ex->getTraceAsString();
@@ -15,7 +17,6 @@ try {
 class MembroController
 {
     private $membroDao;
-
     public function __construct()
     {
         $this->membroDao = new MembroDao();
@@ -31,7 +32,6 @@ class MembroController
                     $this->verificaAcaoTipoPost($_POST['_acao']);
                 }
                 break;
-
             default:
                 throw new Exception("Nenhuma ação foi passada");
         }
@@ -44,11 +44,9 @@ class MembroController
                 $this->cadastrarMembro();
                 break;
             case 'login':
-                echo 'passou login <br>';
                 $this->logarMembro();
                 break;
                 //outras funções como o login que usam o método POST
-
             default:
                 throw new Exception("Erro ao processar a requisição");
         }
@@ -88,27 +86,33 @@ class MembroController
         }
     }
 
-    public function logarMembro()
-    {
+    
+    public function logarMembro() {
         try {
             // Obtém os dados do formulário
             $email = $_POST['email'];
             $senha = $_POST['senha'];
             // Chame a função para autenticar o membro
             $autenticado = $this->membroDao->autenticandoMembro($email, $senha);
-    
+
             if ($autenticado) {
-          
-                echo "Autenticação bem-sucedida!";
+                echo "Autenticação bem-sucedida! <br>";
+                $this->iniciarSessao($email);
             } else {
-                echo "Autenticação falhou. Verifique suas credenciais.";
+                echo "Autenticação falhou. Verifique suas credenciais.<br>";
             }
         } catch (Exception $ex) {
-            // Trate exceções aqui
-            echo "Erro ao autenticar o membro: " . $ex->getMessage();
+            echo "Erro ao autenticar o membro: " . $ex->getMessage() . "<br>";
         }
     }
-    
+    public function iniciarSessao($email){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $_SESSION['email'] = $email;
+        $paginaInicial = "../View/pagina-inicial.php";
 
+        header("Location: $paginaInicial");
+        exit();
+    }
 }
-?>
