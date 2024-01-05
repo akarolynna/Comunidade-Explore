@@ -1,5 +1,5 @@
 CREATE DATABASE comunidadeexplore;
-
+rrrrrrrrrrrrrrrrrrrrrr
 
 CREATE TABLE Categoria (
     id INT AUTO_INCREMENT PRIMARY KEY,
