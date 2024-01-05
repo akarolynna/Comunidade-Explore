@@ -2,28 +2,20 @@
 require_once '../Dao/MembroDao.class.php';
 require_once '../Model/MembroModel.class.php';
 
-
-
 try {
     $membroController = new MembroController();
     $membroController->verificaAcao();
 } catch (Exception $ex) {
-    // Trate exceções aqui
-    echo "Erro ao autenticar o membro: " . $ex->getMessage();
-    echo "<br>Trace: " . $ex->getTraceAsString();
+    echo "Erro ao autenticar o membro: " . $ex->getMessage(). '<br>';
 }
 
-
-class MembroController
-{
+class MembroController{
     private $membroDao;
-    public function __construct()
-    {
+    public function __construct(){
         $this->membroDao = new MembroDao();
     }
 
-    public function verificaAcao()
-    {
+    public function verificaAcao(){
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST':
                 if (!isset($_POST['_acao'])) {
@@ -37,8 +29,7 @@ class MembroController
         }
     }
 
-    private function verificaAcaoTipoPost($_acao)
-    {
+    private function verificaAcaoTipoPost($_acao){
         switch ($_acao) {
             case 'cadastro':
                 $this->cadastrarMembro();
@@ -52,10 +43,8 @@ class MembroController
         }
     }
 
-    public function cadastrarMembro()
-    {
+    public function cadastrarMembro(){
         try {
-            // Chame a função para lidar com o upload da foto
             $fotoCaminho = $this->uploadFoto();
 
             extract($_POST);
@@ -68,12 +57,11 @@ class MembroController
                 echo "Falha na inserção.";
             }
         } catch (Exception $ex) {
-            throw new Exception("Erro no Controller ao tentar realizar o cadastro " . $ex->getMessage(), 0);
+            throw new Exception("Erro no Controller ao tentar realizar o cadastro " . $ex->getMessage(). '<br>', 0);
         }
     }
 
-    private function uploadFoto()
-    {
+    private function uploadFoto(){
         $diretorioDestino  = "../Public/Imagens/";
         $arquivo  = $_FILES['foto']['name'];
         $caminhoCompleto = $diretorioDestino . $arquivo;
@@ -81,7 +69,6 @@ class MembroController
             // Retorna o caminho completo da foto após o upload bem-sucedido
             return $caminhoCompleto;
         } else {
-            // Trate os casos em que o upload falha
             throw new Exception("Falha no upload da foto.");
         }
     }
@@ -92,7 +79,6 @@ class MembroController
             // Obtém os dados do formulário
             $email = $_POST['email'];
             $senha = $_POST['senha'];
-            // Chame a função para autenticar o membro
             $autenticado = $this->membroDao->autenticandoMembro($email, $senha);
 
             if ($autenticado) {
@@ -116,3 +102,4 @@ class MembroController
         exit();
     }
 }
+?>
