@@ -23,7 +23,7 @@
             </button>
 
             <div class="dropdown-menu-left">
-                <img src="../Public/Imagens/Design sem nome (11).png" alt="Imagem do usuário" class="imagemUsuario dropdown-toggle" id="imagemUsuario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../Public/Imagens/imagemUsuario.png" alt="Imagem do usuário" class="imagemUsuario dropdown-toggle" id="imagemUsuario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 
                 <div class="dropdown-menu" aria-labelledby="imagemUsuario" >
                     <a href="#" class="dropdown-item">Meu perfil</a>

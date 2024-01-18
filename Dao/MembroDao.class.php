@@ -57,5 +57,27 @@
       }
   }
 
+public function consultarDadosMembro($email) {
+    $options = [
+        'email' => $email,
+    ];
+
+    $query = 'SELECT * FROM membro WHERE email = :email;';
+
+    try {
+        $this->connection->connection();
+        $statement = $this->connection->prepareStatement($query, $options);
+        $resultados = $this->connection->executeStatement($statement);
+        if (count($resultados) > 0) {
+            $usuarioDoBanco = $resultados[0];
+            return $usuarioDoBanco;
+        } else {
+            return false;
+        }
+    } catch (Exception $ex) {
+        echo 'Erro ao consultar dados do membro: ' . $ex->getMessage(). '<br>';
+        return false;
+    }
+}
    }
-?>
+?> 
