@@ -35,9 +35,11 @@
     margin-left: 20px;
     object-fit: cover;
 }
-.menu .dropdown-menu{
-    margin-top:2px;
+
+.menu .dropdown-menu {
+    margin-top: 2px;
 }
+
 .menu .botao {
     background-color: #98C80B;
     border: none;

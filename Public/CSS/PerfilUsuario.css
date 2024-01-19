@@ -1,109 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Blinker&display=swap');
-
-header {
-    background-color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    border-bottom-left-radius: 16px;
-    border-top-right-radius: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+article {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    margin-top: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
+.imagem-usuario {
+    grid-column: 1;
+    grid-row: 1;
 }
 
-.logo h6 {
-    font-family: 'Playfair Display', serif;
-    font-size: 21px;
-    color: #253858;
-}
-
-.logo img {
-    max-width: 100px;
-    height: 85px;
-    margin-right: 20px;
-}
-
-.menu {
-    display: flex;
-    margin-right: 55px;
-}
-
-.menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.menu li {
-    margin: 0 15px;
-}
-
-.menu a {
-    font-family: 'Playfair Display', serif;
-    text-decoration: none;
-    color: #253858;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-.menu a:hover {
-    color: #80b309;
-}
-
-/* Aqui termina o CSS do Menu */
-
-article .informacoes-membro {
-    width: 25%;
-    height: 520px;
-    margin-left: 25px;
-    margin-top: 60px;
-}
-
-.informacoes-membro .imagemPerfil {
-    width: 296px;
-    height: 296px;
+article .imagem-usuario .imagemPerfil {
+    width: 280px;
+    height: 280px;
     overflow: hidden;
-    margin-left: 30px;
+    margin-left: 25px;
+    margin-top: 25px;
 }
 
-.informacoes-membro .imagemPerfil img {
+article .imagem-usuario .imagemPerfil img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    box-sizing: border-box;
 }
 
-article .informacoesUsuario .tituloInformacoesUsuario h3 {
-    font-size: 24px;
+article .informacoes-usuario {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+article .informacoes-usuario .tituloInformacoesUsuario h3 {
     color: #253858;
+    font-size: 24px;
     line-height: 1.5;
     margin-left: 30px;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 0;
 }
 
-article .informacoesUsuario .grupoInformacoes label {
-    color: #253858;
+article .informacoes-usuario .grupoInformacoes {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
     margin-left: 30px;
-    margin-top: 6px;
-    font-size: 16px;
 }
 
-article .informacoesUsuario span {
-    font-size: 16px;
+article .informacoes-usuario .grupoInformacoes label {
+    color: #253858;
+    font-size: 17.8px;
+}
+
+article .informacoes-usuario .grupoInformacoes span {
+    font-size: 17px;
     margin-left: 10px;
-    margin-top: 6px;
 }
 
-article .informacoesUsuario .botaoEditarPerfil {
+article .informacoes-usuario .grupoInformacoes img {
+    margin-left: 5px;
+}
+
+article .grupoInformacoes .botaoEditarPerfil {
     width: 296px;
     padding: 5px 16px;
     font-size: 14px;
@@ -111,6 +69,205 @@ article .informacoesUsuario .botaoEditarPerfil {
     color: #253858;
     border: 1px solid lightgray;
     border-radius: 4px;
-    margin-top: 15px;
-    margin-left: 30px;
+    margin-right: 23px;
+    height: 32px;
+    box-sizing: border-box;
+}
+
+article .apresentacao-usuario {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+    height: auto;
+}
+
+article .apresentacao-usuario .titulo-apresentacao h1 {
+    font-size: 27px;
+    color: #253858;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+article .apresentacao-usuario .botaoTipoAventureiro button {
+    width: 133px;
+    margin-left: 50px;
+    margin-top: 10px;
+    color: white;
+    background-color: #98C80B;
+    height: 23px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+article .apresentacao-usuario .apresentacao p {
+    font-size: 16px;
+    text-align: justify;
+    margin-left: 50px;
+    margin-right: 100px;
+    margin-top: 20px;
+    line-height: 30px;
+}
+
+article .cards {
+    margin-left: 50px;
+    margin-right: 60px;
+    margin-top: -20px;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+article .cards .menuHorizontal ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+article .cards .menuHorizontal li {
+    float: left;
+}
+
+article .cards .menuHorizontal a {
+    display: block;
+    color: #253858;
+    font-size: 16px;
+    text-align: center;
+    padding: 14px 28px;
+    text-decoration: none;
+}
+
+article .cards .menuHorizontal hr {
+    margin-top: 0;
+    border-bottom: 1px solid lightgray;
+}
+
+article .cards .cartoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    height: 340px;
+    overflow-y: auto;
+}
+
+article .cards .cartoes .card1 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/LoginImagem.jpg');
+    background-size: 120%;
+    /* Ajuste o valor conforme necessário para aumentar o zoom */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+article .cards .cartoes p {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-top: 125px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+article .cards .cartoes .card2 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/Italia.jpg');
+    background-size: 120%;
+    /* Ajuste o valor conforme necessário para aumentar o zoom */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+article .cards .cartoes .card3 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/NovaYork.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+article .cards .cartoes .card4 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/Portugal.jpg');
+    background-size: cover;
+    /* Alterado para cover */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+article .cards .cartoes .card5 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/Israel.jpg');
+    background-size: cover;
+    /* Alterado para cover */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+article .cards .cartoes .card6 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/Canada.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+article .cards .cartoes .card7 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/China.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+article .cards .cartoes .card8 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/Curitiba.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+article .cards .cartoes .card9 {
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    width: 140px;
+    background-image: url('../Imagens/Alemanha.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
