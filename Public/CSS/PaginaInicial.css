@@ -15,7 +15,7 @@
     align-items: center;
 }
 
-.menu .logo{
+.menu .logo {
     width: 55px;
     margin: 10px;
 }
@@ -26,26 +26,22 @@
     font-weight: normal;
 }
 
-/* .menu .imagemUsuario {
-    width: 45px;
-    margin: 10px;
-} */
 .menu .imagemUsuario {
-width: 60px; 
-height: 60px; 
-border-radius: 50%; 
-overflow: hidden;
-margin-right:15px;
-margin-left:20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-left: 20px;
+    object-fit: cover;
 }
-
+.menu .dropdown-menu{
+    margin-top:2px;
+}
 .menu .botao {
     background-color: #98C80B;
     border: none;
 }
-
-
-
 
 .pagina {
     width: 100%;
