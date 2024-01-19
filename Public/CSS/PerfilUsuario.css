@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+header {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    border-bottom-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h6 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: #253858;
+}
+
+.logo img {
+    max-width: 100px;
+    height: 85px;
+    margin-right: 20px;
+}
+
+.menu {
+    display: flex;
+    margin-right: 55px;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu li {
+    margin: 0 15px;
+}
+
+.menu a {
+    font-family: 'Playfair Display', serif;
+    text-decoration: none;
+    color: #253858;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #80b309;
+}
+
+/* Aqui termina o CSS do Menu */
+
+
+article .informacoes-membro {
+    width: 25%;
+    height: 520px;
+    margin-left: 10px;
+    margin-top: 28px;
+    background-color: #80b309;
+}
+
+.informacoes-membro .imagemPerfil {
+    width: 296px; 
+    height: 296px; 
+    overflow: hidden; 
+}
+
+.informacoes-membro .imagemPerfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
