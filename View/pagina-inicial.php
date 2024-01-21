@@ -25,7 +25,13 @@ session_start();
             <button class="btn btn-success btn-sm botao">Criar publicação</button>
 
             <div class="dropdown-menu-left">
-                <img src="<?php echo $_SESSION['usuario']['foto']; ?>" alt="Foto do usuário" class="imagemUsuario dropdown-toggle" id="imagemUsuario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="<?php
+                 if(false) {
+                    echo $_SESSION['usuario']['foto'];
+                } else {
+                    echo "../Public/Imagens/ImagemUsuario.png";
+                }  
+                ?>" alt="Foto do usuário" class="imagemUsuario dropdown-toggle" id="imagemUsuario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="dropdown-menu" aria-labelledby="imagemUsuario">
                     <a href="./perfilUsuario.php" class="dropdown-item">Meu perfil</a>
                     <a href="./logout.php" class="dropdown-item">Sair</a>
