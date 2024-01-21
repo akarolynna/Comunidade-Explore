@@ -40,7 +40,9 @@
 }
 
 .conteudo .titulo {
-    margin-top: 20px;
+    /* margin-top: 20px;
+    margin-bottom: 10px; */
+    margin-top: 70px;
     margin-bottom: 10px;
 }
 
@@ -61,30 +63,29 @@
     margin-bottom: 15px !important;
 }
 
+.btnCentralizar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:25px;
+}
+
+.botaoCad {
+    background-color:#80b309;
+    color: white;
+}
+
 .conteudo .linkEstilo {
     /* Centralizando o meu Já tem Login */
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color:black;
+    color: black;
+    margin-top: 20px;
 }
 .conteudo .linkEstilo .destaque{
    color: #80b309;
-}
-
-
-.btnCentralizar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.botaoCad {
-    background-color:#80b309;
-    color: white;
-  
-
 }
 
 
