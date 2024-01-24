@@ -34,7 +34,10 @@ session_start();
                 </div>
                 <div class="inputContainer">
                     <label class="label" for="inputCorPrincipal">Cor principal</label>
-                    <input class="form-control" id="inputCorPrincipal">
+                    <div class="inputGroup">
+                        <input class="form-control" id="inputLocalizacao" value="#98C80B" readonly>
+                        <input type="color" class="form-control form-control-color" id="inputCorPrincipal" value="#98C80B">
+                    </div>
                 </div>
             </div>
             <div class="inputContainer">
