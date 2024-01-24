@@ -29,7 +29,7 @@
     display: flex;
 }
 
-.inputGroup > div:first-child {
+.inputGroup > :first-child {
     margin-right: 10px;
 }
 
