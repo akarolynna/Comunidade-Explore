@@ -1,0 +1,46 @@
+@import './Cores.css';
+
+.menu {
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid var(--cor-cinza-claro);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .grupo {
+    display: flex;
+    align-items: center;
+}
+
+.menu .logo {
+    width: 55px;
+    margin: 10px;
+}
+
+.menu .titulo {
+    font-size: 30px;
+    color: var(--cor-cinza-escuro);
+    font-weight: normal;
+}
+
+.menu .imagemUsuario {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-left: 20px;
+    object-fit: cover;
+}
+
+.menu .dropdown-menu {
+    margin-top: 2px;
+}
+
+.menu .botao {
+    background-color: #98C80B;
+    border: none;
+}
