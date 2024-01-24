@@ -13,7 +13,7 @@ INSERT INTO Categoria (categoria) VALUES
     ('ROMANCE');
 
 -- Inserir 10 membros
-INSERT INTO Membro (imagem, nome, email, senha, apresentacao, aniversario, telefone, melhor_viagem, genero, estilo) VALUES
+INSERT INTO Membro (foto, nome, email, senha, apresentacao, aniversario, telefone, melhor_viagem, genero, estilo) VALUES
     ('foto1.jpg', 'João', 'joao@example.com', 'senha123', 'Apresentação João', '1990-01-01', '123456789', 'Praia', 'MASCULINO', 'VIAJANTE_AVENTUREIRO'),
     ('foto2.jpg', 'Maria', 'maria@example.com', 'senha456', 'Apresentação Maria', '1992-02-02', '987654321', 'Montanha', 'FEMININO', 'MOCHILEIRO_EXPERIENTE'),
     ('foto3.jpg', 'Carlos', 'carlos@example.com', 'senha789', 'Apresentação Carlos', '1995-03-03', '456789123', 'Natureza', 'MASCULINO', 'AVENTUREIRO_GLOBAL'),
