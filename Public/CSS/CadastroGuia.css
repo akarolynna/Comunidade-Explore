@@ -1,0 +1,73 @@
+@import './Cores.css';
+
+.pagina {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blocoPrincipal {
+    width: 70%;
+    padding: 40px 5%;
+    overflow: hidden;
+}
+
+.titulo {
+    font-size: 24px;
+    color: var(--cor-cinza-escuro);
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.label {
+    color: var(--cor-cinza-escuro);
+    margin-top: 10px;
+}
+
+.inputGroup {
+    display: flex;
+}
+
+.inputGroup > div:first-child {
+    margin-right: 10px;
+}
+
+.inputContainer {
+    width: 100%;
+}
+
+.checkLabel {
+    color: var(--cor-cinza-escuro);
+}
+
+.buttonContainer .btnPrimary {
+    color: white;
+    border-color: var(--cor-padrao);
+    background-color: var(--cor-padrao);
+    &:hover {
+        background-color: #89b30e;
+    }
+}
+
+.buttonContainer .btnSecundary {
+    color: var(--cor-padrao);
+    border-color: var(--cor-padrao);
+    background-color: white;
+    &:hover {
+        background-color: var(--cor-cinza-extra-claro);
+    }
+}
+
+.buttonContainer .btnTertiary {
+    color: var(--cor-padrao);
+    border-color: none;
+    background-color: white;
+    &:hover {
+        background-color: var(--cor-cinza-extra-claro);
+    }
+}
+
+legend {
+    color: var(--cor-cinza-extra-escuro);
+}
