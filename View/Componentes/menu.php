@@ -1,3 +1,4 @@
+
 <nav class="menu">
     <div class="grupo">
         <img src="../Public/Imagens/LogoExplore.png" alt="Logo de bussola" class="logo">
