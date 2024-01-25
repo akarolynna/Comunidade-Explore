@@ -53,8 +53,6 @@ function salvarRascunho(evt) {
     dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
     dados.append('desafios', JSON.stringify(desafios));
     dados.append('colaboradores', JSON.stringify(colaboradores));
-    
-    console.log(fotosSecundarias)
 
     evt.preventDefault();   
     $.ajax({
