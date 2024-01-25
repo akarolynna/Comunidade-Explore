@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz@8..144&display=swap');
 @import './Cores.css';
 
+
 article .containnerPrincipal {
     width: 780px;
     height: auto;
@@ -15,8 +16,6 @@ article .containnerPrincipal {
     left: 50%;
     transform: translate(-50%, -50%);
     margin-top:35px;
-    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border-radius: 8px; */
 }
 
 article .containnerPrincipal .cabecalho {
@@ -28,7 +27,6 @@ article .containnerPrincipal .cabecalho {
 }
 
 article .containnerPrincipal .cabecalho h1 {
-   
     font-size: 28px;
     font-weight: bold;
     color: var(--cor-azul-escuro);
@@ -45,25 +43,20 @@ article .containnerPrincipal .corpo .form-group {
 
 article .containnerPrincipal .corpo .form-group label {
     display: block;
-    color: var(--cor-azul-escuro);
+    color: black;
     font-size: 17px;
-    font-family: 'Roboto Serif', serif;
-    box-sizing: border-box;
 }
 
 article .containnerPrincipal .corpo .form-group input {
     width: 90%;
     height: 40px;
     font-family: 'Roboto Serif', serif;
-    color: var(--cor-azul-escuro);
+    color:var(--cor-azul-escuro);
     font-size: 16px;
     margin-top: 15px;
     border-radius: 5px;
     border: 1px solid lightgray;
     padding: 0px 12px;
-    box-sizing: border-box;
-    /* background-color: var(--cor-cinza-claro); */
-
     &:hover {
         border: 2px solid var(--cor-azul-escuro);
     }
@@ -75,27 +68,26 @@ article .containnerPrincipal .corpo .form-group-capa{
 
 article .containnerPrincipal .corpo .form-group-capa label {
     display: block;
-    color: var(--cor-azul-escuro);
+    color: black;
     font-size: 17px;
-    font-family: 'Roboto Serif', serif;
-    box-sizing: border-box;
 }
 
 article .containnerPrincipal .corpo .form-group-capa input{
     width: 90%;
+    height: 40px;
     font-family: 'Roboto Serif', serif;
-    color: var(--cor-azul-escuro);
+    color:var(--cor-azul-escuro);
     font-size: 16px;
     margin-top: 15px;
-    border-radius: 5px;
-    box-sizing: border-box;
+    letter-spacing:1.5px;
 }
 
 
 article .containnerPrincipal .corpo .divBotaoEditar {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    margin-top:25px;
 }
 
 article .containnerPrincipal .corpo .divBotaoEditar button {

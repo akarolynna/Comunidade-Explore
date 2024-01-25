@@ -24,17 +24,17 @@
 
             <div class="corpo">
             <div class="form-group">
-                <label for="titulo">Título: </label>
+                <label for="titulo"><b>Título:</b> </label>
                 <input type="text" name="titulo" id="titulo" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label for="localizacao">Localização:</label>
+                <label for="localizacao"><b>Localização:</b></label>
                 <input type="text" name="localizacao" id="localizacao" class="form-control" required>
             </div>
 
             <div class="form-group-capa">
-                <label for="foto">Capa:</label>
+                <label for="foto"><b>Capa:</b></label>
                 <input type="file" name="foto" accept="image/*" id="foto" class="custom-file-input" required>
             </div>
 
