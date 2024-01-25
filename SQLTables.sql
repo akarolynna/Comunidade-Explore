@@ -107,7 +107,6 @@ CREATE TABLE Guia (
         'FESTIVAIS', 
         'ENTRETENIMENTO', 
         'TRANSPORTE', 
-        'COMPRAS', 
         'RELAXAMENTO', 
         'DICAS_LOCAIS', 
         'FAMILIA', 

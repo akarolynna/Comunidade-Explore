@@ -1,6 +1,8 @@
 <?php
-session_start();
+    session_start();
+    require_once '../Model/AreaContribuicao.enum.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,15 +10,18 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidade Explore</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href='../Public/CSS/Menu.css'>
     <link rel="stylesheet" href='../Public/CSS/CadastroGeral.css'>
+
 </head>
 
 <body class="pagina">
-    <?php        
+    <?php
         require_once './Componentes/menu.php';
     ?>
 
@@ -25,111 +30,184 @@ session_start();
         <form id="formCadGuia">
             <div class="inputContainer">
                 <label class="label" for="inputNome">Nome do Destino</label>
-                <input class="form-control" id="inputNome" required>
+                <input class="form-control" id="inputNome" name="nome" required>
             </div>
             <div class="inputGroup">
                 <div class="inputContainer">
                     <label class="label" for="inputLocalizacao">Localização</label>
-                    <input class="form-control" id="inputLocalizacao">
+                    <input class="form-control" id="inputLocalizacao" name="localização" required>
                 </div>
                 <div class="inputContainer">
                     <label class="label" for="inputCorPrincipal">Cor principal</label>
                     <div class="inputGroup">
                         <input class="form-control" id="inputLocalizacao" value="#98C80B" readonly>
-                        <input type="color" class="form-control form-control-color" id="inputCorPrincipal" value="#98C80B">
+                        <input type="color" class="form-control form-control-color" id="inputCorPrincipal"
+                            value="#98C80B" name="corPrincipal" required>
                     </div>
                 </div>
             </div>
             <div class="inputContainer">
                 <label class="label" for="inputDescricao">Descrição</label>
-                <textarea class="form-control" id="inputDescricao"></textarea>
+                <textarea class="form-control" id="inputDescricao" name="descricao" required></textarea>
             </div>
             <div class="inputContainer">
-                <label class="label" for="inputDescricao">Clima</label>
-                <textarea class="form-control" id="inputDescricao"></textarea>
+                <label class="label" for="inputClima">Clima</label>
+                <textarea class="form-control" id="inputClima" name="clima" required></textarea>
             </div>
             <div class="inputContainer">
                 <label class="label" for="inputEpocaVisita">Melhor época para visitar</label>
-                <textarea class="form-control" id="inputEpocaVisita"></textarea>
+                <textarea class="form-control" id="inputEpocaVisita" name="epocaVisita" required></textarea>
+            </div>
+            <div class="inputContainer">
+                <label class="label" for="inputCulturaHistoria">Cultura e História</label>
+                <textarea class="form-control" id="inputCulturaHistoria" name="culturaHistoria" required></textarea>
             </div>
 
             <label class="label mt-4">Áreas de contribuição</label>
             <div class="inputGroup">
                 <div class="inputContainer">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkPontosTuristicos">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkPontosTuristicos" value="<?php echo AreaContribuicao::PONTOS_TURISTICOS; ?>">
                         <label class="checkLabel" for="checkPontosTuristicos">
-                            Pontos Turísticos
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::PONTOS_TURISTICOS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkEventosFestivais">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEventosFestivais" value="<?php echo AreaContribuicao::HOSPEDAGEM; ?>">
                         <label class="checkLabel" for="checkEventosFestivais">
-                            Eventos e Festivais
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::HOSPEDAGEM); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkRestaurantesCulinaria">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkRestaurantesCulinaria" value="<?php echo AreaContribuicao::RESTAURANTES; ?>">
                         <label class="checkLabel" for="checkRestaurantesCulinaria">
-                            Restaurantes e Culinária
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::RESTAURANTES); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkComprasMercado">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkComprasMercado" value="<?php echo AreaContribuicao::FESTIVAIS; ?>">
                         <label class="checkLabel" for="checkComprasMercado">
-                            Compras e Mercados
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::FESTIVAIS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkBemEstarRelaxamento">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkBemEstarRelaxamento" value="<?php echo AreaContribuicao::ENTRETENIMENTO; ?>">
                         <label class="checkLabel" for="checkBemEstarRelaxamento">
-                            Bem-Estar e Relaxamento
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::ENTRETENIMENTO); ?>
                         </label>
                     </div>
-                </div> 
+                </div>
                 <div class="inputContainer">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkTransporte">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkTransporte" value="<?php echo AreaContribuicao::TRANSPORTE; ?>">
                         <label class="checkLabel" for="checkTransporte">
-                            Transporte
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::TRANSPORTE); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkDicas">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkDicas" value="<?php echo AreaContribuicao::RELAXAMENTO; ?>">
                         <label class="checkLabel" for="checkDicas">
-                            Dicas
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::RELAXAMENTO); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkFamiliaCriancas">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkFamiliaCriancas" value="<?php echo AreaContribuicao::DICAS_LOCAIS; ?>">
                         <label class="checkLabel" for="checkFamiliaCriancas">
-                            Família e Crianças
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::DICAS_LOCAIS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkEsporteAventura">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEsporteAventura" value="<?php echo AreaContribuicao::FAMILIA; ?>">
                         <label class="checkLabel" for="checkEsporteAventura">
-                            Esportes e Aventura
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::FAMILIA); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="checkArteEntretenimento">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkArteEntretenimento" value="<?php echo AreaContribuicao::ESPORTES_AVENTURA; ?>">
                         <label class="checkLabel" for="checkArteEntretenimento">
-                            Arte e Entretenimento
+                            <?php echo AreaContribuicao::getNome(AreaContribuicao::ESPORTES_AVENTURA); ?>
                         </label>
                     </div>
                 </div>
             </div>
-        
-            <fieldset class="border p-2 mt-4">
-                <legend>Desafio</legend>
-                <div class="inputContainer">
-                    <label class="label" for="inputTituloDesafio">Título</label>
-                    <input class="form-control" id="inputTituloDesafio">
+
+            <div class="accordion mt-4" id="painelDesafios">
+                <div class="accordion-item desafio">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Desafio 1
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#painelDesafios">
+                        <div class="accordion-body">
+                            <div class="inputContainer">
+                                <label class="label" for="inputTituloDesafio1">Título</label>
+                                <input class="form-control inputTituloDesafio" id="inputTituloDesafio1">
+                            </div>
+                            <div class="inputContainer">
+                                <label class="label" for="inputDescricaoDesafio1">Descrição</label>
+                                <textarea class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio1"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="inputContainer">
-                    <label class="label" for="inputTituloDesafio">Descrição</label>
-                    <textarea class="form-control" id="inputDescricaoDesafio"></textarea>
+                <div class="accordion-item desafio">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            Desafio 2
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#painelDesafios">
+                        <div class="accordion-body">
+                            <div class="inputContainer">
+                                <label class="label" for="inputTituloDesafio2">Título</label>
+                                <input class="form-control inputTituloDesafio" id="inputTituloDesafio2">
+                            </div>
+                            <div class="inputContainer">
+                                <label class="label" for="inputDescricaoDesafio2">Descrição</label>
+                                <textarea class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item desafio">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            Desafio 3
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#painelDesafios">
+                        <div class="accordion-body">
+                            <div class="inputContainer">
+                                <label class="label" for="inputTituloDesafio3">Título</label>
+                                <input class="form-control inputTituloDesafio" id="inputTituloDesafio3">
+                            </div>
+                            <div class="inputContainer">
+                                <label class="label" for="inputDescricaoDesafio3">Descrição</label>
+                                <textarea class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <fieldset class="border p-2 mt-4 rounded">
+                <legend>Fotos do destino</legend>
+                <div class="inputContainer mt-5">
+                    <label for="inputFotoCapa">Foto de capa</label>
+                    <br>
+                    <input type="file" class="form-control-file" id="inputFotoCapa" name="fotoCapa">
+                </div>
+                <div class="inputContainer mt-3">
+                    <label for="inputFotoSecundaria1">Outras fotos</label>
+                    <br>
+                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria1">
+                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria2">
+                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria3">
                 </div>
             </fieldset>
 
@@ -141,27 +219,32 @@ session_start();
             </div>
 
             <select multiple class="form-control" id="multiselectColaboradores">
-                <option>Janaina</option>
-                <option>Carol</option>
-                <option>Roberto</option>
+                <option value="1">Janaina</option>
+                <option value="2">Carol</option>
+                <option value="3">Roberto</option>
             </select>
 
-            <div class="inputContainer mt-4">
-                <label for="inputFoto">Foto do destino</label>
-                <br>
-                <input type="file" class="form-control-file" id="inputFoto">
-            </div>
-
-            <div class="d-flex justify-content-center mt-5 buttonContainer">
+            <div class="d-flex justify-content-center mt-4 buttonContainer">
                 <button class="btn btnTertiary">Cancelar</button>
                 <button class="btn btnSecundary mx-2">Salvar rascunho</button>
-                <button class="btn btnPrimary">Publicar</button>
+                <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
             </div>
         </form>
-    </div>    
+        
+        <button class="btn btnPrimary" id="btnTeste">Publicar</button>
+    </div>
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="../Public/JS/cadastroGuia.js"></script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </html>
