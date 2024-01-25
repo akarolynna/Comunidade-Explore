@@ -23,7 +23,6 @@
                 self::FESTIVAIS => 'Festivais',
                 self::ENTRETENIMENTO => 'Entretenimento',
                 self::TRANSPORTE => 'Transporte',
-                self::COMPRAS => 'Compras',
                 self::RELAXAMENTO => 'Relaxamento',
                 self::DICAS_LOCAIS => 'Dicas Locais',
                 self::FAMILIA => 'Família',
