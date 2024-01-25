@@ -6,6 +6,24 @@
         $this->connection = new PDOConnection();
     }
 
+    private function getResult($query, $fields) {
+        $this->connection->connection();
+        $stm = $this->connection->prepareStatement($query, $fields);
+        return $this->connection->executeStatement($stm);
+    }
+
+    public function buscarMembros() {
+      $query = "SELECT * FROM Membro";
+      $fields = [];
+      $result = [];
+      try {
+          $result = $this->getResult($query, $fields);
+      } catch (Exception $ex) {
+          throw new Exception($ex->getMessage());
+      }
+      return $result;
+    }
+
     public function criarMembro(MembroModel $usuario){
         $options = [
             'foto' => $usuario->getFoto(),

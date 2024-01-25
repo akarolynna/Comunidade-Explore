@@ -218,11 +218,7 @@
                 </label>
             </div>
 
-            <select multiple class="form-control" id="multiselectColaboradores">
-                <option value="1">Janaina</option>
-                <option value="2">Carol</option>
-                <option value="3">Roberto</option>
-            </select>
+            <select multiple class="form-control" id="multiselectColaboradores"></select>
 
             <div class="d-flex justify-content-center mt-4 buttonContainer">
                 <button class="btn btnTertiary">Cancelar</button>
@@ -230,8 +226,6 @@
                 <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
             </div>
         </form>
-        
-        <button class="btn btnPrimary" id="btnTeste">Publicar</button>
     </div>
 </body>
 

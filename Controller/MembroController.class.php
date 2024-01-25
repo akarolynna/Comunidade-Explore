@@ -24,6 +24,9 @@ class MembroController{
                     $this->verificaAcaoTipoPost($_POST['_acao']);
                 }
                 break;
+            case 'GET':
+                $this->buscarMembros();
+                break;
             default:
                 throw new Exception("Nenhuma ação foi passada");
         }
@@ -121,6 +124,11 @@ class MembroController{
       
     //     exit();
     // }
+
+    private function buscarMembros() {
+        $membros = $this->membroDao->buscarMembros();
+        echo json_encode($membros);
+    }
     
 }
 ?>

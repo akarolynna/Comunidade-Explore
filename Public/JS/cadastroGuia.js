@@ -1,15 +1,23 @@
+$(document).ready(buscarMembros);
+
 const formCadastro = $('#formCadGuia').on('submit', cadastrarGuia);
-$('#btnTeste').on('click', teste);
 
-function teste() {
-    let colaboradores = [];
-    
-    $("#multiselectColaboradores option:selected").each(function() {
-        colaboradores.push($(this).val());
+
+function buscarMembros() {
+    $.ajax({
+        url: `../Controller/MembroController.class.php`,
+        type: 'GET',
+        dataType: 'JSON',
+        success: sucessoAoBuscarMembros,
+        error: erroNaRequisicao
     });
-
-    console.log(colaboradores);
 }
+
+function sucessoAoBuscarMembros(response) {
+    response.forEach((membro) => {
+        $('#multiselectColaboradores').append(`<option value="${membro.id}">${membro.nome}</option>`);
+    });
+} 
 
 function cadastrarGuia(evt) {  
     const controllerURL = "../controller/ContatoController.class.php";
@@ -57,7 +65,7 @@ function cadastrarGuia(evt) {
         processData: false, 
         contentType: false,
         success: sucessoAoCadastrar,
-        error: erroAoCadastrar
+        error: erroNaRequisicao
     });  
 }
 
@@ -65,6 +73,6 @@ function sucessoAoCadastrar(response) {
     console.log(response);
 }
 
-function erroAoCadastrar(error) {
+function erroNaRequisicao(error) {
     console.log(error);
 }
