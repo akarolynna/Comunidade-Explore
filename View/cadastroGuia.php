@@ -30,12 +30,12 @@
         <form id="formCadGuia">
             <div class="inputContainer">
                 <label class="label" for="inputNome">Nome do Destino</label>
-                <input class="form-control" id="inputNome" name="nome" required>
+                <input class="form-control" id="inputNome" name="nomeDestino" required>
             </div>
             <div class="inputGroup">
                 <div class="inputContainer">
                     <label class="label" for="inputLocalizacao">Localização</label>
-                    <input class="form-control" id="inputLocalizacao" name="localização" required>
+                    <input class="form-control" id="inputLocalizacao" name="localizacao" required>
                 </div>
                 <div class="inputContainer">
                     <label class="label" for="inputCorPrincipal">Cor principal</label>
@@ -203,11 +203,11 @@
                     <input type="file" class="form-control-file" id="inputFotoCapa" name="fotoCapa">
                 </div>
                 <div class="inputContainer mt-3">
-                    <label for="inputFotoSecundaria1">Outras fotos</label>
+                    <label>Outras fotos</label>
                     <br>
-                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria1">
-                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria2">
-                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria3">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria1" name="fotoSecundaria1">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria2" name="fotoSecundaria2">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria3" name="fotoSecundaria3">
                 </div>
             </fieldset>
 
@@ -219,13 +219,13 @@
             </div>
 
             <select multiple class="form-control" id="multiselectColaboradores"></select>
-
-            <div class="d-flex justify-content-center mt-4 buttonContainer">
-                <button class="btn btnTertiary">Cancelar</button>
-                <button class="btn btnSecundary mx-2">Salvar rascunho</button>
-                <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
-            </div>
         </form>
+
+        <div class="d-flex justify-content-center mt-4 buttonContainer">
+            <button class="btn btnTertiary" id="btnCancelar">Cancelar</button>
+            <button class="btn btnSecundary mx-2" id="btnSalvarRascunho">Salvar rascunho</button>
+            <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
+        </div>
     </div>
 </body>
 

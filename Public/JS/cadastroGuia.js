@@ -1,6 +1,8 @@
 $(document).ready(buscarMembros);
+$('#btnCancelar').click(cancelar);
+$('#btnSalvarRascunho').click(salvarRascunho);
 
-const formCadastro = $('#formCadGuia').on('submit', cadastrarGuia);
+const formCadastro = $('#formCadGuia');
 
 
 function buscarMembros() {
@@ -19,12 +21,15 @@ function sucessoAoBuscarMembros(response) {
     });
 } 
 
-function cadastrarGuia(evt) {  
-    const controllerURL = "../controller/ContatoController.class.php";
+function cancelar() {
+    history.back()
+}
+
+function salvarRascunho(evt) {  
+    const controllerURL = "../controller/GuiaController.class.php";
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
     let desafios = [];
-    let fotosSecundarias = [];
     let colaboradores = [];
 
     formCadastro.find('.checkAreasContribuicao:checked').each(function() {
@@ -41,21 +46,16 @@ function cadastrarGuia(evt) {
         });
     });
     
-    $(".inputFotoSecundaria").each(function(index) {
-        if (this.files.length > 0) {
-            fotosSecundarias.push(this.files[0]);
-        }
-    });
-    
     $("#multiselectColaboradores option:selected").each(function() {
         colaboradores.push($(this).val());
     });
 
     dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
     dados.append('desafios', JSON.stringify(desafios));
-    dados.append('fotosSecundarias', JSON.stringify(fotosSecundarias));
     dados.append('colaboradores', JSON.stringify(colaboradores));
     
+    console.log(fotosSecundarias)
+
     evt.preventDefault();   
     $.ajax({
         type: "POST",
@@ -64,15 +64,17 @@ function cadastrarGuia(evt) {
         data: dados,
         processData: false, 
         contentType: false,
-        success: sucessoAoCadastrar,
+        success: sucessoAoSalvarRascunho,
         error: erroNaRequisicao
     });  
 }
 
-function sucessoAoCadastrar(response) {
-    console.log(response);
+function sucessoAoSalvarRascunho(response) {
+    console.log('SUCESSO!');
+    console.log(response.responseText);
 }
 
 function erroNaRequisicao(error) {
+    console.log('ERRO!');
     console.log(error);
 }
