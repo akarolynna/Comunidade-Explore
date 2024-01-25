@@ -22,9 +22,9 @@ class Guia {
         $epocaVisita,
         $areasContribuicao,
         $desafios,
-        $publico,
         $categoria,
         $criador,
+        $publico,
         $arquivado
     ) {
         $this->corPrincipal = $corPrincipal;
@@ -35,9 +35,9 @@ class Guia {
         $this->epocaVisita = $epocaVisita;
         $this->areasContribuicao = $areasContribuicao;
         $this->desafios = $desafios;
-        $this->publico = $publico;
         $this->categoria = $categoria;
         $this->criador = $criador;
+        $this->publico = $publico;
         $this->arquivado = $arquivado;
     }
 

@@ -50,6 +50,7 @@
                 echo $_FILES["fotoSecundaria1"]["name"];
                 echo $_FILES["fotoSecundaria2"]["name"];
                 echo $_FILES["fotoSecundaria3"]["name"];
+                echo $categorias;
                 echo $colaboradores;
 
                 $extensao = pathinfo($_FILES["fotoCapa"]["name"], PATHINFO_EXTENSION);

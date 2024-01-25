@@ -13,7 +13,7 @@ class Categoria {
     const MERGULHO = 'Mergulho';
     const ROMANCE = 'Romance';
 
-    public static function getNome(int $index): ?string {
+    public static function getNome(int $index): ?string { //não funciona
         $valores = [
             self::TODOS,
             self::PRAIA,

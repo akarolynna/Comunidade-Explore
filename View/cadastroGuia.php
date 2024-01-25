@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once '../Model/AreaContribuicao.enum.php';
+    require_once '../Model/Categoria.enum.php';
 ?>
 
 <!DOCTYPE html>
@@ -211,13 +212,47 @@
                 </div>
             </fieldset>
 
+            <label class="label mt-3">Categorias</label>
+            <select multiple class="form-control mt-2" id="multiselectCategorias">
+                <option value="<?php echo Categoria::getValor(Categoria::PRAIA); ?>">
+                    <?php echo Categoria::PRAIA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::NEVE); ?>">
+                    <?php echo Categoria::NEVE; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::URBANO); ?>">
+                    <?php echo Categoria::URBANO; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::MONTANHA); ?>">
+                    <?php echo Categoria::MONTANHA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::NATUREZA); ?>">
+                    <?php echo Categoria::NATUREZA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::DESERTO); ?>">
+                    <?php echo Categoria::DESERTO; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::HISTORIA); ?>">
+                    <?php echo Categoria::HISTORIA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::AVENTURA); ?>">
+                    <?php echo Categoria::AVENTURA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::MERGULHO); ?>">
+                    <?php echo Categoria::MERGULHO; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::ROMANCE); ?>">
+                    <?php echo Categoria::ROMANCE; ?>
+                </option>
+                </option>
+            </select>
+
             <div class="form-check mt-4">
                 <input class="form-check-input" type="checkbox" id="checkColaboradores">
                 <label class="checkLabel" for="checkColaboradores">
                     Colaboradores
                 </label>
             </div>
-
             <select multiple class="form-control" id="multiselectColaboradores"></select>
         </form>
 
