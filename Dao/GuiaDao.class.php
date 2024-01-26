@@ -51,8 +51,8 @@
                 fotosSecundarias,
                 publico,
                 arquivado,
-                categoria,
-                criador,
+                categoriaId,
+                criadorId
             ) VALUES (
                 :nomeDestino,
                 :localizacao,
@@ -66,29 +66,34 @@
                 :fotosSecundarias,
                 :publico,
                 :arquivado,
-                :categoria,
-                :criador,
+                :categoriaId,
+                :criadorId
             );";
             $fields = array(
                 'nomeDestino' => $guia->getNomeDestino(),
                 'localizacao' => $guia->getLocalizacao(),
-                'corPrincipal' => $guia->getCorPrincipal(),
+                'corPrincipal' => strval($guia->getCorPrincipal()),
                 'descricao' => $guia->getDescricao(),
                 'clima' => $guia->getClima(),
                 'epocaVisita' => $guia->getEpocaVisita(),
                 'culturaHistoria' => $guia->getCulturaHistoria(),
-                'areasContribuicao' => $guia->getAreasContribuicao(),
+                'areasContribuicao' => json_encode($guia->getAreasContribuicao()),
                 'fotoCapa' => $guia->getFotoCapa(),
-                'fotosSecundarias' => $guia->getFotosSecundarias(),
+                'fotosSecundarias' => json_encode($guia->getFotosSecundarias()),
                 'publico' => $guia->getPublico(),
                 'arquivado' => $guia->getArquivado(),
-                'categoria' => $guia->getCategoria(),
-                'criador' => $guia->getCriador(),
+                'categoriaId' => $guia->getCategoria(),
+                'criadorId' => $guia->getCriadorId(),
             );
 
             $result = 0;    
             try {
-                $result = $this->getResult($query, $fields);
+                $this->connection->connection();
+                $stm = $this->connection->prepareStatement($query, $fields);
+                $result = $this->connection->executeStatement($stm);
+                $guiaId = $this->connection->lastInsertId();
+                echo 'Passou em!!!';
+                echo $guiaId;
             } catch (Exception $ex) {
                 throw new Exception($ex->getMessage());
             }

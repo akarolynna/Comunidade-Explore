@@ -38,7 +38,6 @@
         public function cadastrar() {
             try {
                 extract($_POST);
-                echo $categoria;
 
                 $extensao = pathinfo($_FILES["fotoCapa"]["name"], PATHINFO_EXTENSION);
                 $novoNomeFoto = $nomeDestino."-capa.".$extensao;
@@ -75,8 +74,8 @@
                         $areasContribuicao,
                         $caminhoFotoCapa,
                         $fotosSecundarias,
-                        false,
-                        false,
+                        0,
+                        0,
                         $categoria,
                         $_SESSION['usuario']['id'],
                         $desafios,
