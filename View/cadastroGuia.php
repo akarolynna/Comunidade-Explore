@@ -68,31 +68,31 @@
             <div class="inputGroup">
                 <div class="inputContainer">
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkPontosTuristicos" value="<?php echo AreaContribuicao::PONTOS_TURISTICOS; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkPontosTuristicos" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::PONTOS_TURISTICOS); ?>">
                         <label class="checkLabel" for="checkPontosTuristicos">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::PONTOS_TURISTICOS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEventosFestivais" value="<?php echo AreaContribuicao::HOSPEDAGEM; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEventosFestivais" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::HOSPEDAGEM); ?>">
                         <label class="checkLabel" for="checkEventosFestivais">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::HOSPEDAGEM); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkRestaurantesCulinaria" value="<?php echo AreaContribuicao::RESTAURANTES; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkRestaurantesCulinaria" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::RESTAURANTES); ?>">
                         <label class="checkLabel" for="checkRestaurantesCulinaria">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::RESTAURANTES); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkComprasMercado" value="<?php echo AreaContribuicao::FESTIVAIS; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkComprasMercado" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::FESTIVAIS); ?>">
                         <label class="checkLabel" for="checkComprasMercado">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::FESTIVAIS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkBemEstarRelaxamento" value="<?php echo AreaContribuicao::ENTRETENIMENTO; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkBemEstarRelaxamento" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::ENTRETENIMENTO); ?>">
                         <label class="checkLabel" for="checkBemEstarRelaxamento">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::ENTRETENIMENTO); ?>
                         </label>
@@ -100,31 +100,31 @@
                 </div>
                 <div class="inputContainer">
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkTransporte" value="<?php echo AreaContribuicao::TRANSPORTE; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkTransporte" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::TRANSPORTE); ?>">
                         <label class="checkLabel" for="checkTransporte">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::TRANSPORTE); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkDicas" value="<?php echo AreaContribuicao::RELAXAMENTO; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkDicas" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::RELAXAMENTO); ?>">
                         <label class="checkLabel" for="checkDicas">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::RELAXAMENTO); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkFamiliaCriancas" value="<?php echo AreaContribuicao::DICAS_LOCAIS; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkFamiliaCriancas" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::DICAS_LOCAIS); ?>">
                         <label class="checkLabel" for="checkFamiliaCriancas">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::DICAS_LOCAIS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEsporteAventura" value="<?php echo AreaContribuicao::FAMILIA; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEsporteAventura" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::FAMILIA); ?>">
                         <label class="checkLabel" for="checkEsporteAventura">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::FAMILIA); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkArteEntretenimento" value="<?php echo AreaContribuicao::ESPORTES_AVENTURA; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkArteEntretenimento" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::ESPORTES_AVENTURA); ?>">
                         <label class="checkLabel" for="checkArteEntretenimento">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::ESPORTES_AVENTURA); ?>
                         </label>
