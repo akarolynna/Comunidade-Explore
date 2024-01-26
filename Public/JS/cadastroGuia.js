@@ -4,7 +4,6 @@ $('#btnSalvarRascunho').click(salvarRascunho);
 
 const formCadastro = $('#formCadGuia');
 
-
 function buscarMembros() {
     $.ajax({
         url: `../Controller/MembroController.class.php`,

@@ -72,14 +72,14 @@
                         $epocaVisita,
                         $culturaHistoria,
                         $areasContribuicao,
-                        $desafios,
                         $caminhoFotoCapa,
                         $fotosSecundarias,
-                        $categorias,
-                        $colaboradores,
-                        $_SESSION['usuario']['id'],
                         false,
-                        false
+                        false,
+                        $categorias,
+                        $_SESSION['usuario']['id'],
+                        $desafios, //montar array aqui
+                        $colaboradores,
                     );
                     
                     if($this->guiaDao->cadastrar($guia)) {
