@@ -47,14 +47,12 @@
                 epocaVisita,
                 culturaHistoria,
                 areasContribuicao,
-                desafios,
                 fotoCapa,
                 fotosSecundarias,
-                categorias,
-                colaboradores,
-                criador,
                 publico,
-                arquivado
+                arquivado,
+                categoria,
+                criador,
             ) VALUES (
                 :nomeDestino,
                 :localizacao,
@@ -64,14 +62,12 @@
                 :epocaVisita,
                 :culturaHistoria,
                 :areasContribuicao,
-                :desafios,
                 :fotoCapa,
                 :fotosSecundarias,
-                :categorias,
-                :colaboradores,
-                :criador,
                 :publico,
-                :arquivado
+                :arquivado,
+                :categoria,
+                :criador,
             );";
             $fields = array(
                 'nomeDestino' => $guia->getNomeDestino(),
@@ -82,14 +78,12 @@
                 'epocaVisita' => $guia->getEpocaVisita(),
                 'culturaHistoria' => $guia->getCulturaHistoria(),
                 'areasContribuicao' => $guia->getAreasContribuicao(),
-                'desafios' => $guia->getDesafios(),
                 'fotoCapa' => $guia->getFotoCapa(),
                 'fotosSecundarias' => $guia->getFotosSecundarias(),
-                'categorias' => $guia->getCategorias(),
-                'colaboradores' => $guia->getColaboradores(),
-                'criador' => $guia->getCriador(),
                 'publico' => $guia->getPublico(),
-                'arquivado' => $guia->getArquivado()
+                'arquivado' => $guia->getArquivado(),
+                'categoria' => $guia->getCategoria(),
+                'criador' => $guia->getCriador(),
             );
 
             $result = 0;    
