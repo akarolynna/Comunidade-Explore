@@ -36,6 +36,70 @@
             }
             return $result;
         }
+
+        public function cadastrar($guia) {
+            $query = "INSERT INTO Guia(
+                nomeDestino,
+                localizacao,
+                corPrincipal,
+                descricao,
+                clima,
+                epocaVisita,
+                culturaHistoria,
+                areasContribuicao,
+                desafios,
+                fotoCapa,
+                fotosSecundarias,
+                categorias,
+                colaboradores,
+                criador,
+                publico,
+                arquivado
+            ) VALUES (
+                :nomeDestino,
+                :localizacao,
+                :corPrincipal,
+                :descricao,
+                :clima,
+                :epocaVisita,
+                :culturaHistoria,
+                :areasContribuicao,
+                :desafios,
+                :fotoCapa,
+                :fotosSecundarias,
+                :categorias,
+                :colaboradores,
+                :criador,
+                :publico,
+                :arquivado
+            );";
+            $fields = array(
+                'nomeDestino' => $guia->getNomeDestino(),
+                'localizacao' => $guia->getLocalizacao(),
+                'corPrincipal' => $guia->getCorPrincipal(),
+                'descricao' => $guia->getDescricao(),
+                'clima' => $guia->getClima(),
+                'epocaVisita' => $guia->getEpocaVisita(),
+                'culturaHistoria' => $guia->getCulturaHistoria(),
+                'areasContribuicao' => $guia->getAreasContribuicao(),
+                'desafios' => $guia->getDesafios(),
+                'fotoCapa' => $guia->getFotoCapa(),
+                'fotosSecundarias' => $guia->getFotosSecundarias(),
+                'categorias' => $guia->getCategorias(),
+                'colaboradores' => $guia->getColaboradores(),
+                'criador' => $guia->getCriador(),
+                'publico' => $guia->getPublico(),
+                'arquivado' => $guia->getArquivado()
+            );
+
+            $result = 0;    
+            try {
+                $result = $this->getResult($query, $fields);
+            } catch (Exception $ex) {
+                throw new Exception($ex->getMessage());
+            }
+            return $result > 0;
+        }
     }
 
 ?>

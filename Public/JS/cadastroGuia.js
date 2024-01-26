@@ -16,8 +16,9 @@ function buscarMembros() {
 }
 
 function sucessoAoBuscarMembros(response) {
+    console.log(response);
     response.forEach((membro) => {
-        $('#multiselectColaboradores').append(`<option value="${membro.id}">${membro.nome}</option>`);
+        $('#multiselectColaboradores').append(`<option value="${membro.id}">${membro.email}</option>`);
     });
 } 
 

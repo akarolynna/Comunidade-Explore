@@ -89,36 +89,6 @@ CREATE TABLE Evento_Inscrito (
     FOREIGN KEY (membro_id) REFERENCES Membro(id)
 );
 
-CREATE TABLE Guia (
-    id INT AUTO_INCREMENT,
-    cor_principal VARCHAR(255) NOT NULL,
-    nome_destino VARCHAR(255) NOT NULL,
-    localizacao VARCHAR(255) NOT NULL,
-    descricao VARCHAR(255) NOT NULL,
-    clima VARCHAR(255) NOT NULL,
-    epoca_visita VARCHAR(255) NOT NULL,
-    publico VARCHAR(255) DEFAULT FALSE,
-    arquivado BOOL DEFAULT false,
-    areas_contribuicao ENUM(
-		'TODOS', 
-        'PONTOS_TURiSTICOS', 
-        'HOSPEDAGEM', 
-        'RESTAURANTES', 
-        'FESTIVAIS', 
-        'ENTRETENIMENTO', 
-        'TRANSPORTE', 
-        'RELAXAMENTO', 
-        'DICAS_LOCAIS', 
-        'FAMILIA', 
-        'ESPORTES_AVENTURA'
-	),
-    categoria_id INT NOT NULL,
-    criador_id INT NOT NULL,
-    PRIMARY KEY(id),
-    FOREIGN KEY (categoria_id) REFERENCES Categoria(id),
-    FOREIGN KEY (criador_id) REFERENCES Membro(id)
-);
-
 
 
 

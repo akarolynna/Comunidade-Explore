@@ -1,6 +1,7 @@
 <?php
 
     require_once '../Dao/GuiaDao.class.php';
+    require_once '../Model/Guia.class.php';
 
     try {
         $guiaController = new GuiaController();
@@ -37,21 +38,6 @@
         public function cadastrar() {
             try {
                 extract($_POST);
-                echo $nomeDestino;
-                echo $localizacao;
-                echo $corPrincipal;
-                echo $descricao;
-                echo $clima;
-                echo $epocaVisita;
-                echo $culturaHistoria;
-                echo $areasContribuicao;
-                echo $desafios;
-                echo $_FILES["fotoCapa"]["name"];
-                echo $_FILES["fotoSecundaria1"]["name"];
-                echo $_FILES["fotoSecundaria2"]["name"];
-                echo $_FILES["fotoSecundaria3"]["name"];
-                echo $categorias;
-                echo $colaboradores;
 
                 $extensao = pathinfo($_FILES["fotoCapa"]["name"], PATHINFO_EXTENSION);
                 $novoNomeFoto = $nomeDestino."-capa.".$extensao;
@@ -74,8 +60,33 @@
                     && move_uploaded_file($_FILES["fotoSecundaria2"]["tmp_name"], $caminhoFotoSecundaria2) 
                     && move_uploaded_file($_FILES["fotoSecundaria3"]["tmp_name"], $caminhoFotoSecundaria3) 
                 ) {
-                    echo 'Deu certo!!';
+                    session_start();
+                    $fotosSecundarias = array($caminhoFotoSecundaria2, $caminhoFotoSecundaria2, $caminhoFotoSecundaria3);
 
+                    $guia = new Guia(
+                        $nomeDestino,
+                        $localizacao,
+                        $corPrincipal,
+                        $descricao,
+                        $clima,
+                        $epocaVisita,
+                        $culturaHistoria,
+                        $areasContribuicao,
+                        $desafios,
+                        $caminhoFotoCapa,
+                        $fotosSecundarias,
+                        $categorias,
+                        $colaboradores,
+                        $_SESSION['usuario']['id'],
+                        false,
+                        false
+                    );
+                    
+                    if($this->guiaDao->cadastrar($guia)) {
+                        // echo 'Guia cadastrado com sucesso';
+                    } else {
+                        echo 'Erro ao cadastrar guia';
+                    }
 
                 } else {
                     echo 'Erro ao fazer upload da foto';
