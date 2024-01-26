@@ -30,7 +30,6 @@ function salvarRascunho(evt) {
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
     let desafios = [];
-    let categorias = [];
     let colaboradores = [];
 
     formCadastro.find('.checkAreasContribuicao:checked').each(function() {
@@ -46,10 +45,6 @@ function salvarRascunho(evt) {
             descricao: descricaoDesafio
         });
     });
-    
-    $("#multiselectCategorias option:selected").each(function() {
-        categorias.push($(this).val());
-    });
 
     $("#multiselectColaboradores option:selected").each(function() {
         colaboradores.push($(this).val());
@@ -57,7 +52,6 @@ function salvarRascunho(evt) {
 
     dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
     dados.append('desafios', JSON.stringify(desafios));
-    dados.append('categorias', JSON.stringify(categorias));
     dados.append('colaboradores', JSON.stringify(colaboradores));
 
     evt.preventDefault();   

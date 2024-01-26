@@ -38,61 +38,60 @@
         public function cadastrar() {
             try {
                 extract($_POST);
-                echo 'Vamos lá';
-                echo $areasContribuicao;
+                echo $categoria;
 
-                // $extensao = pathinfo($_FILES["fotoCapa"]["name"], PATHINFO_EXTENSION);
-                // $novoNomeFoto = $nomeDestino."-capa.".$extensao;
-                // $caminhoFotoCapa = "../Upload/".$novoNomeFoto;
+                $extensao = pathinfo($_FILES["fotoCapa"]["name"], PATHINFO_EXTENSION);
+                $novoNomeFoto = $nomeDestino."-capa.".$extensao;
+                $caminhoFotoCapa = "../Upload/".$novoNomeFoto;
 
-                // $extensao = pathinfo($_FILES["fotoSecundaria1"]["name"], PATHINFO_EXTENSION);
-                // $novoNomeFoto = $nomeDestino."-secundaria-1.".$extensao;
-                // $caminhoFotoSecundaria1 = "../Upload/".$novoNomeFoto;
+                $extensao = pathinfo($_FILES["fotoSecundaria1"]["name"], PATHINFO_EXTENSION);
+                $novoNomeFoto = $nomeDestino."-secundaria-1.".$extensao;
+                $caminhoFotoSecundaria1 = "../Upload/".$novoNomeFoto;
 
-                // $extensao = pathinfo($_FILES["fotoSecundaria2"]["name"], PATHINFO_EXTENSION);
-                // $novoNomeFoto = $nomeDestino."-secundaria-2.".$extensao;
-                // $caminhoFotoSecundaria2 = "../Upload/".$novoNomeFoto;
+                $extensao = pathinfo($_FILES["fotoSecundaria2"]["name"], PATHINFO_EXTENSION);
+                $novoNomeFoto = $nomeDestino."-secundaria-2.".$extensao;
+                $caminhoFotoSecundaria2 = "../Upload/".$novoNomeFoto;
 
-                // $extensao = pathinfo($_FILES["fotoSecundaria3"]["name"], PATHINFO_EXTENSION);
-                // $novoNomeFoto = $nomeDestino."-secundaria-3.".$extensao;
-                // $caminhoFotoSecundaria3 = "../Upload/".$novoNomeFoto;
+                $extensao = pathinfo($_FILES["fotoSecundaria3"]["name"], PATHINFO_EXTENSION);
+                $novoNomeFoto = $nomeDestino."-secundaria-3.".$extensao;
+                $caminhoFotoSecundaria3 = "../Upload/".$novoNomeFoto;
 
-                // if (move_uploaded_file($_FILES["fotoCapa"]["tmp_name"], $caminhoFotoCapa)
-                //     && move_uploaded_file($_FILES["fotoSecundaria1"]["tmp_name"], $caminhoFotoSecundaria2) 
-                //     && move_uploaded_file($_FILES["fotoSecundaria2"]["tmp_name"], $caminhoFotoSecundaria2) 
-                //     && move_uploaded_file($_FILES["fotoSecundaria3"]["tmp_name"], $caminhoFotoSecundaria3) 
-                // ) {
-                //     session_start();
-                //     $fotosSecundarias = array($caminhoFotoSecundaria2, $caminhoFotoSecundaria2, $caminhoFotoSecundaria3);
+                if (move_uploaded_file($_FILES["fotoCapa"]["tmp_name"], $caminhoFotoCapa)
+                    && move_uploaded_file($_FILES["fotoSecundaria1"]["tmp_name"], $caminhoFotoSecundaria2) 
+                    && move_uploaded_file($_FILES["fotoSecundaria2"]["tmp_name"], $caminhoFotoSecundaria2) 
+                    && move_uploaded_file($_FILES["fotoSecundaria3"]["tmp_name"], $caminhoFotoSecundaria3) 
+                ) {
+                    session_start();
+                    $fotosSecundarias = array($caminhoFotoSecundaria2, $caminhoFotoSecundaria2, $caminhoFotoSecundaria3);
 
-                //     $guia = new Guia(
-                //         $nomeDestino,
-                //         $localizacao,
-                //         $corPrincipal,
-                //         $descricao,
-                //         $clima,
-                //         $epocaVisita,
-                //         $culturaHistoria,
-                //         $areasContribuicao,
-                //         $caminhoFotoCapa,
-                //         $fotosSecundarias,
-                //         false,
-                //         false,
-                //         $categorias,
-                //         $_SESSION['usuario']['id'],
-                //         $desafios, //montar array aqui
-                //         $colaboradores,
-                //     );
+                    $guia = new Guia(
+                        $nomeDestino,
+                        $localizacao,
+                        $corPrincipal,
+                        $descricao,
+                        $clima,
+                        $epocaVisita,
+                        $culturaHistoria,
+                        $areasContribuicao,
+                        $caminhoFotoCapa,
+                        $fotosSecundarias,
+                        false,
+                        false,
+                        $categoria,
+                        $_SESSION['usuario']['id'],
+                        $desafios,
+                        $colaboradores,
+                    );
                     
-                //     if($this->guiaDao->cadastrar($guia)) {
-                //         // echo 'Guia cadastrado com sucesso';
-                //     } else {
-                //         echo 'Erro ao cadastrar guia';
-                //     }
+                    if($this->guiaDao->cadastrar($guia)) {
+                        // echo 'Guia cadastrado com sucesso';
+                    } else {
+                        echo 'Erro ao cadastrar guia';
+                    }
 
-                // } else {
-                //     echo 'Erro ao fazer upload da foto';
-                // }
+                } else {
+                    echo 'Erro ao fazer upload da foto';
+                }
 
             } catch (Exception $ex) {
                 echo $ex->getMessage();

@@ -212,8 +212,8 @@
                 </div>
             </fieldset>
 
-            <label class="label mt-3">Categorias</label>
-            <select multiple class="form-control mt-2" id="multiselectCategorias">
+            <label class="label mt-3">Categoria</label>
+            <select class="form-select mt-2" id="selectCategoria" name="categoria">
                 <option value="<?php echo Categoria::getValor(Categoria::PRAIA); ?>">
                     <?php echo Categoria::PRAIA; ?>
                 </option>
