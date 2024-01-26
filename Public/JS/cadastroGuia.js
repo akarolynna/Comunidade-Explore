@@ -27,7 +27,7 @@ function cancelar() {
 }
 
 function salvarRascunho(evt) {  
-    const controllerURL = "../controller/GuiaController.class.php";
+    const controllerURL = "../controller/GuiaController.class.php"; 
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
     let desafios = [];

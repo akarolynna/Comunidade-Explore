@@ -15,7 +15,7 @@ CREATE TABLE Categoria (
         'AVENTURA', 
         'MERGULHO', 
         'ROMANCE'
-	),
+	) NOT NULL,
     PRIMARY KEY(id)
 );
 
@@ -26,7 +26,7 @@ create table membro(
  senha varchar(255) not null,
  CONSTRAINT PK_MEMBRO PRIMARY KEY(id) 
 );
- 
+
 CREATE TABLE Guia (
     id INT AUTO_INCREMENT,
     nomeDestino VARCHAR(255) NOT NULL,
@@ -36,19 +36,7 @@ CREATE TABLE Guia (
     clima VARCHAR(255) NOT NULL,
     epocaVisita VARCHAR(255) NOT NULL,
     culturaHistoria VARCHAR(255) NOT NULL,
-    areasContribuicao ENUM(
-		'TODOS', 
-        'PONTOS_TURiSTICOS', 
-        'HOSPEDAGEM', 
-        'RESTAURANTES', 
-        'FESTIVAIS', 
-        'ENTRETENIMENTO', 
-        'TRANSPORTE', 
-        'RELAXAMENTO', 
-        'DICAS_LOCAIS', 
-        'FAMILIA', 
-        'ESPORTES_AVENTURA'
-	),
+    areasContribuicao VARCHAR(255) NOT NULL,
     fotoCapa VARCHAR(255) NOT NULL,
     fotosSecundarias JSON NOT NULL,
     publico BOOLEAN NOT NULL,
@@ -79,3 +67,18 @@ CREATE TABLE Desafio (
     PRIMARY KEY (id),
     FOREIGN KEY (guiaId) REFERENCES Guia(id)
 );
+
+
+CREATE TABLE Desafio (
+    id INT AUTO_INCREMENT,
+    titulo VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    guiaId INT NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (guiaId) REFERENCES Guia(id)
+);
+
+
+
+

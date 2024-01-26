@@ -8,14 +8,14 @@ class Guia {
     private $epocaVisita;
     private $culturaHistoria;
     private $areasContribuicao;
-    private $desafios;
     private $fotoCapa;
     private $fotosSecundarias;
-    private $categorias;
-    private $colaboradores;
-    private $criador;
     private $publico;
     private $arquivado;
+    private $categoria;
+    private $criadorId;
+    private $desafios;
+    private $colaboradores;
 
     public function __construct(
         $nomeDestino,
@@ -26,14 +26,14 @@ class Guia {
         $epocaVisita,
         $culturaHistoria,
         $areasContribuicao,
-        $desafios,
         $fotoCapa,
         $fotosSecundarias,
-        $categorias,
-        $colaboradores,
-        $criador,
         $publico,
-        $arquivado
+        $arquivado,
+        $categoria,
+        $criadorId,
+        $desafios,
+        $colaboradores,
     ) {
         $this->nomeDestino = $nomeDestino;
         $this->localizacao = $localizacao;
@@ -43,14 +43,14 @@ class Guia {
         $this->epocaVisita = $epocaVisita;
         $this->culturaHistoria = $culturaHistoria;
         $this->areasContribuicao = $areasContribuicao;
-        $this->desafios = $desafios;
         $this->fotoCapa = $fotoCapa;
         $this->fotosSecundarias = $fotosSecundarias;
-        $this->categorias = $categorias;
-        $this->colaboradores = $colaboradores;
-        $this->criador = $criador;
         $this->publico = $publico;
         $this->arquivado = $arquivado;
+        $this->categoria = $categoria;
+        $this->criadorId = $criadorId;
+        $this->desafios = $desafios; 
+        $this->colaboradores = $colaboradores;
     }
 
      // Getters
@@ -98,16 +98,16 @@ class Guia {
         return $this->fotosSecundarias;
     }
 
-    public function getCategorias() {
-        return $this->categorias;
+    public function getCategoria() {
+        return $this->categoria;
     }
 
     public function getColaboradores() {
         return $this->colaboradores;
     }
 
-    public function getCriador() {
-        return $this->criador;
+    public function getCriadorId() {
+        return $this->criadorId;
     }
 
     public function getPublico() {
@@ -163,16 +163,16 @@ class Guia {
         $this->fotosSecundarias = $fotosSecundarias;
     }
 
-    public function setCategorias($categorias) {
-        $this->categorias = $categorias;
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
     }
 
     public function setColaboradores($colaboradores) {
         $this->colaboradores = $colaboradores;
     }
 
-    public function setCriador($criador) {
-        $this->criador = $criador;
+    public function setCriadorId($criadorId) {
+        $this->criadorId = $criadorId;
     }
 
     public function setPublico($publico) {
