@@ -13,6 +13,9 @@ session_start();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href='../Public/CSS/Menu.css'>
     <link rel="stylesheet" href='../Public/CSS/CadastroGeral.css'>
+    <link rel="stylesheet" href='../Public/CSS/InputHora.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+
 </head>
 
 <body class="pagina">
@@ -31,27 +34,55 @@ session_start();
                 <label class="label" for="inputLocalizacao">Localização</label>
                 <input class="form-control" id="inputLocalizacao" required>
             </div>
+
+            
+            <div class="form-group">
+                <label for="timepicker">Time</label>
+                <div id="timepicker" class="input-group time">
+                    <input type="text" class="form-control" id="timepicker" placeholder="HH:MM AM/PM">
+                    <div class="input-group-append input-group-addon">
+                        <div class="input-group-text">
+                            <i class="fa fa-clock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="inputGroup mt-4">
                 <fieldset class="inputContainer">
                     <legend>Inicio</legend>
                     <div class="inputContainer">
                         <label class="label" for="inputDataInicio">Data</label>
-                        <input class="form-control" id="inputDataInicio">
+                        <input id="inputDataInicio" name="dataInicio" class="form-control" type="date" />
                     </div>
                     <div class="inputContainer">
                         <label class="label" for="inputHoraInicio">Hora</label>
-                        <input class="form-control" id="inputHoraInicio">
+                        <div id="inputHoraInicio" class="input-group time">
+                            <input type="text" class="form-control inputHora" id="inputHoraInicio" name="horaInicio" placeholder="HH:MM">
+                            <div class="input-group-append input-group-addon">
+                                <div class="input-group-text">
+                                    <i class="far fa-clock"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </fieldset>
                 <fieldset class="inputContainer">
                     <legend>Término</legend>
                     <div class="inputContainer">
                         <label class="label" for="inputDataTermino">Data</label>
-                        <input class="form-control" id="inputDataTermino">
+                        <input id="inputDataTermino" name="dataTermino" class="form-control" type="date" />
                     </div>
                     <div class="inputContainer">
                         <label class="label" for="inputHoraTermino">Hora</label>
-                        <input class="form-control" id="inputHoraTermino">
+                        <div id="inputHoraTermino" class="input-group time">
+                            <input type="text" class="form-control inputHora" id="inputHoraTermino" name="horaInicio" placeholder="HH:MM">
+                            <div class="input-group-append input-group-addon">
+                                <div class="input-group-text">
+                                    <i class="far fa-clock"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </fieldset>
             </div>
@@ -89,6 +120,10 @@ session_start();
         </form>
     </div>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../Public/JS/inputHora.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

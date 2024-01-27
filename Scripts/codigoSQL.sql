@@ -68,17 +68,37 @@ CREATE TABLE Desafio (
     FOREIGN KEY (guiaId) REFERENCES Guia(id)
 );
 
-
-CREATE TABLE Desafio (
+CREATE TABLE Evento (
     id INT AUTO_INCREMENT,
     titulo VARCHAR(255) NOT NULL,
+    localizacao VARCHAR(255) NOT NULL,
+    dataInicio DATE NOT NULL,
+    horaInicio TIME NOT NULL,
+    dataTermino DATE NOT NULL,
+    horaTermino TIME NOT NULL,
     descricao VARCHAR(255) NOT NULL,
-    guiaId INT NOT NULL,
-
-    PRIMARY KEY (id),
-    FOREIGN KEY (guiaId) REFERENCES Guia(id)
+    imagens JSON NOT NULL,
+    maxParticipantes INT,
+    arquivado BOOL DEFAULT false,
+    categoriaId INT NOT NULL,
+    criadorId INT NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (categoriaId) REFERENCES Categoria(id),
+    FOREIGN KEY (criadorId) REFERENCES Membro(id)
 );
 
+CREATE TABLE Evento_Colaborador (
+    eventoId INT NOT NULL,
+    membroId INT NOT NULL,
+    PRIMARY KEY (eventoId, membroId),
+    FOREIGN KEY (eventoId) REFERENCES Evento(id),
+    FOREIGN KEY (membroId) REFERENCES Membro(id)
+);
 
-
-
+CREATE TABLE Evento_Inscrito (
+    eventoId INT NOT NULL,
+    membroId INT NOT NULL,
+    PRIMARY KEY (eventoId, membroId),
+    FOREIGN KEY (eventoId) REFERENCES Evento(id),
+    FOREIGN KEY (membroId) REFERENCES Membro(id)
+);

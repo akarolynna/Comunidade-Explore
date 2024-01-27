@@ -1,0 +1,154 @@
+    .input-group-addon {
+    cursor: pointer;
+  }
+  
+  
+  .form-control {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    &:hover, &:focus, &:active {
+      box-shadow: none;
+    }
+    &:focus {
+      border: 1px solid #34495e;
+    }
+  }
+  
+  .bootstrap-datetimepicker-widget.dropdown-menu {
+    border: 1px solid #34495e;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    min-width: 300px;
+    max-width: 100%;
+    width: auto;
+    &.bottom:before,
+    &.bottom:after {
+      display: none;
+    }
+    table td,
+    table th {
+      border-radius: 0;
+    }
+    table td.old, table td.new {
+      color: #bbb;
+    }
+    table td.today:before {
+      border-bottom-color: #0095ff;
+    }
+    table td.active,
+    table td.active:hover,
+    table td span.active {
+      background-color: #0095ff;
+      text-shadow: none;
+      
+      &.today:before {
+        border-bottom-color: #fff;
+      }
+    }
+    table th {
+      height: 40px;
+      padding: 0;
+      width: 40px;
+      &.picker-switch {
+        width: auto;
+      }
+    }
+    table tr:first-of-type th {
+      border-bottom: 1px solid #34495e;
+    }
+    table td.day {
+      height: 32px;
+      line-height: 32px;
+      padding: 0;
+      width: auto;
+    }
+    table td span {
+      border-radius: 0;
+      height: 77px;
+      line-height: 77px;
+      margin: 0;
+      width: 25%;
+    }
+    .datepicker-months tbody tr td,
+    .datepicker-years tbody tr td,
+    .datepicker-decades tbody tr td {
+      padding: 0;
+    }
+  
+    .datepicker-decades tbody tr td {
+      height: 27px;
+      line-height: 27px;
+  
+      span {
+        display: block;
+        float: left;
+        width: 50%;
+        height: 46px;
+        line-height: 46px !important;
+        padding: 0;
+        &:not(.decade) {
+          display: none;
+        }
+      }
+    }
+    .timepicker-picker table td {
+      padding: 0;
+      width: 30%;
+      height: 20px;
+      line-height: 20px;
+      &:nth-child(2) {
+        width: 10%;
+      }
+      a,
+      span,
+      button {
+        border: none;
+        border-radius: 0;
+        height: 56px;
+        line-height: 56px;
+        padding: 0;
+        width: 100%;
+      }
+      span {
+        color: #333;
+        margin-top: -1px;
+      }
+      button {
+        background-color: #fff;
+        color: #333;
+        font-weight: bold;
+        font-size: 1.2em;
+        &:hover {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+  .bootstrap-datetimepicker-widget.dropdown-menu .picker-switch table td {
+    border-top: 1px solid #34495e;
+    a, span {
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      padding: 0;
+      width: 100%;
+    }
+  }
+  .todayText:before {
+    content: "Today's Date"
+  }
+
+  .input-group-text {
+    border-color: #CCCCCC;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: none;
+    height: 100%;
+  }
+  
+  .inputHora {
+    border-right: none;
+  }
