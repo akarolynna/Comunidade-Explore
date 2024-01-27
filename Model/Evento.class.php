@@ -7,10 +7,10 @@ class Evento {
     private $dataTermino;
     private $horaTermino;
     private $descricao;
-    private $imagens;
+    private $fotoCapa;
     private $maxParticipantes;
     private $arquivado;
-    private $categoria;
+    private $categoriaId;
     private $colaboradores;
     private $inscritos;
     private $criadorId;
@@ -23,10 +23,10 @@ class Evento {
         $dataTermino,
         $horaTermino,
         $descricao,
-        $imagens,
+        $fotoCapa,
         $maxParticipantes,
         $arquivado,
-        $categoria,
+        $categoriaId,
         $criadorId,
         $colaboradores,
         $inscritos,
@@ -38,10 +38,10 @@ class Evento {
         $this->dataTermino = $dataTermino;
         $this->horaTermino = $horaTermino;
         $this->descricao = $descricao;
-        $this->imagens = $imagens;
+        $this->fotoCapa = $fotoCapa;
         $this->maxParticipantes = $maxParticipantes;
         $this->arquivado = $arquivado;
-        $this->categoria = $categoria;
+        $this->categoriaId = $categoriaId;
         $this->criadorId = $criadorId;
         $this->colaboradores = $colaboradores;
         $this->inscritos = $inscritos;
@@ -83,9 +83,9 @@ class Evento {
         return $this->descricao;
     }
 
-    public function getImagens()
+    public function getFotoCapa()
     {
-        return $this->imagens;
+        return $this->fotoCapa;
     }
 
     public function getMaxParticipantes()
@@ -98,9 +98,9 @@ class Evento {
         return $this->colaboradores;
     }
 
-    public function getCategoria()
+    public function getCategoriaId()
     {
-        return $this->categoria;
+        return $this->categoriaId;
     }
 
     public function getInscritos()
@@ -154,9 +154,9 @@ class Evento {
         $this->descricao = $descricao;
     }
 
-    public function setImagens($imagens)
+    public function setFotoCapa($fotoCapa)
     {
-        $this->imagens = $imagens;
+        $this->fotoCapa = $fotoCapa;
     }
 
     public function setMaxParticipantes($maxParticipantes)
@@ -169,9 +169,9 @@ class Evento {
         $this->colaboradores = $colaboradores;
     }
 
-    public function setCategoria($categoria)
+    public function setCategoriaId($categoriaId)
     {
-        $this->categoria = $categoria;
+        $this->categoriaId = $categoriaId;
     }
 
     public function setInscritos($inscritos)

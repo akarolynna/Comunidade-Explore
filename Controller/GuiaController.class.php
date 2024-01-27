@@ -88,7 +88,7 @@
 
         private function montarCaminhoFoto($nomeDestino, $nomeArquivo) {
             $extensao = pathinfo($_FILES[$nomeArquivo]["name"], PATHINFO_EXTENSION);
-            $novoNomeFoto = "$nomeDestino-$nomeArquivo.$extensao";
+            $novoNomeFoto = "$nomeDestino-guia-$nomeArquivo.$extensao";
             return "../Public/Uploads/".$novoNomeFoto;
         }
     }

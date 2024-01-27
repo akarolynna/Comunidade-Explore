@@ -77,7 +77,7 @@ CREATE TABLE Evento (
     dataTermino DATE NOT NULL,
     horaTermino TIME NOT NULL,
     descricao VARCHAR(255) NOT NULL,
-    imagens JSON NOT NULL,
+    fotoCapa VARCHAR(255) NOT NULL,
     maxParticipantes INT,
     arquivado BOOL DEFAULT false,
     categoriaId INT NOT NULL,
