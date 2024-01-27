@@ -91,9 +91,14 @@
                 $this->connection->connection();
                 $stm = $this->connection->prepareStatement($query, $fields);
                 $result = $this->connection->executeStatement($stm);
-                $guiaId = $this->connection->lastInsertId();
+
+                $guiaIdStm = $this->connection->prepareStatement('SELECT LAST_INSERT_ID()', []);
+                $guiaIdResult = $this->connection->executeStatement($guiaIdStm);
+                $guiaId = $guiaIdResult[0]['LAST_INSERT_ID()'];
+                
                 echo 'Passou em!!!';
                 echo $guiaId;
+                
             } catch (Exception $ex) {
                 throw new Exception($ex->getMessage());
             }

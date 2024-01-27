@@ -13,6 +13,14 @@ class PDOConnection
             throw new Exception(" Erro de execução!" . $ex->getMessage());
         }
     }
+    public function connectionPDO()
+    {
+        try {
+            return new PDO("mysql:host=" . DBConfig::$HOST . ";dbname=" . DBConfig::$DB, DBConfig::$USER, DBConfig::$PWD);
+        } catch (Exception $ex) {
+            throw new Exception(" Erro de execução!" . $ex->getMessage());
+        }
+    }
    
 /*
 Nosso erro estava pq não passamos o & na frente do $value.
