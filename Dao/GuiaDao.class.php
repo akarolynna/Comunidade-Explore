@@ -102,9 +102,6 @@
 
                 $desafios = [];
                 foreach (json_decode($guia->getDesafios(), true) as $desafio) {
-                    echo 'Desafio aqui';
-                    echo $desafio["titulo"];
-                    echo $desafio["descricao"];
                     $desafioModel = new Desafio(
                         $desafio["titulo"], 
                         $desafio["descricao"], 
@@ -113,10 +110,18 @@
                     array_push($desafios, $desafioModel);
                 }
 
-                var_dump($desafios);
                 foreach($desafios as $desafio) {
                     if($this->cadastrarDesafio($guiaId, $desafio)) {
-                        echo "Desafio ".$desafio->getTitulo()." cadastrado com sucesso!!";
+                        // echo "Desafio ".$desafio->getTitulo()." cadastrado com sucesso!!";
+                    } else {
+                        echo "Erro ao cadastrar desafio ".$desafio->getTitulo();
+                    }
+                }
+
+                $colaboradoresId = array_map('intval', json_decode($guia->getColaboradores(), true));
+                foreach($colaboradoresId as $colaboradorId) {
+                    if($this->cadastrarColaborador($guiaId, $colaboradorId)) {
+                        // echo "Colaborador cadastrado com sucesso";
                     } else {
                         echo "Erro ao cadastrar desafio ".$desafio->getTitulo();
                     }
@@ -128,7 +133,7 @@
             return $result > 0;
         }
 
-        public function cadastrarDesafio($guiaId, $desafio) {
+        private function cadastrarDesafio($guiaId, $desafio) {
             $query = 'INSERT INTO Desafio (titulo, descricao, guiaId) VALUES (:titulo, :descricao, :guiaId)';
             $fields = array(
                 'titulo' => $desafio->getTitulo(),
@@ -144,7 +149,22 @@
             }
             return $result > 0;
         }
+
+        private function cadastrarColaborador($guiaId, $colaboradorId) {
+            $query = 'INSERT INTO Guia_Colaborador (guiaId, membroId) VALUES (:guiaId, :colaboradorId)';
+            $fields = array(
+                'guiaId' => $guiaId,
+                'colaboradorId' => $colaboradorId
+            );
+            $result = 0;
+
+            try {
+                $result = $this->getResult($query, $fields);
+            } catch (Exception $ex) {
+                throw new Exception($ex->getMessage());
+            }
+            return $result > 0;
+        }
     }
 
 ?>
-
