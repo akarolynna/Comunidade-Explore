@@ -39,24 +39,15 @@
             try {
                 extract($_POST);
 
-                $extensao = pathinfo($_FILES["fotoCapa"]["name"], PATHINFO_EXTENSION);
-                $novoNomeFoto = $nomeDestino."-capa.".$extensao;
-                $caminhoFotoCapa = "../Upload/".$novoNomeFoto;
+                echo $desafios;
 
-                $extensao = pathinfo($_FILES["fotoSecundaria1"]["name"], PATHINFO_EXTENSION);
-                $novoNomeFoto = $nomeDestino."-secundaria-1.".$extensao;
-                $caminhoFotoSecundaria1 = "../Upload/".$novoNomeFoto;
-
-                $extensao = pathinfo($_FILES["fotoSecundaria2"]["name"], PATHINFO_EXTENSION);
-                $novoNomeFoto = $nomeDestino."-secundaria-2.".$extensao;
-                $caminhoFotoSecundaria2 = "../Upload/".$novoNomeFoto;
-
-                $extensao = pathinfo($_FILES["fotoSecundaria3"]["name"], PATHINFO_EXTENSION);
-                $novoNomeFoto = $nomeDestino."-secundaria-3.".$extensao;
-                $caminhoFotoSecundaria3 = "../Upload/".$novoNomeFoto;
+                $caminhoFotoCapa = $this->montarCaminhoFoto($nomeDestino, 'fotoCapa');
+                $caminhoFotoSecundaria1 = $this->montarCaminhoFoto($nomeDestino, 'fotoSecundaria1');
+                $caminhoFotoSecundaria2 = $this->montarCaminhoFoto($nomeDestino, 'fotoSecundaria2');
+                $caminhoFotoSecundaria3 = $this->montarCaminhoFoto($nomeDestino, 'fotoSecundaria3');
 
                 if (move_uploaded_file($_FILES["fotoCapa"]["tmp_name"], $caminhoFotoCapa)
-                    && move_uploaded_file($_FILES["fotoSecundaria1"]["tmp_name"], $caminhoFotoSecundaria2) 
+                    && move_uploaded_file($_FILES["fotoSecundaria1"]["tmp_name"], $caminhoFotoSecundaria1) 
                     && move_uploaded_file($_FILES["fotoSecundaria2"]["tmp_name"], $caminhoFotoSecundaria2) 
                     && move_uploaded_file($_FILES["fotoSecundaria3"]["tmp_name"], $caminhoFotoSecundaria3) 
                 ) {
@@ -82,7 +73,7 @@
                         $colaboradores,
                     );
                     
-                    if($this->guiaDao->cadastrar($guia)) {
+                    if($this->guiaDao->cadastrarGuia($guia)) {
                         // echo 'Guia cadastrado com sucesso';
                     } else {
                         echo 'Erro ao cadastrar guia';
@@ -95,6 +86,12 @@
             } catch (Exception $ex) {
                 echo $ex->getMessage();
             }
+        }
+
+        private function montarCaminhoFoto($nomeDestino, $nomeArquivo) {
+            $extensao = pathinfo($_FILES[$nomeArquivo]["name"], PATHINFO_EXTENSION);
+            $novoNomeFoto = "$nomeDestino-$nomeArquivo.$extensao";
+            return "../Public/Uploads/".$novoNomeFoto;
         }
     }
 
