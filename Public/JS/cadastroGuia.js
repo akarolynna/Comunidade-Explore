@@ -1,24 +1,7 @@
-$(document).ready(buscarMembros);
 $('#btnCancelar').click(cancelar);
 $('#btnSalvarRascunho').click(salvarRascunho);
 
 const formCadastro = $('#formCadGuia');
-
-function buscarMembros() {
-    $.ajax({
-        url: `../Controller/MembroController.class.php`,
-        type: 'GET',
-        dataType: 'JSON',
-        success: sucessoAoBuscarMembros,
-        error: erroNaRequisicao
-    });
-}
-
-function sucessoAoBuscarMembros(response) {
-    response.forEach((membro) => {
-        $('#multiselectColaboradores').append(`<option value="${membro.id}">${membro.email}</option>`);
-    });
-} 
 
 function cancelar() {
     history.back();

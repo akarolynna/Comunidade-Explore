@@ -34,20 +34,6 @@ session_start();
                 <label class="label" for="inputLocalizacao">Localização</label>
                 <input class="form-control" id="inputLocalizacao" required>
             </div>
-
-            
-            <div class="form-group">
-                <label for="timepicker">Time</label>
-                <div id="timepicker" class="input-group time">
-                    <input type="text" class="form-control" id="timepicker" placeholder="HH:MM AM/PM">
-                    <div class="input-group-append input-group-addon">
-                        <div class="input-group-text">
-                            <i class="fa fa-clock"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="inputGroup mt-4">
                 <fieldset class="inputContainer">
                     <legend>Inicio</legend>
@@ -106,12 +92,15 @@ session_start();
                     Capacidade máxima de participantes
                 </label>
             </div>
+            <input type="number" min="1" class="form-control mb-3" id="inputMaxParticipantes" required/>
+
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="checkColaboradores">
                 <label class="checkLabel" for="checkColaboradores">
                     Colaboradores
                 </label>
             </div>
+            <select multiple class="form-control" id="multiselectColaboradores"></select>
             
             <div class="d-flex justify-content-center mt-5 buttonContainer">
                 <button class="btn btnSecundary mx-2">Cancelar</button>
@@ -124,6 +113,7 @@ session_start();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="../Public/JS/inputHora.js"></script>
+<script src="../Public/JS/colaboradores.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

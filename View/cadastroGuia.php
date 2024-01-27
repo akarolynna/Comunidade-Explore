@@ -265,6 +265,7 @@
 </body>
 
 <script src="../Public/JS/cadastroGuia.js"></script>
+<script src="../Public/JS/colaboradores.js"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
