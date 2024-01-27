@@ -15,14 +15,13 @@ function buscarMembros() {
 }
 
 function sucessoAoBuscarMembros(response) {
-    console.log(response);
     response.forEach((membro) => {
         $('#multiselectColaboradores').append(`<option value="${membro.id}">${membro.email}</option>`);
     });
 } 
 
 function cancelar() {
-    history.back()
+    history.back();
 }
 
 function salvarRascunho(evt) {  
@@ -69,7 +68,8 @@ function salvarRascunho(evt) {
 
 function sucessoAoSalvarRascunho(response) {
     console.log('SUCESSO!');
-    console.log(response.responseText);
+    console.log(response);
+    history.back();
 }
 
 function erroNaRequisicao(error) {

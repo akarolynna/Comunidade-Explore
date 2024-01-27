@@ -71,7 +71,9 @@
                         $colaboradores,
                     );
                     
-                    if(!$this->guiaDao->cadastrarGuia($guia)) {
+                    if($this->guiaDao->cadastrarGuia($guia)) {
+                        echo json_encode('Guia cadastrado com sucesso');
+                    } else {
                         echo 'Erro ao cadastrar guia';
                     }
 
