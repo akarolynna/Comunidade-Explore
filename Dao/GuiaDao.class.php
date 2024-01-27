@@ -89,16 +89,11 @@
 
             $result = 0;    
             try {
-                $this->connection->connection();
-                $stm = $this->connection->prepareStatement($query, $fields);
-                $result = $this->connection->executeStatement($stm);
+                $result = $this->getResult($query, $fields);
 
                 $guiaIdStm = $this->connection->prepareStatement('SELECT LAST_INSERT_ID()', []);
                 $guiaIdResult = $this->connection->executeStatement($guiaIdStm);
                 $guiaId = $guiaIdResult[0]['LAST_INSERT_ID()'];
-
-                echo "Guia cadastrada com sucesso!!";
-                echo $guiaId;
 
                 $desafios = [];
                 foreach (json_decode($guia->getDesafios(), true) as $desafio) {
@@ -111,18 +106,14 @@
                 }
 
                 foreach($desafios as $desafio) {
-                    if($this->cadastrarDesafio($guiaId, $desafio)) {
-                        // echo "Desafio ".$desafio->getTitulo()." cadastrado com sucesso!!";
-                    } else {
+                    if(!$this->cadastrarDesafio($guiaId, $desafio)) {
                         echo "Erro ao cadastrar desafio ".$desafio->getTitulo();
                     }
                 }
 
                 $colaboradoresId = array_map('intval', json_decode($guia->getColaboradores(), true));
                 foreach($colaboradoresId as $colaboradorId) {
-                    if($this->cadastrarColaborador($guiaId, $colaboradorId)) {
-                        // echo "Colaborador cadastrado com sucesso";
-                    } else {
+                    if(!$this->cadastrarColaborador($guiaId, $colaboradorId)) {
                         echo "Erro ao cadastrar desafio ".$desafio->getTitulo();
                     }
                 }
