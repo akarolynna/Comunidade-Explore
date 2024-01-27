@@ -33,7 +33,7 @@ function publicar(evt) {
 function sucessoAoPublicar(response) {
     console.log('SUCESSO!');
     console.log(response);
-    // history.back();
+    history.back();
 }
 
 function erroNaRequisicao(error) {

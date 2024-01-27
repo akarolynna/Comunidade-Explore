@@ -62,7 +62,11 @@
                         $colaboradores,
                         [],);
 
-                        var_dump($evento);
+                        if($this->eventoDao->cadastrarEvento($evento)) {
+                            echo json_encode('Evento cadastrado com sucesso');
+                        } else {
+                            echo 'Erro ao cadastrar evento';
+                        }
 
                 } else {
                     echo 'Erro ao tentar fazer upload da foto';

@@ -36,6 +36,86 @@
             }
             return $result;
         }
+
+        public function cadastrarEvento($evento) {
+            $query = 'INSERT INTO Evento (
+                titulo, 
+                localizacao, 
+                dataInicio, 
+                horaInicio, 
+                dataTermino, 
+                horaTermino, 
+                descricao, 
+                fotoCapa, 
+                maxParticipantes, 
+                arquivado, 
+                categoriaId, 
+                criadorId
+            ) VALUES (
+                :titulo, 
+                :localizacao, 
+                :dataInicio, 
+                :horaInicio, 
+                :dataTermino, 
+                :horaTermino, 
+                :descricao, 
+                :fotoCapa, 
+                :maxParticipantes, 
+                :arquivado, 
+                :categoriaId, 
+                :criadorId
+            );';
+
+            $fields = array(
+                'titulo' => $evento->getTitulo(), 
+                'localizacao' => $evento->getLocalizacao(), 
+                'dataInicio' => $evento->getDataInicio(), 
+                'horaInicio' => $evento->getHoraInicio(), 
+                'dataTermino' => $evento->getDataTermino(), 
+                'horaTermino' => $evento->getHoraTermino(), 
+                'descricao' => $evento->getDescricao(), 
+                'fotoCapa' => $evento->getFotoCapa(), 
+                'maxParticipantes' => $evento->getMaxParticipantes(), 
+                'arquivado' => $evento->getArquivado(), 
+                'categoriaId' => $evento->getCategoriaId(), 
+                'criadorId' => $evento->getCriadorId()
+            );
+            
+            $result = 0;    
+            try {
+                $result = $this->getResult($query, $fields);
+
+                $eventoIdStm = $this->connection->prepareStatement('SELECT LAST_INSERT_ID()', []);
+                $eventoIdResult = $this->connection->executeStatement($eventoIdStm);
+                $eventoId = $eventoIdResult[0]['LAST_INSERT_ID()'];
+
+                $colaboradoresId = array_map('intval', json_decode($evento->getColaboradores(), true));
+                foreach($colaboradoresId as $colaboradorId) {
+                    if(!$this->cadastrarColaborador($eventoId, $colaboradorId)) {
+                        echo 'Erro ao cadastrar colaborador';
+                    }
+                }
+            } catch (Exception $ex) {
+                throw new Exception($ex->getMessage());
+            }
+            return $result > 0;
+        }
+
+        private function cadastrarColaborador($eventoId, $colaboradorId) {
+            $query = 'INSERT INTO Evento_Colaborador (eventoId, membroId) VALUES (:eventoId, :colaboradorId)';
+            $fields = array(
+                'eventoId' => $eventoId,
+                'colaboradorId' => $colaboradorId
+            );
+            $result = 0;
+
+            try {
+                $result = $this->getResult($query, $fields);
+            } catch (Exception $ex) {
+                throw new Exception($ex->getMessage());
+            }
+            return $result > 0;
+        }
     }
 
 ?>
