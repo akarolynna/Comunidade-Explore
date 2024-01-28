@@ -105,22 +105,7 @@ class MembroController{
       
         exit();
     }
-    // public function iniciarSessao($email){
-    //     if (session_status() == PHP_SESSION_NONE) {
-    //         session_start();
-    //         echo '<h1>Sessão iniciada</h1>';
-            
-    //     }
-    //     $_SESSION['email'] = $email;
-    //     $paginaInicial = "../View/pagina-inicial.php";
-    //     $usuarioDoBanco = $this->membroDao->consultarDadosMembro($email);
-        
-    //     $_SESSION['usuario'] = $usuarioDoBanco;
-    //     // echo '<h1>sessão iniciada</h1>';
-    //     // header("Location: $paginaInicial");
-      
-    //     exit();
-    // }
+
     
 }
 ?>
