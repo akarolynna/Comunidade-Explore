@@ -1,7 +1,7 @@
-<div class="modalEditar">
+<div class="modalEditar" id="modalEditar">
     <div class="modalCabecalho">
         <h1 class="titulo">Editar Perfil</h1>
-        <button type="button" class="fechar" data-dismiss="modalFechar" aria-label="Fechar"><span aria-hidden="true">X</span></button>
+        <button type="button" id="btnFechar" class="fechar" data-dismiss="modalFechar" aria-label="Fechar"><span aria-hidden="true">X</span></button>
     </div>
     <div class="modalCorpo">
         <form method="POST" id="formularioEdicao">
@@ -50,6 +50,7 @@
             </div>
     </div>
     </form>
-
     <!-- Fechamento do Modal  -->
 </div>
+<!-- Importando o JS para que meu código funcione corretamente -->
+<script src="../Public/JS/modalFormEdit-usuario.js"></script>
