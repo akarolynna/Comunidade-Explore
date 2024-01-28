@@ -23,14 +23,14 @@
     ?>
 
     <div class="blocoPrincipal">
-        <section class="secaoCapa">
+        <section class="secaoCapa" id="secaoCapa">
             <div class="filtro">
                 <div class="tituloContainer">
                     <h1 class="tituloMenor">Bem vindo a</h1>
-                    <h1 class="tituloMaior">Costa Dourada</h1>
+                    <h1 class="tituloMaior" id="nomeDestino">Costa Dourada</h1>
                     <div class="localizacaoContainer">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p class="localizacao">Região Costeira do Nordeste, Brasil.</p>
+                        <p class="localizacao" id="localizacao">Região Costeira do Nordeste, Brasil.</p>
                     </div>
                 </div>
                 <button class="btn botaoPrimario">Seguir</button>
@@ -38,34 +38,34 @@
         </section>
         <section class="secaoSobre">
             <div class="infoContainer">
-                <h2 class="subtitulo">Sobre Costa Dourada</h2>
-                <p>
+                <h2 class="subtitulo" id="sobreTitulo">Sobre Costa Dourada</h2>
+                <p id="descricao">
                     Explore a deslumbrante Costa Dourada, um trecho de paraíso tropical onde as areias douradas se encontram com as águas cristalinas. Esta região costeira oferece uma fusão perfeita de relaxamento à beira-mar e aventuras emocionantes. De praias serenas a uma rica cultura local, a Costa Dourada é um destino para todos os viajantes em busca de sol, mar e momentos inesquecíveis.
                 </p>
             </div>
             <div class="imagensContainer">
-                <img src="../Public/ImagensGuia/fotoDestino1.png" alt="foto do destino" class="imagem imagemCanto">
-                <img src="../Public/ImagensGuia/fotoDestino2.png" alt="foto do destino" class="imagem imagemCentro">
-                <img src="../Public/ImagensGuia/fotoDestino3.png" alt="foto do destino" class="imagem imagemCanto">
+                <img src="../Public/ImagensGuia/fotoDestino1.png" alt="foto do destino" class="imagem imagemCanto" id="foto1">
+                <img src="../Public/ImagensGuia/fotoDestino2.png" alt="foto do destino" class="imagem imagemCentro" id="foto2">
+                <img src="../Public/ImagensGuia/fotoDestino3.png" alt="foto do destino" class="imagem imagemCanto" id="foto3">
             </div>
         </section>
         <section class="secaoClima">
-            <p class="containerEsquerda">
+            <p class="containerEsquerda" id="clima">
                 O clima tropical da Costa Dourada oferece temperaturas agradáveis durante todo o ano. Verões quentes proporcionam dias ensolarados perfeitos para atividades à beira-mar, enquanto invernos suaves mantêm um clima agradável para explorar a região.
             </p>
             <img src="../Public/Imagens/separadorBussola.png" alt="separador de bussola" class="separador">
-            <p class="containerDireita">
+            <p class="containerDireita" id="epocaVisita">
                 A melhor época para visitar a Costa Dourada é durante os meses de abril a setembro, quando o clima está mais estável e as atividades ao ar livre são ideais. No entanto, os viajantes que preferem uma atmosfera mais tranquila podem considerar a visita durante a entressafra, de outubro a março.
             </p>
         </section>
         <section class="secaoCultura">
             <h2 class="subtitulo">Cultura e História</h2>
-            <p class="info">
+            <p class="info" id="culturaHistoria">
                 A Costa Dourada, aninhada na região costeira do Nordeste do Brasil, é um tesouro cultural onde diversas influências se encontram. Sua rica história é narrada através de uma arquitetura encantadora, festivais vibrantes e uma fusão única de tradições indígenas, africanas e europeias. As coloridas casas à beira-mar e as expressões artísticas, como o maracatu e o forró, refletem a vitalidade da cultura local. Além disso, a Costa Dourada destaca-se por sua gastronomia, com pratos à base de frutos do mar frescos e sabores tropicais que proporcionam uma experiência culinária verdadeiramente cativante. A costa também guarda vestígios de sua história marítima, evidenciada por antigas fortalezas e faróis que contam histórias de tempos passados e batalhas no mar, tornando-a não apenas uma joia natural, mas um destino enriquecido por sua herança cultural.
             </p>
-            <p class="info">
+            <!-- <p class="info">
                 Ao explorar a Costa Dourada, os visitantes são convidados a imergir não apenas nas águas cristalinas e areias douradas, mas também na autenticidade de uma cultura que ressoa ao longo dos séculos. A região celebra sua identidade através de festivais vibrantes, manifestações artísticas e uma culinária que é um verdadeiro deleite para os sentidos. Com uma arquitetura encantadora que conta histórias do passado e uma conexão profunda com o mar, a Costa Dourada oferece aos viajantes uma experiência única e memorável, onde cada praia é um capítulo na rica narrativa desse destino costeiro.
-            </p>
+            </p> -->
         </section>
         <section class="secaoAreaContribuicao">
             <div class="conteudo">

@@ -49,19 +49,19 @@
             </div>
             <div class="inputContainer">
                 <label class="label" for="inputDescricao">Descrição</label>
-                <textarea class="form-control" id="inputDescricao" name="descricao" required></textarea>
+                <textarea maxlength="1000" class="form-control" id="inputDescricao" name="descricao" required></textarea>
             </div>
             <div class="inputContainer">
                 <label class="label" for="inputClima">Clima</label>
-                <textarea class="form-control" id="inputClima" name="clima" required></textarea>
+                <textarea maxlength="1000" class="form-control" id="inputClima" name="clima" required></textarea>
             </div>
             <div class="inputContainer">
                 <label class="label" for="inputEpocaVisita">Melhor época para visitar</label>
-                <textarea class="form-control" id="inputEpocaVisita" name="epocaVisita" required></textarea>
+                <textarea maxlength="1000" class="form-control" id="inputEpocaVisita" name="epocaVisita" required></textarea>
             </div>
             <div class="inputContainer">
                 <label class="label" for="inputCulturaHistoria">Cultura e História</label>
-                <textarea class="form-control" id="inputCulturaHistoria" name="culturaHistoria" required></textarea>
+                <textarea maxlength="1000" class="form-control" id="inputCulturaHistoria" name="culturaHistoria" required></textarea>
             </div>
 
             <label class="label mt-4">Áreas de contribuição</label>
@@ -149,7 +149,7 @@
                             </div>
                             <div class="inputContainer">
                                 <label class="label" for="inputDescricaoDesafio1">Descrição</label>
-                                <textarea class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio1"></textarea>
+                                <textarea maxlength="1000" class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio1"></textarea>
                             </div>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                             </div>
                             <div class="inputContainer">
                                 <label class="label" for="inputDescricaoDesafio2">Descrição</label>
-                                <textarea class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio2"></textarea>
+                                <textarea maxlength="1000" class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio2"></textarea>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                             </div>
                             <div class="inputContainer">
                                 <label class="label" for="inputDescricaoDesafio3">Descrição</label>
-                                <textarea class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio3"></textarea>
+                                <textarea maxlength="1000" class="form-control inputDescricaoDesafio" id="inputDescricaoDesafio3"></textarea>
                             </div>
                         </div>
                     </div>

@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 80px;
     color: white;
     height: 100%;
@@ -101,6 +101,10 @@
 .secaoClima .separador {
     width: 20%;
     margin: 0 40px;
+}
+
+.secaoClima .containerDireita {
+    text-align: right;
 }
 
 .secaoCultura {
