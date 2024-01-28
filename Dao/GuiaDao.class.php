@@ -38,6 +38,19 @@
             return $result;
         }
 
+        public function buscarPorId($guiaId) {
+            $query = 'SELECT * FROM Guia WHERE guia.id = :guiaId';
+            $fields = array('guiaId' => $guiaId);
+            $result = [];
+            
+            try {
+                $result = $this->getResult($query, $fields);
+            } catch (Exception $ex) {
+                throw new Exception($ex->getMessage());
+            }
+            return $result;
+        }
+
         public function cadastrarGuia($guia) {
             $query = "INSERT INTO Guia(
                 nomeDestino,

@@ -20,7 +20,9 @@
         public function tratarRequisicao() {
             switch ($_SERVER['REQUEST_METHOD']) {
                 case 'GET':
-                    $this->buscar();
+                    isset($_GET['guiaId']) 
+                        ? $this->buscarPorId()
+                        : $this->buscar();
                     break;
                 case 'POST':
                     $this->cadastrar();
@@ -30,12 +32,17 @@
             }
         }
 
-        public function buscar() {
+        private function buscar() {
             $guias = $this->guiaDao->buscar($_GET['categoria'], $_GET['pesquisa']);
             echo json_encode($guias);
         }
 
-        public function cadastrar() {
+        private function buscarPorId() {
+            $guia = $this->guiaDao->buscarPorId($_GET['guiaId']);
+            echo json_encode($guia);
+        }
+
+        private function cadastrar() {
             try {
                 extract($_POST);
 
