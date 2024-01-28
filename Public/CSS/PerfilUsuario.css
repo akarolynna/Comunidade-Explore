@@ -159,7 +159,6 @@ article .cards .cartoes .card1 {
     width: 140px;
     background-image: url('../Imagens/LoginImagem.jpg');
     background-size: 120%;
-    /* Ajuste o valor conforme necessário para aumentar o zoom */
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -181,7 +180,6 @@ article .cards .cartoes .card2 {
     width: 140px;
     background-image: url('../Imagens/Italia.jpg');
     background-size: 120%;
-    /* Ajuste o valor conforme necessário para aumentar o zoom */
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -206,7 +204,6 @@ article .cards .cartoes .card4 {
     width: 140px;
     background-image: url('../Imagens/Portugal.jpg');
     background-size: cover;
-    /* Alterado para cover */
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -270,4 +267,8 @@ article .cards .cartoes .card9 {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.modalEditarUsuario {
+    background-color: #98C80B;
 }

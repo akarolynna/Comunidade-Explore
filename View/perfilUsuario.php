@@ -9,6 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Public/CSS/PerfilUsuario.css">
+    <link rel="stylesheet" type="text/css" href="../Public/CSS/modalEditarUsuario.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Meu Perfil</title>
 </head>
@@ -42,7 +43,7 @@ session_start();
             </div>
 
             <div class="grupoInformacoes">
-                <button type="button" class="botaoEditarPerfil">Editar Perfil</button>
+                <button type="button" class="botaoEditarPerfil" id="btnEditarPerfil">Editar Perfil</button>
             </div>
         </div>
         <div class="apresentacao-usuario">
@@ -72,7 +73,7 @@ session_start();
                 </ul>
                 <hr>
             </div>
-            <div class="cartoes">
+            <!-- <div class="cartoes">
                 <div class="card1">
                     <p>Diário de Viagem - Costa Rica 2024</p>
                 </div>
@@ -100,11 +101,14 @@ session_start();
                 <div class="card9">
                     <p>Diário de Viagem - Alemanha 2023</p>
                 </div>
-            </div>
+            </div> -->
+
         </div>
-        <div class="modalEditarUsuario" id="modalEditarUsuario"></div>
+
     </article>
-    <script src="../Public/JS/perfil-usuario.js"></script>
+    <div class="modalEditarUsuario" id="modalEditarUsuario"></div>
+    <div id="overlay" class="overlay"></div>
+    <script src="../Public/JS/modalFormEdit-usuario.js"></script>
 </body>
 
 </html>
