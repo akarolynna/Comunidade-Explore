@@ -1,17 +1,19 @@
 <div class="modalEditar" id="modalEditar">
+
     <div class="modalCabecalho">
         <h1 class="titulo">Editar Perfil</h1>
         <button type="button" id="btnFechar" class="fechar" data-dismiss="modalFechar" aria-label="Fechar"><span aria-hidden="true">X</span></button>
     </div>
+
     <div class="modalCorpo">
         <form method="POST" id="formularioEdicao">
             <div class="form-group-imagem">
-                <label for="mudarImagem"><b>Mudar Imagem:</b> </label>
+                <label for="foto"><b>Mudar Imagem:</b> </label>
                 <input type="file" class="form-control-file" id="foto">
             </div>
 
             <div class="form-group">
-                <label for="nomeMembro"><b>Nome:<b> </label>
+                <label for="nome"><b>Nome:<b> </label>
                 <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome de usuário" required>
             </div>
 
