@@ -1,22 +1,17 @@
-const formCadastro = $('#formCadGuia').on('submit', cadastrarGuia);
-$('#btnTeste').on('click', teste);
+$('#btnCancelar').click(cancelar);
+$('#btnSalvarRascunho').click(salvarRascunho);
 
-function teste() {
-    let colaboradores = [];
-    
-    $("#multiselectColaboradores option:selected").each(function() {
-        colaboradores.push($(this).val());
-    });
+const formCadastro = $('#formCadGuia');
 
-    console.log(colaboradores);
+function cancelar() {
+    history.back();
 }
 
-function cadastrarGuia(evt) {  
-    const controllerURL = "../controller/ContatoController.class.php";
+function salvarRascunho(evt) {  
+    const controllerURL = "../controller/GuiaController.class.php"; 
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
     let desafios = [];
-    let fotosSecundarias = [];
     let colaboradores = [];
 
     formCadastro.find('.checkAreasContribuicao:checked').each(function() {
@@ -32,22 +27,15 @@ function cadastrarGuia(evt) {
             descricao: descricaoDesafio
         });
     });
-    
-    $(".inputFotoSecundaria").each(function(index) {
-        if (this.files.length > 0) {
-            fotosSecundarias.push(this.files[0]);
-        }
-    });
-    
+
     $("#multiselectColaboradores option:selected").each(function() {
         colaboradores.push($(this).val());
     });
 
     dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
     dados.append('desafios', JSON.stringify(desafios));
-    dados.append('fotosSecundarias', JSON.stringify(fotosSecundarias));
     dados.append('colaboradores', JSON.stringify(colaboradores));
-    
+
     evt.preventDefault();   
     $.ajax({
         type: "POST",
@@ -56,15 +44,18 @@ function cadastrarGuia(evt) {
         data: dados,
         processData: false, 
         contentType: false,
-        success: sucessoAoCadastrar,
-        error: erroAoCadastrar
+        success: sucessoAoSalvarRascunho,
+        error: erroNaRequisicao
     });  
 }
 
-function sucessoAoCadastrar(response) {
+function sucessoAoSalvarRascunho(response) {
+    console.log('SUCESSO!');
     console.log(response);
+    history.back();
 }
 
-function erroAoCadastrar(error) {
+function erroNaRequisicao(error) {
+    console.log('ERRO!');
     console.log(error);
 }

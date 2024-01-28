@@ -2,110 +2,191 @@
 class Evento {
     private $titulo;
     private $localizacao;
-    private $dataHoraInicio;
-    private $dataHoraTermino;
+    private $dataInicio;
+    private $horaInicio;
+    private $dataTermino;
+    private $horaTermino;
     private $descricao;
-    private $imagens;
+    private $fotoCapa;
     private $maxParticipantes;
     private $arquivado;
-    private $categoria;
+    private $categoriaId;
     private $colaboradores;
     private $inscritos;
-    private $criador;
+    private $criadorId;
 
     public function __construct(
         $titulo,
         $localizacao,
-        $dataHoraInicio,
-        $dataHoraTermino,
+        $dataInicio,
+        $horaInicio,
+        $dataTermino,
+        $horaTermino,
         $descricao,
-        $imagens,
+        $fotoCapa,
         $maxParticipantes,
+        $arquivado,
+        $categoriaId,
+        $criadorId,
         $colaboradores,
-        $categoria,
         $inscritos,
-        $criador,
-        $arquivado
     ) {
         $this->titulo = $titulo;
         $this->localizacao = $localizacao;
-        $this->dataHoraInicio = $dataHoraInicio;
-        $this->dataHoraTermino = $dataHoraTermino;
+        $this->dataInicio = $dataInicio;
+        $this->horaInicio = $horaInicio;
+        $this->dataTermino = $dataTermino;
+        $this->horaTermino = $horaTermino;
         $this->descricao = $descricao;
-        $this->imagens = $imagens;
+        $this->fotoCapa = $fotoCapa;
         $this->maxParticipantes = $maxParticipantes;
-        $this->colaboradores = $colaboradores;
-        $this->categoria = $categoria;
-        $this->inscritos = $inscritos;
-        $this->criador = $criador;
         $this->arquivado = $arquivado;
-    }
-
-    // Métodos Set
-    public function setDescricao($descricao) {
-        $this->descricao = $descricao;
-    }
-
-    public function setImagens($imagens) {
-        $this->imagens = $imagens;
-    }
-
-    public function setMaxParticipantes($maxParticipantes) {
-        $this->maxParticipantes = $maxParticipantes;
-    }
-
-    public function setColaboradores($colaboradores) {
+        $this->categoriaId = $categoriaId;
+        $this->criadorId = $criadorId;
         $this->colaboradores = $colaboradores;
-    }
-
-    public function setCategoria($categoria) {
-        $this->categoria = $categoria;
-    }
-
-    public function setInscritos($inscritos) {
         $this->inscritos = $inscritos;
     }
-
-    public function setCriador($criador) {
-        $this->criador = $criador;
+    
+    // Getters
+    public function getTitulo()
+    {
+        return $this->titulo;
     }
 
-    public function setArquivado($arquivado) {
-        $this->arquivado = $arquivado;
+    public function getLocalizacao()
+    {
+        return $this->localizacao;
     }
 
-    // Métodos Get
-    public function getDescricao() {
+    public function getDataInicio()
+    {
+        return $this->dataInicio;
+    }
+
+    public function getHoraInicio()
+    {
+        return $this->horaInicio;
+    }
+
+    public function getDataTermino()
+    {
+        return $this->dataTermino;
+    }
+
+    public function getHoraTermino()
+    {
+        return $this->horaTermino;
+    }
+
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 
-    public function getImagens() {
-        return $this->imagens;
+    public function getFotoCapa()
+    {
+        return $this->fotoCapa;
     }
 
-    public function getMaxParticipantes() {
+    public function getMaxParticipantes()
+    {
         return $this->maxParticipantes;
     }
 
-    public function getColaboradores() {
+    public function getColaboradores()
+    {
         return $this->colaboradores;
     }
 
-    public function getCategoria() {
-        return $this->categoria;
+    public function getCategoriaId()
+    {
+        return $this->categoriaId;
     }
 
-    public function getInscritos() {
+    public function getInscritos()
+    {
         return $this->inscritos;
     }
 
-    public function getCriador() {
-        return $this->criador;
+    public function getCriadorId()
+    {
+        return $this->criadorId;
     }
 
-    public function getArquivado() {
+    public function getArquivado()
+    {
         return $this->arquivado;
     }
-    
+
+    // Setters
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+    }
+
+    public function setLocalizacao($localizacao)
+    {
+        $this->localizacao = $localizacao;
+    }
+
+    public function setDataInicio($dataInicio)
+    {
+        $this->dataInicio = $dataInicio;
+    }
+
+    public function setHoraInicio($horaInicio)
+    {
+        $this->horaInicio = $horaInicio;
+    }
+
+    public function setDataTermino($dataTermino)
+    {
+        $this->dataTermino = $dataTermino;
+    }
+
+    public function setHoraTermino($horaTermino)
+    {
+        $this->horaTermino = $horaTermino;
+    }
+
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+    }
+
+    public function setFotoCapa($fotoCapa)
+    {
+        $this->fotoCapa = $fotoCapa;
+    }
+
+    public function setMaxParticipantes($maxParticipantes)
+    {
+        $this->maxParticipantes = $maxParticipantes;
+    }
+
+    public function setColaboradores($colaboradores)
+    {
+        $this->colaboradores = $colaboradores;
+    }
+
+    public function setCategoriaId($categoriaId)
+    {
+        $this->categoriaId = $categoriaId;
+    }
+
+    public function setInscritos($inscritos)
+    {
+        $this->inscritos = $inscritos;
+    }
+
+    public function setCriadorId($criadorId)
+    {
+        $this->criadorId = $criadorId;
+    }
+
+    public function setArquivado($arquivado)
+    {
+        $this->arquivado = $arquivado;
+    }
 }
 ?>

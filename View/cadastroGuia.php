@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once '../Model/AreaContribuicao.enum.php';
+    require_once '../Model/Categoria.enum.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,12 +31,12 @@
         <form id="formCadGuia">
             <div class="inputContainer">
                 <label class="label" for="inputNome">Nome do Destino</label>
-                <input class="form-control" id="inputNome" name="nome" required>
+                <input class="form-control" id="inputNome" name="nomeDestino" required>
             </div>
             <div class="inputGroup">
                 <div class="inputContainer">
                     <label class="label" for="inputLocalizacao">Localização</label>
-                    <input class="form-control" id="inputLocalizacao" name="localização" required>
+                    <input class="form-control" id="inputLocalizacao" name="localizacao" required>
                 </div>
                 <div class="inputContainer">
                     <label class="label" for="inputCorPrincipal">Cor principal</label>
@@ -67,31 +68,31 @@
             <div class="inputGroup">
                 <div class="inputContainer">
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkPontosTuristicos" value="<?php echo AreaContribuicao::PONTOS_TURISTICOS; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkPontosTuristicos" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::PONTOS_TURISTICOS); ?>">
                         <label class="checkLabel" for="checkPontosTuristicos">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::PONTOS_TURISTICOS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEventosFestivais" value="<?php echo AreaContribuicao::HOSPEDAGEM; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEventosFestivais" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::HOSPEDAGEM); ?>">
                         <label class="checkLabel" for="checkEventosFestivais">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::HOSPEDAGEM); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkRestaurantesCulinaria" value="<?php echo AreaContribuicao::RESTAURANTES; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkRestaurantesCulinaria" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::RESTAURANTES); ?>">
                         <label class="checkLabel" for="checkRestaurantesCulinaria">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::RESTAURANTES); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkComprasMercado" value="<?php echo AreaContribuicao::FESTIVAIS; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkComprasMercado" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::FESTIVAIS); ?>">
                         <label class="checkLabel" for="checkComprasMercado">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::FESTIVAIS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkBemEstarRelaxamento" value="<?php echo AreaContribuicao::ENTRETENIMENTO; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkBemEstarRelaxamento" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::ENTRETENIMENTO); ?>">
                         <label class="checkLabel" for="checkBemEstarRelaxamento">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::ENTRETENIMENTO); ?>
                         </label>
@@ -99,31 +100,31 @@
                 </div>
                 <div class="inputContainer">
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkTransporte" value="<?php echo AreaContribuicao::TRANSPORTE; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkTransporte" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::TRANSPORTE); ?>">
                         <label class="checkLabel" for="checkTransporte">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::TRANSPORTE); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkDicas" value="<?php echo AreaContribuicao::RELAXAMENTO; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkDicas" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::RELAXAMENTO); ?>">
                         <label class="checkLabel" for="checkDicas">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::RELAXAMENTO); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkFamiliaCriancas" value="<?php echo AreaContribuicao::DICAS_LOCAIS; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkFamiliaCriancas" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::DICAS_LOCAIS); ?>">
                         <label class="checkLabel" for="checkFamiliaCriancas">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::DICAS_LOCAIS); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEsporteAventura" value="<?php echo AreaContribuicao::FAMILIA; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkEsporteAventura" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::FAMILIA); ?>">
                         <label class="checkLabel" for="checkEsporteAventura">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::FAMILIA); ?>
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkArteEntretenimento" value="<?php echo AreaContribuicao::ESPORTES_AVENTURA; ?>">
+                        <input class="form-check-input checkAreasContribuicao" type="checkbox" id="checkArteEntretenimento" value="<?php echo AreaContribuicao::getValue(AreaContribuicao::ESPORTES_AVENTURA); ?>">
                         <label class="checkLabel" for="checkArteEntretenimento">
                             <?php echo AreaContribuicao::getNome(AreaContribuicao::ESPORTES_AVENTURA); ?>
                         </label>
@@ -203,13 +204,48 @@
                     <input type="file" class="form-control-file" id="inputFotoCapa" name="fotoCapa">
                 </div>
                 <div class="inputContainer mt-3">
-                    <label for="inputFotoSecundaria1">Outras fotos</label>
+                    <label>Outras fotos</label>
                     <br>
-                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria1">
-                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria2">
-                    <input type="file" class="form-control-file mt-2 inputFotoSecundaria" id="inputFotoSecundaria3">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria1" name="fotoSecundaria1">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria2" name="fotoSecundaria2">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria3" name="fotoSecundaria3">
                 </div>
             </fieldset>
+
+            <label class="label mt-3">Categoria</label>
+            <select class="form-select mt-2" id="selectCategoria" name="categoria">
+                <option value="<?php echo Categoria::getValor(Categoria::PRAIA); ?>">
+                    <?php echo Categoria::PRAIA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::NEVE); ?>">
+                    <?php echo Categoria::NEVE; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::URBANO); ?>">
+                    <?php echo Categoria::URBANO; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::MONTANHA); ?>">
+                    <?php echo Categoria::MONTANHA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::NATUREZA); ?>">
+                    <?php echo Categoria::NATUREZA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::DESERTO); ?>">
+                    <?php echo Categoria::DESERTO; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::HISTORIA); ?>">
+                    <?php echo Categoria::HISTORIA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::AVENTURA); ?>">
+                    <?php echo Categoria::AVENTURA; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::MERGULHO); ?>">
+                    <?php echo Categoria::MERGULHO; ?>
+                </option>
+                <option value="<?php echo Categoria::getValor(Categoria::ROMANCE); ?>">
+                    <?php echo Categoria::ROMANCE; ?>
+                </option>
+                </option>
+            </select>
 
             <div class="form-check mt-4">
                 <input class="form-check-input" type="checkbox" id="checkColaboradores">
@@ -217,25 +253,19 @@
                     Colaboradores
                 </label>
             </div>
-
-            <select multiple class="form-control" id="multiselectColaboradores">
-                <option value="1">Janaina</option>
-                <option value="2">Carol</option>
-                <option value="3">Roberto</option>
-            </select>
-
-            <div class="d-flex justify-content-center mt-4 buttonContainer">
-                <button class="btn btnTertiary">Cancelar</button>
-                <button class="btn btnSecundary mx-2">Salvar rascunho</button>
-                <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
-            </div>
+            <select multiple class="form-control" id="multiselectColaboradores"></select>
         </form>
-        
-        <button class="btn btnPrimary" id="btnTeste">Publicar</button>
+
+        <div class="d-flex justify-content-center mt-4 buttonContainer">
+            <button class="btn btnTertiary" id="btnCancelar">Cancelar</button>
+            <button class="btn btnSecundary mx-2" id="btnSalvarRascunho">Salvar rascunho</button>
+            <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
+        </div>
     </div>
 </body>
 
 <script src="../Public/JS/cadastroGuia.js"></script>
+<script src="../Public/JS/colaboradores.js"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"

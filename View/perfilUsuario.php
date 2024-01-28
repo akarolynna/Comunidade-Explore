@@ -108,7 +108,7 @@ session_start();
     </article>
     <div class="modalEditarUsuario" id="modalEditarUsuario"></div>
     <div id="overlay" class="overlay"></div>
-    <script src="../Public/JS/perfil-usuario.js"></script>
+    <script src="../Public/JS/modalFormEdit-usuario.js"></script>
 </body>
 
 </html>

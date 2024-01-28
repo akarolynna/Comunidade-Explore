@@ -2,19 +2,16 @@
 class Desafio {
     private $titulo;
     private $descricao;
-    private $paginaDestino;
-    private $desafiosConcluidos;
+    private $guia;
 
     public function __construct(
         $titulo,
         $descricao,
-        $paginaDestino,
-        $desafiosConcluidos
+        $guia
     ) {
         $this->titulo = $titulo;
         $this->descricao = $descricao;
-        $this->paginaDestino = $paginaDestino;
-        $this->desafiosConcluidos = $desafiosConcluidos;
+        $this->guia = $guia;
     }
 
     // Métodos Set
@@ -26,12 +23,8 @@ class Desafio {
         $this->descricao = $descricao;
     }
 
-    public function setPaginaDestino($paginaDestino) {
-        $this->paginaDestino = $paginaDestino;
-    }
-
-    public function setDesafiosConcluidos($desafiosConcluidos) {
-        $this->desafiosConcluidos = $desafiosConcluidos;
+    public function setGuia($guia) {
+        $this->guia = $guia;
     }
 
     // Métodos Get
@@ -43,12 +36,8 @@ class Desafio {
         return $this->descricao;
     }
 
-    public function getPaginaDestino() {
-        return $this->paginaDestino;
-    }
-
-    public function getDesafiosConcluidos() {
-        return $this->desafiosConcluidos;
+    public function getGuia() {
+        return $this->guia;
     }
 }
 ?>

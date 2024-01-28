@@ -24,6 +24,9 @@ class MembroController{
                     $this->verificaAcaoTipoPost($_POST['_acao']);
                 }
                 break;
+            case 'GET':
+                $this->buscarMembros();
+                break;
             default:
                 throw new Exception("Nenhuma ação foi passada");
         }
@@ -105,7 +108,31 @@ class MembroController{
       
         exit();
     }
+<<<<<<< HEAD
 
+=======
+    // public function iniciarSessao($email){
+    //     if (session_status() == PHP_SESSION_NONE) {
+    //         session_start();
+    //         echo '<h1>Sessão iniciada</h1>';
+            
+    //     }
+    //     $_SESSION['email'] = $email;
+    //     $paginaInicial = "../View/pagina-inicial.php";
+    //     $usuarioDoBanco = $this->membroDao->consultarDadosMembro($email);
+        
+    //     $_SESSION['usuario'] = $usuarioDoBanco;
+    //     // echo '<h1>sessão iniciada</h1>';
+    //     // header("Location: $paginaInicial");
+      
+    //     exit();
+    // }
+
+    private function buscarMembros() {
+        $membros = $this->membroDao->buscarMembros();
+        echo json_encode($membros);
+    }
+>>>>>>> 799f45801ca943a46dec237339341c61fc49e63b
     
 }
 ?>
