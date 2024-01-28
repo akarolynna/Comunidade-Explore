@@ -63,9 +63,6 @@
             <p class="info" id="culturaHistoria">
                 A Costa Dourada, aninhada na região costeira do Nordeste do Brasil, é um tesouro cultural onde diversas influências se encontram. Sua rica história é narrada através de uma arquitetura encantadora, festivais vibrantes e uma fusão única de tradições indígenas, africanas e europeias. As coloridas casas à beira-mar e as expressões artísticas, como o maracatu e o forró, refletem a vitalidade da cultura local. Além disso, a Costa Dourada destaca-se por sua gastronomia, com pratos à base de frutos do mar frescos e sabores tropicais que proporcionam uma experiência culinária verdadeiramente cativante. A costa também guarda vestígios de sua história marítima, evidenciada por antigas fortalezas e faróis que contam histórias de tempos passados e batalhas no mar, tornando-a não apenas uma joia natural, mas um destino enriquecido por sua herança cultural.
             </p>
-            <!-- <p class="info">
-                Ao explorar a Costa Dourada, os visitantes são convidados a imergir não apenas nas águas cristalinas e areias douradas, mas também na autenticidade de uma cultura que ressoa ao longo dos séculos. A região celebra sua identidade através de festivais vibrantes, manifestações artísticas e uma culinária que é um verdadeiro deleite para os sentidos. Com uma arquitetura encantadora que conta histórias do passado e uma conexão profunda com o mar, a Costa Dourada oferece aos viajantes uma experiência única e memorável, onde cada praia é um capítulo na rica narrativa desse destino costeiro.
-            </p> -->
         </section>
         <section class="secaoAreaContribuicao">
             <div class="conteudo">
@@ -105,6 +102,29 @@
                 </div>
             </div>
             <img src="../Public/Imagens/areaContribuicaoAventura.png" alt="itens de aventureiro" class="imagem">
+        </section>
+        <section class="secaoDesafio">
+            <h2 class="subtitulo">Desafios</h2>
+            <div class="desafiosContainer">
+                <div class="desafioContent desafioCanto">
+                    <h3 class="desafioTitulo">Por do sol dourado</h3>
+                    <p class="desafioDescricao">
+                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
+                    </p>
+                </div>
+                <div class="desafioContent desafioCentro">
+                    <h3 class="desafioTitulo">Por do sol dourado</h3>
+                    <p class="desafioDescricao">
+                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
+                    </p>
+                </div>
+                <div class="desafioContent desafioCanto">
+                    <h3 class="desafioTitulo">Por do sol dourado</h3>
+                    <p class="desafioDescricao">
+                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
+                    </p>
+                </div>
+            </div>
         </section>
     </div>
 </body>

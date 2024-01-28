@@ -172,6 +172,54 @@
     margin: 0 40px;
 }
 
+.secaoDesafio {
+    text-align: center;
+    padding: 80px;
+}
+
+.secaoDesafio .subtitulo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--cor-cinza-extra-escuro);
+    text-align: center;
+}
+
+.secaoDesafio .desafiosContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.secaoDesafio .desafioContent {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 25px;
+    width: 25%;
+    cursor: pointer;
+}
+
+.secaoDesafio .desafioCanto {
+    background-color: white;
+    border: 1px solid #988950;
+    color: #988950;
+}
+
+.secaoDesafio .desafioCentro {
+    background-color: #988950;
+    color: white;
+}
+
+.secaoDesafio .desafioTitulo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.secaoDesafio .desafioDescricao {
+    font-size: 14px;
+}
+
 .rodape {
     background-color: hsla(48, 31%, 45%, 0.3);
     color: var(--cor-cinza-extra-escuro);

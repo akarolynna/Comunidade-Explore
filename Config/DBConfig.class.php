@@ -8,7 +8,7 @@ class DBConfig{
     static $USER= 'root';
     // static $PWD= '';
 
-    static $PWD= '';
+    static $PWD= 'mysql';
 }
 
 
