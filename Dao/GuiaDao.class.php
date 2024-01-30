@@ -19,7 +19,7 @@
 
         public function buscar($categoria, $pesquisa) {
             if($categoria == strtolower(Categoria::TODOS)) {
-                $query = "SELECT * FROM Guia WHERE Guia.nome_destino LIKE CONCAT('%', :pesquisa, '%');";
+                $query = "SELECT * FROM Guia WHERE Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
                 $fields = array('pesquisa' => $pesquisa);
             } else {
                 $query = "SELECT * FROM Guia

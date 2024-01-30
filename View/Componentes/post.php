@@ -53,3 +53,33 @@
         </div>
     </div>
 </div>
+
+
+<div class="cardPublicacao cardImagem cardGuia">
+    <div class="filtro">
+        <div class="cabecalho">
+            <h3 class="titulo">Costa Dourada</h3>
+            <button class="btn botaoPrimario">Seguir</button>
+        </div>
+        <div class="conteudo">
+            <div class="tag criador">
+                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem usuário" class="imagemUsuario">
+                <span>Anna Karolynna</span>
+            </div>
+            <div class="infoGuia">
+                <div class="tag">
+                    <i class="fas fa-users"></i>
+                    <span>469 seguidores</span>
+                </div>
+                <div class="tag">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>8 colaboradores</span>
+                </div>
+            </div>
+            <div class="tag">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Região Costeira do Nordeste, Brasil</span>
+            </div>
+        </div>
+    </div>
+</div>

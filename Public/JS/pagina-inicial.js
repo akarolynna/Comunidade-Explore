@@ -60,7 +60,7 @@ function erroNaRequisicao(error) {
 
 function sucessoAoBuscarPosts(response) {
     console.log(response);
-    // $('#publicacoes').html('');
+    $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
         : response.forEach((post, index) => {
@@ -175,25 +175,48 @@ function buscarGuias(categoria, pesquisa) {
         url: `../Controller/GuiaController.class.php?categoria=${formatarCategoria(categoria)}&pesquisa=${pesquisa}`,
         type: 'GET',
         dataType: 'JSON',
-        // beforeSend: mostrarModalAguardar,
-        // complete: fecharModalAguardar,
         success: sucessoAoBuscarGuias,
         error: erroNaRequisicao
     });
 }
 
 function sucessoAoBuscarGuias(response) {
+    console.log(response);
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum guia com esses filtros.')
-        : response.forEach(guia => {
+        : response.forEach((guia, index) => {
             $('#publicacoes').append(`
-                <div class="post">
-                    <p>Guia</p>
-                    <p class="conteudoPost">
-                        ${guia.nome_destino}
-                    </p>
-                </div>`);
+                <div class="cardPublicacao cardImagem cardGuia" id="cardGuia${index}">
+                    <div class="filtro">
+                        <div class="cabecalho">
+                            <h3 class="titulo">${guia.nomeDestino}</h3>
+                            <button class="btn botaoPrimario">Seguir</button>
+                        </div>
+                        <div class="conteudo">
+                            <div class="tag criador">
+                                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem usuário" class="imagemUsuario">
+                                <span>Anna Karolynna</span>
+                            </div>
+                            <div class="infoGuia">
+                                <div class="tag">
+                                    <i class="fas fa-users"></i>
+                                    <span>469 seguidores</span>
+                                </div>
+                                <div class="tag">
+                                    <i class="fas fa-hands-helping"></i>
+                                    <span>8 colaboradores</span>
+                                </div>
+                            </div>
+                            <div class="tag">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${guia.localizacao}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+            $(`#cardGuia${index}`).css("background-image", `url('${guia.fotoCapa}')`);
     });
 }
 
