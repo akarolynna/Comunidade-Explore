@@ -11,17 +11,20 @@
     width: 70%;
     padding: 40px 5%;
     overflow: hidden;
+  
 }
 
 .titulo {
-    font-size: 24px;
-    color: var(--cor-cinza-escuro);
+    font-size: 28px;
+    /* color: var(--cor-cinza-escuro); */
+    color:var(--cor-azul-escuro);
     font-weight: normal;
     margin-bottom: 20px;
 }
 
 .label {
-    color: var(--cor-cinza-escuro);
+    /* color: var(--cor-cinza-escuro); */
+    color:var(--cor-azul-escuro);
     margin-top: 10px;
 }
 
@@ -38,7 +41,8 @@
 }
 
 .checkLabel {
-    color: var(--cor-cinza-escuro);
+    /* color: var(--cor-cinza-escuro); */
+    color:var(--cor-azul-escuro);
 }
 
 .buttonContainer .btnPrimary {
@@ -69,5 +73,10 @@
 }
 
 legend {
-    color: var(--cor-cinza-extra-escuro);
+    /* color: var(--cor-cinza-extra-escuro); */
+    color:var(--cor-azul-escuro);
 }
+.cadastroViagem{
+    margin-top: 30px;
+}
+

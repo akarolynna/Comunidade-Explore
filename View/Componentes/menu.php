@@ -16,8 +16,9 @@
                     </div>
                     <div class="buttonContainer">
                         <div class="button">
+                            <button type="button" id="btnOpcaoPublicacaoDiario" class="botaoDiario">
                             <img src="./../Public/Imagens/pena-icone-verde.png" alt="opcao publicação" class="w-50">
-                            <span>Diário</span>
+                            <span>Diário</span></button>
                         </div>
                         <div class="button">
                             <img src="./../Public/Imagens/evento-icone-verde.png" alt="opcao publicação" class="w-50">
@@ -48,6 +49,8 @@
         </div>
     </div>
 </nav>
+
+
 
 
       
