@@ -61,17 +61,36 @@ function erroNaRequisicao(error) {
 }
 
 function sucessoAoBuscarPosts(response) {
+    console.log(response);
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
         : response.forEach(post => {
             $('#publicacoes').append(`
                 <div class="post">
-                    <p>Post</p>
-                    <p class="conteudoPost">
-                        ${post.conteudo}
-                    </p>
-                </div>`);
+                    <div class="imagemPost">
+                        <img src="${post.imagens}" alt="Imagem do Post">
+                    </div>
+                    <div class="conteudoPost">
+                        <div class="cabecalhoPost">
+                            <div class="criadorPost">
+                                <img src="../Public/Imagens/ImagemUsuario.png" alt="Foto do autor">
+                                <p>O nome do criador!!!!!</p>
+                            </div>
+                            <p>${post.data}</p>
+                        </div>
+                        <h3 class="tituloPost mt-3">Título do Diario de Viagem!!!!!</h3>
+                        <p class="mt-3 descricaoPost">${post.conteudo}</p>
+                        <div class="teste">
+                            <i class="corCinzaClaro cursorPointer far fa-heart fa-lg"></i>
+                            <p class="corCinzaClaro ml-2 mr-4">${post.numCurtidas}</p>
+                            <i class="corCinzaClaro cursorPointer far fa-comment fa-lg"></i>
+                            <p class="corCinzaClaro ml-2 mr-4">${post.numComentarios}</p>
+                            <i class="corCinzaClaro cursorPointer far fa-bookmark fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            `);
     });
 }
 
