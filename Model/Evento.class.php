@@ -47,7 +47,7 @@ class Evento {
         $this->inscritos = $inscritos;
     }
     
-    // Getters
+    // Getters and se
     public function getTitulo()
     {
         return $this->titulo;
