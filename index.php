@@ -17,7 +17,7 @@
       <ul class="logo">
         <li><img src="./Public/Imagens/LogoExplore.png" alt="Logo"></li>
         <li>
-          <h6><a> Comunidade-Explore<a> </h6>
+          <h6><a> Comunidade-Explore</a></h6>
         </li>
       </ul>
       <ul class="menu-list">
