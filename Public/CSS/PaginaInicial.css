@@ -106,7 +106,7 @@
 
 .imagemPost {
     width: 45%;
-    background-color: var(--cor-cinza-claro);
+    background-color: #f1f1f1;
     border-radius: 15px;
     margin-right: 5%;
 }
