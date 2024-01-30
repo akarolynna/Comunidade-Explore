@@ -47,8 +47,6 @@ function buscarPosts(categoria, pesquisa) {
         url: `../Controller/PostController.class.php?categoria=${formatarCategoria(categoria)}&pesquisa=${pesquisa}`,
         type: 'GET',
         dataType: 'JSON',
-        // beforeSend: mostrarModalAguardar,
-        // complete: fecharModalAguardar,
         success: sucessoAoBuscarPosts,
         error: erroNaRequisicao
     });
@@ -62,7 +60,7 @@ function erroNaRequisicao(error) {
 
 function sucessoAoBuscarPosts(response) {
     console.log(response);
-    // $('#publicacoes').html('');
+    $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
         : response.forEach((post, index) => {
@@ -135,17 +133,42 @@ function buscarEventos(categoria, pesquisa) {
 }
 
 function sucessoAoBuscarEventos(response) {
+    console.log(response);
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum evento com esses filtros.')
-        : response.forEach(evento => {
+        : response.forEach((evento, index) => {
             $('#publicacoes').append(`
-                <div class="post">
-                    <p>Evento</p>
-                    <p class="conteudoPost">
-                        ${evento.titulo}
-                    </p>
-                </div>`);
+                <div class="cardEvento" id="cardEvento${index}">
+                    <div class="filtro">
+                        <div class="cabecalho">
+                            <h3 class="titulo">${evento.titulo}</h3>
+                            <button class="btn botaoPrimario">Me inscrever</button>
+                        </div>
+                        <div class="conteudo">
+                            <div class="tag criador">
+                                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem usuário">
+                                <p>Anna Karolynna</p>
+                            </div>
+                            <div class="infoEvento">
+                                <div class="tag">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <p>${evento.dataInicio}</p>
+                                </div>
+                                <div class="tag">
+                                    <i class="far fa-clock"></i>
+                                    <p>${evento.horaInicio} - ${evento.horaTermino}</p>
+                                </div>
+                                <div class="tag">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <p>${evento.localizacao}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+            $(`#cardEvento${index}`).css("background-image", `url('${evento.fotoCapa}')`);
     });
 }
 

@@ -41,7 +41,7 @@
                 
                 $extensao = pathinfo($_FILES['fotoCapa']["name"], PATHINFO_EXTENSION);
                 $novoNomeFoto = "$titulo-evento-fotoCapa.$extensao";
-                $caminhoFotoCapa =  "../Public/Uploads/".$novoNomeFoto;
+                $caminhoFotoCapa =  "../Uploads/".$novoNomeFoto;
 
                 if (move_uploaded_file($_FILES["fotoCapa"]["tmp_name"], $caminhoFotoCapa)) {
                     session_start();
