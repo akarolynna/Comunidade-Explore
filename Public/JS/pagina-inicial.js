@@ -62,16 +62,17 @@ function erroNaRequisicao(error) {
 
 function sucessoAoBuscarPosts(response) {
     console.log(response);
-    $('#publicacoes').html('');
+    // $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
         : response.forEach((post, index) => {
             buscarTituloDiarioViagem(post.diarioId, index);
 
+            console.log(post.imagens);
             $('#publicacoes').append(`
                 <div class="post">
                     <div class="imagemPost">
-                        <img src="${post.imagens}" alt="Imagem do Post">
+                        <img src="../Public/ImagensGuia/fotoCapa.png" alt="Imagem do Post">
                     </div>
                     <div class="conteudoPost">
                         <div class="cabecalhoPost">

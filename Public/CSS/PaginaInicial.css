@@ -94,6 +94,16 @@
     color: #98C80B;
 }
 
+.cardPublicacao {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px !important;
+    display: flex;
+    height: 300px;
+}
+
 .post {
     background-color: white;
     border-radius: 15px;
