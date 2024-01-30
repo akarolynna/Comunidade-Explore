@@ -15,8 +15,8 @@
             <img src="../Public/Imagens/LoginImagem.jpg" alt="Grecia">
         </div>
         <div class="conteudo" id="conteudo">
-            <h1 class="titulo">Olá </h1>
-            <p class="fraseBoaV"> Entre com sua conta pessoal!</p>
+            <h1 class="titulo"><a>Olá <a></h1>
+            <p class="fraseBoaV"><a> Entre com sua conta pessoal!</a></p>
 
             <form id="formularioMembro" action="../Controller/MembroController.class.php" enctype="multipart/form-data" class="formulario" method="post">
                 <label for="E-mail">Email</label><br>
@@ -27,7 +27,7 @@
                 <p><a href="esqueci_senha.php" class="esqueciSenha">Esqueci minha senha</a></p>
 
                 <div class="btnCentralizar">
-                <input type="hidden" name="_acao" value="login"> <!-- Adicione o campo acao -->
+                    <input type="hidden" name="_acao" value="login"> <!-- Adicione o campo acao -->
                     <button type="submit" class="btn botaoLogin mb-2">Entrar</button>
                 </div>
 
