@@ -15,6 +15,7 @@ session_start();
     <link rel="stylesheet" href='../Public/CSS/PaginaInicial.css'>
     <link rel="stylesheet" href='../Public/CSS/Evento.css'>
     <link rel="stylesheet" href='../Public/CSS/CardEvento.css'>
+    <link rel="stylesheet" href='../Public/CSS/Publicacoes.css'>
 </head>
 
 <body class="pagina">
@@ -62,30 +63,30 @@ session_start();
                 <p class="itemMenuPublicacoes titulo" id="guias">Guias</p>
             </div>
             <div id="publicacoes">
-                <div class="cardEvento">
+                <div class="cardPublicacao cardImagem cardGuia">
                     <div class="filtro">
                         <div class="cabecalho">
-                            <h3 class="titulo">Trilha Youmite: Aventura nas Montanhas!</h3>
-                            <button class="btn botaoPrimario">Me inscrever</button>
+                            <h3 class="titulo">Costa Dourada</h3>
+                            <button class="btn botaoPrimario">Seguir</button>
                         </div>
                         <div class="conteudo">
                             <div class="tag criador">
-                                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem usuário">
-                                <p>Anna Karolynna</p>
+                                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem usuário" class="imagemUsuario">
+                                <span>Anna Karolynna</span>
                             </div>
-                            <div class="infoEvento">
+                            <div class="infoGuia">
                                 <div class="tag">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <p>20 out 2023</p>
+                                    <i class="fas fa-users"></i>
+                                    <span>469 seguidores</span>
                                 </div>
                                 <div class="tag">
-                                    <i class="far fa-clock"></i>
-                                    <p>8h - 18h</p>
+                                    <i class="fas fa-hands-helping"></i>
+                                    <span>8 colaboradores</span>
                                 </div>
-                                <div class="tag">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <p>Yosemite</p>
-                                </div>
+                            </div>
+                            <div class="tag">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Região Costeira do Nordeste, Brasil</span>
                             </div>
                         </div>
                     </div>

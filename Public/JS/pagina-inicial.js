@@ -60,7 +60,7 @@ function erroNaRequisicao(error) {
 
 function sucessoAoBuscarPosts(response) {
     console.log(response);
-    $('#publicacoes').html('');
+    // $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
         : response.forEach((post, index) => {
@@ -125,8 +125,6 @@ function buscarEventos(categoria, pesquisa) {
         url: `../Controller/EventoController.class.php?categoria=${formatarCategoria(categoria)}&pesquisa=${pesquisa}`,
         type: 'GET',
         dataType: 'JSON',
-        // beforeSend: mostrarModalAguardar,
-        // complete: fecharModalAguardar,
         success: sucessoAoBuscarEventos,
         error: erroNaRequisicao
     });
