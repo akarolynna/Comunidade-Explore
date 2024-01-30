@@ -14,9 +14,10 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="buttonContainer">
-                        <a href="./CadastroDiarioViagem.php" class="button botaoDiario" id="btnOpcaoPublicacaoDiario">
+                        <button type="button" class="button botaoDiario" id="btnOpcaoPublicacaoDiario">
+                            <!-- <a href="./CadastroDiarioViagem.php" class="button botaoDiario" id="btnOpcaoPublicacaoDiario"> -->
                             <img src="./../Public/Imagens/pena-icone-verde.png" alt="opcao publicação" class="w-50">
-                            <span>Diário</span>
+                            <span>Diário</span></button>
                         </a>
                         <a href="./cadastroEvento.php" class="button botaoDiario ">
                             <img src="./../Public/Imagens/evento-icone-verde.png" alt="opcao publicação" class="w-50">
