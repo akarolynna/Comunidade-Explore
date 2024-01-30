@@ -65,7 +65,9 @@ function sucessoAoBuscarPosts(response) {
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
-        : response.forEach(post => {
+        : response.forEach((post, index) => {
+            buscarTituloDiarioViagem(post.diarioId, index);
+
             $('#publicacoes').append(`
                 <div class="post">
                     <div class="imagemPost">
@@ -79,7 +81,7 @@ function sucessoAoBuscarPosts(response) {
                             </div>
                             <p>${post.data}</p>
                         </div>
-                        <h3 class="tituloPost mt-3">Título do Diario de Viagem!!!!!</h3>
+                        <h3 class="tituloPost mt-3" id="tituloPost${index}"></h3>
                         <p class="mt-3 descricaoPost">${post.conteudo}</p>
                         <div class="teste">
                             <i class="corCinzaClaro cursorPointer far fa-heart fa-lg"></i>
@@ -91,6 +93,23 @@ function sucessoAoBuscarPosts(response) {
                     </div>
                 </div>
             `);
+    });
+}
+
+function buscarTituloDiarioViagem(diarioId, postIndex) {
+    $.ajax({
+        url: `../Controller/DiarioController.class.php?diarioId=${diarioId}`,
+        type: 'GET',
+        dataType: 'JSON',
+        success:  (response) =>{
+            console.log(response[0].titulo);
+            $(`#tituloPost${postIndex}`).html(response[0].titulo);
+        },
+        error:  (error) => {
+            console.log('Erro!');
+            console.log(error);
+            return 'Erro ao buscar título';
+        }
     });
 }
 
