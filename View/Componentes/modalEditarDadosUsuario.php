@@ -1,5 +1,7 @@
+<?php
+session_start();
+?>
 <div class="modalEditar" id="modalEditar">
-
     <div class="modalCabecalho">
         <h1 class="titulo">Editar Perfil</h1>
         <button type="button" id="btnFechar" class="fechar" data-dismiss="modalFechar" aria-label="Fechar"><span aria-hidden="true">X</span></button>
@@ -48,6 +50,7 @@
             </div>
 
             <div class="divBotaoEditar">
+            <input type="hidden" name="_acao" value="cadastro"> <!-- Adicione o campo acao -->
                 <button type="submit" id=enviarFormularioEditar>Salvar Mudança</button>
             </div>
     </div>

@@ -27,6 +27,14 @@ create table membro(
  CONSTRAINT PK_MEMBRO PRIMARY KEY(id) 
 );
 
+ALTER TABLE membro
+ ADD COLUMN nome VARCHAR(255),
+ ADD COLUMN aniversario VARCHAR(10),
+ ADD COLUMN melhor_viagem VARCHAR(255),
+ ADD COLUMN instagram VARCHAR(100),
+ ADD COLUMN telefone VARCHAR(13),
+ ADD COLUMN descricao VARCHAR(512)
+;
 CREATE TABLE Guia (
     id INT AUTO_INCREMENT,
     nomeDestino VARCHAR(255) NOT NULL,
