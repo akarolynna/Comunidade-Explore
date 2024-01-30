@@ -77,7 +77,7 @@ function sucessoAoBuscarPosts(response) {
                         <div class="cabecalhoPost">
                             <div class="criadorPost">
                                 <img src="../Public/Imagens/ImagemUsuario.png" alt="Foto do autor">
-                                <p>O nome do criador!!!!!</p>
+                                <p id="nomeCriador${index}"></p>
                             </div>
                             <p>${post.data}</p>
                         </div>
@@ -102,14 +102,22 @@ function buscarTituloDiarioViagem(diarioId, postIndex) {
         type: 'GET',
         dataType: 'JSON',
         success:  (response) =>{
-            console.log(response[0].titulo);
             $(`#tituloPost${postIndex}`).html(response[0].titulo);
+            buscarNomeCriador(response[0].criadorId, postIndex);
         },
-        error:  (error) => {
-            console.log('Erro!');
-            console.log(error);
-            return 'Erro ao buscar título';
-        }
+        error: erroNaRequisicao
+    });
+}
+
+function buscarNomeCriador(membroId, postIndex) {
+    $.ajax({
+        url: `../Controller/MembroController.class.php?membroId=${membroId}`,
+        type: 'GET',
+        dataType: 'JSON',
+        success:  (response) =>{
+            $(`#nomeCriador${postIndex}`).html(response[0].email);
+        },
+        error: erroNaRequisicao
     });
 }
 
