@@ -28,6 +28,19 @@ class MembroDao
         return $result;
     }
 
+    public function buscarMembroPorId($membroId) {
+        $query = 'SELECT * FROM Membro WHERE membro.id = :membroId';
+        $fields = array('membroId' => $membroId);
+        $result = [];
+        
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result;
+    }
+
     public function criarMembro(MembroModel $usuario)
     {
         $options = [

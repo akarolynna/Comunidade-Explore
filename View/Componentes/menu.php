@@ -1,9 +1,9 @@
 
 <nav class="menu">
-    <div class="grupo">
+    <a class="grupo" href="./pagina-inicial.php">
         <img src="../Public/Imagens/LogoExplore.png" alt="Logo de bussola" class="logo">
         <h1 class="titulo">Comunidade Explore</h1>
-    </div>
+    </a>
     <div class="grupo">
         <button class="btn btn-success btn-sm botao" data-toggle="modal" data-target="#modalCriarPublicacao">Criar publicação</button>
           
@@ -15,19 +15,18 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="buttonContainer">
-                        <div class="button">
-                            <button type="button" id="btnOpcaoPublicacaoDiario" class="botaoDiario">
+                        <a href="./CadastroDiarioViagem.php" class="button" id="">
                             <img src="./../Public/Imagens/pena-icone-verde.png" alt="opcao publicação" class="w-50">
-                            <span>Diário</span></button>
-                        </div>
-                        <div class="button">
+                            <span>Diário</span>
+                        </a>
+                        <a href="./cadastroEvento.php" class="button">
                             <img src="./../Public/Imagens/evento-icone-verde.png" alt="opcao publicação" class="w-50">
                             <span>Evento</span>
-                        </div>
-                        <div class="button">
+                        </a>
+                        <a href="./cadastroGuia.php" class="button">
                             <img src="./../Public/Imagens/guia-icone-verde.png" alt="opcao publicação" class="w-50">
                             <span>Guia</span>
-                        </div>
+                        </a>
                     </div> 
                 </div>
             </div>

@@ -22,8 +22,8 @@
                 $fields = array('pesquisa' => $pesquisa);
             } else {
                 $query = "SELECT * FROM Post
-                    INNER JOIN DiarioViagem ON Post.diario_id = DiarioViagem.id
-                    INNER JOIN Categoria ON DiarioViagem.categoria_id = Categoria.id
+                    INNER JOIN DiarioViagem ON Post.diarioId = DiarioViagem.id
+                    INNER JOIN Categoria ON DiarioViagem.categoriaId = Categoria.id
                     WHERE Categoria.categoria = :categoria
                     AND Post.conteudo LIKE CONCAT('%', :pesquisa, '%');";
                 $fields = array('categoria' => $categoria,

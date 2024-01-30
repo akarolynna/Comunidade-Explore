@@ -25,7 +25,9 @@ class MembroController{
                 }
                 break;
             case 'GET':
-                $this->buscarMembros();
+                isset($_GET['membroId']) 
+                    ? $this->buscarMembroPorId()
+                    : $this->buscarMembros();
                 break;
             default:
                 throw new Exception("Nenhuma ação foi passada");
@@ -111,6 +113,11 @@ class MembroController{
     private function buscarMembros() {
         $membros = $this->membroDao->buscarMembros();
         echo json_encode($membros);
+    }
+
+    public function buscarMembroPorId() {
+        $membro = $this->membroDao->buscarMembroPorId($_GET['membroId']);
+        echo json_encode($membro);
     }
 
 }

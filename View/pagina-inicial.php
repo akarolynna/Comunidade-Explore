@@ -15,6 +15,8 @@ session_start();
     <link rel="stylesheet" href="../Public/CSS/Modal/modalCriarDiario.css">
     <link rel="stylesheet" href='../Public/CSS/PaginaInicial.css'>
     <link rel="stylesheet" href='../Public/CSS/Evento.css'>
+    <link rel="stylesheet" href='../Public/CSS/CardEvento.css'>
+    <link rel="stylesheet" href='../Public/CSS/Publicacoes.css'>
 </head>
 
 <body class="pagina">
@@ -62,7 +64,8 @@ session_start();
                 <p class="itemMenuPublicacoes titulo" id="eventos">Eventos</p>
                 <p class="itemMenuPublicacoes titulo" id="guias">Guias</p>
             </div>
-            <div id="publicacoes"></div>
+            <div id="publicacoes">
+            </div>
         </div>
        
     </div>
