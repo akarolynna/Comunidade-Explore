@@ -22,7 +22,7 @@
                 $fields = array('pesquisa' => $pesquisa);
             } else {
                 $query = "SELECT * FROM Evento
-                    INNER JOIN Categoria ON Evento.categoria_id = Categoria.id
+                    INNER JOIN Categoria ON Evento.categoriaId = Categoria.id
                     WHERE Categoria.categoria = :categoria
                     AND Evento.titulo LIKE CONCAT('%', :pesquisa, '%');";
                 $fields = array('categoria' => $categoria,

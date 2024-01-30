@@ -23,9 +23,9 @@
                 $fields = array('pesquisa' => $pesquisa);
             } else {
                 $query = "SELECT * FROM Guia
-                    INNER JOIN Categoria ON Guia.categoria_id = Categoria.id
+                    INNER JOIN Categoria ON Guia.categoriaId = Categoria.id
                     WHERE Categoria.categoria = :categoria
-                    AND Guia.nome_destino LIKE CONCAT('%', :pesquisa, '%');";
+                    AND Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
                 $fields = array('categoria' => $categoria,
                                 'pesquisa' => $pesquisa);
             }
