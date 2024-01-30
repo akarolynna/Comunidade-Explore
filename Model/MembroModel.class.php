@@ -8,8 +8,10 @@ class MembroModel{
     private $aniversario;
     private $telefone;
     private $melhorViagem;
+	private $instagram;
     private $genero;
     private $estilo;
+	private $nome;
     private $diariosViagem = [];
     private $eventos = [];
     private $paginasDestino = [];
@@ -151,7 +153,20 @@ class MembroModel{
 	}
  
 	
+public function getInstagram() {
+	return $this->instagram;
+}
 
+public function setInstagram($newInstagram) {
+	$this->instagram = $newInstagram;
+}
+public function getNome() {
+	return $this->nome;
+}
+
+public function setNome($newNome) {
+	$this->nome = $newNome;
+}
 }
 
 ?>

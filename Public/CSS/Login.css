@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import './Cores.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .containnerLogin{
     width: 80%; 
     height:600px;
@@ -9,6 +19,7 @@
     margin-right: auto;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    color:var(--cor-azul-escuro);
 }
 
 .imagemLogin img {
@@ -17,7 +28,6 @@
     height:600px;
     object-fit: cover;
 }
-
 
 .conteudo {
     margin-left: 50px;
@@ -29,6 +39,12 @@
 .conteudo .titulo {
     margin-top: 70px;
     margin-bottom: 10px;
+    color: #253858; 
+    transition: color 0.3s;
+}
+
+.conteudo .titulo a:hover {
+    color: var(--cor-padrao); 
 }
 
 .conteudo .fraseBoaVindas {
@@ -42,7 +58,9 @@
 
 .conteudo input {
     margin-bottom: 4px;
+    color:var(--cor-azul-escuro);
 }
+
 
 .form-control-file {
     margin-bottom: 15px !important;
@@ -53,7 +71,13 @@
     justify-content: flex-end;
     align-items: flex-end;
     text-decoration:none;
-    color:black;
+    color:var(--cor-azul-escuro);
+    transition: color 0.3s;
+}
+
+.esqueciSenha:hover {
+    color: var(--cor-padrao); 
+    font-weight: bold;
 }
 
 .btnCentralizar{
@@ -63,10 +87,16 @@
     align-items: center;
 }
 
-.botaoLogin{
-    background-color:#80b309;
+.botaoLogin{  
     color: white;
     width:120px;
+    background-color:var(--cor-padrao);
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.btnCentralizar .botaoLogin:hover {
+    background-color: var(--cor-azul-escuro);
+    color: #fff; 
 }
 
 .conteudo .linkEstilo {
@@ -74,10 +104,10 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: black;
+    color:var(--cor-azul-escuro);
     margin-top: 70px;
 }
 
 .conteudo .linkEstilo .destaque{
-   color: #80b309;
+   color: var(--cor-padrao);
 }

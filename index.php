@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,33 +9,43 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <title>Seja Bem-Vindo</title>
 </head>
+
 <body>
+
   <header>
-    <div class="menu">
-      <ul>
-          <li><a href="./index.php">Home</a></li>
-          <li><a href="./View/saiba-mais.php">Saiba Mais</a></li>
-          <li><a href="#">Desenvolvedores</a></li>
+    <nav class="menu">
+      <ul class="logo">
+        <li><img src="./Public/Imagens/LogoExplore.png" alt="Logo"></li>
+        <li>
+          <h6><a> Comunidade-Explore</a></h6>
+        </li>
       </ul>
-    </div>
+      <ul class="menu-list">
+        <li><a href="./index.php">Home</a></li>
+        <li><a href="./View/saiba-mais.php">Saiba Mais</a></li>
+        <li><a href="./View/desenvolvedores.php">Desenvolvedores</a></li>
+      </ul>
+    </nav>
   </header>
-  <main>
-    <section class="conteudo_principal">
-      <div class="imagem">
+  <article>
+    <section class="containnerPricipal">
+      <div class="divTextos">
+        <div class="titulo">
+          <h1><a>Comece sua  Jornada</a></h1>
+        </div>
+        <div class="mensagem">
+          <p>Bem-vindo ao nosso espaço virtual dedicado a amantes de viagens, onde novatos e experientes trocam ideias, compartilham roteiros e vivenciam histórias inspiradoras. </p>
+        </div>
+        <div class="botao">
+          <button onclick="location.href='./View/login.php'" class="btn botaoLogin mb-2">Login</button>
+          <button onclick="location.href='./View/cadastro.php'" class="btn botaoCadastro mb-2">Cadastre-se</button>
+        </div>
+      </div>
+      <div class="divImagem">
         <img src="./Public/Imagens/ApresentacaoSite.jpg" alt="Imagem Principal">
       </div>
-      <div class="bemvindotext">
-          <h2  class="subtitulo">Seja Bem-Vindo</h2>
-          <p class="texto">Este é um espaço virtual para amantes de viagens. Aqui, compartilhamos experiências, dicas e histórias inspiradoras. 
-            Todos, de novatos a viajantes experientes, se reúnem para trocar ideias. 
-            Encontre roteiros, conselhos e relatos autênticos que alimentam a alma aventureira. 
-            Junte-se a nós para compartilhar suas próprias descobertas, desde dicas sobre cafés em Paris até registros de aventuras na Patagônia. 
-            Bem-vindo à nossa comunidade de viajantes, onde histórias fascinantes esperam por você. 
-            Aventure-se, explore e compartilhe!</p>
-          <a href="./View/login.php" class="btn botaoLogin mb-2">Login</a>
-          <a href="./View/cadastro.php" class="btn botaoCadastro mb-2">Cadastre-se</a>
-      </div>
-  </section>
-  </main>
+    </section>
+  </article>
 </body>
+
 </html>
