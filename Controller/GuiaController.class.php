@@ -20,9 +20,15 @@
         public function tratarRequisicao() {
             switch ($_SERVER['REQUEST_METHOD']) {
                 case 'GET':
-                    isset($_GET['guiaId']) 
-                        ? $this->buscarPorId()
-                        : $this->buscar();
+                    if(!isset($_GET['guiaId'])) {
+                        $this->buscar();
+                    } else {
+                        if(isset($_GET['acao']) && $_GET['acao'] == 'buscarDesafios') {
+                            $this->buscarDesafios();
+                        } else {
+                            $this->buscarPorId();
+                        }
+                    }
                     break;
                 case 'POST':
                     $this->cadastrar();
@@ -97,6 +103,11 @@
             $extensao = pathinfo($_FILES[$nomeArquivo]["name"], PATHINFO_EXTENSION);
             $novoNomeFoto = "$nomeDestino-guia-$nomeArquivo.$extensao";
             return "../Uploads/".$novoNomeFoto;
+        }
+
+        private function buscarDesafios() {
+            $desafios = $this->guiaDao->buscarDesafios($_GET['guiaId']);
+            echo json_encode($desafios);
         }
     }
 

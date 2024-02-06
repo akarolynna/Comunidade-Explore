@@ -47,9 +47,38 @@ function sucessoAoBuscarGuia(response) {
             $(`#check${areaContribuicao}`).prop('checked', true);
         });
 
+        buscarDesafios(response[0].id);
+
     } else {
         $('#publicacoes').html('Oops! Não encontramos esse guia.')
     }    
+}
+
+function buscarDesafios(guiaId) {
+    $.ajax({
+        url: `../Controller/GuiaController.class.php?guiaId=${guiaId}&acao=buscarDesafios`,
+        type: 'GET',
+        dataType: 'JSON',
+        success: sucessoAoBuscarDesafios,
+        error: erroNaRequisicao
+    });
+}
+
+function sucessoAoBuscarDesafios(response) {
+    console.log(response);
+
+    if(!$.isEmptyObject(response)) {
+        $('#inputTituloDesafio1').val(response[0].titulo);
+        $('#inputDescricaoDesafio1').val(response[0].descricao);
+        $('#inputTituloDesafio2').val(response[1].titulo);
+        $('#inputDescricaoDesafio2').val(response[1].descricao);
+        $('#inputTituloDesafio3').val(response[2].titulo);
+        $('#inputDescricaoDesafio3').val(response[2].descricao);
+
+    } else {
+        $('#painelDesafios').html('Erro ao buscar os desafios desse guia');
+    }  
+
 }
 
 function cancelar() {
