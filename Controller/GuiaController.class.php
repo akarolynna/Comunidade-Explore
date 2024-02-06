@@ -22,11 +22,13 @@
                 case 'GET':
                     if(!isset($_GET['guiaId'])) {
                         $this->buscar();
+                    } else if(!isset($_GET['acao'])) {
+                        $this->buscarPorId();
                     } else {
                         if(isset($_GET['acao']) && $_GET['acao'] == 'buscarDesafios') {
                             $this->buscarDesafios();
-                        } else {
-                            $this->buscarPorId();
+                        } else if(isset($_GET['acao']) && $_GET['acao'] == 'buscarColaboradores') {
+                            $this->buscarColaboradores();
                         }
                     }
                     break;
@@ -108,6 +110,11 @@
         private function buscarDesafios() {
             $desafios = $this->guiaDao->buscarDesafios($_GET['guiaId']);
             echo json_encode($desafios);
+        }
+
+        private function buscarColaboradores() {
+            $colaboradores = $this->guiaDao->buscarColaboradores($_GET['guiaId']);
+            echo json_encode($colaboradores);
         }
     }
 

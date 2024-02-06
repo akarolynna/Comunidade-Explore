@@ -48,6 +48,7 @@ function sucessoAoBuscarGuia(response) {
         });
 
         buscarDesafios(response[0].id);
+        buscarColaboradores(response[0].id);
 
     } else {
         $('#publicacoes').html('Oops! Não encontramos esse guia.')
@@ -64,6 +65,26 @@ function buscarDesafios(guiaId) {
     });
 }
 
+function buscarColaboradores(guiaId) {
+    $.ajax({
+        url: `../Controller/GuiaController.class.php?guiaId=${guiaId}&acao=buscarColaboradores`,
+        type: 'GET',
+        dataType: 'JSON',
+        success: sucessoAoBuscarColaboradores,
+        error: erroNaRequisicao
+    });
+}
+
+function sucessoAoBuscarColaboradores(response) {
+    console.log(response);
+
+    if(!$.isEmptyObject(response)) {
+        response.forEach(item => {
+            $(`#multiselectColaboradores option[value="${item.membroId}"]`).prop('selected', true);
+        });
+    }
+}
+
 function sucessoAoBuscarDesafios(response) {
     console.log(response);
 
@@ -78,7 +99,6 @@ function sucessoAoBuscarDesafios(response) {
     } else {
         $('#painelDesafios').html('Erro ao buscar os desafios desse guia');
     }  
-
 }
 
 function cancelar() {
