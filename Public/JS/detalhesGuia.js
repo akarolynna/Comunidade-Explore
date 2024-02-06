@@ -1,9 +1,11 @@
 $(document).ready(buscarGuia);
+$('#botaoEditar').click(abrirEdicaoGuia);
+let guiaId = 0;
 
 function buscarGuia() {
     let queryString = window.location.search;
     let searchParams = new URLSearchParams(queryString);
-    let guiaId = searchParams.get('guiaId');
+    guiaId = searchParams.get('guiaId');
     
     $.ajax({
         url: `../Controller/GuiaController.class.php?guiaId=${guiaId}`,
@@ -18,6 +20,9 @@ function sucessoAoBuscarGuia(response) {
     console.log(response);
 
     if(!$.isEmptyObject(response)) {
+        $('#botaoSeguir').css('display', 'none');
+        $('#botaoEditar').css('display', 'block');
+
         $('#nomeDestino').html(response[0].nomeDestino);
         $('#localizacao').html(response[0].localizacao);
         $('#secaoCapa').css('background-image', `url("${response[0].fotoCapa}")`);
@@ -45,4 +50,6 @@ function erroNaRequisicao(error) {
     console.log(error.responseText);
 }
 
-"SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'descricao' at row 1"
+function abrirEdicaoGuia() {
+    window.location.href = `/Comunidade-Explore/View/cadastroGuia.php?guiaId=${guiaId}`;
+}
