@@ -202,17 +202,17 @@
                     <label for="inputFotoCapa">Foto de capa</label>
                     <br>
                     <input type="file" class="form-control-file" id="inputFotoCapa" name="fotoCapa">
-                    <input type="hidden" id="inputHiddenFotoCapa">
+                    <input type="hidden" id="inputHiddenFotoCapa" name="fotoCapaEdicao">
                 </div>
                 <div class="inputContainer mt-3">
                     <label>Outras fotos</label>
                     <br>
                     <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria1" name="fotoSecundaria1">
-                    <input type="hidden" id="inputHiddenFotoSecundaria1">
+                    <input type="hidden" id="inputHiddenFotoSecundaria1" name="fotoSecundaria1Edicao">
                     <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria2" name="fotoSecundaria2">
-                    <input type="hidden" id="inputHiddenFotoSecundaria2">
+                    <input type="hidden" id="inputHiddenFotoSecundaria2" name="fotoSecundaria2Edicao">
                     <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria3" name="fotoSecundaria3">
-                    <input type="hidden" id="inputHiddenFotoSecundaria3">
+                    <input type="hidden" id="inputHiddenFotoSecundaria3" name="fotoSecundaria3Edicao">
                 </div>
             </fieldset>
 
@@ -264,6 +264,7 @@
             <button class="btn btnTertiary" id="btnCancelar">Cancelar</button>
             <button class="btn btnSecundary mx-2" id="btnSalvarRascunho">Salvar rascunho</button>
             <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
+            <button class="btn btnPrimary" id="btnEditar">Editar</button>
         </div>
     </div>
 </body>

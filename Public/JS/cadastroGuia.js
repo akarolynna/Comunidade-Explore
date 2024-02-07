@@ -1,21 +1,75 @@
 $(document).ready(preencherDados);
 $('#btnCancelar').click(cancelar);
 $('#btnSalvarRascunho').click(salvarRascunho);
+$('#btnEditar').click(editar);
 
 const formCadastro = $('#formCadGuia');
+
+function editar(evt) {  
+    const controllerURL = "../controller/GuiaController.class.php?acao=editar"; 
+    const dados = new FormData($(formCadastro)[0]);
+    let areasContribuicao = [];
+    let desafios = [];
+    let colaboradores = [];
+
+    formCadastro.find('.checkAreasContribuicao:checked').each(function() {
+        areasContribuicao.push($(this).val());
+    });
+
+    $(".desafio").each(function(index) {
+        const tituloDesafio = $(this).find(".inputTituloDesafio").val();
+        const descricaoDesafio = $(this).find(".inputDescricaoDesafio").val();
+
+        desafios.push({
+            titulo: tituloDesafio,
+            descricao: descricaoDesafio
+        });
+    });
+
+    $("#multiselectColaboradores option:selected").each(function() {
+        colaboradores.push($(this).val());
+    });
+
+    dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
+    dados.append('desafios', JSON.stringify(desafios));
+    dados.append('colaboradores', JSON.stringify(colaboradores));
+
+    evt.preventDefault();   
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        data: dados,
+        processData: false, 
+        contentType: false,
+        success: sucessoAoEditar,
+        error: erroNaRequisicao
+    });  
+}
+
+function sucessoAoEditar(response) {
+    console.log(response);
+}
 
 function preencherDados() {
     let queryString = window.location.search;
     let searchParams = new URLSearchParams(queryString);
-    guiaId = searchParams.get('guiaId');
+    let guiaId = searchParams.get('guiaId');
+    
+    if(guiaId != null) {    
+        $('#btnSalvarRascunho').css('display', 'none');
+        $('#btnPublicar').css('display', 'none');
+        $('#btnEditar').css('display', 'block');
 
-    $.ajax({
-        url: `../Controller/GuiaController.class.php?guiaId=${guiaId}`,
-        type: 'GET',
-        dataType: 'JSON',
-        success: sucessoAoBuscarGuia,
-        error: erroNaRequisicao
-    });
+        $.ajax({
+            url: `../Controller/GuiaController.class.php?guiaId=${guiaId}`,
+            type: 'GET',
+            dataType: 'JSON',
+            success: sucessoAoBuscarGuia,
+            error: erroNaRequisicao
+        });
+    }
+
 }
 
 function sucessoAoBuscarGuia(response) {

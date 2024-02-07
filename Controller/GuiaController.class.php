@@ -33,7 +33,11 @@
                     }
                     break;
                 case 'POST':
-                    $this->cadastrar();
+                    if(!isset($_GET['acao'])) {
+                        $this->cadastrar();
+                    } else {
+                        $this->editar();
+                    }
                     break;
                 default:
                     throw new Exception('Erro ao tentar realizar a operação.<br> Requisição desconhecida'); 
@@ -48,6 +52,51 @@
         private function buscarPorId() {
             $guia = $this->guiaDao->buscarPorId($_GET['guiaId']);
             echo json_encode($guia);
+        }
+
+        private function getCaminhoFoto($nomeDestino, $nomeArquivo, $caminhoAntigo) {
+            extract($_POST);
+            if($_FILES[$nomeArquivo]["tmp_name"] == '') {
+                $caminhoFoto = $caminhoAntigo;
+            } else {
+                $caminhoFoto = $this->montarCaminhoFoto($nomeDestino, $nomeArquivo);
+                move_uploaded_file($_FILES[$nomeArquivo]["tmp_name"], $caminhoFoto);
+            }
+            return $caminhoFoto;
+        }
+
+        private function editar() {
+            try {
+                extract($_POST);
+
+                $caminhoFotoCapa = $this->getCaminhoFoto(
+                    $nomeDestino, 'fotoCapa', $fotoCapaEdicao
+                );
+                $caminhoFotoSecundaria1 = $this->getCaminhoFoto(
+                    $nomeDestino, 'fotoSecundaria1', $fotoSecundaria1Edicao
+                );
+                $caminhoFotoSecundaria2 = $this->getCaminhoFoto(
+                    $nomeDestino, 'fotoSecundaria2', $fotoSecundaria2Edicao
+                );
+                $caminhoFotoSecundaria3 = $this->getCaminhoFoto(
+                    $nomeDestino, 'fotoSecundaria3', $fotoSecundaria3Edicao
+                );
+
+                $fotosSecundarias = array($caminhoFotoSecundaria1, $caminhoFotoSecundaria2, $caminhoFotoSecundaria3);
+
+                
+                
+
+            } catch (Exception $ex) {
+                echo $ex->getMessage();
+            }
+        }
+
+        private function fazerUpload($nomeDestino, $nomeArquivo) {
+            $caminhoFoto = $this->montarCaminhoFoto($nomeDestino, $nomeArquivo);
+            if(!move_uploaded_file($_FILES[$nomeArquivo]["tmp_name"], $caminhoFoto)) {
+                echo 'Erro ao fazer upload da foto';
+            };
         }
 
         private function cadastrar() {
@@ -102,6 +151,7 @@
         }
 
         private function montarCaminhoFoto($nomeDestino, $nomeArquivo) {
+            if($_FILES[$nomeArquivo]["name"] == '') return '';
             $extensao = pathinfo($_FILES[$nomeArquivo]["name"], PATHINFO_EXTENSION);
             $novoNomeFoto = "$nomeDestino-guia-$nomeArquivo.$extensao";
             return "../Uploads/".$novoNomeFoto;
