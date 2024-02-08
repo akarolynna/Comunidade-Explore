@@ -28,6 +28,24 @@
             return $result;
         }
 
+        public function cadastrarDiarioViagem(DiarioViagem $diarioViagem){
+            $options = [
+                'foto' => $diarioViagem->getFoto(),
+                'titulo'=>$diarioViagem->getTitulo(),
+                'localizacao'=>$diarioViagem->getLocalizacao(),
+                'criadorId' => $diarioViagem->getCriadorId()
+               
+            ];
+            $query = "INSERT INTO DiarioViagem (foto, titulo, localizacao,criador_id) VALUES (:foto, :titulo, :localizacao, :criadorId);";
+            try {
+                $this->connection->connection();
+                $statement = $this->connection->prepareStatement($query, $options);
+                return $this->connection->executeStatement($statement);
+            } catch (Exception $ex) {
+                throw new Exception("Erro ao tentar adicionar usuário no Banco de Dados <br>" . $ex->getMessage());
+            }
+        }
+
     }
 
 ?>

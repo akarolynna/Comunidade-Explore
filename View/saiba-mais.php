@@ -21,7 +21,7 @@
         </li>
       </ul>
       <ul class="menu-list">
-        <li><a href="./index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="./View/saiba-mais.php">Saiba Mais</a></li>
         <li><a href="./View/desenvolvedores.php">Desenvolvedores</a></li>
       </ul>

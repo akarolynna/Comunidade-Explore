@@ -2,7 +2,7 @@
     <a class="grupo" href="./pagina-inicial.php">
         <img src="../Public/Imagens/LogoExplore.png" alt="Logo de bussola" class="logo">
         <h1 class="titulo">Comunidade Explore</h1>
-    </a>
+</a>
     <div class="grupo">
         <button class="btn btn-success btn-sm botao" data-toggle="modal" data-target="#modalCriarPublicacao">Criar publicação</button>
 

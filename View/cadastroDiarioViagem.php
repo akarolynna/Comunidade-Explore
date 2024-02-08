@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../Model/Categoria.enum.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ require_once '../Model/Categoria.enum.php';
 
         <div class="blocoPrincipal cadastroViagem">
             <h2 class="titulo">Crie um Diário de Viagem</h2>
-            <form id="formCadEvento">
+            <form id="formCadDirio">
                 <div class="inputContainer">
                     <label class="label" for="inputTitulo">Título</label>
                     <input class="form-control" id="inputTitulo" name="titulo" required>
@@ -41,7 +41,7 @@ require_once '../Model/Categoria.enum.php';
                 <div class="inputContainer mt-3">
                     <label for="inputFotoCapa">Capa</label>
                     <br>
-                    <input type="file" class="form-control-file" id="inputFotoCapa" name="fotoCapa">
+                    <input type="file" class="form-control-file" id="foto" name="foto">
                 </div>
                 <div class="d-flex justify-content-center mt-5 buttonContainer">
                     <input type="hidden" name="_acao" value="login"> <!-- Adicione o campo acao -->
@@ -50,5 +50,6 @@ require_once '../Model/Categoria.enum.php';
                 </div>
             </form>
     </body>
+    <script src="../Public/JS/cadastroDiario.js"></script>
 
 </html>
