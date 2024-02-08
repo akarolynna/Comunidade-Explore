@@ -187,7 +187,7 @@ function sucessoAoBuscarGuias(response) {
         ? $('#publicacoes').html('Oops! Não encontramos nenhum guia com esses filtros.')
         : response.forEach((guia, index) => {
             $('#publicacoes').append(`
-                <div class="cardPublicacao cardImagem cardGuia" id="cardGuia${index}">
+                <div class="cardPublicacao cardImagem cardGuia" id="cardGuia${guia.id}" onclick="abrirDetalhesGuia(${guia.id})">
                     <div class="filtro">
                         <div class="cabecalho">
                             <h3 class="titulo">${guia.nomeDestino}</h3>
@@ -216,10 +216,14 @@ function sucessoAoBuscarGuias(response) {
                     </div>
                 </div>
             `);
-            $(`#cardGuia${index}`).css("background-image", `url('${guia.fotoCapa}')`);
+            $(`#cardGuia${guia.id}`).css("background-image", `url('${guia.fotoCapa}')`);
     });
 }
 
 function formatarCategoria(categoria) {
     return categoria.substring(9).toLowerCase();
+}
+
+function abrirDetalhesGuia(guiaId) {
+    window.location.href = `/Comunidade-Explore/View/detalhesGuia.php?guiaId=${guiaId}`;
 }

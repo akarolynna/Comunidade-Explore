@@ -33,7 +33,8 @@
                         <p class="localizacao" id="localizacao">Região Costeira do Nordeste, Brasil.</p>
                     </div>
                 </div>
-                <button class="btn botaoPrimario">Seguir</button>
+                <button id="botaoSeguir" class="btn botaoPrimario">Seguir</button>
+                <button id="botaoEditar" class="btn botaoPrimario">Editar</button>
             </div>
         </section>
         <section class="secaoSobre">

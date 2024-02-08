@@ -169,6 +169,32 @@
             }
             return $result > 0;
         }
+
+        public function buscarDesafios($guiaId) {
+            $query = 'SELECT * FROM Desafio WHERE guiaId = :guiaId';
+            $fields = array('guiaId' => $guiaId);
+            $result = [];
+            
+            try {
+                $result = $this->getResult($query, $fields);
+            } catch (Exception $ex) {
+                throw new Exception($ex->getMessage());
+            }
+            return $result;
+        }
+
+        public function buscarColaboradores($guiaId) {
+            $query = 'SELECT * FROM Guia_Colaborador WHERE guiaId = :guiaId';
+            $fields = array('guiaId' => $guiaId);
+            $result = [];
+            
+            try {
+                $result = $this->getResult($query, $fields);
+            } catch (Exception $ex) {
+                throw new Exception($ex->getMessage());
+            }
+            return $result;
+        }
     }
 
 ?>

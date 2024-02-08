@@ -67,6 +67,10 @@
     margin-left: 10px;
 }
 
+.cardGuia {
+    cursor: pointer;
+}
+
 .cardGuia .infoGuia {
     display: flex;
 }
