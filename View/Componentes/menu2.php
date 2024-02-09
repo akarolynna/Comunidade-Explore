@@ -15,9 +15,9 @@
     <header>
         <nav class="menu">
             <ul class="logo">
-                <li><img src="./../Public/Imagens/LogoExplore.png" alt="Logo"></li>
+                <li><a href="./pagina-inicial.php"><img src="./../Public/Imagens/LogoExplore.png" alt="Logo"></a></li>
                 <li>
-                    <h6><a>Comunidade-Explore</a></h6>
+                    <h6><a href="./pagina-inicial.php">Comunidade-Explore</a></h6>
                 </li>
             </ul>
             <ul class="menu-list ">
@@ -62,4 +62,3 @@
             </ul>
         </nav>
     </header>
-

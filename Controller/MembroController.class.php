@@ -71,7 +71,6 @@ class MembroController{
         $arquivo  = $_FILES['foto']['name'];
         $caminhoCompleto = $diretorioDestino . $arquivo;
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminhoCompleto)) {
-            // Retorna o caminho completo da foto após o upload bem-sucedido
             return $caminhoCompleto;
         } else {
             throw new Exception("Falha no upload da foto.");
@@ -81,7 +80,6 @@ class MembroController{
     
     public function logarMembro() {
         try {
-            // Obtém os dados do formulário
             $email = $_POST['email'];
             $senha = $_POST['senha'];
             $autenticado = $this->membroDao->autenticandoMembro($email, $senha);

@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    require_once '../Model/AreaContribuicao.enum.php';
-    require_once '../Model/Categoria.enum.php';
+session_start();
+require_once '../Model/AreaContribuicao.enum.php';
+require_once '../Model/Categoria.enum.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,20 +11,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidade Explore</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href='../Public/CSS/Menu.css'>
+    <link rel="stylesheet" href="../Public/CSS/Modal/modalCriarDiario.css">
+    <link rel="stylesheet" type="text/css" href="../Public/CSS/menu2.css">
     <link rel="stylesheet" href='../Public/CSS/CadastroGeral.css'>
 
 </head>
 
 <body class="pagina">
-    <?php
-        require_once './Componentes/menu.php';
-    ?>
+    <?php require_once './Componentes/menu2.php'; ?>
 
     <div class="blocoPrincipal">
         <h2 class="titulo">Crie um Guia de Viagem</h2>
@@ -42,8 +39,7 @@
                     <label class="label" for="inputCorPrincipal">Cor principal</label>
                     <div class="inputGroup">
                         <input class="form-control" id="inputCorPrincipal" value="#98C80B" readonly>
-                        <input type="color" class="form-control form-control-color" id="inputCorPrincipal"
-                            value="#98C80B" name="corPrincipal" required>
+                        <input type="color" class="form-control form-control-color" id="inputCorPrincipal" value="#98C80B" name="corPrincipal" required>
                     </div>
                 </div>
             </div>
@@ -135,13 +131,11 @@
             <div class="accordion mt-4" id="painelDesafios">
                 <div class="accordion-item desafio">
                     <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Desafio 1
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                        data-bs-parent="#painelDesafios">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#painelDesafios">
                         <div class="accordion-body">
                             <div class="inputContainer">
                                 <label class="label" for="inputTituloDesafio1">Título</label>
@@ -160,8 +154,7 @@
                             Desafio 2
                         </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                        data-bs-parent="#painelDesafios">
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#painelDesafios">
                         <div class="accordion-body">
                             <div class="inputContainer">
                                 <label class="label" for="inputTituloDesafio2">Título</label>
@@ -180,8 +173,7 @@
                             Desafio 3
                         </button>
                     </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#painelDesafios">
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#painelDesafios">
                         <div class="accordion-body">
                             <div class="inputContainer">
                                 <label class="label" for="inputTituloDesafio3">Título</label>
@@ -267,19 +259,16 @@
             <button class="btn btnPrimary" id="btnEditar">Editar</button>
         </div>
     </div>
+    <div class="modalDiarioViagem" id="modalEditarUsuario"></div>
+    <div id="overlay" class="overlay"></div>
 </body>
 
 <script src="../Public/JS/cadastroGuia.js"></script>
 <script src="../Public/JS/colaboradores.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="../Public/JS/opcoesDiario.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>

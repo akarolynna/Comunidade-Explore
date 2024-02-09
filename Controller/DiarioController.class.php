@@ -69,9 +69,6 @@ class DiarioController
         }
     }
 
-
-
-
     private function uploadFoto()
     {
         $diretorioDestino  = "../Public/Imagens/";
