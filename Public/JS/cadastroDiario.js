@@ -1,9 +1,16 @@
-function publicar(evt) {
-    evt.preventDefault();
+$('#btnCancelar').click(cancelar);
+$('#btnPublicar').click(publicar);
 
+function cancelar() {
+    history.back();
+}
+
+function publicar(evt) {
     const formCadastro = $('#formCadDirio');
     const controllerURL = "../Controller/DiarioController.class.php";
     const dados = new FormData($(formCadastro)[0]);
+
+    evt.preventDefault();
 
     $.ajax({
         type: "POST",
@@ -12,19 +19,28 @@ function publicar(evt) {
         data: dados,
         processData: false,
         contentType: false,
-        success: function (response) {
-            if (response.trim() === "Inserção feita com sucesso") {
-                window.location.href = 'pagina-de-sucesso.php';
-            } else {
-                alert("Falha ao inserir diário");
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error(xhr.responseText);
-        }
+        success: sucessoAoPublicar,
+        error: erroNaRequisicao
     });
 }
 
-$(document).ready(function () {
-    $('#btnPublicar').click(publicar);
-});
+function sucessoAoPublicar(response) {
+    console.log('SUCESSO!');
+    console.log(response);
+    if (response.success) {
+        alert("Inserção feita com sucesso");
+        // Limpa os campos do formulário
+        $('#formCadDirio')[0].reset();
+        // Redireciona para a página principal (substitua 'tela-principal.php' pelo URL correto)
+        window.location.href = '../View/pagina-inicial.php';
+    } else {
+        alert("Falha ao inserir diário");
+    }
+}
+
+function erroNaRequisicao(xhr, status, error) {
+    console.error('ERRO!');
+    console.error(xhr);
+    console.error(status);
+    console.error(error);
+}

@@ -15,7 +15,7 @@ class DiarioViagem
     private $tags = [];
     private $posts = [];
 
-    public function __construct($id, $foto, $titulo, $localizacao, MembroModel $criadorId)
+    public function __construct($id, $foto, $titulo, $localizacao, $criadorId)
     {
         $this->id = $id;
         $this->foto = $foto;
@@ -107,7 +107,7 @@ class DiarioViagem
         return $this->criadorId;
     }
 
-    public function setCriadorId(MembroModel $criadorId)
+    public function setCriadorId($criadorId)
     {
         $this->criadorId = $criadorId;
         return $this;

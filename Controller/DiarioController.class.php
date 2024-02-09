@@ -49,20 +49,28 @@ class DiarioController
     public function criarDiario()
     {
         try {
+            session_start(); // Inicia a sessão para conseguir pegar o $_SESSION['usuario']['id'];
+
             $fotoCaminho = $this->uploadFoto();
 
             extract($_POST);
             $diario = new DiarioViagem(0, $fotoCaminho, $titulo, $localizacao, $_SESSION['usuario']['id']);
             $resultado = $this->diarioDao->cadastrarDiarioViagem($diario);
             if ($resultado) {
-                echo  "Inserção feita com sucesso";
+                http_response_code(200);
+                echo json_encode(array('success' => true));
             } else {
-                echo "Falha ao inserir Diário";
+                http_response_code(400);
+                echo json_encode(array('success' => false, 'message' => 'Falha ao inserir Diário'));
             }
         } catch (Exception $ex) {
-            throw new Exception("Erro ao processar requisição" . $ex->getMessage() . '<br>', 1);
+            http_response_code(500);
+            echo json_encode(array('success' => false, 'message' => 'Erro ao processar requisição: ' . $ex->getMessage()));
         }
     }
+
+
+
 
     private function uploadFoto()
     {
