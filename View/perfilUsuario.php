@@ -79,7 +79,7 @@ session_start();
                 <hr>
             </div>
             <div class="cartoes">
-                <div class="card1">
+                <!-- <div class="card1">
                     <p>Diário de Viagem - Costa Rica 2024</p>
                 </div>
                 <div class="card2">
@@ -106,7 +106,7 @@ session_start();
                 <div class="card9">
                     <p>Diário de Viagem - Alemanha 2023</p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
