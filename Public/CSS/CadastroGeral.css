@@ -1,30 +1,27 @@
 @import './Cores.css';
 
-.pagina {
+
+.blocoPrincipal {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.blocoPrincipal {
-    width: 70%;
     padding: 40px 5%;
     overflow: hidden;
-  
+
 }
 
 .titulo {
     font-size: 28px;
     /* color: var(--cor-cinza-escuro); */
-    color:var(--cor-azul-escuro);
+    color: var(--cor-azul-escuro);
     font-weight: normal;
     margin-bottom: 20px;
 }
 
 .label {
     /* color: var(--cor-cinza-escuro); */
-    color:var(--cor-azul-escuro);
+    color: var(--cor-azul-escuro);
     margin-top: 10px;
 }
 
@@ -32,7 +29,7 @@
     display: flex;
 }
 
-.inputGroup > :first-child {
+.inputGroup> :first-child {
     margin-right: 10px;
 }
 
@@ -42,13 +39,14 @@
 
 .checkLabel {
     /* color: var(--cor-cinza-escuro); */
-    color:var(--cor-azul-escuro);
+    color: var(--cor-azul-escuro);
 }
 
 .buttonContainer .btnPrimary {
     color: white;
     border-color: var(--cor-padrao);
     background-color: var(--cor-padrao);
+
     &:hover {
         background-color: #89b30e;
     }
@@ -58,6 +56,7 @@
     color: var(--cor-padrao);
     border-color: var(--cor-padrao);
     background-color: white;
+
     &:hover {
         background-color: var(--cor-cinza-extra-claro);
     }
@@ -67,6 +66,7 @@
     color: var(--cor-padrao);
     border-color: none;
     background-color: white;
+
     &:hover {
         background-color: var(--cor-cinza-extra-claro);
     }
@@ -74,9 +74,9 @@
 
 legend {
     /* color: var(--cor-cinza-extra-escuro); */
-    color:var(--cor-azul-escuro);
-}
-.cadastroViagem{
-    margin-top: 30px;
+    color: var(--cor-azul-escuro);
 }
 
+.cadastroViagem {
+    margin-top: 30px;
+}
