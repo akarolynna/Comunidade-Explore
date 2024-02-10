@@ -71,7 +71,7 @@ session_start();
                 <ul>
                     <li><button type="button" id="btnMinhasContribuicoes">Minhas Contribuições</button></li>
                     <li><button type="button" id="btnDiarioViagem">Diários de Viagem</button></li>
-                    <li><button type="button" id="btnMeusDesafios">Meus Desafios</button></li>
+                    <li><button type="button" id="btnMeusGuias">Meus Guias</button></li>
                     <li><button type="button" id="btnMeusFavoritos">Meus Eventos</button></li>
                     <li><button type="button" id="btnSalvos">Salvos</button></li>
                 </ul>

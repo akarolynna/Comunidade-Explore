@@ -115,7 +115,7 @@ article .apresentacao-usuario .apresentacao p {
 article .containnerCards {
     margin-left: 50px;
     margin-right: 60px;
-    margin-top: -20px;
+    margin-top: -10px;
     grid-column: 2;
     grid-row: 2;
 }
@@ -196,16 +196,32 @@ article .cards .cartoes p {
     border: none;
     margin-top: 25px;
     background-color: var(--cor-padrao);
-    background-image: url('../Imagens/diarioViagemUserProfile.png');
+    background-image: url('../Imagens/PerfilUsuario/diarioViagemUserProfile.png');
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: center top;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     align-items: center;
 }
 
+.btnAddGuias{
+    height: 168px;
+    width: 140px;
+    border-radius: 16px;
+    border: none;
+    margin-top: 25px;
+    background-color: var(--cor-padrao);
+    background-image: url('../Imagens/PerfilUsuario/meusGuiasUserProfile.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center top;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
 .spanAddDiario {
     margin-bottom: 20px;
     padding: 3px;
