@@ -222,6 +222,23 @@ article .cards .cartoes p {
     justify-content: flex-end;
     align-items: center;
 }
+
+.btnAddEventos{
+    height: 168px;
+    width: 140px;
+    border-radius: 16px;
+    border: none;
+    margin-top: 25px;
+    background-color: var(--cor-padrao);
+    background-image: url('../Imagens/PerfilUsuario/eventoUserProfile.png');
+    background-size: 80% auto;
+    background-repeat: no-repeat;
+    background-position: center top;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
 .spanAddDiario {
     margin-bottom: 20px;
     padding: 3px;
