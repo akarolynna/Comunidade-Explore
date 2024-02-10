@@ -9,7 +9,14 @@ try {
 } catch (Exception $ex) {
     echo $ex;
 }
+// $diarioController = new DiarioController();
 
+// // Chama a função buscarDiario()
+// $diarios = $diarioController->buscarDiario();
+
+// // Imprime os dados retornados
+// header('Content-Type: application/json');
+// echo $diarios;
 class DiarioController
 {
     private $diarioDao;
@@ -25,7 +32,7 @@ class DiarioController
             case 'GET':
                 isset($_GET['diarioId'])
                     ? $this->buscarPorId()
-                    : $this->buscar();
+                    : $this->buscarDiario();
                 break;
             case 'POST':
                 $this->criarDiario();
@@ -42,12 +49,36 @@ class DiarioController
         echo json_encode($diario);
     }
 
-    private function buscar()
-    {
-    }
+    // public function buscarDiario()
+    // {
+    //     if (session_status() == PHP_SESSION_NONE) {
+    //         session_start();
+    //     }
 
-    public function criarDiario()
+    //     $criador_id = $_SESSION['usuario']['id'];
+    //     $diarios = $this->diarioDao->exibirDiariosViagem($criador_id);
+    //     return json_encode($diarios);
+        
+    // }
+    public function buscarDiario()
     {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        try {
+            $criador_id = $_SESSION['usuario']['id'];
+            $diarios = $this->diarioDao->exibirDiariosViagem($criador_id);
+            echo json_encode($diarios);
+        } catch (Exception $ex) {
+            echo '<script>console.error("' . $ex->getMessage() . '");</script>';
+            // Retorna uma string vazia para indicar que ocorreu um erro
+            return '';
+        }
+    }
+    
+
+    public function criarDiario(){
         try {
             session_start(); // Inicia a sessão para conseguir pegar o $_SESSION['usuario']['id'];
 

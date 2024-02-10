@@ -28,6 +28,8 @@
             return $result;
         }
 
+      
+
         public function cadastrarDiarioViagem(DiarioViagem $diarioViagem){
             $options = [
                 'foto' => $diarioViagem->getFoto(),
@@ -45,6 +47,21 @@
                 throw new Exception("Erro ao tentar adicionar usuário no Banco de Dados <br>" . $ex->getMessage());
             }
         }
+
+        public function exibirDiariosViagem($criadorId) {
+            $query = "SELECT * FROM DiarioViagem WHERE criador_id = :criador_id";
+            $options = [
+                'criador_id' => $criadorId
+            ];
+        
+            try {
+                $this->connection->connection();
+                $statement = $this->connection->prepareStatement($query, $options);
+                return $this->connection->executeStatement($statement);
+            } catch (Exception $ex) {
+                throw new Exception("Erro ao tentar recuperar diários de viagem do banco de dados: " . $ex->getMessage());
+            }
+        }        
 
     }
 

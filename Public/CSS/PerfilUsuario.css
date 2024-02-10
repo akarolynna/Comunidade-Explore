@@ -154,27 +154,31 @@ article .cards .menuHorizontal hr {
     border-bottom: 1px solid var(--cor-cinza-claro);
 }
 
-article .cards .cartoes {
+/* article .cards .cartoes { */
+.containnerCards{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     height: 340px;
     overflow-y: auto;
 }
-
-article .cards .cartoes .card1 {
-    height: 168px;
-    border-radius: 16px;
+.card {
+    height: 168px!important;
+    border-radius: 16px !important;
     margin-top: 25px;
     margin-left: 22px;
     width: 140px;
-    background-image: url('../Imagens/LoginImagem.jpg');
-    background-size: 120%;
+    border: none!important;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
 
-article .cards .cartoes p {
+
+.cardTitulo{
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-align: center;
