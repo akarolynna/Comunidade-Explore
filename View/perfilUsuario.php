@@ -69,15 +69,16 @@ session_start();
         <div class="cards">
             <div class="menuHorizontal active">
                 <ul>
-                    <li><a href="#">Minhas Contribuições</a></li>
-                    <li><a href="#">Diários de Viagem</a></li>
-                    <li><a href="#">Meus Desafios</a></li>
-                    <li><a href="#">Meus Eventos</a></li>
-                    <li><a href="#">Salvos</a></li>
+                    <li><button type="button" id="btnMinhasContribuicoes">Minhas Contribuições</button></li>
+                    <li><button type="button" id="btnDiarioViagem">Diários de Viagem</button></li>
+                    <li><button type="button" id="btnMeusDesafios">Meus Desafios</button></li>
+                    <li><button type="button" id="btnMeusFavoritos">Meus Eventos</button></li>
+                    <li><button type="button" id="btnSalvos">Salvos</button></li>
                 </ul>
                 <hr>
             </div>
-            <div class="cartoes">
+            <div class="containnerCards" id="containnerCards">
+
                 <!-- <div class="card1">
                     <p>Diário de Viagem - Costa Rica 2024</p>
                 </div>
@@ -113,9 +114,10 @@ session_start();
     <div class="modalEditarUsuario" id="modalEditarUsuario"></div>
     <div class="modalDiarioViagem" id="modalEditarUsuario"></div>
     <div id="overlay" class="overlay"></div>
-    <script src="../Public/JS/modalFormEdit-usuario.js"></script>
-</body>
 
+</body>
+<script src="../Public/JS/modalFormEdit-usuario.js"></script>
+<script src="../Public/JS/menu-perfilUsuario.js"></script>
 <script src="../Public/JS/opcoesDiario.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -1,3 +1,5 @@
+@import './Cores.css';
+
 article {
     display: grid;
     grid-template-columns: 25% 75%;
@@ -32,7 +34,7 @@ article .informacoes-usuario {
 }
 
 article .informacoes-usuario .tituloInformacoesUsuario h3 {
-    color: #253858;
+    color: var(--cor-azul-escuro);
     font-size: 24px;
     line-height: 1.5;
     margin-left: 30px;
@@ -48,7 +50,7 @@ article .informacoes-usuario .grupoInformacoes {
 }
 
 article .informacoes-usuario .grupoInformacoes label {
-    color: #253858;
+    color: var(--cor-azul-escuro);
     font-size: 17.8px;
 }
 
@@ -66,7 +68,7 @@ article .grupoInformacoes .botaoEditarPerfil {
     padding: 5px 16px;
     font-size: 14px;
     font-weight: bold;
-    color: #253858;
+    color: var(--cor-azul-escuro);
     border: 1px solid lightgray;
     border-radius: 4px;
     margin-right: 23px;
@@ -83,7 +85,7 @@ article .apresentacao-usuario {
 
 article .apresentacao-usuario .titulo-apresentacao h1 {
     font-size: 27px;
-    color: #253858;
+    color: var(--cor-azul-escuro);
     margin-left: 50px;
     margin-top: 20px;
     margin-bottom: 0;
@@ -94,7 +96,7 @@ article .apresentacao-usuario .botaoTipoAventureiro button {
     margin-left: 50px;
     margin-top: 10px;
     color: white;
-    background-color: #98C80B;
+    background-color: var(--cor-padrao);
     height: 23px;
     border: none;
     border-radius: 8px;
@@ -110,7 +112,7 @@ article .apresentacao-usuario .apresentacao p {
     line-height: 30px;
 }
 
-article .cards {
+article .containnerCards {
     margin-left: 50px;
     margin-right: 60px;
     margin-top: -20px;
@@ -129,18 +131,27 @@ article .cards .menuHorizontal li {
     float: left;
 }
 
-article .cards .menuHorizontal a {
+article .cards .menuHorizontal button {
     display: block;
-    color: #253858;
+    color: var(--cor-azul-escuro);
     font-size: 16px;
     text-align: center;
     padding: 14px 28px;
     text-decoration: none;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+article .cards .menuHorizontal button:hover {
+    color: var(--cor-padrao);
+    border: none;
+    background-color: transparent;
 }
 
 article .cards .menuHorizontal hr {
     margin-top: 0;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid var(--cor-cinza-claro);
 }
 
 article .cards .cartoes {
@@ -172,103 +183,32 @@ article .cards .cartoes p {
     font-size: 15px;
 }
 
-article .cards .cartoes .card2 {
-    height: 168px;
-    border-radius: 16px;
-    margin-top: 25px;
-    margin-left: 22px;
-    width: 140px;
-    background-image: url('../Imagens/Italia.jpg');
-    background-size: 120%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-article .cards .cartoes .card3 {
-    height: 168px;
-    border-radius: 16px;
-    margin-top: 25px;
-    margin-left: 22px;
-    width: 140px;
-    background-image: url('../Imagens/NovaYork.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-article .cards .cartoes .card4 {
-    height: 168px;
-    border-radius: 16px;
-    margin-top: 25px;
-    margin-left: 22px;
-    width: 140px;
-    background-image: url('../Imagens/Portugal.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-article .cards .cartoes .card5 {
-    height: 168px;
-    border-radius: 16px;
-    margin-top: 25px;
-    margin-left: 22px;
-    width: 140px;
-    background-image: url('../Imagens/Israel.jpg');
-    background-size: cover;
-    /* Alterado para cover */
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-article .cards .cartoes .card6 {
-    height: 168px;
-    border-radius: 16px;
-    margin-top: 25px;
-    margin-left: 22px;
-    width: 140px;
-    background-image: url('../Imagens/Canada.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-article .cards .cartoes .card7 {
-    height: 168px;
-    border-radius: 16px;
-    margin-top: 25px;
-    margin-left: 22px;
-    width: 140px;
-    background-image: url('../Imagens/China.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-article .cards .cartoes .card8 {
-    height: 168px;
-    border-radius: 16px;
-    margin-top: 25px;
-    margin-left: 22px;
-    width: 140px;
-    background-image: url('../Imagens/Curitiba.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-article .cards .cartoes .card9 {
-    height: 168px;
-    border-radius: 16px;
-    margin-top: 25px;
-    margin-left: 22px;
-    width: 140px;
-    background-image: url('../Imagens/Alemanha.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+/* Restante dos estilos das cartões aqui */
 
 .modalEditarUsuario {
-    background-color: #98C80B;
+    background-color: var(--cor-padrao);
+}
+
+.btnAddDiarioViagem {
+    height: 168px;
+    width: 140px;
+    border-radius: 16px;
+    border: none;
+    margin-top: 25px;
+    background-color: var(--cor-padrao);
+    background-image: url('../Imagens/diarioViagemUserProfile.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center top;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: center;
+}
+
+.spanAddDiario {
+    margin-bottom: 20px;
+    padding: 3px;
+    color: white;
+    font-weight: bold;
 }
