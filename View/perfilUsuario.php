@@ -10,6 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Public/CSS/PerfilUsuario.css">
     <link rel="stylesheet" type="text/css" href="../Public/CSS/modalEditarUsuario.css">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Meu Perfil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -79,34 +80,6 @@ session_start();
             </div>
             <div class="containnerCards" id="containnerCards">
 
-                <!-- <div class="card1">
-                    <p>Diário de Viagem - Costa Rica 2024</p>
-                </div>
-                <div class="card2">
-                    <p>Diário de Viagem - Itália 2020</p>
-                </div>
-                <div class="card3">
-                    <p>Diário de Viagem - NovaYork 2020</p>
-                </div>
-                <div class="card4">
-                    <p>Diário de Viagem - Portugal 2021</p>
-                </div>
-                <div class="card5">
-                    <p>Diário de Viagem - Israel 2021</p>
-                </div>
-                <div class="card6">
-                    <p>Diário de Viagem - Canadá 2021</p>
-                </div>
-                <div class="card7">
-                    <p>Diário de Viagem - China 2022</p>
-                </div>
-                <div class="card8">
-                    <p>Diário de Viagem - Curitiba 2023</p>
-                </div>
-                <div class="card9">
-                    <p>Diário de Viagem - Alemanha 2023</p>
-                </div>
-            </div> -->
 
             </div>
 

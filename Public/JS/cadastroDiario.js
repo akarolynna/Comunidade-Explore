@@ -31,8 +31,7 @@ function sucessoAoPublicar(response) {
         alert("Inserção feita com sucesso");
         // Limpa os campos do formulário
         $('#formCadDirio')[0].reset();
-        // Redireciona para a página principal (substitua 'tela-principal.php' pelo URL correto)
-        window.location.href = '../View/pagina-inicial.php';
+        history.back(); //volta ao local onde estávamos anteriormente
     } else {
         alert("Falha ao inserir diário");
     }

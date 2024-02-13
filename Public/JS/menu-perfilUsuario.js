@@ -5,9 +5,8 @@ $("#btnMeusGuias").click(exibirMeusGuias);
 $("#btnMeusEventos").click(exibirMeusEventos);
 $("#btnSalvos").click(exibirSalvos);
 
-//Declarando as variaveis para o carregamento gradual dos cards
-var fotosCarregadas = 0; // Contador para controlar o número de fotos já carregadas
-var fotosPorCarregamento = 5; // Número de fotos a serem carregadas a cada vez
+
+//Requisições AJAX
 function exibirDiariosViagens() {
   addbtnAddDiario();
 
@@ -20,43 +19,22 @@ function exibirDiariosViagens() {
   });
 }
 
-function criandoCards(data) {
-  if (data.length > 0) {
-    var totalDeFotos = data.length;
-    var fotosRestantes = totalDeFotos - fotosCarregadas;
-    var fotosParaCarregar = Math.min(fotosPorCarregamento, fotosRestantes);
-
-    for (var i = fotosCarregadas; i < fotosCarregadas + fotosParaCarregar; i++) {
-      var diario = data[i];
-      var $card = $('<button>').addClass('card');
-      $card.css('background-image', 'url(' + diario.foto + ')');
-
-      var $titulo = $('<p>').addClass('cardTitulo').text(diario.titulo);
-      $card.append($titulo);
-
-      $('#containnerCards').append($card);
-    }
-
-    fotosCarregadas += fotosParaCarregar;
-
-    // Se ainda houver fotos restantes, carregue mais ao rolar a página
-    if (fotosCarregadas < totalDeFotos) {
-      $(window).on('scroll', function () {
-        if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-          criandoCards(data); // Carrega mais fotos
-        }
-      });
-    }
-  }
-}
-
 function exibirMeusGuias() {
   btnAddGuias();
 }
 
+
 function exibirMeusEventos() {
   btnAddEventos();
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: '../Controller/EventoController.class.php',
+    success: criandoCardsEvento,
+    error: erroNaRequisicao
+  });
 }
+
 
 function exibirMinhasContribuicoes() {
   $("#containnerCards").empty();
@@ -65,6 +43,51 @@ function exibirMinhasContribuicoes() {
 function exibirSalvos() {
   $("#containnerCards").empty();
 }
+
+
+
+
+//Adicionando Cards
+function criandoCards(data) {
+  if (data.length > 0) {
+    $.each(data, function (index, diario) {
+      var $card = $('<div>').addClass('card');
+      $card.css('background-image', 'url(' + diario.foto + ')');
+
+      var $titulo = $('<p>').addClass('cardTitulo').text(diario.titulo);
+      $card.append($titulo);
+
+      $('#containnerCards').append($card);
+    });
+  }
+}
+
+
+function criandoCardsEvento(data) {
+  console.log("Dados recebidos:", data);
+  if (data && data.length > 0) {
+    $.each(data, function (index, evento) {
+      var $card = $('<div>').addClass('cardEvento');
+      $card.css('background-image', 'url(' + evento.fotoCapa + ')');
+
+      var $titulo = $('<p>').addClass('cardTituloEventos').text(evento.titulo);
+      $card.append($titulo);
+
+      var $iconeCalendario = $('<img>').attr('src', '../Public/Imagens/calendario.png').addClass('iconeCalendario');
+      var $dataInicio = $('<p>').addClass('textoTag').text(evento.dataInicio);
+      var $divRodape = $('<div>').addClass('tag');
+      $divRodape.append($iconeCalendario);
+      $divRodape.append($dataInicio);
+      $card.append($divRodape);
+
+      $('#containnerCards').append($card);
+    });
+  } else {
+    console.warn("Nenhum dado de evento recebido.");
+  }
+}
+
+
 
 // funções de botões para adicionar elementos
 function addbtnAddDiario() {
@@ -93,6 +116,8 @@ function btnAddEventos() {
   btnAddEventos.click(redirecionarAddEvento);
   $("#containnerCards").prepend(btnAddEventos);
 }
+
+
 
 // funções de redirecionamento
 function redirecionandoAddDiarios() {
@@ -123,13 +148,11 @@ function redirecionarAddEvento() {
 //   }
 // }
 
-
-
 // Erro na Requisição
-
 function erroNaRequisicao(xhr, status, error) {
   console.error('ERRO!');
   console.error('XHR:', xhr);
   console.error('Status:', status);
   console.error('Erro:', error);
 }
+

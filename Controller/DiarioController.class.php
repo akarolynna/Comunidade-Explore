@@ -58,14 +58,14 @@ class DiarioController
     //     $criador_id = $_SESSION['usuario']['id'];
     //     $diarios = $this->diarioDao->exibirDiariosViagem($criador_id);
     //     return json_encode($diarios);
-        
+
     // }
     public function buscarDiario()
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-    
+
         try {
             $criador_id = $_SESSION['usuario']['id'];
             $diarios = $this->diarioDao->exibirDiariosViagem($criador_id);
@@ -76,9 +76,10 @@ class DiarioController
             return '';
         }
     }
-    
 
-    public function criarDiario(){
+
+    public function criarDiario()
+    {
         try {
             session_start(); // Inicia a sessão para conseguir pegar o $_SESSION['usuario']['id'];
 
@@ -102,7 +103,7 @@ class DiarioController
 
     private function uploadFoto()
     {
-        $diretorioDestino  = "../Public/Imagens/";
+        $diretorioDestino  = "../Public/Imagens/fotosDiarioViagem/";
         $arquivo  = $_FILES['foto']['name'];
         $caminhoCompleto = $diretorioDestino . $arquivo;
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminhoCompleto)) {

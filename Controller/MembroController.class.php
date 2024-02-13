@@ -6,16 +6,19 @@ try {
     $membroController = new MembroController();
     $membroController->verificaAcao();
 } catch (Exception $ex) {
-    echo "Erro ao autenticar o membro: " . $ex->getMessage(). '<br>';
+    echo "Erro ao autenticar o membro: " . $ex->getMessage() . '<br>';
 }
 
-class MembroController{
+class MembroController
+{
     private $membroDao;
-    public function __construct(){
+    public function __construct()
+    {
         $this->membroDao = new MembroDao();
     }
 
-    public function verificaAcao(){
+    public function verificaAcao()
+    {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST':
                 if (!isset($_POST['_acao'])) {
@@ -25,7 +28,7 @@ class MembroController{
                 }
                 break;
             case 'GET':
-                isset($_GET['membroId']) 
+                isset($_GET['membroId'])
                     ? $this->buscarMembroPorId()
                     : $this->buscarMembros();
                 break;
@@ -34,7 +37,8 @@ class MembroController{
         }
     }
 
-    private function verificaAcaoTipoPost($_acao){
+    private function verificaAcaoTipoPost($_acao)
+    {
         switch ($_acao) {
             case 'cadastro':
                 $this->cadastrarMembro();
@@ -48,7 +52,8 @@ class MembroController{
         }
     }
 
-    public function cadastrarMembro(){
+    public function cadastrarMembro()
+    {
         try {
             $fotoCaminho = $this->uploadFoto();
 
@@ -62,12 +67,13 @@ class MembroController{
                 echo "Falha na inserção.";
             }
         } catch (Exception $ex) {
-            throw new Exception("Erro no Controller ao tentar realizar o cadastro " . $ex->getMessage(). '<br>', 0);
+            throw new Exception("Erro no Controller ao tentar realizar o cadastro " . $ex->getMessage() . '<br>', 0);
         }
     }
 
-    private function uploadFoto(){
-        $diretorioDestino  = "../Public/Imagens/";
+    private function uploadFoto()
+    {
+        $diretorioDestino  = "../Public/Imagens/fotosCadastroMembro/";
         $arquivo  = $_FILES['foto']['name'];
         $caminhoCompleto = $diretorioDestino . $arquivo;
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminhoCompleto)) {
@@ -77,8 +83,9 @@ class MembroController{
         }
     }
 
-    
-    public function logarMembro() {
+
+    public function logarMembro()
+    {
         try {
             $email = $_POST['email'];
             $senha = $_POST['senha'];
@@ -95,28 +102,29 @@ class MembroController{
         }
     }
 
-    public function iniciarSessao($email){
+    public function iniciarSessao($email)
+    {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
         $_SESSION['email'] = $email;
-        $usuarioDoBanco = $this->membroDao->consultarDadosMembro($email);   
+        $usuarioDoBanco = $this->membroDao->consultarDadosMembro($email);
         $_SESSION['usuario'] = $usuarioDoBanco;
-       
+
         $paginaInicial = "../View/pagina-inicial.php";
         header("Location: $paginaInicial");
-      
+
         exit();
     }
-    private function buscarMembros() {
+    private function buscarMembros()
+    {
         $membros = $this->membroDao->buscarMembros();
         echo json_encode($membros);
     }
 
-    public function buscarMembroPorId() {
+    public function buscarMembroPorId()
+    {
         $membro = $this->membroDao->buscarMembroPorId($_GET['membroId']);
         echo json_encode($membro);
     }
-
 }
-?>

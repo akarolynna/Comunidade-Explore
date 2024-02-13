@@ -6,6 +6,7 @@ article {
     margin-top: 25px;
     margin-left: 15px;
     margin-right: 15px;
+    margin-bottom: 20px;
 }
 
 .imagem-usuario {
@@ -155,20 +156,21 @@ article .cards .menuHorizontal hr {
 }
 
 /* article .cards .cartoes { */
-.containnerCards{
+.containnerCards {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     height: 340px;
     overflow-y: auto;
 }
+
 .card {
-    height: 168px!important;
+    height: 168px !important;
     border-radius: 16px !important;
     margin-top: 25px;
     margin-left: 22px;
     width: 140px;
-    border: none!important;
+    border: none !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -178,7 +180,7 @@ article .cards .menuHorizontal hr {
 }
 
 
-.cardTitulo{
+.cardTitulo {
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -199,6 +201,7 @@ article .cards .menuHorizontal hr {
     border-radius: 16px;
     border: none;
     margin-top: 25px;
+    margin-left: 22px;
     background-color: var(--cor-padrao);
     background-image: url('../Imagens/PerfilUsuario/diarioViagemUserProfile.png');
     background-size: 100% auto;
@@ -210,7 +213,7 @@ article .cards .menuHorizontal hr {
     align-items: center;
 }
 
-.btnAddGuias{
+.btnAddGuias {
     height: 168px;
     width: 140px;
     border-radius: 16px;
@@ -227,7 +230,7 @@ article .cards .menuHorizontal hr {
     align-items: center;
 }
 
-.btnAddEventos{
+.btnAddEventos {
     height: 168px;
     width: 140px;
     border-radius: 16px;
@@ -242,10 +245,68 @@ article .cards .menuHorizontal hr {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    box-sizing: border-box;
 }
+
 .spanAddDiario {
     margin-bottom: 20px;
     padding: 3px;
     color: white;
     font-weight: bold;
+    box-sizing: border-box;
+}
+
+.cardEvento {
+    position: relative;
+    width: 140px;
+    height: 168px;
+    border-radius: 16px;
+    margin-top: 25px;
+    margin-left: 22px;
+    border: none;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTituloEventos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+.tag {
+    background-color: rgba(184, 184, 184, 0.6);
+    display: flex;
+    align-items: center;
+    /* Adicionado para alinhar os elementos verticalmente */
+    padding: 5px 10px;
+    margin-top: auto;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.textoTag {
+    margin-top: 0;
+    color: white;
+    font-size: 14px;
+    margin-left: 2px;
+    margin-bottom: 0;
+    
+}
+
+.iconeCalendario {
+
+    width: 20px;
+    height: 20px;
 }
