@@ -29,6 +29,8 @@
                             $this->buscarDesafios();
                         } else if(isset($_GET['acao']) && $_GET['acao'] == 'buscarColaboradores') {
                             $this->buscarColaboradores();
+                        }else{
+                        $this->exibirGuiasUsuario();
                         }
                     }
                     break;
@@ -52,6 +54,22 @@
         private function buscarPorId() {
             $guia = $this->guiaDao->buscarPorId($_GET['guiaId']);
             echo json_encode($guia);
+        }
+
+        private function exibirGuiasUsuario(){
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+    
+            try {
+                $criador_id = $_SESSION['usuario']['id'];
+                $guia = $this->guiaDao->exibirGuiaUsuario($criador_id);
+                echo json_encode($guia);
+            } catch (Exception $ex) {
+                echo '<script>console.error("' . $ex->getMessage() . '");</script>';
+                // Retorna uma string vazia para indicar que ocorreu um erro
+                return '';
+            }
         }
 
         private function getCaminhoFoto($nomeDestino, $nomeArquivo, $caminhoAntigo) {

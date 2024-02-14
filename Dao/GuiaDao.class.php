@@ -51,6 +51,21 @@
             return $result;
         }
 
+        public function exibirGuiaUsuario($criadorId){
+            $query = "SELECT * FROM Guia WHERE criador_id = :criador_id";
+            $options = [
+                'criador_id' => $criadorId
+            ];
+        
+            try {
+                $this->connection->connection();
+                $statement = $this->connection->prepareStatement($query, $options);
+                return $this->connection->executeStatement($statement);
+            } catch (Exception $ex) {
+                throw new Exception("Erro ao tentar recuperar guias de viagem do banco de dados: " . $ex->getMessage());
+            }
+        }        
+
         public function cadastrarGuia($guia) {
             $query = "INSERT INTO Guia(
                 nomeDestino,

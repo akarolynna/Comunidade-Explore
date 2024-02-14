@@ -21,6 +21,13 @@ function exibirDiariosViagens() {
 
 function exibirMeusGuias() {
   btnAddGuias();
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: '../Controller/GuiaController.class.php',
+    success: criandoCardsGuia,
+    error: erroNaRequisicao
+  });
 }
 
 
@@ -61,6 +68,21 @@ function criandoCards(data) {
     });
   }
 }
+
+function criandoCardsGuia(data) {
+  if (data.length > 0) {
+    $.each(data, function (index, diario) {
+      var $card = $('<div>').addClass('card');
+      $card.css('background-image', 'url(' + guia.fotoCapa + ')');
+
+      var $titulo = $('<p>').addClass('cardTitulo').text(diario.titulo);
+      $card.append($titulo);
+
+      $('#containnerCards').append($card);
+    });
+  }
+}
+
 
 
 function criandoCardsEvento(data) {
