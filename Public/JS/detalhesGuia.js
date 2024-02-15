@@ -22,6 +22,9 @@ function sucessoAoBuscarGuia(response) {
     if(!$.isEmptyObject(response)) {
         $('#botaoSeguir').css('display', 'none');
         $('#botaoEditar').css('display', 'block');
+        $('.customBackgroundColor').css('background-color', response[0].corPrincipal);
+        $('.customBorderColor').css('border', `1px solid ${response[0].corPrincipal}`);
+        $('.customColor').css('color', response[0].corPrincipal);
 
         $('#nomeDestino').html(response[0].nomeDestino);
         $('#localizacao').html(response[0].localizacao);
