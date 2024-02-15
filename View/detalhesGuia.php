@@ -106,7 +106,7 @@
         </section>
         <section class="secaoDesafio">
             <h2 class="subtitulo">Desafios</h2>
-            <div class="desafiosContainer">
+            <div class="desafiosContainer" id="desafiosContainer">
                 <div class="desafioContent desafioCanto customBorderColor customColor">
                     <h3 class="desafioTitulo">Por do sol dourado</h3>
                     <p class="desafioDescricao">
