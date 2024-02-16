@@ -106,26 +106,7 @@
         </section>
         <section class="secaoDesafio">
             <h2 class="subtitulo">Desafios</h2>
-            <div class="desafiosContainer" id="desafiosContainer">
-                <div class="desafioContent desafioCanto customBorderColor customColor">
-                    <h3 class="desafioTitulo">Por do sol dourado</h3>
-                    <p class="desafioDescricao">
-                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
-                    </p>
-                </div>
-                <div class="desafioContent desafioCentro customBackgroundColor">
-                    <h3 class="desafioTitulo">Por do sol dourado</h3>
-                    <p class="desafioDescricao">
-                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
-                    </p>
-                </div>
-                <div class="desafioContent desafioCanto customBorderColor customColor">
-                    <h3 class="desafioTitulo">Por do sol dourado</h3>
-                    <p class="desafioDescricao">
-                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
-                    </p>
-                </div>
-            </div>
+            <div class="desafiosContainer" id="desafiosContainer"></div>
         </section>
     </div>
 </body>
@@ -133,7 +114,7 @@
 <footer class="rodape customBackgroundColor">
     <div class="tituloContainer">
         <img src="../Public/Imagens/LogoExplore.png" alt="LogoExplore - bussola" class="tituloImagem">
-        <h3 class="titulo">Explore - Costa Dourada</h3>
+        <h3 class="titulo" id="tituloRodape"></h3>
     </div>
     <div class="conteudoContainer">
         <div class="conteudo infoNumerosContainer">
@@ -150,8 +131,8 @@
         <div class="conteudo infoPessoas">
             <span>Criado por:</span>
             <div class="criadorContainer">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <span class="nomeCriador">Anna Karolynna</span>
+                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem" id="fotoCriador">
+                <span class="nomeCriador" id="nomeCriador"></span>
             </div>
             <span>Colaboradores:</span>
             <div class="colaboradores">

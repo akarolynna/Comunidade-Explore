@@ -31,6 +31,7 @@ function sucessoAoBuscarGuia(response) {
         $('#clima').html(`Sobre ${response[0].clima}`);
         $('#epocaVisita').html(`Sobre ${response[0].epocaVisita}`);
         $('#culturaHistoria').html(`Sobre ${response[0].culturaHistoria}`);
+        $('#tituloRodape').html(`Explore - ${response[0].nomeDestino}`);
 
         const fotos = JSON.parse(response[0].fotosSecundarias);
         let i = 0;
@@ -39,8 +40,8 @@ function sucessoAoBuscarGuia(response) {
             $(`#foto${i}`).attr("src", foto);
         });
 
-        console.log(response[0].corPrincipal)
         buscarDesafiosGuia(response[0].id, response[0].corPrincipal);
+        buscarCriador(response[0].criadorId);
 
     } else {
         $('#publicacoes').html('Oops! Não encontramos esse guia.')
@@ -73,7 +74,6 @@ function buscarDesafiosGuia(guiaId, corPrincipal) {
                         </div>
                     `);
                 });
-                console.log(corPrincipal)
                 personalizarCor(corPrincipal);
             } else {
                 $('#painelDesafios').html('Esse guia não possui desafios');
@@ -81,6 +81,26 @@ function buscarDesafiosGuia(guiaId, corPrincipal) {
         },
         error: erroNaRequisicao
     });
+}
+
+function buscarCriador(criadorId) {
+    $.ajax({
+        url: `../Controller/MembroController.class.php?membroId=${criadorId}`,
+        type: 'GET',
+        dataType: 'JSON',
+        success: sucessoAoBuscarCriador,
+        error: erroNaRequisicao
+    });
+}
+
+function sucessoAoBuscarCriador(response) {
+    console.log(response);
+    if (!$.isEmptyObject(response)) {
+        $('#nomeCriador').html(response[0].email);
+        $('#fotoCriador').attr('src', response[0].foto);
+    } else {
+        $('#nomeCriador').html('Erro ao buscar nome')
+    }
 }
 
 function personalizarCor(corPrincipal) {

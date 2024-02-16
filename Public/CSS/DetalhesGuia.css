@@ -286,7 +286,7 @@
 }
 
 .rodape .infoPessoas {
-    width: 40%;
+    min-width: 40%;
 }
 
 .rodape .criadorContainer {
@@ -300,6 +300,7 @@
 
 .rodape .pessoaImagem {
     width: 30px;
+    height: 30px;
     margin-right: 10px;
     border-radius: 50%;
 }
