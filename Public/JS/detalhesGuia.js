@@ -42,6 +42,7 @@ function sucessoAoBuscarGuia(response) {
 
         buscarDesafiosGuia(response[0].id, response[0].corPrincipal);
         buscarCriador(response[0].criadorId);
+        buscarColaboradores(response[0].id);
 
     } else {
         $('#publicacoes').html('Oops! Não encontramos esse guia.')
@@ -94,17 +95,56 @@ function buscarCriador(criadorId) {
 }
 
 function sucessoAoBuscarCriador(response) {
-    console.log(response);
     if (!$.isEmptyObject(response)) {
         $('#nomeCriador').html(response[0].email);
         $('#fotoCriador').attr('src', response[0].foto);
     } else {
-        $('#nomeCriador').html('Erro ao buscar nome')
+        $('#nomeCriador').html('Erro ao buscar nome');
     }
 }
 
+function buscarColaboradores(guiaId) {
+    $.ajax({
+        url: `../Controller/GuiaController.class.php?guiaId=${guiaId}&acao=buscarColaboradores`,
+        type: 'GET',
+        dataType: 'JSON',
+        success: sucessoAoBuscarColaboradores,
+        error: erroNaRequisicao
+    });
+}
+
+function sucessoAoBuscarColaboradores(response) {
+    console.log('colaboradores');
+    console.log(response);
+    if (!$.isEmptyObject(response)) {
+        $('#numeroColaboradores').html(response.length);
+        $('#colaboradoresContent').html('');
+        response.forEach((colaborador) => {
+            buscarColaborador(colaborador.membroId);
+        });
+    } else {
+        $('#colaboradoresContainer').html('');
+    }
+}
+
+function buscarColaborador(colaboradorId) {
+    $.ajax({
+        url: `../Controller/MembroController.class.php?membroId=${colaboradorId}`,
+        type: 'GET',
+        dataType: 'JSON',
+        success: sucessoAoBuscarColaborador,
+        error: erroNaRequisicao
+    });
+}
+
+function sucessoAoBuscarColaborador(response) {
+    console.log(response);
+    $('#colaboradoresContent').append(`
+        <img src="${response[0].foto}" class="pessoaImagem" onclick="abrirPerfil(${response[0].id})">
+    `);
+}
+
 function personalizarCor(corPrincipal) {
-    console.log(corPrincipal)
     $('.customBackgroundColor').css('background-color', corPrincipal);
     $('.customBorderColor').css('border', `1px solid ${corPrincipal}`);
     $('.customColor').css('color', corPrincipal);
@@ -116,4 +156,8 @@ function abrirEdicaoGuia() {
 
 function abrirDetalhesDesafio(desafioId) {
     console.log(desafioId);
+}
+
+function abrirPerfil(membroId) {
+    console.log(membroId);
 }

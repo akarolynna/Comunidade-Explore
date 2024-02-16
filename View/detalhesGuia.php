@@ -124,8 +124,8 @@
             </div>
             <div class="separador"></div>
             <div class="infoNumerosContent">
-                <span class="numero">12</span>
-                <span class="legenda">Contribuidores</span>
+                <span class="numero" id="numeroColaboradores"></span>
+                <span class="legenda">Colaboradores</span>
             </div>
         </div>
         <div class="conteudo infoPessoas">
@@ -134,13 +134,9 @@
                 <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem" id="fotoCriador">
                 <span class="nomeCriador" id="nomeCriador"></span>
             </div>
-            <span>Colaboradores:</span>
-            <div class="colaboradores">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
+            <div id="colaboradoresContainer">
+                <span>Colaboradores:</span>
+                <div class="colaboradores" id="colaboradoresContent"></div>
             </div>
         </div>        
     </div>
