@@ -61,7 +61,9 @@ function exibirSalvos() {
 function criandoCards(data) {
   if (data.length > 0) {
     $.each(data, function (index, diario) {
-      var $card = $('<div>').addClass('card');
+      // var $card = $('<div>').addClass('card').attr('onclick', `abrirDetalheDiario(${diario.id})`);
+      var $card = $('<div>').addClass('card').attr('id', `cardDiario${diario.id}`).attr('onclick', `abrirDetalheDiario(${diario.id})`);
+
       $card.css('background-image', 'url(' + diario.foto + ')');
 
       var $titulo = $('<p>').addClass('cardTitulo').text(diario.titulo);
@@ -72,12 +74,16 @@ function criandoCards(data) {
   }
 }
 
+function abrirDetalheDiario(diarioId) {
+  window.location.href = `/Comunidade-Explore/View/detalhesDiarioViagem.php?diarioId=${diarioId}`;
+}
+
 function criandoCardsGuia(data) {
   console.log("Dados recebidos:", data);
 
   if (data.length > 0) {
     $.each(data, function (index, guia) {
-      var $card = $('<div>').addClass('card');
+      var $card = $('<div>').addClass('card').attr('onclick', `abrirDetalhesGuia(${guia.id})`);;
       $card.css("background-image", `url('${guia.fotoCapa}')`);
       var $titulo = $('<p>').addClass('cardTituloGuia').text(guia.nomeDestino);
       $card.append($titulo);
@@ -90,6 +96,9 @@ function criandoCardsGuia(data) {
       $('#containnerCards').append($card);
     });
   }
+}
+function abrirDetalhesGuia(guiaId) {
+  window.location.href = `/Comunidade-Explore/View/detalhesGuia.php?guiaId=${guiaId}`;
 }
 
 function criandoCardsEvento(data) {
