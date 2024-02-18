@@ -1,5 +1,12 @@
 <?php
 session_start();
+echo "Dados vindo do usuário" . $_SESSION['usuario']. '\n/n';
+echo "Dados vindo do usuário" . $_SESSION['usuario']['id']. '\n/n';
+echo "Dados vindo do usuário" . $_SESSION['usuario']['nome']. '\n/n';
+echo "Dados vindo do usuário" . $_SESSION['usuario']['instagram']. '\n/n';
+echo "Dados vindo do usuário" . $_SESSION['usuario']['telefone']. '\n/n';
+echo "Dados vindo do usuário" . $_SESSION['usuario']['email']. '\n/n';
+echo "Dados vindo do usuário" . $_SESSION['usuario']['instagram']. '\n/n';
 ?>
 
 <!DOCTYPE html>

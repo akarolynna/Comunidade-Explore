@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 <div class="modalEditar" id="modalEditar">
     <div class="modalCabecalho">
@@ -16,42 +18,42 @@ session_start();
 
             <div class="form-group">
                 <label for="nome"><b>Nome:<b> </label>
-                <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome de usuário" required>
+                <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $_SESSION['usuario']['nome']; ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="aniversario">Aniversário: </label>
-                <input type="text" name="aniversario" id="aniversario" class="form-control" placeholder="Seu aniversário">
+                <input type="text" name="aniversario" id="aniversario" class="form-control" value="<?php echo $_SESSION['usuario']['aniversario']; ?>">
             </div>
 
             <div class="form-group">
                 <label for="melhor_viagem">Melhor Viagem: </label>
-                <input type="text" name="melhor_viagem" id="melhor_viagem" class="form-control" placeholder="Seu destino favorito">
+                <input type="text" name="melhor_viagem" id="melhor_viagem" class="form-control" value="<?php echo $_SESSION['usuario']['melhor_viagem']; ?>">
             </div>
 
             <div class="form-group">
                 <label for="instagram">Instagram: </label>
-                <input type="text" name="instagram" id="instagram" class="form-control" placeholder="Seu instagram">
+                <input type="text" name="instagram" id="instagram" class="form-control" value="<?php echo $_SESSION['usuario']['instagram']; ?>">
             </div>
 
             <div class="form-group">
                 <label for="email">Email para Contato: </label>
-                <input type="text" name="email" id="email" class="form-control" placeholder="Seu email">
+                <input type="text" name="email" id="email" class="form-control" value="<?php echo $_SESSION['usuario']['email']; ?>">
             </div>
 
             <div class="form-group">
                 <label for="telefone">Telefone para Contato: </label>
-                <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Seu telefone">
+                <input type="text" name="telefone" id="telefone" class="form-control" value="<?php echo $_SESSION['usuario']['telefone']; ?>">
             </div>
 
             <div class="form-group">
                 <label for="apresentacao">Descrição: </label>
-                <textarea class="form-control" id="apresentacao" rows="4" maxlength="559" placeholder="Apresente-se" required></textarea>
+                <textarea class="form-control" id="apresentacao" rows="4" maxlength="559" value="<?php echo $_SESSION['usuario']['apresentacao']; ?>"></textarea>
             </div>
 
             <div class="divBotaoEditar">
-            <input type="hidden" name="_acao" value="cadastro"> <!-- Adicione o campo acao -->
-                <button type="submit" id=enviarFormularioEditar>Salvar Mudança</button>
+                <input type="hidden" name="_acao" value="editar"> <!-- Adicione o campo acao -->
+                <button type="button" id=enviarFormularioEditar>Salvar Mudança</button>
             </div>
     </div>
     </form>

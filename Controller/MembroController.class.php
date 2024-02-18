@@ -9,6 +9,7 @@ try {
     echo "Erro ao autenticar o membro: " . $ex->getMessage() . '<br>';
 }
 
+
 class MembroController
 {
     private $membroDao;
@@ -46,6 +47,10 @@ class MembroController
             case 'login':
                 $this->logarMembro();
                 break;
+            case 'editar':
+                //dados enviados de um formulário $_POST
+                $this->atualizarMembro($_POST);
+                break;
                 //outras funções como o login que usam o método POST
             default:
                 throw new Exception("Erro ao processar a requisição");
@@ -58,16 +63,15 @@ class MembroController
             $fotoCaminho = $this->uploadFoto();
 
             extract($_POST);
-            $membro = new MembroModel(0, $fotoCaminho, $email, $senha);
+            $membro = new MembroModel(0, $fotoCaminho, $nome, $email, $senha);
             $resultado = $this->membroDao->criarMembro($membro);
             if ($resultado) {
-                // Para ficar mais robusto depois eu tenho que mudar para me retornar um ajax
-                echo "Inserção bem-sucedida!";
+                echo json_encode(array('success' => 'Inserção bem-sucedida!'));
             } else {
-                echo "Falha na inserção.";
+                echo json_encode(array('error' => 'Falha na inserção.'));
             }
         } catch (Exception $ex) {
-            throw new Exception("Erro no Controller ao tentar realizar o cadastro " . $ex->getMessage() . '<br>', 0);
+            echo json_encode(array('error' => 'Erro no Controller ao tentar realizar o cadastro ' . $ex->getMessage()));
         }
     }
 
@@ -126,5 +130,20 @@ class MembroController
     {
         $membro = $this->membroDao->buscarMembroPorId($_GET['membroId']);
         echo json_encode($membro);
+    }
+
+    public function atualizarMembro($dados)
+    {
+        try {
+            $resultado = $this->membroDao->atualizarMembro($dados);
+
+            if ($resultado) {
+                echo json_encode(array('success' => 'Atualização bem-sucedida.'));
+            } else {
+                echo json_encode(array('error' => 'Falha na atualização.'));
+            }
+        } catch (Exception $ex) {
+            throw new Exception("Erro no Controller ao tentar realizar a atualização: " . $ex->getMessage());
+        }
     }
 }
