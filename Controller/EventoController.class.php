@@ -26,6 +26,10 @@ class EventoController
             case 'GET':
                 if (isset($_GET['categoria']) && isset($_GET['pesquisa'])) {
                     $this->buscar();
+                } else if(isset($_GET['eventoId']) && isset($_GET['_acao'])) {
+                    $this->buscarColaboradores();
+                } else if(isset($_GET['eventoId'])) {
+                    $this->buscarPorId();
                 } else {
                     $this->buscarEventoUsuario();
                 }
@@ -49,12 +53,29 @@ class EventoController
 
     private function excluir() {
         try {
-            
             if ($this->eventoDao->excluirEvento($_GET['eventoId'])) {
                 echo json_encode('Evento excluido com sucesso');
             } else {
                 echo 'Erro ao excluir evento';
             }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    private function buscarPorId() {
+        try {
+            $evento = $this->eventoDao->buscarEventoPorId($_GET['eventoId']);
+            echo json_encode($evento);
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    private function buscarColaboradores() {
+        try {
+            $colaboradores = $this->eventoDao->buscarColaboradores($_GET['eventoId']);
+            echo json_encode($colaboradores);
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }

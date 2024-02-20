@@ -138,6 +138,30 @@ class EventoDao
         return $result > 0;
     }
 
+    public function buscarEventoPorId($eventoId) {
+        $query = "SELECT * FROM Evento WHERE Evento.id = :eventoId";
+        $fields = array('eventoId' => $eventoId);
+        $result = [];
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result;
+    }
+
+    public function buscarColaboradores($eventoId) {
+        $query = "SELECT * FROM Evento_Colaborador WHERE eventoId = :eventoId";
+        $fields = array('eventoId' => $eventoId);
+        $result = [];
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result;
+    }
+
     public function exibirEventosUsuario($criadorId)
     {
         $query = "SELECT * FROM Evento WHERE criadorId = :criadorId";
