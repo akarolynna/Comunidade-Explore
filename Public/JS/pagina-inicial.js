@@ -144,6 +144,20 @@ function buscarIdMembroLogado() {
     });
 }
 
+function excluirEvento(eventoId) {
+    alert('Tem certeza que deseja excluir esse evento? Todos os dados relacionados a ele serão perdidos');  
+    console.log(eventoId);
+    $.ajax({
+        url: '../Controller/EventoController.class.php?eventoId=' + eventoId,
+        type: 'DELETE',
+        dataType: 'JSON',
+        success: function(response) {
+            window.location.reload();
+        },
+        error: erroNaRequisicao
+    });
+}
+
 function editarEvento(eventoId) {
     console.log(`Editar ${eventoId}`);
 }
