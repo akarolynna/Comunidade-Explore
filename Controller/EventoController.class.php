@@ -24,6 +24,10 @@ class EventoController
     {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET':
+                if(isset($_GET['_acao'])) {
+                    if($_GET['_acao'] == 'buscarInscricoes') $this->buscarInscricoesMembro();
+                } 
+                
                 if (isset($_GET['categoria']) && isset($_GET['pesquisa'])) {
                     $this->buscar();
                 } else if(isset($_GET['eventoId']) && isset($_GET['_acao'])) {
@@ -36,7 +40,9 @@ class EventoController
                 break;
             case 'POST':
                 if(isset($_GET['_acao'])) {
-                    $this->editar();
+                    if($_GET['_acao'] == 'editar') $this->editar();
+                    if($_GET['_acao'] == 'inscrever') $this->inscrever();
+                    if($_GET['_acao'] == 'cancelarInscricao') $this->cancelarInscricao();
                 } else {
                     $this->cadastrar();
                 }
@@ -52,6 +58,11 @@ class EventoController
     private function buscar()
     {
         $eventos = $this->eventoDao->buscar($_GET['categoria'], $_GET['pesquisa']);
+        echo json_encode($eventos);
+    }
+
+    private function buscarInscricoesMembro() {  
+        $eventos = $this->eventoDao->buscarInscricoes($_GET['membroId']);
         echo json_encode($eventos);
     }
 
@@ -98,6 +109,32 @@ class EventoController
             echo '<script>console.error("' . $ex->getMessage() . '");</script>';
             // Retorna uma string vazia para indicar que ocorreu um erro
             return '';
+        }
+    }
+
+    private function inscrever() {
+        try {
+            session_start();
+            if ($this->eventoDao->inscrever($_GET['eventoId'], $_SESSION['usuario']['id'])) {
+                echo json_encode('Evento editado com sucesso');
+            } else {
+                echo 'Erro ao editar evento';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    private function cancelarInscricao() {
+        try {
+            session_start();
+            if ($this->eventoDao->cancelarInscricao($_GET['eventoId'], $_SESSION['usuario']['id'])) {
+                echo json_encode('Evento editado com sucesso');
+            } else {
+                echo 'Erro ao editar evento';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
     }
 

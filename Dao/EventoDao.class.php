@@ -43,6 +43,52 @@ class EventoDao
         return $result;
     }
 
+    public function buscarInscricoes($membroId) {
+        $query = "SELECT * FROM Evento_Inscrito WHERE Evento_Inscrito.membroId = :membroId";
+        $fields = array('membroId' => $membroId);
+        $result = [];
+        
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+
+        return $result;
+    }
+
+    public function inscrever($eventoId, $membroId) {
+        $query = 'INSERT INTO Evento_Inscrito(eventoId, membroId) VALUES(:eventoId, :membroId);';
+        $fields = array(
+            'eventoId' => $eventoId,
+            'membroId' => $membroId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
+
+    public function cancelarInscricao($eventoId, $membroId) {
+        $query = 'DELETE FROM Evento_Inscrito WHERE eventoId = eventoId AND membroId = :membroId';
+        $fields = array(
+            'eventoId' => $eventoId,
+            'membroId' => $membroId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
+
     public function editarEvento($evento, $eventoId) {
         $query = 'UPDATE Evento SET
                 titulo = :titulo, 

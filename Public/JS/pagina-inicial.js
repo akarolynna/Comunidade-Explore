@@ -144,6 +144,22 @@ function buscarIdMembroLogado() {
     });
 }
 
+function buscarInscricoesMembro(membroId) {
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            url: '../Controller/EventoController.class.php?_acao=buscarInscricoes&membroId=' + membroId,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(response) {
+                resolve(response);
+            },
+            error: function(error) {
+                reject(error);
+            }
+        });
+    });
+}
+
 function excluirEvento(eventoId) {
     alert('Tem certeza que deseja excluir esse evento? Todos os dados relacionados a ele serão perdidos');  
 
@@ -162,12 +178,30 @@ function editarEvento(eventoId) {
 }
 
 function inscreverEmEvento(eventoId) {
-    console.log(`inscrever ${eventoId}`);
+    $.ajax({
+        dataType: "JSON",
+        url: '../controller/EventoController.class.php?_acao=inscrever&eventoId=' + eventoId,
+        type: "POST",
+        success: (response) => {
+            alert('Inscrição realizada com sucesso!!');
+            window.location.reload();
+        },
+        error: () => {
+            alert('Você já está inscrito nesse evento');
+        }
+    }); 
 }
+
+function membroEstaInscrito(eventos, membroId) {
+    return eventos.filter(evento => evento.membroId === membroId).length > 0;
+}
+
 
 async function sucessoAoBuscarEventos(response) {
     try {
         const membroId = await buscarIdMembroLogado();
+        // const eventosMembro = await buscarInscricoesMembro(membroId);
+        // console.log(eventosMembro);
 
         $('#publicacoes').html('');
         $.isEmptyObject(response)
