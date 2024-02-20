@@ -59,14 +59,12 @@ function erroNaRequisicao(error) {
 }
 
 function sucessoAoBuscarPosts(response) {
-    console.log(response);
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
         : response.forEach((post, index) => {
             buscarTituloDiarioViagem(post.diarioId, index);
 
-            console.log(post.imagens);
             $('#publicacoes').append(`
                 <div class="post">
                     <div class="imagemPost">
@@ -130,44 +128,80 @@ function buscarEventos(categoria, pesquisa) {
     });
 }
 
-function sucessoAoBuscarEventos(response) {
-    console.log(response);
-    $('#publicacoes').html('');
-    $.isEmptyObject(response)
-        ? $('#publicacoes').html('Oops! Não encontramos nenhum evento com esses filtros.')
-        : response.forEach((evento, index) => {
-            $('#publicacoes').append(`
-                <div class="cardEvento" id="cardEvento${index}">
-                    <div class="filtro">
-                        <div class="cabecalho">
-                            <h3 class="titulo">${evento.titulo}</h3>
-                            <button class="btn botaoPrimario">Me inscrever</button>
-                        </div>
-                        <div class="conteudo">
-                            <div class="tag criador">
-                                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem usuário">
-                                <p>Anna Karolynna</p>
+function buscarIdMembroLogado() {
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            url: '../Controller/MembroController.class.php?_acao=membroLogado',
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(response) {
+                resolve(response);
+            },
+            error: function(error) {
+                reject(error);
+            }
+        });
+    });
+}
+
+function editarEvento(eventoId) {
+    console.log(`Editar ${eventoId}`);
+}
+
+function inscreverEmEvento(eventoId) {
+    console.log(`inscrever ${eventoId}`);
+}
+
+async function sucessoAoBuscarEventos(response) {
+    try {
+        const membroId = await buscarIdMembroLogado();
+
+        $('#publicacoes').html('');
+        $.isEmptyObject(response)
+            ? $('#publicacoes').html('Oops! Não encontramos nenhum evento com esses filtros.')
+            : response.forEach((evento, index) => {
+                const botaoAcaoEvento = evento.criadorId == membroId
+                    ? `
+                        <button class="btn botaoPrimario botaoEditar" onclick="editarEvento(${evento.id})">Editar</button>
+                        <button class="btn botaoPrimario botaoExcluir" onclick="excluirEvento(${evento.id})">Excluir</button>
+                    `
+                    : `<button class="btn botaoPrimario" onclick="inscreverEmEvento(${evento.id})">Me inscrever</button>`;
+            
+                $('#publicacoes').append(`
+                    <div class="cardEvento" id="cardEvento${index}">
+                        <div class="filtro">
+                            <div class="cabecalho">
+                                <h3 class="titulo">${evento.titulo}</h3>
+                                <div>${botaoAcaoEvento}</div>
                             </div>
-                            <div class="infoEvento">
-                                <div class="tag">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <p>${evento.dataInicio}</p>
+                            <div class="conteudo">
+                                <div class="tag criador">
+                                    <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem usuário">
+                                    <p>Anna Karolynna</p>
                                 </div>
-                                <div class="tag">
-                                    <i class="far fa-clock"></i>
-                                    <p>${evento.horaInicio} - ${evento.horaTermino}</p>
-                                </div>
-                                <div class="tag">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <p>${evento.localizacao}</p>
+                                <div class="infoEvento">
+                                    <div class="tag">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <p>${evento.dataInicio}</p>
+                                    </div>
+                                    <div class="tag">
+                                        <i class="far fa-clock"></i>
+                                        <p>${evento.horaInicio} - ${evento.horaTermino}</p>
+                                    </div>
+                                    <div class="tag">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <p>${evento.localizacao}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `);
-            $(`#cardEvento${index}`).css("background-image", `url('${evento.fotoCapa}')`);
-    });
+                `);
+                $(`#cardEvento${index}`).css("background-image", `url('${evento.fotoCapa}')`);
+        });
+    } catch (error) {
+        console.error('Erro ao buscar ID do membro logado:', error);
+    }
 }
 
 function buscarGuias(categoria, pesquisa) {
