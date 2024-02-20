@@ -24,7 +24,10 @@ function exibirMeusGuias() {
   $.ajax({
     type: "GET",
     dataType: "json",
-    url: '../Controller/GuiaController.class.php',
+    data: {
+      acao: 'exibirGuiasUsuario'
+    },
+    url: "../Controller/GuiaController.class.php",
     success: criandoCardsGuia,
     error: erroNaRequisicao
   });
@@ -58,7 +61,9 @@ function exibirSalvos() {
 function criandoCards(data) {
   if (data.length > 0) {
     $.each(data, function (index, diario) {
-      var $card = $('<div>').addClass('card');
+      // var $card = $('<div>').addClass('card').attr('onclick', `abrirDetalheDiario(${diario.id})`);
+      var $card = $('<div>').addClass('card').attr('id', `cardDiario${diario.id}`).attr('onclick', `abrirDetalheDiario(${diario.id})`);
+
       $card.css('background-image', 'url(' + diario.foto + ')');
 
       var $titulo = $('<p>').addClass('cardTitulo').text(diario.titulo);
@@ -69,28 +74,39 @@ function criandoCards(data) {
   }
 }
 
+function abrirDetalheDiario(diarioId) {
+  window.location.href = `/Comunidade-Explore/View/detalhesDiarioViagem.php?diarioId=${diarioId}`;
+}
+
 function criandoCardsGuia(data) {
+  console.log("Dados recebidos:", data);
+
   if (data.length > 0) {
-    $.each(data, function (index, diario) {
-      var $card = $('<div>').addClass('card');
-      $card.css('background-image', 'url(' + guia.fotoCapa + ')');
-
-      var $titulo = $('<p>').addClass('cardTitulo').text(diario.titulo);
+    $.each(data, function (index, guia) {
+      var $card = $('<div>').addClass('card').attr('onclick', `abrirDetalhesGuia(${guia.id})`);;
+      $card.css("background-image", `url('${guia.fotoCapa}')`);
+      var $titulo = $('<p>').addClass('cardTituloGuia').text(guia.nomeDestino);
       $card.append($titulo);
-
+      var $iconeLocalizacao = $('<img>').attr('src', '../Public/Imagens/icons8-location-48.png').addClass('iconeCalendario');
+      var $textoLocalizacao = $('<p>').addClass('textoTag').text(guia.localizacao);
+      var $divRodape = $('<div>').addClass('tag');
+      $divRodape.append($iconeLocalizacao);
+      $divRodape.append($textoLocalizacao);
+      $card.append($divRodape);
       $('#containnerCards').append($card);
     });
   }
 }
-
-
+function abrirDetalhesGuia(guiaId) {
+  window.location.href = `/Comunidade-Explore/View/detalhesGuia.php?guiaId=${guiaId}`;
+}
 
 function criandoCardsEvento(data) {
   console.log("Dados recebidos:", data);
   if (data && data.length > 0) {
     $.each(data, function (index, evento) {
       var $card = $('<div>').addClass('cardEvento');
-      $card.css('background-image', 'url(' + evento.fotoCapa + ')');
+      $card.css('background-image', `url('${evento.fotoCapa}')`);
 
       var $titulo = $('<p>').addClass('cardTituloEventos').text(evento.titulo);
       $card.append($titulo);
@@ -173,8 +189,10 @@ function redirecionarAddEvento() {
 // Erro na Requisição
 function erroNaRequisicao(xhr, status, error) {
   console.error('ERRO!');
+  console.log(xhr.responseText);
   console.error('XHR:', xhr);
   console.error('Status:', status);
   console.error('Erro:', error);
+  console.log(data);
 }
 

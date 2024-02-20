@@ -28,11 +28,12 @@ class MembroDao
         return $result;
     }
 
-    public function buscarMembroPorId($membroId) {
+    public function buscarMembroPorId($membroId)
+    {
         $query = 'SELECT * FROM Membro WHERE membro.id = :membroId';
         $fields = array('membroId' => $membroId);
         $result = [];
-        
+
         try {
             $result = $this->getResult($query, $fields);
         } catch (Exception $ex) {
@@ -45,10 +46,11 @@ class MembroDao
     {
         $options = [
             'foto' => $usuario->getFoto(),
+            'nome' => $usuario->getNome(),
             'email' => $usuario->getEmail(),
             'senha' => password_hash($usuario->getSenha(), PASSWORD_DEFAULT)
         ];
-        $query = "INSERT INTO membro (foto, email, senha) VALUES (:foto, :email, :senha);";
+        $query = "INSERT INTO membro (foto, nome, email, senha) VALUES (:foto, :nome, :email, :senha);";
 
         try {
             $this->connection->connection();
@@ -114,17 +116,20 @@ class MembroDao
             return false;
         }
     }
-    public function atualizarMembro(MembroModel $membro) {
-        $query = "UPDATE membro SET foto = :foto, apresentacao = :apresentacao, aniversario = :aniversario, telefone = :telefone, melhor_viagem = :melhorViagem WHERE email = :email";
+    public function atualizarMembro(MembroModel $membro)
+    {
+        $query = "UPDATE membro SET nome = :nome,foto = :foto, apresentacao = :apresentacao, aniversario = :aniversario, telefone = :telefone, melhor_viagem = :melhorViagem, instagram = :instagram WHERE email = :email";
         $options = [
+            'nome' => $membro->getNome(),
             'foto' => $membro->getFoto(),
             'apresentacao' => $membro->getApresentacao(),
             'aniversario' => $membro->getAniversario(),
             'telefone' => $membro->getTelefone(),
             'melhorViagem' => $membro->getMelhorViagem(),
+            'instagram' => $membro->getInstagram(),
             'email' => $membro->getEmail(),
         ];
-    
+
         try {
             $this->connection->connection();
             $statement = $this->connection->prepareStatement($query, $options);
@@ -133,5 +138,4 @@ class MembroDao
             throw new Exception("Erro ao tentar atualizar usuário no Banco de Dados: " . $ex->getMessage());
         }
     }
-    
 }

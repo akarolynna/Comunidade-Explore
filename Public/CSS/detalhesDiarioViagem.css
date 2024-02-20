@@ -1,0 +1,312 @@
+/* Importações das fontes e cores */
+@import './Cores.css';
+
+
+.secaoCapa {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: calc(100vh - 40vh);
+    background-image: url('../ImagensGuia/fotoCapa.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(78, 75, 75, 0.6);
+}
+
+
+
+.textos,
+.botoes {
+    flex: 1;
+}
+
+.tituloMaior {
+    font-size: 42px;
+    margin-top: 29px;
+    text-transform: UPPERCASE;
+    line-height: 70px;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin-right: 70px;
+    margin-left: 38px;
+    color: white;
+}
+
+.tituloMaior:hover {
+    color: var(--cor-padrao);
+    font-weight: bold;
+}
+
+.btnLocalizacaoImg {
+    width: 25px;
+    height: 25px;
+    margin-left: 8px;
+}
+
+.localizacaoContainer {
+    box-sizing: border-box;
+    background-color: #b8b8b899;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 15px;
+    width: 350px;
+    height: 50px;
+    margin-left: 40px;
+}
+
+
+.localizacao {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    margin-left: 10px;
+}
+
+.botoes {
+    margin-top: 93px;
+    margin-left: 221px;
+}
+
+.botaoAdd {
+    background-color: var(--cor-padrao);
+    color: white;
+}
+
+.bbotaoEditar {
+    background-color: var(--cor-azul-escuro);
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+
+
+
+
+.post {
+
+    height: auto;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 100%;
+    margin-top: 25px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-bottom: 25px;
+
+}
+
+.imagens {
+    grid-column: 1/2;
+    grid-row: 1 / 1;
+}
+
+.textos {
+    grid-column: 2/2;
+    grid-row: 1/1;
+}
+
+.imagens {
+    position: relative;
+    margin-left: 70px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+
+}
+
+.imagem-fundo img,
+.imagem-frente img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.imagem-fundo {
+    position: relative;
+    width: 344px;
+    height: 381px;
+}
+
+.imagem-frente {
+    position: absolute;
+    top: 50px;
+    left: 90px;
+    width: 290px;
+    height: 331px;
+    border-left: 7px solid white;
+    border-top: 7px solid white;
+}
+
+.textos {
+    margin-right: 115px;
+    margin-top: 50px;
+
+}
+
+.tituloPost {
+    font-size: 31px;
+    color: var(--cor-azul-escuro);
+    font-weight: bold;
+    line-height: 45px;
+    padding-right: 148px;
+    text-align: justify;
+}
+
+.tituloPost:hover {
+    font-size: 31px;
+    color: var(--cor-azul-escuro);
+    font-weight: bold;
+    line-height: 45px;
+    padding-right: 148px;
+    text-align: justify;
+}
+
+.descricaoPost {
+    font-size: 16px;
+    text-align: justify;
+    color: var(--cor-azul-escuro);
+    line-height: 32px;
+    margin-right: 55px;
+    margin-top: 18px;
+}
+
+
+/* width: 100%;
+height: calc(100vh - 30vh);
+background-image: url('../Imagens/fotosDiarioViagem/nuno-alberto-MykFFC5zolE-unsplash.jpg');
+background-size: cover;
+background-position: center 82%;
+box-sizing: border-box; */
+/* .diarioViagem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 10px;
+    height: 196px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 45px;
+}
+
+.parte1,
+.parte2 {
+    
+    box-sizing: border-box;
+}
+
+.tituloPagina {
+    font-size: 42px;
+    margin-top: 29px;
+    text-transform: UPPERCASE;
+    line-height: 70px;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin-right: 70px;
+    margin-left: 38px;
+    color: var(--cor-azul-escuro);
+}
+
+.tituloPagina:hover {
+    color: var(--cor-padrao);
+    font-weight: bold;
+}
+
+.pequenoOla {
+    margin-bottom: 25px;
+    margin-top: 41px;
+    line-height: 30px;
+    margin-right: 56px;
+    line-height: 32px;
+    text-align: justify;
+}
+
+span:hover {
+    color: var(--cor-padrao);
+    font-weight: bold;
+}
+
+.botaoAdd {
+    background-color: var(--cor-padrao);
+    color: white;
+}
+
+.bbotaoEditar {
+    background-color: var(--cor-azul-escuro);
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.imagem {
+    width: 1200px;
+    height: 40vh;
+    overflow: hidden;
+    margin-left: 79px;
+    margin-right: 23px;
+    margin-top: 100px;
+    border: 1px solid gray;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+
+
+.imagem img {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    object-position: center 72%;
+    box-sizing: border-box;
+}
+
+.containnerCorpo {
+    height: auto;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+}
+
+.post1 {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px !important;
+    display: flex;
+    height: 300px;
+}
+
+.localizacaoContainer {
+    box-sizing: border-box;
+    background-color: #b8b8b899;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 15px;
+    width: 350px;
+    height: 50px;
+    margin-left: 40px;
+}
+
+.btnLocalizacaoImg {
+    width: 25px;
+    height: 25px;
+    margin-left: 8px;
+}
+
+.localizacao {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    margin-left: 10px;
+} */

@@ -9,6 +9,7 @@ try {
     echo "Erro ao autenticar o membro: " . $ex->getMessage() . '<br>';
 }
 
+
 class MembroController
 {
     private $membroDao;
@@ -32,6 +33,7 @@ class MembroController
                     ? $this->buscarMembroPorId()
                     : $this->buscarMembros();
                 break;
+
             default:
                 throw new Exception("Nenhuma ação foi passada");
         }
@@ -46,6 +48,10 @@ class MembroController
             case 'login':
                 $this->logarMembro();
                 break;
+            case 'editar':
+                $this->atualizarMembro();
+                break;
+
                 //outras funções como o login que usam o método POST
             default:
                 throw new Exception("Erro ao processar a requisição");
@@ -58,23 +64,52 @@ class MembroController
             $fotoCaminho = $this->uploadFoto();
 
             extract($_POST);
-            $membro = new MembroModel(0, $fotoCaminho, $email, $senha);
+            $membro = new MembroModel(0, $fotoCaminho, $nome, $email, $senha);
             $resultado = $this->membroDao->criarMembro($membro);
             if ($resultado) {
-                // Para ficar mais robusto depois eu tenho que mudar para me retornar um ajax
-                echo "Inserção bem-sucedida!";
+                echo json_encode(array('success' => 'Inserção bem-sucedida!'));
             } else {
-                echo "Falha na inserção.";
+                echo json_encode(array('error' => 'Falha na inserção.'));
             }
         } catch (Exception $ex) {
-            throw new Exception("Erro no Controller ao tentar realizar o cadastro " . $ex->getMessage() . '<br>', 0);
+            echo json_encode(array('error' => 'Erro no Controller ao tentar realizar o cadastro ' . $ex->getMessage()));
+        }
+    }
+    public function atualizarMembro()
+    {
+
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        try {
+            $fotoCaminho = $this->uploadFoto();
+            $nome = $_POST['nome'];
+            $aniversario = $_POST['aniversario'];
+            $melhor_viagem = $_POST['melhor_viagem'];
+            $instagram = $_POST['instagram'];
+            $telefone = $_POST['telefone'];
+            $apresentacao = $_POST['apresentacao'];
+            $id = $_SESSION['usuario']['id'];
+            $email = $_SESSION['usuario']['email'];
+
+
+            $membroAtualizado = new MembroModel($id, $fotoCaminho, $nome, $email, null, $aniversario, $melhor_viagem, $instagram, $telefone, $apresentacao);
+            $resultado = $this->membroDao->atualizarMembro($membroAtualizado);
+            if ($resultado) {
+                echo json_encode(array('success' => 'Atualização bem-sucedida!'));
+            } else {
+                echo json_encode(array('error' => 'Falha na atualização.'));
+            }
+        } catch (Exception $ex) {
+            echo json_encode(array('error' => 'Erro no Controller ao tentar realizar o edição ' . $ex->getMessage()));
         }
     }
 
+
     private function uploadFoto()
     {
-        $diretorioDestino  = "../Public/Imagens/fotosCadastroMembro/";
-        $arquivo  = $_FILES['foto']['name'];
+        $diretorioDestino = "../Public/Imagens/fotosCadastroMembro/";
+        $arquivo = $_FILES['foto']['name'];
         $caminhoCompleto = $diretorioDestino . $arquivo;
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminhoCompleto)) {
             return $caminhoCompleto;
@@ -82,7 +117,6 @@ class MembroController
             throw new Exception("Falha no upload da foto.");
         }
     }
-
 
     public function logarMembro()
     {
@@ -92,7 +126,7 @@ class MembroController
             $autenticado = $this->membroDao->autenticandoMembro($email, $senha);
 
             if ($autenticado) {
-                echo "Autenticação bem-sucedida! <br>";
+
                 $this->iniciarSessao($email);
             } else {
                 echo "Autenticação falhou. Verifique suas credenciais.<br>";
@@ -116,6 +150,7 @@ class MembroController
 
         exit();
     }
+
     private function buscarMembros()
     {
         $membros = $this->membroDao->buscarMembros();

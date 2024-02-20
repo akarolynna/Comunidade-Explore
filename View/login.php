@@ -24,7 +24,6 @@
 
                 <label for="senha">Senha</label><br>
                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"><br>
-                <p><a href="esqueci_senha.php" class="esqueciSenha">Esqueci minha senha</a></p>
 
                 <div class="btnCentralizar">
                     <input type="hidden" name="_acao" value="login"> <!-- Adicione o campo acao -->

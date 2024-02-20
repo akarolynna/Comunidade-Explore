@@ -136,6 +136,7 @@ class EventoController
             echo $ex->getMessage();
         }
     }
+
     private function uploadFoto()
     {
         $diretorioDestino = "../Uploads/";
@@ -148,4 +149,3 @@ class EventoController
         }
     }
 }
-
