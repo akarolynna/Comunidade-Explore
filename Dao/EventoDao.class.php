@@ -125,6 +125,19 @@ class EventoDao
         return $result > 0;
     }
 
+    public function excluirEvento($eventoId) {
+        $query = 'DELETE FROM Evento WHERE id = :eventoId';
+        $fields = array('eventoId' => $eventoId);
+        $result = 0;
+        
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
+
     public function exibirEventosUsuario($criadorId)
     {
         $query = "SELECT * FROM Evento WHERE criadorId = :criadorId";

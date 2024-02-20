@@ -28,7 +28,7 @@
                 <div class="tituloContainer">
                     <h1 class="tituloMenor">Bem vindo a</h1>
                     <h1 class="tituloMaior" id="nomeDestino">Costa Dourada</h1>
-                    <div class="localizacaoContainer">
+                    <div class="localizacaoContainer customBackGroundColor">
                         <i class="fas fa-map-marker-alt"></i>
                         <p class="localizacao" id="localizacao">Região Costeira do Nordeste, Brasil.</p>
                     </div>
@@ -59,7 +59,7 @@
                 A melhor época para visitar a Costa Dourada é durante os meses de abril a setembro, quando o clima está mais estável e as atividades ao ar livre são ideais. No entanto, os viajantes que preferem uma atmosfera mais tranquila podem considerar a visita durante a entressafra, de outubro a março.
             </p>
         </section>
-        <section class="secaoCultura">
+        <section class="secaoCultura customBackgroundColor">
             <h2 class="subtitulo">Cultura e História</h2>
             <p class="info" id="culturaHistoria">
                 A Costa Dourada, aninhada na região costeira do Nordeste do Brasil, é um tesouro cultural onde diversas influências se encontram. Sua rica história é narrada através de uma arquitetura encantadora, festivais vibrantes e uma fusão única de tradições indígenas, africanas e europeias. As coloridas casas à beira-mar e as expressões artísticas, como o maracatu e o forró, refletem a vitalidade da cultura local. Além disso, a Costa Dourada destaca-se por sua gastronomia, com pratos à base de frutos do mar frescos e sabores tropicais que proporcionam uma experiência culinária verdadeiramente cativante. A costa também guarda vestígios de sua história marítima, evidenciada por antigas fortalezas e faróis que contam histórias de tempos passados e batalhas no mar, tornando-a não apenas uma joia natural, mas um destino enriquecido por sua herança cultural.
@@ -72,8 +72,8 @@
                     Descubra o lado aventureiro do seu destino favorito! Explore as atividades que farão seu coração acelerar e trarão uma nova dimensão à sua viagem. Se você já teve uma experiência emocionante, compartilhe suas histórias e dicas para inspirar outros exploradores
                 </p>
                 <div class="botoesContainer">
-                    <button class="btn botaoPrimario">Explorar</button>
-                    <button class="btn botaoSecundario">Contribuir</button>
+                    <button class="btn botaoPrimario customBackgroundColor">Explorar</button>
+                    <button class="btn botaoSecundario customBorderColor customColor">Contribuir</button>
                 </div>
             </div>
             <img src="../Public/Imagens/areaContribuicaoPontosTuristicos.png" alt="itens de aventureiro" class="imagem">
@@ -106,34 +106,15 @@
         </section>
         <section class="secaoDesafio">
             <h2 class="subtitulo">Desafios</h2>
-            <div class="desafiosContainer">
-                <div class="desafioContent desafioCanto">
-                    <h3 class="desafioTitulo">Por do sol dourado</h3>
-                    <p class="desafioDescricao">
-                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
-                    </p>
-                </div>
-                <div class="desafioContent desafioCentro">
-                    <h3 class="desafioTitulo">Por do sol dourado</h3>
-                    <p class="desafioDescricao">
-                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
-                    </p>
-                </div>
-                <div class="desafioContent desafioCanto">
-                    <h3 class="desafioTitulo">Por do sol dourado</h3>
-                    <p class="desafioDescricao">
-                        Capture o esplêndido pôr do sol da Costa Dourada de um ponto panorâmico especial. 
-                    </p>
-                </div>
-            </div>
+            <div class="desafiosContainer" id="desafiosContainer"></div>
         </section>
     </div>
 </body>
 
-<footer class="rodape">
+<footer class="rodape customBackgroundColor">
     <div class="tituloContainer">
         <img src="../Public/Imagens/LogoExplore.png" alt="LogoExplore - bussola" class="tituloImagem">
-        <h3 class="titulo">Explore - Costa Dourada</h3>
+        <h3 class="titulo" id="tituloRodape"></h3>
     </div>
     <div class="conteudoContainer">
         <div class="conteudo infoNumerosContainer">
@@ -143,23 +124,19 @@
             </div>
             <div class="separador"></div>
             <div class="infoNumerosContent">
-                <span class="numero">12</span>
-                <span class="legenda">Contribuidores</span>
+                <span class="numero" id="numeroColaboradores"></span>
+                <span class="legenda">Colaboradores</span>
             </div>
         </div>
         <div class="conteudo infoPessoas">
             <span>Criado por:</span>
             <div class="criadorContainer">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <span class="nomeCriador">Anna Karolynna</span>
+                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem" id="fotoCriador">
+                <span class="nomeCriador" id="nomeCriador"></span>
             </div>
-            <span>Colaboradores:</span>
-            <div class="colaboradores">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
-                <img src="../Public/Imagens/ImagemUsuario.png" alt="imagem do usuário" class="pessoaImagem">
+            <div id="colaboradoresContainer">
+                <span>Colaboradores:</span>
+                <div class="colaboradores" id="colaboradoresContent"></div>
             </div>
         </div>        
     </div>

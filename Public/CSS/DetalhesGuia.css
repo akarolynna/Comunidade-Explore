@@ -229,6 +229,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .rodape .tituloContainer {
@@ -272,12 +273,10 @@
 
 .rodape .numero {
     font-size: 36px;
-    color: #988950;
 }
 
 .rodape .legenda {
     font-size: 14px;
-    color: var(--cor-cinza-medio);
 }
 
 .rodape .separador {
@@ -287,7 +286,7 @@
 }
 
 .rodape .infoPessoas {
-    width: 40%;
+    min-width: 40%;
 }
 
 .rodape .criadorContainer {
@@ -301,6 +300,8 @@
 
 .rodape .pessoaImagem {
     width: 30px;
+    height: 30px;
     margin-right: 10px;
     border-radius: 50%;
+    cursor: pointer;
 }

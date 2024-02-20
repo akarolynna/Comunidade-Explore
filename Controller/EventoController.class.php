@@ -33,6 +33,9 @@ class EventoController
             case 'POST':
                 $this->cadastrar();
                 break;
+            case 'DELETE':
+                $this->excluir();
+                break;
             default:
                 throw new Exception('Erro ao tentar realizar a operação.<br> Requisição desconhecida');
         }
@@ -42,6 +45,19 @@ class EventoController
     {
         $eventos = $this->eventoDao->buscar($_GET['categoria'], $_GET['pesquisa']);
         echo json_encode($eventos);
+    }
+
+    private function excluir() {
+        try {
+            
+            if ($this->eventoDao->excluirEvento($_GET['eventoId'])) {
+                echo json_encode('Evento excluido com sucesso');
+            } else {
+                echo 'Erro ao excluir evento';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 
     private function buscarEventoUsuario()
@@ -59,54 +75,13 @@ class EventoController
             return '';
         }
     }
-    // private function cadastrar()
-    // {
-    //     try {
-    //         extract($_POST);
-
-    //         $extensao = pathinfo($_FILES['fotoCapa']["name"], PATHINFO_EXTENSION);
-    //         $novoNomeFoto = "$titulo-evento-fotoCapa.$extensao";
-    //         $caminhoFotoCapa =  "../Uploads/" . $novoNomeFoto;
-
-
-    //         if (move_uploaded_file($_FILES["fotoCapa"]["tmp_name"], $caminhoFotoCapa)) {
-    //             session_start();
-
-    //             $evento = new Evento(
-    //                 $titulo,
-    //                 $localizacao,
-    //                 $dataInicio,
-    //                 $horaInicio,
-    //                 $dataTermino,
-    //                 $horaTermino,
-    //                 $descricao,
-    //                 $caminhoFotoCapa,
-    //                 $maxParticipantes,
-    //                 0,
-    //                 $categoria,
-    //                 $_SESSION['usuario']['id'],
-    //                 $colaboradores,
-    //                 [],
-    //             );
-
-    //             if ($this->eventoDao->cadastrarEvento($evento)) {
-    //                 echo json_encode('Evento cadastrado com sucesso');
-    //             } else {
-    //                 echo 'Erro ao cadastrar evento';
-    //             }
-    //         } else {
-    //             echo 'Erro ao tentar fazer upload da foto';
-    //         }
-    //     } catch (Exception $ex) {
-    //         echo $ex->getMessage();
-    //     }
-    // }
+    
     private function cadastrar()
     {
         try {
             extract($_POST);
 
-            $caminhoFotoCapa = $this->uploadFoto(); // Utiliza a função uploadFoto() para realizar o upload da foto da capa
+            $caminhoFotoCapa = $this->uploadFoto();
 
             session_start();
 

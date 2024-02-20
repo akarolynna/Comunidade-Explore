@@ -153,3 +153,8 @@ header {
     margin-left: 20px;
     object-fit: cover;
 }
+
+
+.menu a.button {
+    color: #98C80B;
+}

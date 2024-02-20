@@ -29,9 +29,11 @@ class MembroController
                 }
                 break;
             case 'GET':
-                isset($_GET['membroId'])
-                    ? $this->buscarMembroPorId()
-                    : $this->buscarMembros();
+                isset($_GET['_acao'])
+                    ? $this->buscarIdMembroLogado()
+                    : (isset($_GET['membroId'])
+                        ? $this->buscarMembroPorId()
+                        : $this->buscarMembros());
                 break;
 
             default:
@@ -55,6 +57,18 @@ class MembroController
                 //outras funções como o login que usam o método POST
             default:
                 throw new Exception("Erro ao processar a requisição");
+        }
+    }
+
+    public function buscarIdMembroLogado() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        try {
+            echo json_encode($_SESSION['usuario']['id']);
+
+        } catch (Exception $ex) {
+            echo json_encode(array('error' => 'Erro nao buscar id do membro logado: ' . $ex->getMessage()));
         }
     }
 

@@ -19,8 +19,6 @@
 
 <body>
     <?php require_once './Componentes/menu2.php'; ?>
-    <article>
-
         <article>
             <div class="blocoPrincipal">
 
