@@ -22,7 +22,7 @@ class GuiaController
     public function tratarRequisicao()
     {
         switch ($_SERVER['REQUEST_METHOD']) {
-            case 'GET':
+            case 'GET':                
                 if (isset($_GET['acao']) && $_GET['acao'] == 'exibirGuiasUsuario') {
                     $this->exibirGuiasUsuario();
                 } else if (!isset($_GET['guiaId'])) {
@@ -51,6 +51,10 @@ class GuiaController
                 // }
                 break;
             case 'POST':
+                if (isset($_GET['_acao'])) {
+                    if($_GET['_acao'] == 'seguir') $this->adicionarSeguidor();
+                }
+
                 if (!isset($_GET['acao'])) {
                     $this->cadastrar();
                 } else {
@@ -59,6 +63,19 @@ class GuiaController
                 break;
             default:
                 throw new Exception('Erro ao tentar realizar a operação.<br> Requisição desconhecida');
+        }
+    }
+
+    private function adicionarSeguidor() {
+        try {
+            session_start();
+            if ($this->guiaDao->adicionarSeguidor($_GET['guiaId'], $_SESSION['usuario']['id'])) {
+                echo json_encode('Guia cadastrado com sucesso');
+            } else {
+                echo 'Erro ao cadastrar guia';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
     }
 

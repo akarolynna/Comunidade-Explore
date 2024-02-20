@@ -272,7 +272,7 @@ function sucessoAoBuscarGuias(response) {
                     <div class="filtro">
                         <div class="cabecalho">
                             <h3 class="titulo">${guia.nomeDestino}</h3>
-                            <button class="btn botaoPrimario">Seguir</button>
+                            <button class="btn botaoPrimario" onclick="seguirGuia(${guia.id})">Seguir</button>
                         </div>
                         <div class="conteudo">
                             <div class="tag criador">
@@ -299,6 +299,22 @@ function sucessoAoBuscarGuias(response) {
             `);
             $(`#cardGuia${guia.id}`).css("background-image", `url('${guia.fotoCapa}')`);
     });
+}
+
+function seguirGuia(guiaId) {
+    $.ajax({
+        dataType: "JSON",
+        url: '../controller/GuiaController.class.php?_acao=seguir&guiaId=' + guiaId,
+        type: "POST",
+        success: (response) => {
+            alert('Agora você está seguindo esta página!');
+            window.location.href = './pagina-inicial.php';
+        },
+        error: () => {
+            alert('Você já está inscrito nesse evento');
+            window.location.href = './pagina-inicial.php';
+        }
+    }); 
 }
 
 function formatarCategoria(categoria) {

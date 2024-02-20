@@ -195,6 +195,22 @@ class GuiaDao
         return $result > 0;
     }
 
+    public function adicionarSeguidor($guiaId, $membroId) {
+        $query = 'INSERT INTO Guia_Seguidor (guiaId, membroId) VALUES (:guiaId, :membroId)';
+        $fields = array(
+            'guiaId' => $guiaId,
+            'membroId' => $membroId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
+
     public function buscarDesafios($guiaId)
     {
         $query = 'SELECT * FROM Desafio WHERE guiaId = :guiaId';
