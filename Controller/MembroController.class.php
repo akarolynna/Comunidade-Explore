@@ -136,8 +136,6 @@ class MembroController
         }
     }
 
-
-
     public function iniciarSessao($email)
     {
         if (session_status() == PHP_SESSION_NONE) {

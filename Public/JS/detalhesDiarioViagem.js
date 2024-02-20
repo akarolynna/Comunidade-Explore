@@ -28,7 +28,6 @@ function sucessoAoBuscarDiario(dados) {
   }
 }
 
-
 function erroNaRequisicao(xhr, status, error) {
   console.error('ERRO!');
   console.log(xhr.responseText);

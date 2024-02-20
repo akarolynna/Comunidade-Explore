@@ -22,6 +22,7 @@ session_start();
 <body>
     <?php require_once './Componentes/menu2.php'; ?>
     <article>
+        
         <div class="imagem-usuario">
             <div class="imagemPerfil">
                 <img src="<?php echo $_SESSION['usuario']['foto']; ?>" alt="Foto do usuário" class="imagemUsuario dropdown-toggle" id="imagemUsuario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,7 +45,7 @@ session_start();
 
             <div class="grupoInformacoes">
                 <label for="redesSociais">Redes Sociais: </label>
-<a> <img src="../Public/Imagens/iconeInstagram.png" alt="Ícone do Instagram por Icons8"></a>
+<a id="Linkinstagram"> <img src="../Public/Imagens/iconeInstagram.png" alt="Ícone do Instagram por Icons8"></a>
                 <img src="../Public/Imagens/IconGmail.png" alt="Ícone do Instagram por Icons8">
             </div>
 
@@ -54,7 +55,7 @@ session_start();
         </div>
         <div class="apresentacao-usuario">
             <div class="titulo-apresentacao">
-                <h1>Anna Karolynna</h1><!-- <span>php echo  $_SESSION['usuario']['email']; ?></span> -->
+                <h1 id="nomeUsuario">Anna Karolynna</h1><!-- <span>php echo  $_SESSION['usuario']['email']; ?></span> -->
             </div>
 
             <div class="botaoTipoAventureiro">
@@ -62,7 +63,7 @@ session_start();
             </div>
 
             <div class="apresentacao">
-                <p> Olá, exploradores do mundo! Eu sou a Anna, e minha paixão por desbravar o planeta vai além das fronteiras geográficas, permitindo-me mergulhar em cada cultura que encontro.
+                <p id="apresentacao"> Olá, exploradores do mundo! Eu sou a Anna, e minha paixão por desbravar o planeta vai além das fronteiras geográficas, permitindo-me mergulhar em cada cultura que encontro.
                     Como uma viajante com espírito aventureiro, busco incessantemente novas experiências, que vão desde trilhas desafiadoras nas majestosas montanhas até momentos de pura tranquilidade em praias paradisíacas. A habilidade de me
                     comunicar em diversos idiomas, como inglês, frances e espanhol, acrescenta uma dimensão extra ás minhas viagens, tornando cada jornada ainda mais emocionante.
                 </p>
@@ -83,7 +84,7 @@ session_start();
 
 
             </div>
-
+            <div id="membroId" data-id="<?php echo $_SESSION['usuario']['id']; ?>"></div>
     </article>
     <div class="modalEditarUsuario" id="modalEditarUsuario"></div>
     <div class="modalDiarioViagem" id="modalEditarUsuario"></div>
