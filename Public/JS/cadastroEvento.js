@@ -1,6 +1,9 @@
 $(document).ready(preencherCampos);
 $('#btnCancelar').click(cancelar);
 $('#btnPublicar').click(publicar);
+$('#btnEditar').click(editar);
+
+let eventoId = 0;
 
 function preencherCampos() {
     var queryString = window.location.search;
@@ -9,6 +12,7 @@ function preencherCampos() {
 
     if(eventoId != null) {
         $('.inputfotoContainer').css('display', 'none');
+        $('.inputColaboradoresContainer').css('display', 'none');
         $('#btnPublicar').css('display', 'none');
         $('#btnEditar').css('display', 'inline');
         
@@ -24,6 +28,8 @@ function preencherCampos() {
 
 function sucessoAoBuscarEvento(response) {
     if (!$.isEmptyObject(response)) {
+        eventoId = response[0].id;
+        
         $('#inputTitulo').val(response[0].titulo);
         $('#inputLocalizacao').val(response[0].localizacao);
         $('#inputDataInicio').val(response[0].dataInicio);
@@ -33,6 +39,7 @@ function sucessoAoBuscarEvento(response) {
         $('#inputDescricao').val(response[0].descricao);
         $('#selectCategoria').val(response[0].categoriaId);
         $('#inputMaxParticipantes').val(response[0].maxParticipantes);
+        $('#inputFotoCapaEdicao').val(response[0].fotoCapa);
         
         preencherColaboradores(response[0].id);
 
@@ -55,11 +62,6 @@ function preencherColaboradores(eventoId) {
         },
         error: erroNaRequisicao
     });
-}
-
-function sucessoAoBuscarColaboradores(response) {
-    console.log(response);
-
 }
 
 function cancelar() {
@@ -86,18 +88,44 @@ function publicar(evt) {
         data: dados,
         processData: false, 
         contentType: false,
-        success: sucessoAoPublicar,
+        success: sucessoAoSalvar,
         error: erroNaRequisicao
     }); 
 }
 
-function sucessoAoPublicar(response) {
+function sucessoAoSalvar(response) {
     console.log('SUCESSO!');
     console.log(response);
     history.back();
 }
 
+function editar(evt) {
+    const formCadastro = $('#formCadEvento');
+    const controllerURL = "../controller/EventoController.class.php?_acao=editar&eventoId=" + eventoId; 
+    const dados = new FormData($(formCadastro)[0]);
+    let colaboradores = [];
+    
+    $("#multiselectColaboradores option:selected").each(function() {
+        colaboradores.push($(this).val());
+    });
+    
+    dados.append('colaboradores', JSON.stringify(colaboradores));
+    
+    evt.preventDefault();   
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        data: dados,
+        processData: false, 
+        contentType: false,
+        success: sucessoAoSalvar,
+        error: erroNaRequisicao
+    }); 
+}
+
 function erroNaRequisicao(error) {
     console.log('ERRO!');
     console.log(error);
+    console.log(error.responseText);
 }

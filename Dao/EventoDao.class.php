@@ -43,6 +43,43 @@ class EventoDao
         return $result;
     }
 
+    public function editarEvento($evento, $eventoId) {
+        $query = 'UPDATE Evento SET
+                titulo = :titulo, 
+                localizacao = :localizacao, 
+                dataInicio = :dataInicio, 
+                horaInicio = :horaInicio, 
+                dataTermino = :dataTermino, 
+                horaTermino = :horaTermino, 
+                descricao = :descricao, 
+                maxParticipantes = :maxParticipantes, 
+                categoriaId = :categoriaId
+            WHERE
+                id = :id
+        ';
+
+        $fields = array(
+            'titulo' => $evento->getTitulo(),
+            'localizacao' => $evento->getLocalizacao(),
+            'dataInicio' => $evento->getDataInicio(),
+            'horaInicio' => $evento->getHoraInicio(),
+            'dataTermino' => $evento->getDataTermino(),
+            'horaTermino' => $evento->getHoraTermino(),
+            'descricao' => $evento->getDescricao(),
+            'maxParticipantes' => $evento->getMaxParticipantes(),
+            'categoriaId' => $evento->getCategoriaId(),
+            'id' => $eventoId,
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
+
     public function cadastrarEvento($evento)
     {
         $query = 'INSERT INTO Evento (

@@ -35,7 +35,11 @@ class EventoController
                 }
                 break;
             case 'POST':
-                $this->cadastrar();
+                if(isset($_GET['_acao'])) {
+                    $this->editar();
+                } else {
+                    $this->cadastrar();
+                }
                 break;
             case 'DELETE':
                 $this->excluir();
@@ -94,6 +98,38 @@ class EventoController
             echo '<script>console.error("' . $ex->getMessage() . '");</script>';
             // Retorna uma string vazia para indicar que ocorreu um erro
             return '';
+        }
+    }
+
+    private function editar() {
+        try {
+            extract($_POST);
+
+            $evento = new Evento(
+                $titulo,
+                $localizacao,
+                $dataInicio,
+                $horaInicio,
+                $dataTermino,
+                $horaTermino,
+                $descricao,
+                null,
+                $maxParticipantes,
+                null,
+                $categoria,
+                null,
+                $colaboradores,
+                null
+            );
+
+            if ($this->eventoDao->editarEvento($evento, $_GET['eventoId'])) {
+                echo json_encode('Evento editado com sucesso');
+            } else {
+                echo 'Erro ao editar evento';
+            }
+
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
     }
     

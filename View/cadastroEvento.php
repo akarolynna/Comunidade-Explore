@@ -81,6 +81,7 @@ require_once '../Model/Categoria.enum.php';
                 <label for="inputFotoCapa">Foto de capa</label>
                 <br>
                 <input type="file" class="form-control-file" id="inputFotoCapa" name="fotoCapa">
+                <input type="hidden" id="inputFotoCapaEdicao" name="fotoCapaEdicao">
             </div>
 
             <label class="label mt-3">Categoria</label>
@@ -119,20 +120,18 @@ require_once '../Model/Categoria.enum.php';
             </select>
 
             <div class="form-check mt-4">
-                <input class="form-check-input" type="checkbox" id="checkMaxParticipantes">
                 <label class="checkLabel" for="checkMaxParticipantes">
                     Capacidade máxima de participantes
                 </label>
             </div>
             <input type="number" min="0" class="form-control mb-3" id="inputMaxParticipantes" name="maxParticipantes" value="0" />
 
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="checkColaboradores">
+            <div class="form-check inputColaboradoresContainer">
                 <label class="checkLabel" for="checkColaboradores">
                     Colaboradores
                 </label>
             </div>
-            <select multiple class="form-control" id="multiselectColaboradores"></select>
+            <select multiple class="form-control inputColaboradoresContainer" id="multiselectColaboradores"></select>
         </form>
 
         <div class="d-flex justify-content-center mt-5 buttonContainer">
