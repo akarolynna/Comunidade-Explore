@@ -36,7 +36,7 @@
                         </div>
                         <div class="dropdown-menu-left">
                             <!-- <img src="../../Public/Imagens/WhatsApp Image 2024-01-11 at 22.37.39.jpeg" alt=" Foto de usuário" class="imagemUsuario dropdown-toggle" id="imagemUsuario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-                            <img src="<?php echo $_SESSION['usuario']['foto'] ?>" alt=" Foto de usuário" class="imagemUsuario dropdown-toggle" id="imagemUsuario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="<?php echo $_SESSION['usuario']['foto'] ?>" alt=" Foto de usuário" class="imagemUsuario dropdown-toggle" id="imagemUsuarioMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="dropdown-menu" aria-labelledby="imagemUsuario">
                                 <a href="./perfilUsuario.php" class="dropdown-item">Meu perfil</a>
                                 <a href="./logout.php" class="dropdown-item">Sair</a>

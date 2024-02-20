@@ -1,8 +1,6 @@
-<?php
-session_start();
+<?php session_start(); ?>
 
-
-?>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <div class="modalEditar" id="modalEditar">
     <div class="modalCabecalho">
         <h1 class="titulo">Editar Perfil</h1>
@@ -10,50 +8,46 @@ session_start();
     </div>
 
     <div class="modalCorpo">
-        <form method="POST" id="formularioEdicao">
+        <form method="POST" id="formularioEdicao" enctype="multipart/form-data">
             <div class="form-group-imagem">
                 <label for="foto"><b>Mudar Imagem:</b> </label>
-                <input type="file" class="form-control-file" id="foto">
+                <input type="file" class="form-control-file" id="foto" name="foto">
             </div>
 
             <div class="form-group">
                 <label for="nome"><b>Nome:<b> </label>
-                <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $_SESSION['usuario']['nome']; ?>" required>
+                <input type="text" name="nome" id="nome" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="aniversario">Aniversário: </label>
-                <input type="text" name="aniversario" id="aniversario" class="form-control" value="<?php echo $_SESSION['usuario']['aniversario']; ?>">
+                <input type="date" name="aniversario" id="aniversario" class="form-control" >
             </div>
 
             <div class="form-group">
                 <label for="melhor_viagem">Melhor Viagem: </label>
-                <input type="text" name="melhor_viagem" id="melhor_viagem" class="form-control" value="<?php echo $_SESSION['usuario']['melhor_viagem']; ?>">
+                <input type="text" name="melhor_viagem" id="melhor_viagem" class="form-control" >
             </div>
 
             <div class="form-group">
                 <label for="instagram">Instagram: </label>
-                <input type="text" name="instagram" id="instagram" class="form-control" value="<?php echo $_SESSION['usuario']['instagram']; ?>">
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email para Contato: </label>
-                <input type="text" name="email" id="email" class="form-control" value="<?php echo $_SESSION['usuario']['email']; ?>">
+                <input type="text" name="instagram" id="instagram" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="telefone">Telefone para Contato: </label>
-                <input type="text" name="telefone" id="telefone" class="form-control" value="<?php echo $_SESSION['usuario']['telefone']; ?>">
+                <input type="text" name="telefone" id="telefone" class="form-control" >
             </div>
 
             <div class="form-group">
                 <label for="apresentacao">Descrição: </label>
-                <textarea class="form-control" id="apresentacao" rows="4" maxlength="559" value="<?php echo $_SESSION['usuario']['apresentacao']; ?>"></textarea>
+                <textarea class="form-control" name="apresentacao" id="descricao" rows="4" maxlength="559"></textarea>
             </div>
 
             <div class="divBotaoEditar">
                 <input type="hidden" name="_acao" value="editar"> <!-- Adicione o campo acao -->
-                <button type="button" id=enviarFormularioEditar>Salvar Mudança</button>
+                <button type="button" id="enviarFormularioEditar">Salvar Mudança</button>
+
             </div>
     </div>
     </form>
