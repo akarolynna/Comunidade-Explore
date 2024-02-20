@@ -74,6 +74,42 @@ class GuiaDao
         }
     }
 
+    public function editarGuia($guia, $guiaId)
+    {
+        $query = "UPDATE Guia SET 
+                nomeDestino = :nomeDestino,
+                localizacao = :localizacao,
+                corPrincipal = :corPrincipal,
+                descricao = :descricao,
+                clima = :clima,
+                epocaVisita = :epocaVisita,
+                culturaHistoria = :culturaHistoria,
+                areasContribuicao = :areasContribuicao,
+                categoriaId = :categoriaId
+            WHERE 
+                id = :id ";
+        $fields = array(
+            'nomeDestino' => $guia->getNomeDestino(),
+            'localizacao' => $guia->getLocalizacao(),
+            'corPrincipal' => strval($guia->getCorPrincipal()),
+            'descricao' => $guia->getDescricao(),
+            'clima' => $guia->getClima(),
+            'epocaVisita' => $guia->getEpocaVisita(),
+            'culturaHistoria' => $guia->getCulturaHistoria(),
+            'areasContribuicao' => json_encode($guia->getAreasContribuicao()),
+            'categoriaId' => $guia->getCategoria(),
+            'id' => $guiaId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
+
     public function cadastrarGuia($guia)
     {
         $query = "INSERT INTO Guia(

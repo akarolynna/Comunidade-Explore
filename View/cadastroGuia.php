@@ -38,7 +38,7 @@ require_once '../Model/Categoria.enum.php';
                 <div class="inputContainer">
                     <label class="label" for="inputCorPrincipal">Cor principal</label>
                     <div class="inputGroup">
-                        <input class="form-control" id="inputCorPrincipal" value="#98C80B" readonly>
+                        <!-- <input class="form-control" id="inputCorPrincipal" value="#98C80B" readonly> -->
                         <input type="color" class="form-control form-control-color" id="inputCorPrincipal" value="#98C80B" name="corPrincipal" required>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ require_once '../Model/Categoria.enum.php';
                 </div>
             </div>
 
-            <div class="accordion mt-4" id="painelDesafios">
+            <div class="accordion mt-4 inputDesafioContainer" id="painelDesafios">
                 <div class="accordion-item desafio">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -188,7 +188,7 @@ require_once '../Model/Categoria.enum.php';
                 </div>
             </div>
 
-            <fieldset class="border p-2 mt-4 rounded">
+            <fieldset class="border p-2 mt-4 rounded inputFotoContainer">
                 <legend>Fotos do destino</legend>
                 <div class="inputContainer mt-5">
                     <label for="inputFotoCapa">Foto de capa</label>
@@ -243,13 +243,12 @@ require_once '../Model/Categoria.enum.php';
                 </option>
             </select>
 
-            <div class="form-check mt-4">
-                <input class="form-check-input" type="checkbox" id="checkColaboradores">
+            <div class="form-check mt-4 inputColaboradorContainer">
                 <label class="checkLabel" for="checkColaboradores">
                     Colaboradores
                 </label>
             </div>
-            <select multiple class="form-control" id="multiselectColaboradores"></select>
+            <select multiple class="form-control inputColaboradorContainer" id="multiselectColaboradores"></select>
         </form>
 
         <div class="d-flex justify-content-center mt-4 buttonContainer">

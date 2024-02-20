@@ -125,29 +125,32 @@ class GuiaController
     {
         try {
             extract($_POST);
-
-            $caminhoFotoCapa = $this->getCaminhoFoto(
+            
+            $guia = new Guia(
                 $nomeDestino,
-                'fotoCapa',
-                $fotoCapaEdicao
-            );
-            $caminhoFotoSecundaria1 = $this->getCaminhoFoto(
-                $nomeDestino,
-                'fotoSecundaria1',
-                $fotoSecundaria1Edicao
-            );
-            $caminhoFotoSecundaria2 = $this->getCaminhoFoto(
-                $nomeDestino,
-                'fotoSecundaria2',
-                $fotoSecundaria2Edicao
-            );
-            $caminhoFotoSecundaria3 = $this->getCaminhoFoto(
-                $nomeDestino,
-                'fotoSecundaria3',
-                $fotoSecundaria3Edicao
+                $localizacao,
+                $corPrincipal,
+                $descricao,
+                $clima,
+                $epocaVisita,
+                $culturaHistoria,
+                $areasContribuicao,
+                null,
+                null,
+                null,
+                null,
+                $categoria,
+                null,
+                null,
+                null,
             );
 
-            $fotosSecundarias = array($caminhoFotoSecundaria1, $caminhoFotoSecundaria2, $caminhoFotoSecundaria3);
+            if ($this->guiaDao->editarGuia($guia, $_GET['guiaId'])) {
+                echo json_encode('Guia editado com sucesso');
+            } else {
+                echo 'Erro ao editar guia';
+            }
+
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }

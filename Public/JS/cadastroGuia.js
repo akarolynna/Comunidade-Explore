@@ -3,6 +3,7 @@ $('#btnCancelar').click(cancelar);
 $('#btnSalvarRascunho').click(salvarRascunho);
 $('#btnEditar').click(editar);
 $('#btnPublicar').click(cadastrar);
+let guiaId = 0;
 
 const formCadastro = $('#formCadGuia');
 
@@ -49,7 +50,7 @@ function cadastrar() {
 }
 
 function editar(evt) {
-    const controllerURL = "../controller/GuiaController.class.php?acao=editar";
+    const controllerURL = "../controller/GuiaController.class.php?acao=editar&guiaId=" + guiaId;
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
     let desafios = [];
@@ -59,23 +60,23 @@ function editar(evt) {
         areasContribuicao.push($(this).val());
     });
 
-    $(".desafio").each(function (index) {
-        const tituloDesafio = $(this).find(".inputTituloDesafio").val();
-        const descricaoDesafio = $(this).find(".inputDescricaoDesafio").val();
+    // $(".desafio").each(function (index) {
+    //     const tituloDesafio = $(this).find(".inputTituloDesafio").val();
+    //     const descricaoDesafio = $(this).find(".inputDescricaoDesafio").val();
 
-        desafios.push({
-            titulo: tituloDesafio,
-            descricao: descricaoDesafio
-        });
-    });
+    //     desafios.push({
+    //         titulo: tituloDesafio,
+    //         descricao: descricaoDesafio
+    //     });
+    // });
 
-    $("#multiselectColaboradores option:selected").each(function () {
-        colaboradores.push($(this).val());
-    });
+    // $("#multiselectColaboradores option:selected").each(function () {
+    //     colaboradores.push($(this).val());
+    // });
 
     dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
-    dados.append('desafios', JSON.stringify(desafios));
-    dados.append('colaboradores', JSON.stringify(colaboradores));
+    // dados.append('desafios', JSON.stringify(desafios));
+    // dados.append('colaboradores', JSON.stringify(colaboradores));
 
     evt.preventDefault();
     $.ajax({
@@ -85,21 +86,23 @@ function editar(evt) {
         data: dados,
         processData: false,
         contentType: false,
-        success: sucessoAoEditar,
+        success: () => {
+            alert('Guia editado com sucesso!');
+            window.location.href = './pagina-inicial.php';
+        },
         error: erroNaRequisicao
     });
-}
-
-function sucessoAoEditar(response) {
-    console.log(response);
 }
 
 function preencherDados() {
     let queryString = window.location.search;
     let searchParams = new URLSearchParams(queryString);
-    let guiaId = searchParams.get('guiaId');
+    guiaId = searchParams.get('guiaId');
 
     if (guiaId != null) {
+        $('.inputFotoContainer').css('display', 'none');
+        $('.inputColaboradorContainer').css('display', 'none');
+        $('.inputDesafioContainer').css('display', 'none');
         $('#btnSalvarRascunho').css('display', 'none');
         $('#btnPublicar').css('display', 'none');
         $('#btnEditar').css('display', 'block');
