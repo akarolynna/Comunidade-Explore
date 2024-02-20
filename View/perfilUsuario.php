@@ -1,12 +1,6 @@
 <?php
 session_start();
-echo "Dados vindo do usuário" . $_SESSION['usuario']. '\n/n';
-echo "Dados vindo do usuário" . $_SESSION['usuario']['id']. '\n/n';
-echo "Dados vindo do usuário" . $_SESSION['usuario']['nome']. '\n/n';
-echo "Dados vindo do usuário" . $_SESSION['usuario']['instagram']. '\n/n';
-echo "Dados vindo do usuário" . $_SESSION['usuario']['telefone']. '\n/n';
-echo "Dados vindo do usuário" . $_SESSION['usuario']['email']. '\n/n';
-echo "Dados vindo do usuário" . $_SESSION['usuario']['instagram']. '\n/n';
+// var_dump($_SESSION['usuario'])
 ?>
 
 <!DOCTYPE html>
@@ -40,17 +34,17 @@ echo "Dados vindo do usuário" . $_SESSION['usuario']['instagram']. '\n/n';
 
             <div class="grupoInformacoes">
                 <label for="aniversario">Aniversário:</label>
-                <span> 07/01/2003</span>
+                <span id="spanAniversario"> 07/01/2003</span>
             </div>
 
             <div class="grupoInformacoes">
                 <label for="destinoFav">Destino Favorito:</label>
-                <span> Roma, Florença3</span>
+                <span id="melhorViagem"> Roma, Florença3</span>
             </div>
 
             <div class="grupoInformacoes">
                 <label for="redesSociais">Redes Sociais: </label>
-                <img src="../Public/Imagens/iconeInstagram.png" alt="Ícone do Instagram por Icons8">
+<a> <img src="../Public/Imagens/iconeInstagram.png" alt="Ícone do Instagram por Icons8"></a>
                 <img src="../Public/Imagens/IconGmail.png" alt="Ícone do Instagram por Icons8">
             </div>
 

@@ -1,10 +1,8 @@
-$(document).ready(function () {
-
-});
 
 $("#btnEditarPerfil").click(abrirFormEdit);
 $("#btnFechar").click(fecharForm);
 $("#enviarFormularioEditar").click(realizarAjaxAtualizarDados);
+
 
 // Talvez eu mude o abrirFormEdit para o js da pagina de perfil!!
 function abrirFormEdit() {
@@ -17,31 +15,54 @@ function fecharForm() {
     $("#modalEditar").hide();
 
 }
-
 function realizarAjaxAtualizarDados() {
-    var dadosFormulario = $("#formularioEdicao").serialize();
-    $ajax({
+    const formEdicao = $('#formularioEdicao');
+    const controllerURL = "../Controller/MembroController.class.php?_acao=editar";
+    const dados = new FormData($(formEdicao)[0]);
+    console.log(dados);
+    $.ajax({
         type: "POST",
         dataType: "JSON",
-        url: "../Controller/MembroController.class.php",
-        data: dadosFormulario,
-        success: atualizarDados,
+        url: controllerURL,
+        data: dados,
+        processData: false,
+        contentType: false,
+        success: sucessoAoPublicar,
         error: erroNaRequisicao
     });
 }
 
-//Em caso de ajax sucess chamar está função
-function atualizarDados() {
-    console.log(response);
+function sucessoAoPublicar(response) {
+    if (response.success) {
+        alert("Dados Atualizados com Sucesso");
+
+        $('#formularioEdicao').trigger("reset");
+        fecharForm();
+        atualizarPerfilUsuario(response.dados);
+    } else {
+        alert("Falha ao atualizar dados");
+    }
 }
 
-//Em caso de ajax error chamar a esta  função
 function erroNaRequisicao(xhr, status, error) {
     console.error('ERRO!');
-    console.log(xhr.responseText);
     console.error('XHR:', xhr);
     console.error('Status:', status);
     console.error('Erro:', error);
-    console.log(data);
+
+    console.log('Resposta:', xhr.responseText); // Adicione esta linha para verificar a resposta
 }
 
+function atualizarPerfilUsuario(dados) {
+    $('#imagemUsuario').attr('src', response[0].foto);
+    $('#spanAniversario').html(`${dados[0].aniversario}`);
+    $('#melhorViagem').html(`${dados[0].melhor_viagem}`);
+   
+   
+   
+    $('#spanAniversario').html(`${dados[0].aniversario}`);
+    $('#spanAniversario').html(`${dados[0].aniversario}`);
+    $('#spanAniversario').html(`${dados[0].aniversario}`);
+    $('#spanAniversario').html(`${dados[0].aniversario}`);
+    
+}

@@ -20,16 +20,28 @@ class MembroModel
 	private $desafios = [];
 
 
-	public function __construct($id, $foto, $nome, $email, $senha)
+	// public function __construct($id, $foto, $nome, $email, $senha)
+	// {
+	// 	$this->id = $id;
+	// 	$this->foto = $foto;
+	// 	$this->nome = $nome;
+	// 	$this->email = $email;
+	// 	$this->senha = $senha;
+	// }
+
+	public function __construct($id, $foto, $nome, $email, $senha, $aniversario = null, $melhorViagem = null, $instagram = null, $telefone = null, $apresentacao = null)
 	{
 		$this->id = $id;
 		$this->foto = $foto;
 		$this->nome = $nome;
 		$this->email = $email;
 		$this->senha = $senha;
+		$this->aniversario = $aniversario;
+		$this->melhorViagem = $melhorViagem;
+		$this->instagram = $instagram;
+		$this->telefone = $telefone;
+		$this->apresentacao = $apresentacao;
 	}
-
-
 	//Métodos Getters and Setters
 	public function getId()
 	{

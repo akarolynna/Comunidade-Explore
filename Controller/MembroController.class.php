@@ -33,6 +33,7 @@ class MembroController
                     ? $this->buscarMembroPorId()
                     : $this->buscarMembros();
                 break;
+
             default:
                 throw new Exception("Nenhuma ação foi passada");
         }
@@ -48,9 +49,9 @@ class MembroController
                 $this->logarMembro();
                 break;
             case 'editar':
-                //dados enviados de um formulário $_POST
-                $this->atualizarMembro($_POST);
+                $this->atualizarMembro();
                 break;
+
                 //outras funções como o login que usam o método POST
             default:
                 throw new Exception("Erro ao processar a requisição");
@@ -74,11 +75,41 @@ class MembroController
             echo json_encode(array('error' => 'Erro no Controller ao tentar realizar o cadastro ' . $ex->getMessage()));
         }
     }
+    public function atualizarMembro()
+    {
+
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        try {
+            $fotoCaminho = $this->uploadFoto();
+            $nome = $_POST['nome'];
+            $aniversario = $_POST['aniversario'];
+            $melhor_viagem = $_POST['melhor_viagem'];
+            $instagram = $_POST['instagram'];
+            $telefone = $_POST['telefone'];
+            $apresentacao = $_POST['apresentacao'];
+            $id = $_SESSION['usuario']['id'];
+            $email = $_SESSION['usuario']['email'];
+
+
+            $membroAtualizado = new MembroModel($id, $fotoCaminho, $nome, $email, null, $aniversario, $melhor_viagem, $instagram, $telefone, $apresentacao);
+            $resultado = $this->membroDao->atualizarMembro($membroAtualizado);
+            if ($resultado) {
+                echo json_encode(array('success' => 'Atualização bem-sucedida!'));
+            } else {
+                echo json_encode(array('error' => 'Falha na atualização.'));
+            }
+        } catch (Exception $ex) {
+            echo json_encode(array('error' => 'Erro no Controller ao tentar realizar o edição ' . $ex->getMessage()));
+        }
+    }
+
 
     private function uploadFoto()
     {
-        $diretorioDestino  = "../Public/Imagens/fotosCadastroMembro/";
-        $arquivo  = $_FILES['foto']['name'];
+        $diretorioDestino = "../Public/Imagens/fotosCadastroMembro/";
+        $arquivo = $_FILES['foto']['name'];
         $caminhoCompleto = $diretorioDestino . $arquivo;
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $caminhoCompleto)) {
             return $caminhoCompleto;
@@ -86,7 +117,6 @@ class MembroController
             throw new Exception("Falha no upload da foto.");
         }
     }
-
 
     public function logarMembro()
     {
@@ -96,7 +126,7 @@ class MembroController
             $autenticado = $this->membroDao->autenticandoMembro($email, $senha);
 
             if ($autenticado) {
-                echo "Autenticação bem-sucedida! <br>";
+
                 $this->iniciarSessao($email);
             } else {
                 echo "Autenticação falhou. Verifique suas credenciais.<br>";
@@ -105,6 +135,8 @@ class MembroController
             echo "Erro ao autenticar o membro: " . $ex->getMessage() . "<br>";
         }
     }
+
+
 
     public function iniciarSessao($email)
     {
@@ -120,6 +152,7 @@ class MembroController
 
         exit();
     }
+
     private function buscarMembros()
     {
         $membros = $this->membroDao->buscarMembros();
@@ -130,20 +163,5 @@ class MembroController
     {
         $membro = $this->membroDao->buscarMembroPorId($_GET['membroId']);
         echo json_encode($membro);
-    }
-
-    public function atualizarMembro($dados)
-    {
-        try {
-            $resultado = $this->membroDao->atualizarMembro($dados);
-
-            if ($resultado) {
-                echo json_encode(array('success' => 'Atualização bem-sucedida.'));
-            } else {
-                echo json_encode(array('error' => 'Falha na atualização.'));
-            }
-        } catch (Exception $ex) {
-            throw new Exception("Erro no Controller ao tentar realizar a atualização: " . $ex->getMessage());
-        }
     }
 }

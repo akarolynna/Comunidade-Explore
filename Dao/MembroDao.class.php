@@ -28,11 +28,12 @@ class MembroDao
         return $result;
     }
 
-    public function buscarMembroPorId($membroId) {
+    public function buscarMembroPorId($membroId)
+    {
         $query = 'SELECT * FROM Membro WHERE membro.id = :membroId';
         $fields = array('membroId' => $membroId);
         $result = [];
-        
+
         try {
             $result = $this->getResult($query, $fields);
         } catch (Exception $ex) {
@@ -115,7 +116,8 @@ class MembroDao
             return false;
         }
     }
-    // public function atualizarMembro(MembroModel $membro) {
+
+    // public function atualizarMembro(MembroModel $membro){
     //     $query = "UPDATE membro SET foto = :foto, apresentacao = :apresentacao, aniversario = :aniversario, telefone = :telefone, melhor_viagem = :melhorViagem WHERE email = :email";
     //     $options = [
     //         'foto' => $membro->getFoto(),
@@ -123,9 +125,9 @@ class MembroDao
     //         'aniversario' => $membro->getAniversario(),
     //         'telefone' => $membro->getTelefone(),
     //         'melhorViagem' => $membro->getMelhorViagem(),
-    //         'email' => $membro->getEmail(),
+    //         'email' => $membro->getEmail(), 
     //     ];
-    
+
     //     try {
     //         $this->connection->connection();
     //         $statement = $this->connection->prepareStatement($query, $options);
@@ -134,26 +136,45 @@ class MembroDao
     //         throw new Exception("Erro ao tentar atualizar usuário no Banco de Dados: " . $ex->getMessage());
     //     }
     // }
+    //     public function atualizarMembro($dados, $email){
+    //     $query = "UPDATE membro SET foto = :foto, apresentacao = :apresentacao, aniversario = :aniversario, telefone = :telefone, melhor_viagem = :melhorViagem WHERE email = :email";
+    //     $options = [
+    //         'foto' => $dados['foto'],
+    //         'apresentacao' => $dados['apresentacao'],
+    //         'aniversario' => $dados['aniversario'],
+    //         'telefone' => $dados['telefone'],
+    //         'melhorViagem' => $dados['melhor_viagem'],
+    //         'email' => $email, 
+    //     ];
 
-    public function atualizarMembro(MembroModel $membro){
-    $query = "UPDATE membro SET foto = :foto, apresentacao = :apresentacao, aniversario = :aniversario, telefone = :telefone, melhor_viagem = :melhorViagem WHERE id = :id";
-    $options = [
-        'foto' => $membro->getFoto(),
-        'apresentacao' => $membro->getApresentacao(),
-        'aniversario' => $membro->getAniversario(),
-        'telefone' => $membro->getTelefone(),
-        'melhorViagem' => $membro->getMelhorViagem(),
-        'id' => $membro->getId(), 
-    ];
+    //     try {
+    //         $this->connection->connection();
+    //         $statement = $this->connection->prepareStatement($query, $options);
+    //         return $this->connection->executeStatement($statement);
+    //     } catch (Exception $ex) {
+    //         throw new Exception("Erro ao tentar atualizar usuário no Banco de Dados: " . $ex->getMessage());
+    //     }
+    // }
+    public function atualizarMembro(MembroModel $membro)
+    {
+        $query = "UPDATE membro SET nome = :nome,foto = :foto, apresentacao = :apresentacao, aniversario = :aniversario, telefone = :telefone, melhor_viagem = :melhorViagem, instagram = :instagram WHERE email = :email";
+        $options = [
+            'nome' => $membro->getNome(),
+            'foto' => $membro->getFoto(),
+            'apresentacao' => $membro->getApresentacao(),
+            'aniversario' => $membro->getAniversario(),
+            'telefone' => $membro->getTelefone(),
+            'melhorViagem' => $membro->getMelhorViagem(),
+            'instagram' => $membro->getInstagram(),
+            'email' => $membro->getEmail(),
+        ];
 
-    try {
-        $this->connection->connection();
-        $statement = $this->connection->prepareStatement($query, $options);
-        return $this->connection->executeStatement($statement);
-    } catch (Exception $ex) {
-        throw new Exception("Erro ao tentar atualizar usuário no Banco de Dados: " . $ex->getMessage());
+        try {
+            $this->connection->connection();
+            $statement = $this->connection->prepareStatement($query, $options);
+            return $this->connection->executeStatement($statement);
+        } catch (Exception $ex) {
+            throw new Exception("Erro ao tentar atualizar usuário no Banco de Dados: " . $ex->getMessage());
+        }
     }
-}
-
-    
 }

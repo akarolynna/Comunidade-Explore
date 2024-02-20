@@ -42,7 +42,7 @@ function sucessoAoPublicar(response) {
         $('#formularioMembro')[0].reset();
         window.location.href = "../View/login.php";
     } else {
-        alert("Falha ao inserir diário");
+        alert("Falha ao inserir Membro");
     }
 }
 
