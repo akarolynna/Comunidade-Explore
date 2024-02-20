@@ -22,14 +22,14 @@
                                             <img src="./../Public/Imagens/pena-icone-verde.png" alt="opcao publicação" class="w-50">
                                             <span>Diário</span>
                                         </button>
-                                        <a href="./cadastroEvento.php" class="button botaoDiario ">
+                                        <button id="botaoEvento" class="button botaoDiario">
                                             <img src="./../Public/Imagens/evento-icone-verde.png" alt="opcao publicação" class="w-50">
                                             <span>Evento</span>
-                                        </a>
-                                        <a href="./cadastroGuia.php" class="button botaoDiario">
+                                        </button>
+                                        <button id="botaoGuia" class="button botaoDiario">
                                             <img src="./../Public/Imagens/guia-icone-verde.png" alt="opcao publicação" class="w-50">
                                             <span>Guia</span>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

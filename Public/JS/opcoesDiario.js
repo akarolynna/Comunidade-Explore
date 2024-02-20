@@ -4,6 +4,8 @@ $(document).ready(function () {
 
 $("#btnOpcaoPublicacaoDiario").click(abrirOpcaoPublicacaoDiario);
 $("#btn-novoDiario").click(redicionarNovoDiario);
+$("#botaoEvento").click(redirecionarNovoEvento);
+$("#botaoGuia").click(redirecionarNovoGuia);
 
 
 function abrirOpcaoPublicacaoDiario() {
@@ -16,4 +18,12 @@ function abrirOpcaoPublicacaoDiario() {
 
 function redicionarNovoDiario() {
     window.location.href = './../View/cadastroDiarioViagem.php';
+}
+
+function redirecionarNovoEvento() {
+    window.location.href = './../View/cadastroEvento.php';
+}
+
+function redirecionarNovoGuia() {
+    window.location.href = './../View/cadastroGuia.php';
 }
