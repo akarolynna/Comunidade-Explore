@@ -167,6 +167,7 @@ class EventoDao
             'criadorId' => $evento->getCriadorId()
         );
 
+
         $result = 0;
         try {
             $result = $this->getResult($query, $fields);

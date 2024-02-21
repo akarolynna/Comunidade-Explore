@@ -8,7 +8,6 @@ class Evento {
     private $horaTermino;
     private $fotoCapa;
     private $maxParticipantes;
-    private $arquivado;
     private $categoriaId;
     private $colaboradores;
     private $inscritos;
@@ -23,7 +22,6 @@ class Evento {
         $horaTermino,
         $fotoCapa = null,
         $maxParticipantes,
-        $arquivado = null,
         $categoriaId,
         $criadorId = null,
         $colaboradores,
@@ -37,7 +35,6 @@ class Evento {
         $this->horaTermino = $horaTermino;
         $this->fotoCapa = $fotoCapa;
         $this->maxParticipantes = $maxParticipantes;
-        $this->arquivado = $arquivado;
         $this->categoriaId = $categoriaId;
         $this->criadorId = $criadorId;
         $this->colaboradores = $colaboradores;
@@ -106,11 +103,6 @@ class Evento {
         return $this->criadorId;
     }
 
-    public function getArquivado()
-    {
-        return $this->arquivado;
-    }
-
     // Setters
 
     public function setTitulo($titulo)
@@ -173,9 +165,5 @@ class Evento {
         $this->criadorId = $criadorId;
     }
 
-    public function setArquivado($arquivado)
-    {
-        $this->arquivado = $arquivado;
-    }
 }
 ?>
