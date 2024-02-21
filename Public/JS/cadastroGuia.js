@@ -123,7 +123,7 @@ function editar(evt) {
     let searchParams = new URLSearchParams(queryString);
     const guiaId = searchParams.get('guiaId');
 
-    const controllerURL = "../controller/GuiaController.class.php?acao=editar&guiaId=" + guiaId;
+    const controllerURL = "../controller/GuiaController.class.php?_acao=editar&guiaId=" + guiaId;
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
 

@@ -42,15 +42,10 @@ class GuiaController
                     if($_GET['_acao'] == 'seguir') $this->adicionarSeguidor();
                     if($_GET['_acao'] == 'publicar') $this->cadastrar('publicar');
                     if($_GET['_acao'] == 'salvarRascunho') $this->cadastrar('salvarRascunho');
+                    if($_GET['_acao'] == 'editar') $this->editar();
                     if($_GET['_acao'] == 'editarPublicar') $this->editarPublicar();
                     if($_GET['_acao'] == 'arquivar') $this->arquivar();
-                } else {
-                    if (!isset($_GET['acao'])) {
-                        $this->cadastrar();
-                    } else {
-                        $this->editar();
-                    }
-                }                
+                }               
                 break;
             default:
                 throw new Exception('Erro ao tentar realizar a operação.<br> Requisição desconhecida');
