@@ -40,6 +40,8 @@ class GuiaController
             case 'POST':
                 if (isset($_GET['_acao'])) {
                     if($_GET['_acao'] == 'seguir') $this->adicionarSeguidor();
+                    if($_GET['_acao'] == 'publicar') $this->cadastrar('publicar');
+                    if($_GET['_acao'] == 'salvarRascunho') $this->cadastrar('salvarRascunho');
                     if($_GET['_acao'] == 'editarPublicar') $this->editarPublicar();
                     if($_GET['_acao'] == 'arquivar') $this->arquivar();
                 } else {
@@ -202,7 +204,7 @@ class GuiaController
         };
     }
 
-    private function cadastrar()
+    private function cadastrar($acao)
     {
         try {
             extract($_POST);
@@ -232,7 +234,7 @@ class GuiaController
                     $areasContribuicao,
                     $caminhoFotoCapa,
                     $fotosSecundarias,
-                    0,
+                    $acao == 'publicar' ? 1 : 0,
                     0,
                     $categoria,
                     $_SESSION['usuario']['id'],

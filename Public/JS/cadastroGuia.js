@@ -146,8 +146,8 @@ function editar(evt) {
     });
 }
 
-function cadastrar() {
-    const controllerURL = "../Controller/GuiaController.class.php";
+function cadastrar(evt) {
+    const controllerURL = "../Controller/GuiaController.class.php?_acao=publicar";
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
     let desafios = [];
@@ -175,6 +175,7 @@ function cadastrar() {
     dados.append('desafios', JSON.stringify(desafios));
     dados.append('colaboradores', JSON.stringify(colaboradores));
 
+    evt.preventDefault();
     $.ajax({
         type: "POST",
         dataType: "JSON",
