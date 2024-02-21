@@ -112,10 +112,6 @@ function exibirDadosForm(response) {
 
     $('#descricao').val(response[0].apresentacao);
 
-
-
-
-
 }
 function erroNaRequisicao(xhr, status, error) {
     console.error('ERRO!');

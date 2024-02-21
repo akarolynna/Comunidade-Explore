@@ -35,7 +35,11 @@ class DiarioController
                     : $this->buscarDiario();
                 break;
             case 'POST':
-                $this->criarDiario();
+                if (isset($_POST['_acao']) && $_POST['_acao'] === 'editar') {
+                    $this->editarDiarioViagem();
+                } else {
+                    $this->criarDiario();
+                }
                 break;
 
             default:
@@ -49,17 +53,6 @@ class DiarioController
         echo json_encode($diario);
     }
 
-    // public function buscarDiario()
-    // {
-    //     if (session_status() == PHP_SESSION_NONE) {
-    //         session_start();
-    //     }
-
-    //     $criador_id = $_SESSION['usuario']['id'];
-    //     $diarios = $this->diarioDao->exibirDiariosViagem($criador_id);
-    //     return json_encode($diarios);
-
-    // }
     public function buscarDiario()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -81,7 +74,7 @@ class DiarioController
     public function criarDiario()
     {
         try {
-            session_start(); // Inicia a sessão para conseguir pegar o $_SESSION['usuario']['id'];
+            session_start();
 
             $fotoCaminho = $this->uploadFoto();
 
@@ -110,6 +103,30 @@ class DiarioController
             return $caminhoCompleto;
         } else {
             throw new Exception("Falha no upload da foto.");
+        }
+    }
+    private function editarDiarioViagem()
+    {
+        try {
+            extract($_POST);
+
+            $imagem = $this->uploadFoto();
+
+            $diarioViagem = new DiarioViagem(
+                $imagem,
+                $titulo,
+                $descricao,
+                $localizacao,
+                $diarioViagemId
+            );
+
+            if ($this->diarioDao->atualizarDiarioViagem($diarioViagem)) {
+                echo json_encode('Diário de viagem editado com sucesso');
+            } else {
+                echo 'Erro ao editar diário de viagem';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
     }
 }

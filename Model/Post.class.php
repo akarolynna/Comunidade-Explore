@@ -1,49 +1,58 @@
 <?php
-class Post {
+class Post
+{
     private $fotos;
-    private $conteudo;
+    private $titulo;
+    private $descricao;
     private $diarioViagem;
-    private $data;
 
-    public function __construct($fotos, $conteudo, $diarioViagem, $data) {
+
+    public function __construct($fotos, $titulo, $descricao, $diarioViagem)
+    {
         $this->fotos = $fotos;
-        $this->conteudo = $conteudo;
-        $this->diarioViagem = $diarioViagem;
-        $this->data = $data;
-    }
-
-    // Métodos Set
-    public function setFotos($fotos) {
-        $this->fotos = $fotos;
-    }
-
-    public function setConteudo($conteudo) {
-        $this->conteudo = $conteudo;
-    }
-
-    public function setDiarioViagem($diarioViagem) {
+        $this->titulo = $titulo;
+        $this->descricao = $descricao;
         $this->diarioViagem = $diarioViagem;
     }
 
-    public function setData($data) {
-        $this->data = $data;
-    }
-
-    // Métodos Get
-    public function getFotos() {
+    //Métodos Getters and Setters
+    public function getFotos()
+    {
         return $this->fotos;
     }
 
-    public function getConteudo() {
-        return $this->conteudo;
+    public function getTitulo()
+    {
+        return $this->titulo;
     }
 
-    public function getDiarioViagem() {
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    public function getDiarioViagem()
+    {
         return $this->diarioViagem;
     }
 
-    public function getData() {
-        return $this->data;
+    public function setFotos($fotos)
+    {
+        $this->fotos = $fotos;
+    }
+
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+    }
+
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+    }
+
+    public function setDiarioViagem($diarioViagem)
+    {
+        $this->diarioViagem = $diarioViagem;
     }
 }
-?>
