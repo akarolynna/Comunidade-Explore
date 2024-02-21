@@ -49,6 +49,7 @@
     color: white;
     border-color: var(--cor-padrao);
     background-color: var(--cor-padrao);
+    margin: 0 10px;
 
     &:hover {
         background-color: #89b30e;
