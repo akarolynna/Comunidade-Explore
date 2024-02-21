@@ -36,30 +36,18 @@ class GuiaController
                         $this->buscarColaboradores();
                     }
                 }
-                // if(!isset($_GET['guiaId'])) {
-                //     $this->buscar();
-                // } else if(!isset($_GET['acao'])) {
-                //     $this->buscarPorId();
-                // } else {
-                //     if(isset($_GET['acao']) && $_GET['acao'] == 'buscarDesafios') {
-                //         $this->buscarDesafios();
-                //     } else if(isset($_GET['acao']) && $_GET['acao'] == 'buscarColaboradores') {
-                //         $this->buscarColaboradores();
-                //     }else{
-                //     $this->exibirGuiasUsuario();
-                //     }
-                // }
                 break;
             case 'POST':
                 if (isset($_GET['_acao'])) {
                     if($_GET['_acao'] == 'seguir') $this->adicionarSeguidor();
-                }
-
-                if (!isset($_GET['acao'])) {
-                    $this->cadastrar();
+                    if($_GET['_acao'] == 'editarPublicar') $this->editarPublicar();
                 } else {
-                    $this->editar();
-                }
+                    if (!isset($_GET['acao'])) {
+                        $this->cadastrar();
+                    } else {
+                        $this->editar();
+                    }
+                }                
                 break;
             default:
                 throw new Exception('Erro ao tentar realizar a operação.<br> Requisição desconhecida');
@@ -119,6 +107,43 @@ class GuiaController
             move_uploaded_file($_FILES[$nomeArquivo]["tmp_name"], $caminhoFoto);
         }
         return $caminhoFoto;
+    }
+
+    private function editarPublicar() {
+        try {
+            extract($_POST);
+            $guia = new Guia(
+                $nomeDestino,
+                $localizacao,
+                $corPrincipal,
+                $descricao,
+                $clima,
+                $epocaVisita,
+                $culturaHistoria,
+                $areasContribuicao,
+                null,
+                null,
+                null,
+                null,
+                $categoria,
+                null,
+                null,
+                null,
+            );
+
+            if ($this->guiaDao->editarGuia($guia, $_GET['guiaId'])) {
+                if ($this->guiaDao->publicarGuia($_GET['guiaId'])) {
+                    echo json_encode('Guia editado e publicado com sucesso');
+                } else {
+                    echo 'Erro ao publicar guia';
+                }
+            } else {
+                echo 'Erro ao editar guia';
+            }
+
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 
     private function editar()

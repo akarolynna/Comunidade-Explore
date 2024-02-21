@@ -1,12 +1,108 @@
 $(document).ready(preencherDados);
 $('#btnCancelar').click(cancelar);
 $('#btnSalvarRascunho').click(salvarRascunho);
-$('#btnEditar').click(editar);
 $('#btnPublicar').click(cadastrar);
-let guiaId = 0;
+$('#btnEditar').click(editar);
+$('#btnEditarPublicar').click(editarPublicar);
+
+function editarPublicar(evt) {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    const guiaId = searchParams.get('guiaId');
+
+    const controllerURL = "../controller/GuiaController.class.php?_acao=editarPublicar&guiaId=" + guiaId;
+    const dados = new FormData($(formCadastro)[0]);
+    let areasContribuicao = [];
+
+    formCadastro.find('.checkAreasContribuicao:checked').each(function () {
+        areasContribuicao.push($(this).val());
+    });
+    dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
+
+    evt.preventDefault();
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        data: dados,
+        processData: false,
+        contentType: false,
+        success: () => {
+            alert('Guia editado e publicado com sucesso!');
+            window.location.href = './pagina-inicial.php';
+        },
+        error: erroNaRequisicao
+        });
+}
 
 const formCadastro = $('#formCadGuia');
 
+function preencherDados() {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    let guiaId = searchParams.get('guiaId');
+
+    $('#btnEditarPublicar').css('display', 'none');
+    $('#btnArquivar').css('display', 'none');
+    $('#btnEditar').css('display', 'none');
+
+    if (guiaId != null) {
+        $('.inputFotoContainer').css('display', 'none');
+        $('.inputColaboradorContainer').css('display', 'none');
+        $('.inputDesafioContainer').css('display', 'none');
+        $('#btnSalvarRascunho').css('display', 'none');
+        $('#btnPublicar').css('display', 'none');
+
+        $('#btnEditar').css('display', 'block');
+
+        $.ajax({
+            url: `../Controller/GuiaController.class.php?guiaId=${guiaId}`,
+            type: 'GET',
+            dataType: 'JSON',
+            success: sucessoAoBuscarGuia,
+            error: erroNaRequisicao
+        });
+    } 
+
+}
+
+function sucessoAoBuscarGuia(response) {
+    if (!$.isEmptyObject(response)) {
+        if(response[0].publico == 0) {
+            $('#btnEditarPublicar').css('display', 'block');
+        } else if(response[0].publico == 1) {
+            $('#btnArquivar').css('display', 'block');
+        }
+
+        $('#inputNome').val(response[0].nomeDestino);
+        $('#inputLocalizacao').val(response[0].localizacao);
+        $('#inputCorPrincipal').val(response[0].corPrincipal);
+        $('#inputDescricao').val(response[0].descricao);
+        $('#inputClima').val(response[0].clima);
+        $('#inputEpocaVisita').val(response[0].epocaVisita);
+        $('#inputCulturaHistoria').val(response[0].culturaHistoria);
+        $('#selectCategoria').val(response[0].categoriaId);
+
+        $('#inputHiddenFotoCapa').val(response[0].fotoCapa)
+        let i = 0;
+        JSON.parse(response[0].fotosSecundarias).forEach(foto => {
+            i++;
+            $(`#inputHiddenFotoSecundaria${i}`).val(foto);
+        });
+
+        i = 0;
+        const areasString = response[0].areasContribuicao.replace(/\\/g, '');
+        const areasStringSemAspas = areasString.replace(/^"|"$/g, '');
+        const areas = JSON.parse(areasStringSemAspas);
+        areas.forEach(areaContribuicao => {
+            i++;
+            $(`#check${areaContribuicao}`).prop('checked', true);
+        });
+
+    } else {
+        $('#publicacoes').html('Oops! Não encontramos esse guia.')
+    }
+}
 
 function cadastrar() {
     const controllerURL = "../Controller/GuiaController.class.php";
@@ -50,6 +146,10 @@ function cadastrar() {
 }
 
 function editar(evt) {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    const guiaId = searchParams.get('guiaId');
+
     const controllerURL = "../controller/GuiaController.class.php?acao=editar&guiaId=" + guiaId;
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
@@ -60,23 +160,7 @@ function editar(evt) {
         areasContribuicao.push($(this).val());
     });
 
-    // $(".desafio").each(function (index) {
-    //     const tituloDesafio = $(this).find(".inputTituloDesafio").val();
-    //     const descricaoDesafio = $(this).find(".inputDescricaoDesafio").val();
-
-    //     desafios.push({
-    //         titulo: tituloDesafio,
-    //         descricao: descricaoDesafio
-    //     });
-    // });
-
-    // $("#multiselectColaboradores option:selected").each(function () {
-    //     colaboradores.push($(this).val());
-    // });
-
     dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
-    // dados.append('desafios', JSON.stringify(desafios));
-    // dados.append('colaboradores', JSON.stringify(colaboradores));
 
     evt.preventDefault();
     $.ajax({
@@ -94,65 +178,37 @@ function editar(evt) {
     });
 }
 
-function preencherDados() {
+function teste(evt) {
     let queryString = window.location.search;
     let searchParams = new URLSearchParams(queryString);
-    guiaId = searchParams.get('guiaId');
+    const guiaId = searchParams.get('guiaId');
 
-    if (guiaId != null) {
-        $('.inputFotoContainer').css('display', 'none');
-        $('.inputColaboradorContainer').css('display', 'none');
-        $('.inputDesafioContainer').css('display', 'none');
-        $('#btnSalvarRascunho').css('display', 'none');
-        $('#btnPublicar').css('display', 'none');
-        $('#btnEditar').css('display', 'block');
+    const controllerURL = "../controller/GuiaController.class.php?_acao=editarPublicar&guiaId=" + guiaId;
+    const dados = new FormData($(formCadastro)[0]);
+    let areasContribuicao = [];
+    let desafios = [];
+    let colaboradores = [];
 
-        $.ajax({
-            url: `../Controller/GuiaController.class.php?guiaId=${guiaId}`,
-            type: 'GET',
-            dataType: 'JSON',
-            success: sucessoAoBuscarGuia,
-            error: erroNaRequisicao
-        });
-    }
+    formCadastro.find('.checkAreasContribuicao:checked').each(function () {
+        areasContribuicao.push($(this).val());
+    });
+    dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
 
-}
-
-function sucessoAoBuscarGuia(response) {
-    console.log(response);
-
-    if (!$.isEmptyObject(response)) {
-        $('#inputNome').val(response[0].nomeDestino);
-        $('#inputLocalizacao').val(response[0].localizacao);
-        $('#inputCorPrincipal').val(response[0].corPrincipal);
-        $('#inputDescricao').val(response[0].descricao);
-        $('#inputClima').val(response[0].clima);
-        $('#inputEpocaVisita').val(response[0].epocaVisita);
-        $('#inputCulturaHistoria').val(response[0].culturaHistoria);
-        $('#selectCategoria').val(response[0].categoriaId);
-
-        $('#inputHiddenFotoCapa').val(response[0].fotoCapa)
-        let i = 0;
-        JSON.parse(response[0].fotosSecundarias).forEach(foto => {
-            i++;
-            $(`#inputHiddenFotoSecundaria${i}`).val(foto);
-        });
-
-        i = 0;
-        const areasString = response[0].areasContribuicao.replace(/\\/g, '');
-        const areasStringSemAspas = areasString.replace(/^"|"$/g, '');
-        const areas = JSON.parse(areasStringSemAspas);
-        areas.forEach(areaContribuicao => {
-            i++;
-            $(`#check${areaContribuicao}`).prop('checked', true);
-        });
-
-        buscarDesafios(response[0].id);
-        buscarColaboradores(response[0].id);
-
-    } else {
-        $('#publicacoes').html('Oops! Não encontramos esse guia.')
-    }
+    console.log('aquii')
+    evt.preventDefault();
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        data: dados,
+        processData: false,
+        contentType: false,
+        success: () => {
+            alert('Guia editado e publicado com sucesso!');
+            window.location.href = './pagina-inicial.php';
+        },
+        error: erroNaRequisicao
+    });
 }
 
 function buscarDesafios(guiaId) {

@@ -23,13 +23,16 @@ class GuiaDao
     public function buscar($categoria, $pesquisa)
     {
         if ($categoria == strtolower(Categoria::TODOS)) {
-            $query = "SELECT * FROM Guia WHERE Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
+            $query = "SELECT * FROM Guia 
+                WHERE Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%')
+                AND Guia.publico = 1;";
             $fields = array('pesquisa' => $pesquisa);
         } else {
             $query = "SELECT * FROM Guia
                     INNER JOIN Categoria ON Guia.categoriaId = Categoria.id
                     WHERE Categoria.categoria = :categoria
-                    AND Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
+                    AND Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%')
+                    AND Guia.publico = 1;";
             $fields = array(
                 'categoria' => $categoria,
                 'pesquisa' => $pesquisa
@@ -273,5 +276,20 @@ class GuiaDao
             throw new Exception($ex->getMessage());
         }
         return $result;
+    }
+
+    public function publicarGuia($guiaId) {
+        $query = 'UPDATE Guia SET publico = 1 where id = :guiaId';
+        $fields = array(
+            'guiaId' => $guiaId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
     }
 }
