@@ -1,5 +1,7 @@
 <?php
 session_start();
+$diarioId = $_GET['diarioId'];
+// echo $diarioId;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,7 +28,7 @@ session_start();
                 </div>
             </div>
             <div class="botoes">
-                <button class="btn botaoAdd" id="botaoAddPost">Add Post</button>
+                <button class="btn botaoAdd" id="botaoAddPost" >Add Post</button>
                 <button class="btn bbotaoEditar" id="botaoEditar">Editar</button>
                 <button class="btn btn-danger" id="botaoExcluir">Exluir</button>
             </div>

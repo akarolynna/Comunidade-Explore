@@ -1,0 +1,74 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import './Cores.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.blocoPrincipal {
+
+    width: 80%;
+    height: 600px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    color: var(--cor-azul-escuro);
+}
+
+.Divformulario {
+    width: 100%;
+    margin-left: 137px;
+}
+
+.Divformulario label {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.Divformulario input {
+    width: 67%;
+    margin-bottom: 20px !important;
+    height: 38px;
+    border-radius: 7px;
+    border: 1px solid gray;
+}
+
+.Divformulario textarea {
+    width: 67%;
+    height: 100px;
+    font-family: 'Roboto Serif', serif;
+    color: var(--cor-azul-escuro);
+    font-size: 16px;
+    margin-top: 1px;
+    border-radius: 7px;
+    border: 1px solid;
+    padding: 12px;
+    resize: none;
+}
+
+.form-control-file {
+    margin-bottom: 15px !important;
+}
+
+.divBotao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.botaoEnviar{
+    background-color: var(--cor-azul-escuro);
+    color:white;
+}
+.dropzone {
+    width: 67%;
+    border: 1px solid;
+    border-radius: 7px;
+
+} */

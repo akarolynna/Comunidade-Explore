@@ -46,11 +46,20 @@ CREATE TABLE DiarioViagem (
     FOREIGN KEY (criador_id) REFERENCES Membro(id)
 );
 
+-- CREATE TABLE Post (
+-- 	id INT NOT NULL AUTO_INCREMENT,
+--     imagens JSON NOT NULL,
+--     conteudo VARCHAR(500) NOT NULL,
+--     data DATE,
+--     diario_id INT NOT NULL,
+--     PRIMARY KEY(id),
+--     FOREIGN KEY (diario_id) REFERENCES DiarioViagem(id)
+-- );
 CREATE TABLE Post (
 	id INT NOT NULL AUTO_INCREMENT,
-    imagens JSON NOT NULL,
-    conteudo VARCHAR(500) NOT NULL,
-    data DATE,
+    fotos JSON NOT NULL,
+    descricao VARCHAR(500) NOT NULL,
+    titulo VARCHAR(100) NOT NULL,
     diario_id INT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (diario_id) REFERENCES DiarioViagem(id)

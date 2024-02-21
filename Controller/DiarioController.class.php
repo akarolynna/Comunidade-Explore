@@ -49,17 +49,6 @@ class DiarioController
         echo json_encode($diario);
     }
 
-    // public function buscarDiario()
-    // {
-    //     if (session_status() == PHP_SESSION_NONE) {
-    //         session_start();
-    //     }
-
-    //     $criador_id = $_SESSION['usuario']['id'];
-    //     $diarios = $this->diarioDao->exibirDiariosViagem($criador_id);
-    //     return json_encode($diarios);
-
-    // }
     public function buscarDiario()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -81,7 +70,7 @@ class DiarioController
     public function criarDiario()
     {
         try {
-            session_start(); // Inicia a sessão para conseguir pegar o $_SESSION['usuario']['id'];
+            session_start(); 
 
             $fotoCaminho = $this->uploadFoto();
 
