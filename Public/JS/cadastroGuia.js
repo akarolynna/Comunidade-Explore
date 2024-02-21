@@ -6,55 +6,6 @@ $('#btnEditar').click(editar);
 $('#btnEditarPublicar').click(editarPublicar);
 $('#btnArquivar').click(arquivar);
 
-function editarPublicar(evt) {
-    let queryString = window.location.search;
-    let searchParams = new URLSearchParams(queryString);
-    const guiaId = searchParams.get('guiaId');
-
-    const controllerURL = "../controller/GuiaController.class.php?_acao=editarPublicar&guiaId=" + guiaId;
-    const dados = new FormData($(formCadastro)[0]);
-    let areasContribuicao = [];
-
-    formCadastro.find('.checkAreasContribuicao:checked').each(function () {
-        areasContribuicao.push($(this).val());
-    });
-    dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
-
-    evt.preventDefault();
-    $.ajax({
-        type: "POST",
-        dataType: "JSON",
-        url: controllerURL,
-        data: dados,
-        processData: false,
-        contentType: false,
-        success: () => {
-            alert('Guia editado e publicado com sucesso!');
-            window.location.href = './pagina-inicial.php';
-        },
-        error: erroNaRequisicao
-        });
-}
-
-function arquivar() {
-    let queryString = window.location.search;
-    let searchParams = new URLSearchParams(queryString);
-    const guiaId = searchParams.get('guiaId');
-
-    const controllerURL = "../controller/GuiaController.class.php?_acao=arquivar&guiaId=" + guiaId;
-    
-    $.ajax({
-        type: "POST",
-        dataType: "JSON",
-        url: controllerURL,
-        success: () => {
-            alert('Guia arquivado com sucesso!');
-            window.location.href = './pagina-inicial.php';
-        },
-        error: erroNaRequisicao
-    });
-}
-
 const formCadastro = $('#formCadGuia');
 
 function preencherDados() {
@@ -124,6 +75,77 @@ function sucessoAoBuscarGuia(response) {
     }
 }
 
+function editarPublicar(evt) {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    const guiaId = searchParams.get('guiaId');
+
+    const controllerURL = "../controller/GuiaController.class.php?_acao=editarPublicar&guiaId=" + guiaId;
+    const dados = new FormData($(formCadastro)[0]);
+    let areasContribuicao = [];
+
+    formCadastro.find('.checkAreasContribuicao:checked').each(function () {
+        areasContribuicao.push($(this).val());
+    });
+    dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
+
+    evt.preventDefault();
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        data: dados,
+        processData: false,
+        contentType: false,
+        success: sucessoNaRequisicao,
+        error: erroNaRequisicao
+        });
+}
+
+function arquivar() {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    const guiaId = searchParams.get('guiaId');
+
+    const controllerURL = "../controller/GuiaController.class.php?_acao=arquivar&guiaId=" + guiaId;
+    
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        success: sucessoNaRequisicao,
+        error: erroNaRequisicao
+    });
+}
+
+function editar(evt) {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    const guiaId = searchParams.get('guiaId');
+
+    const controllerURL = "../controller/GuiaController.class.php?acao=editar&guiaId=" + guiaId;
+    const dados = new FormData($(formCadastro)[0]);
+    let areasContribuicao = [];
+
+    formCadastro.find('.checkAreasContribuicao:checked').each(function () {
+        areasContribuicao.push($(this).val());
+    });
+
+    dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
+
+    evt.preventDefault();
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        data: dados,
+        processData: false,
+        contentType: false,
+        success: sucessoNaRequisicao,
+        error: erroNaRequisicao
+    });
+}
+
 function cadastrar() {
     const controllerURL = "../Controller/GuiaController.class.php";
     const dados = new FormData($(formCadastro)[0]);
@@ -160,133 +182,13 @@ function cadastrar() {
         data: dados,
         processData: false,
         contentType: false,
-        success: sucessoAoPublicar,
+        success: sucessoNaRequisicao,
         error: erroNaRequisicao
     });
-}
-
-function editar(evt) {
-    let queryString = window.location.search;
-    let searchParams = new URLSearchParams(queryString);
-    const guiaId = searchParams.get('guiaId');
-
-    const controllerURL = "../controller/GuiaController.class.php?acao=editar&guiaId=" + guiaId;
-    const dados = new FormData($(formCadastro)[0]);
-    let areasContribuicao = [];
-    let desafios = [];
-    let colaboradores = [];
-
-    formCadastro.find('.checkAreasContribuicao:checked').each(function () {
-        areasContribuicao.push($(this).val());
-    });
-
-    dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
-
-    evt.preventDefault();
-    $.ajax({
-        type: "POST",
-        dataType: "JSON",
-        url: controllerURL,
-        data: dados,
-        processData: false,
-        contentType: false,
-        success: () => {
-            alert('Guia editado com sucesso!');
-            window.location.href = './pagina-inicial.php';
-        },
-        error: erroNaRequisicao
-    });
-}
-
-function teste(evt) {
-    let queryString = window.location.search;
-    let searchParams = new URLSearchParams(queryString);
-    const guiaId = searchParams.get('guiaId');
-
-    const controllerURL = "../controller/GuiaController.class.php?_acao=editarPublicar&guiaId=" + guiaId;
-    const dados = new FormData($(formCadastro)[0]);
-    let areasContribuicao = [];
-    let desafios = [];
-    let colaboradores = [];
-
-    formCadastro.find('.checkAreasContribuicao:checked').each(function () {
-        areasContribuicao.push($(this).val());
-    });
-    dados.append('areasContribuicao', JSON.stringify(areasContribuicao));
-
-    console.log('aquii')
-    evt.preventDefault();
-    $.ajax({
-        type: "POST",
-        dataType: "JSON",
-        url: controllerURL,
-        data: dados,
-        processData: false,
-        contentType: false,
-        success: () => {
-            alert('Guia editado e publicado com sucesso!');
-            window.location.href = './pagina-inicial.php';
-        },
-        error: erroNaRequisicao
-    });
-}
-
-function buscarDesafios(guiaId) {
-    $.ajax({
-        url: `../Controller/GuiaController.class.php?guiaId=${guiaId}&acao=buscarDesafios`,
-        type: 'GET',
-        dataType: 'JSON',
-        success: sucessoAoBuscarDesafios,
-        error: erroNaRequisicao
-    });
-}
-
-function buscarColaboradores(guiaId) {
-    $.ajax({
-        url: `../Controller/GuiaController.class.php?guiaId=${guiaId}&acao=buscarColaboradores`,
-        type: 'GET',
-        dataType: 'JSON',
-        success: sucessoAoBuscarColaboradores,
-        error: erroNaRequisicao
-    });
-}
-
-function sucessoAoBuscarColaboradores(response) {
-    console.log(response);
-
-    if (!$.isEmptyObject(response)) {
-        response.forEach(item => {
-            $(`#multiselectColaboradores option[value="${item.membroId}"]`).prop('selected', true);
-        });
-    }
-}
-
-function sucessoAoBuscarDesafios(response) {
-    console.log(response);
-
-    if (!$.isEmptyObject(response)) {
-        $('#inputTituloDesafio1').val(response[0].titulo);
-        $('#inputDescricaoDesafio1').val(response[0].descricao);
-        $('#inputTituloDesafio2').val(response[1].titulo);
-        $('#inputDescricaoDesafio2').val(response[1].descricao);
-        $('#inputTituloDesafio3').val(response[2].titulo);
-        $('#inputDescricaoDesafio3').val(response[2].descricao);
-
-    } else {
-        $('#painelDesafios').html('Erro ao buscar os desafios desse guia');
-    }
-}
-function sucessoAoPublicar(response) {
-    console.log('SUCESSO!');
-    console.log(response);
-    history.back();
-}
-function cancelar() {
-    history.back();
 }
 
 function salvarRascunho(evt) {
-    const controllerURL = "../controller/GuiaController.class.php";
+    const controllerURL = "../controller/GuiaController.class.php?_acao=salvarRascunho";
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
     let desafios = [];
@@ -322,12 +224,12 @@ function salvarRascunho(evt) {
         data: dados,
         processData: false,
         contentType: false,
-        success: sucessoAoSalvarRascunho,
+        success: sucessoNaRequisicao,
         error: erroNaRequisicao
     });
 }
 
-function sucessoAoSalvarRascunho(response) {
+function sucessoNaRequisicao(response) {
     console.log('SUCESSO!');
     console.log(response);
     history.back();
@@ -337,3 +239,58 @@ function erroNaRequisicao(error) {
     console.log('ERRO!');
     console.log(error);
 }
+
+function cancelar() {
+    history.back();
+}
+
+
+
+
+
+
+// function buscarDesafios(guiaId) {
+//     $.ajax({
+//         url: `../Controller/GuiaController.class.php?guiaId=${guiaId}&acao=buscarDesafios`,
+//         type: 'GET',
+//         dataType: 'JSON',
+//         success: sucessoAoBuscarDesafios,
+//         error: erroNaRequisicao
+//     });
+// }
+
+// function buscarColaboradores(guiaId) {
+//     $.ajax({
+//         url: `../Controller/GuiaController.class.php?guiaId=${guiaId}&acao=buscarColaboradores`,
+//         type: 'GET',
+//         dataType: 'JSON',
+//         success: sucessoAoBuscarColaboradores,
+//         error: erroNaRequisicao
+//     });
+// }
+
+// function sucessoAoBuscarColaboradores(response) {
+//     console.log(response);
+
+//     if (!$.isEmptyObject(response)) {
+//         response.forEach(item => {
+//             $(`#multiselectColaboradores option[value="${item.membroId}"]`).prop('selected', true);
+//         });
+//     }
+// }
+
+// function sucessoAoBuscarDesafios(response) {
+//     console.log(response);
+
+//     if (!$.isEmptyObject(response)) {
+//         $('#inputTituloDesafio1').val(response[0].titulo);
+//         $('#inputDescricaoDesafio1').val(response[0].descricao);
+//         $('#inputTituloDesafio2').val(response[1].titulo);
+//         $('#inputDescricaoDesafio2').val(response[1].descricao);
+//         $('#inputTituloDesafio3').val(response[2].titulo);
+//         $('#inputDescricaoDesafio3').val(response[2].descricao);
+
+//     } else {
+//         $('#painelDesafios').html('Erro ao buscar os desafios desse guia');
+//     }
+// }
