@@ -127,7 +127,6 @@ class GuiaDao
                 fotoCapa,
                 fotosSecundarias,
                 publico,
-                arquivado,
                 categoriaId,
                 criadorId
             ) VALUES (
@@ -142,7 +141,6 @@ class GuiaDao
                 :fotoCapa,
                 :fotosSecundarias,
                 :publico,
-                :arquivado,
                 :categoriaId,
                 :criadorId
             );";
@@ -158,7 +156,6 @@ class GuiaDao
             'fotoCapa' => $guia->getFotoCapa(),
             'fotosSecundarias' => json_encode($guia->getFotosSecundarias()),
             'publico' => $guia->getPublico(),
-            'arquivado' => $guia->getArquivado(),
             'categoriaId' => $guia->getCategoria(),
             'criadorId' => $guia->getCriadorId(),
         );

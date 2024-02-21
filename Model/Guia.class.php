@@ -11,11 +11,12 @@ class Guia {
     private $fotoCapa;
     private $fotosSecundarias;
     private $publico;
-    private $arquivado;
+    // private $arquivado;
     private $categoria;
     private $criadorId;
     private $desafios;
     private $colaboradores;
+    private $seguidores;
 
     public function __construct(
         $nomeDestino,
@@ -29,11 +30,12 @@ class Guia {
         $fotoCapa,
         $fotosSecundarias,
         $publico,
-        $arquivado,
+        // $arquivado,
         $categoria,
         $criadorId,
         $desafios,
         $colaboradores,
+        // $seguidores,
     ) {
         $this->nomeDestino = $nomeDestino;
         $this->localizacao = $localizacao;
@@ -46,11 +48,12 @@ class Guia {
         $this->fotoCapa = $fotoCapa;
         $this->fotosSecundarias = $fotosSecundarias;
         $this->publico = $publico;
-        $this->arquivado = $arquivado;
+        // $this->arquivado = $arquivado;
         $this->categoria = $categoria;
         $this->criadorId = $criadorId;
         $this->desafios = $desafios; 
         $this->colaboradores = $colaboradores;
+        // $this->seguidores = $seguidores;
     }
 
      // Getters
@@ -106,6 +109,10 @@ class Guia {
         return $this->colaboradores;
     }
 
+    public function getSeguidores() {
+        return $this->seguidores;
+    }
+
     public function getCriadorId() {
         return $this->criadorId;
     }
@@ -114,9 +121,9 @@ class Guia {
         return $this->publico;
     }
 
-    public function getArquivado() {
-        return $this->arquivado;
-    }
+    // public function getArquivado() {
+    //     return $this->arquivado;
+    // }
 
     // Setters
     public function setNomeDestino($nomeDestino) {
@@ -171,6 +178,10 @@ class Guia {
         $this->colaboradores = $colaboradores;
     }
 
+    public function setSeguidores($seguidores) {
+        $this->seguidores = $seguidores;
+    }
+
     public function setCriadorId($criadorId) {
         $this->criadorId = $criadorId;
     }
@@ -179,8 +190,8 @@ class Guia {
         $this->publico = $publico;
     }
 
-    public function setArquivado($arquivado) {
-        $this->arquivado = $arquivado;
-    }
+    // public function setArquivado($arquivado) {
+    //     $this->arquivado = $arquivado;
+    // }
 }
 ?>

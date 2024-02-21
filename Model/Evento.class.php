@@ -6,10 +6,8 @@ class Evento {
     private $horaInicio;
     private $dataTermino;
     private $horaTermino;
-    private $descricao;
     private $fotoCapa;
     private $maxParticipantes;
-    private $arquivado;
     private $categoriaId;
     private $colaboradores;
     private $inscritos;
@@ -22,10 +20,8 @@ class Evento {
         $horaInicio,
         $dataTermino,
         $horaTermino,
-        $descricao,
         $fotoCapa = null,
         $maxParticipantes,
-        $arquivado = null,
         $categoriaId,
         $criadorId = null,
         $colaboradores,
@@ -37,10 +33,8 @@ class Evento {
         $this->horaInicio = $horaInicio;
         $this->dataTermino = $dataTermino;
         $this->horaTermino = $horaTermino;
-        $this->descricao = $descricao;
         $this->fotoCapa = $fotoCapa;
         $this->maxParticipantes = $maxParticipantes;
-        $this->arquivado = $arquivado;
         $this->categoriaId = $categoriaId;
         $this->criadorId = $criadorId;
         $this->colaboradores = $colaboradores;
@@ -79,11 +73,6 @@ class Evento {
         return $this->horaTermino;
     }
 
-    public function getDescricao()
-    {
-        return $this->descricao;
-    }
-
     public function getFotoCapa()
     {
         return $this->fotoCapa;
@@ -112,11 +101,6 @@ class Evento {
     public function getCriadorId()
     {
         return $this->criadorId;
-    }
-
-    public function getArquivado()
-    {
-        return $this->arquivado;
     }
 
     // Setters
@@ -151,11 +135,6 @@ class Evento {
         $this->horaTermino = $horaTermino;
     }
 
-    public function setDescricao($descricao)
-    {
-        $this->descricao = $descricao;
-    }
-
     public function setFotoCapa($fotoCapa)
     {
         $this->fotoCapa = $fotoCapa;
@@ -186,9 +165,5 @@ class Evento {
         $this->criadorId = $criadorId;
     }
 
-    public function setArquivado($arquivado)
-    {
-        $this->arquivado = $arquivado;
-    }
 }
 ?>

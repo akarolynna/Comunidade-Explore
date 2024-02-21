@@ -57,6 +57,7 @@ function erroNaRequisicao(error) {
     console.log(error);
     console.log(error.responseText);
 }
+
 function sucessoAoBuscarPosts(response) {
     $('#publicacoes').html('');
     $.isEmptyObject(response)
@@ -261,17 +262,23 @@ function buscarGuias(categoria, pesquisa) {
     });
 }
 
-function sucessoAoBuscarGuias(response) {
+async function sucessoAoBuscarGuias(response) {
+    const membroId = await buscarIdMembroLogado();
+
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum guia com esses filtros.')
         : response.forEach((guia, index) => {
+            const botaoAcao = guia.criadorId == membroId
+            ? ``
+            : `<button class="btn botaoPrimario" onclick="seguirGuia(${guia.id})">Seguir</button>`;
+
             $('#publicacoes').append(`
                 <div class="cardPublicacao cardImagem cardGuia" id="cardGuia${guia.id}" onclick="abrirDetalhesGuia(${guia.id})">
                     <div class="filtro">
                         <div class="cabecalho">
                             <h3 class="titulo">${guia.nomeDestino}</h3>
-                            <button class="btn botaoPrimario" onclick="seguirGuia(${guia.id})">Seguir</button>
+                            ${botaoAcao}
                         </div>
                         <div class="conteudo">
                             <div class="tag criador">
@@ -281,11 +288,11 @@ function sucessoAoBuscarGuias(response) {
                             <div class="infoGuia">
                                 <div class="tag">
                                     <i class="fas fa-users"></i>
-                                    <span>469 seguidores</span>
+                                    <span>0 seguidores</span>
                                 </div>
                                 <div class="tag">
                                     <i class="fas fa-hands-helping"></i>
-                                    <span>8 colaboradores</span>
+                                    <span>3 colaboradores</span>
                                 </div>
                             </div>
                             <div class="tag">
