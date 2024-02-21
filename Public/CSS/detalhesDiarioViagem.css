@@ -83,9 +83,16 @@
     margin-right: 10px;
 }
 
-
-
-
+.btnDeletar {
+    background-color: #bd2222;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: none;
+    width: 75px;
+    height: 30px;
+    border-radius: 7px;
+}
 
 
 .post {

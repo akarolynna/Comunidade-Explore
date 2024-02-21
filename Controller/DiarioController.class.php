@@ -35,7 +35,11 @@ class DiarioController
                     : $this->buscarDiario();
                 break;
             case 'POST':
-                $this->criarDiario();
+                if (isset($_POST['_acao']) && $_POST['_acao'] === 'editar') {
+                    $this->editarDiarioViagem();
+                } else {
+                    $this->criarDiario();
+                }
                 break;
 
             default:
@@ -70,7 +74,7 @@ class DiarioController
     public function criarDiario()
     {
         try {
-            session_start(); 
+            session_start();
 
             $fotoCaminho = $this->uploadFoto();
 
@@ -99,6 +103,30 @@ class DiarioController
             return $caminhoCompleto;
         } else {
             throw new Exception("Falha no upload da foto.");
+        }
+    }
+    private function editarDiarioViagem()
+    {
+        try {
+            extract($_POST);
+
+            $imagem = $this->uploadFoto();
+
+            $diarioViagem = new DiarioViagem(
+                $imagem,
+                $titulo,
+                $descricao,
+                $localizacao,
+                $diarioViagemId
+            );
+
+            if ($this->diarioDao->atualizarDiarioViagem($diarioViagem)) {
+                echo json_encode('Diário de viagem editado com sucesso');
+            } else {
+                echo 'Erro ao editar diário de viagem';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
     }
 }

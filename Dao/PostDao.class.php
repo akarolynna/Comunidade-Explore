@@ -18,18 +18,31 @@ class PostDao
         $stm = $this->connection->prepareStatement($query, $fields);
         return $this->connection->executeStatement($stm);
     }
+    public function bucarPost($diarioViagem)
+    {
+        $query = 'SELECT * FROM Post WHERE diario_id = :diarioViagem';
+        $fields = array('diarioViagem' => $diarioViagem);
+        $result = [];
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result;
+    }
 
     public function buscarPosts($categoria, $pesquisa)
     {
         if ($categoria == strtolower(Categoria::TODOS)) {
-            $query = "SELECT * FROM Post WHERE Post.conteudo LIKE CONCAT('%', :pesquisa, '%');";
+            $query = "SELECT * FROM Post WHERE Post.descricao LIKE CONCAT('%', :pesquisa, '%');";
             $fields = array('pesquisa' => $pesquisa);
         } else {
             $query = "SELECT * FROM Post
                     INNER JOIN DiarioViagem ON Post.diarioId = DiarioViagem.id
                     INNER JOIN Categoria ON DiarioViagem.categoriaId = Categoria.id
                     WHERE Categoria.categoria = :categoria
-                    AND Post.conteudo LIKE CONCAT('%', :pesquisa, '%');";
+                    AND Post.descricao LIKE CONCAT('%', :pesquisa, '%');";
             $fields = array(
                 'categoria' => $categoria,
                 'pesquisa' => $pesquisa
@@ -60,6 +73,21 @@ class PostDao
             return $this->connection->executeStatement($statement);
         } catch (Exception $ex) {
             throw new Exception("Erro ao tentar adicionar POST no Banco de Dados <br>" . $ex->getMessage());
+        }
+    }
+
+
+    public function deletarPost($postId)
+    {
+        $query = "DELETE FROM Post WHERE id = :postId";
+        $options = ['postId' => $postId];
+
+        try {
+            $this->connection->connection();
+            $statement = $this->connection->prepareStatement($query, $options);
+            return $this->connection->executeStatement($statement);
+        } catch (Exception $ex) {
+            throw new Exception("Erro ao tentar deletar POST do Banco de Dados <br>" . $ex->getMessage());
         }
     }
 }

@@ -43,11 +43,12 @@ class EventoDao
         return $result;
     }
 
-    public function buscarInscricoes($membroId) {
+    public function buscarInscricoes($membroId)
+    {
         $query = "SELECT * FROM Evento_Inscrito WHERE Evento_Inscrito.membroId = :membroId";
         $fields = array('membroId' => $membroId);
         $result = [];
-        
+
         try {
             $result = $this->getResult($query, $fields);
         } catch (Exception $ex) {
@@ -57,7 +58,8 @@ class EventoDao
         return $result;
     }
 
-    public function inscrever($eventoId, $membroId) {
+    public function inscrever($eventoId, $membroId)
+    {
         $query = 'INSERT INTO Evento_Inscrito(eventoId, membroId) VALUES(:eventoId, :membroId);';
         $fields = array(
             'eventoId' => $eventoId,
@@ -73,7 +75,8 @@ class EventoDao
         return $result > 0;
     }
 
-    public function cancelarInscricao($eventoId, $membroId) {
+    public function cancelarInscricao($eventoId, $membroId)
+    {
         $query = 'DELETE FROM Evento_Inscrito WHERE eventoId = eventoId AND membroId = :membroId';
         $fields = array(
             'eventoId' => $eventoId,
@@ -89,7 +92,8 @@ class EventoDao
         return $result > 0;
     }
 
-    public function editarEvento($evento, $eventoId) {
+    public function editarEvento($evento, $eventoId)
+    {
         $query = 'UPDATE Evento SET
                 titulo = :titulo, 
                 localizacao = :localizacao, 
@@ -208,11 +212,12 @@ class EventoDao
         return $result > 0;
     }
 
-    public function excluirEvento($eventoId) {
+    public function excluirEvento($eventoId)
+    {
         $query = 'DELETE FROM Evento WHERE id = :eventoId';
         $fields = array('eventoId' => $eventoId);
         $result = 0;
-        
+
         try {
             $result = $this->getResult($query, $fields);
         } catch (Exception $ex) {
@@ -221,7 +226,8 @@ class EventoDao
         return $result > 0;
     }
 
-    public function buscarEventoPorId($eventoId) {
+    public function buscarEventoPorId($eventoId)
+    {
         $query = "SELECT * FROM Evento WHERE Evento.id = :eventoId";
         $fields = array('eventoId' => $eventoId);
         $result = [];
@@ -233,7 +239,8 @@ class EventoDao
         return $result;
     }
 
-    public function buscarColaboradores($eventoId) {
+    public function buscarColaboradores($eventoId)
+    {
         $query = "SELECT * FROM Evento_Colaborador WHERE eventoId = :eventoId";
         $fields = array('eventoId' => $eventoId);
         $result = [];

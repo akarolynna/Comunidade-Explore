@@ -62,7 +62,25 @@
                 throw new Exception("Erro ao tentar recuperar diários de viagem do banco de dados: " . $ex->getMessage());
             }
         }        
-
+        public function atualizarDiarioViagem($diarioViagem)
+        {
+            $query = "UPDATE DiarioViagem SET imagem = :imagem, titulo = :titulo, descricao = :descricao WHERE id = :id";
+            $options = [
+                'imagem' => $diarioViagem->getImagem(),
+                'titulo' => $diarioViagem->getTitulo(),
+                'descricao' => $diarioViagem->getDescricao(),
+                'id' => $diarioViagem->getId()
+            ];
+            
+            try {
+                $this->connection->connection();
+                $statement = $this->connection->prepareStatement($query, $options);
+                return $this->connection->executeStatement($statement);
+            } catch (Exception $ex) {
+                throw new Exception("Erro ao tentar atualizar o diário de viagem no Banco de Dados <br>" . $ex->getMessage());
+            }
+        }
+        
     }
 
 ?>

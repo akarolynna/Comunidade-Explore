@@ -57,18 +57,19 @@ function erroNaRequisicao(error) {
     console.log(error);
     console.log(error.responseText);
 }
-
 function sucessoAoBuscarPosts(response) {
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum post com esses filtros.')
         : response.forEach((post, index) => {
             buscarTituloDiarioViagem(post.diarioId, index);
+            var fotosArray = JSON.parse(post.fotos);
+            var fotoSelecionada = fotosArray[4];
 
             $('#publicacoes').append(`
                 <div class="post">
                     <div class="imagemPost">
-                        <img src="../Public/ImagensGuia/fotoCapa.png" alt="Imagem do Post">
+                        <img src="${fotoSelecionada}" alt="Imagem do Post">
                     </div>
                     <div class="conteudoPost">
                         <div class="cabecalhoPost">
@@ -76,10 +77,10 @@ function sucessoAoBuscarPosts(response) {
                                 <img src="../Public/Imagens/ImagemUsuario.png" alt="Foto do autor">
                                 <p id="nomeCriador${index}"></p>
                             </div>
-                            <p>${post.data}</p>
+                            <p>${post.titulo}</p>
                         </div>
                         <h3 class="tituloPost mt-3" id="tituloPost${index}"></h3>
-                        <p class="mt-3 descricaoPost">${post.conteudo}</p>
+                        <p class="mt-3 descricaoPost">${post.descricao}</p>
                         <div class="teste">
                             <i class="corCinzaClaro cursorPointer far fa-heart fa-lg"></i>
                             <p class="corCinzaClaro ml-2 mr-4">${post.numCurtidas}</p>
@@ -90,8 +91,8 @@ function sucessoAoBuscarPosts(response) {
                     </div>
                 </div>
             `);
-    });
-}
+        });
+}  
 
 function buscarTituloDiarioViagem(diarioId, postIndex) {
     $.ajax({

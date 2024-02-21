@@ -11,13 +11,15 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../Public/CSS/menu2.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css"  href='../Public/CSS/CadastroGeral.css'>
-    <!-- <link rel="stylesheet"type="text/css"   href='../Public/CSS/cadastroPost.css'> -->
+    <link rel="stylesheet" href="cadastroPost.css">
+    <link rel="stylesheet" href='../Public/CSS/InputHora.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
     <title>Cadastrar Post Diário de Viagem</title>
 </head>
+<body class="pagina">
+        <?php require_once './Componentes/menu2.php'; ?>
 <div class="blocoPrincipal">
-    <h1 class="classTitulo">Cadastrar Post</h1>
+    <h1 class="titulo">Cadastrar Post</h1>
 
     <div class="Divformulario">
         <form method="post" enctype="multipart/form-data" id="formCadastroPost">
@@ -41,7 +43,7 @@ session_start();
             </div>
 
             <div class="divBotao">
-                <button type="submit" class="btn botaoEnviar" id="cadastrarPost">Enviar</button>
+                <button type="submit" class="btn btnPrimary" id="cadastrarPost">Enviar</button>
                 <button class="btn btnSecundary mx-2" id="btnCancelar">Cancelar</button>
             </div>
         </form>

@@ -34,7 +34,7 @@ $diarioId = $_GET['diarioId'];
             </div>
         </section>
 
-        <session class="posts">
+        <session class="posts" id="posts">
             <div class="post">
                 <div class="imagens">
                     <div class="imagem-fundo">

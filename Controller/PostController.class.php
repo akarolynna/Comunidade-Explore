@@ -24,7 +24,9 @@ class PostController
     {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET':
-                $this->buscarPosts();
+                isset($_GET['diarioViagem'])
+                ? $this->buscarPostId()
+                : $this->buscarPosts();
                 break;
             case 'POST':
                 if (!isset($_GET['acao'])) {
@@ -34,6 +36,9 @@ class PostController
                     echo 'me';
                 }
                 break;
+                case 'DELETE':
+                    $this->excluir();
+                    break;
             default:
                 throw new Exception('Erro ao tentar realizar a operação.<br> Requisição desconhecida');
         }
@@ -88,4 +93,21 @@ class PostController
         $novoNomeFoto = "$titulo-guia-$nomeArquivo.$extensao";
         return "../Public/Imagens/fotosDiarioViagem/" . $novoNomeFoto;
     }
+    private function buscarPostId()
+{
+    $posts = $this->postDao->bucarPost($_GET['diarioViagem']);
+    echo json_encode($posts);
+}
+
+private function excluir() {
+    try {
+        if ($this->postDao->deletarPost($_GET['postId'])) {
+            echo json_encode('Post excluido com sucesso');
+        } else {
+            echo 'Erro ao excluir evento';
+        }
+    } catch (Exception $ex) {
+        echo $ex->getMessage();
+    }
+}
 }
