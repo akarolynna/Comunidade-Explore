@@ -35,7 +35,7 @@ class Guia {
         $criadorId,
         $desafios,
         $colaboradores,
-        $seguidores,
+        // $seguidores,
     ) {
         $this->nomeDestino = $nomeDestino;
         $this->localizacao = $localizacao;
@@ -53,7 +53,7 @@ class Guia {
         $this->criadorId = $criadorId;
         $this->desafios = $desafios; 
         $this->colaboradores = $colaboradores;
-        $this->seguidores = $seguidores;
+        // $this->seguidores = $seguidores;
     }
 
      // Getters
