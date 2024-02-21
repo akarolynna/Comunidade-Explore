@@ -21,9 +21,6 @@ function sucessoAoBuscarGuia(response) {
     console.log(response);
 
     if(!$.isEmptyObject(response)) {
-        $('#botaoSeguir').css('display', 'block');
-        $('#botaoEditar').css('display', 'none');
-
         $('#nomeDestino').html(response[0].nomeDestino);
         $('#localizacao').html(response[0].localizacao);
         $('#secaoCapa').css('background-image', `url("${response[0].fotoCapa}")`);
@@ -42,8 +39,8 @@ function sucessoAoBuscarGuia(response) {
         });
 
         buscarDesafiosGuia(response[0].id, response[0].corPrincipal);
-        buscarColaboradores(response[0].id);
-        buscarCriador(response[0].criadorId);
+        // buscarColaboradores(response[0].id);
+        buscarCriador(response[0].criadorId, response[0].id);
 
     } else {
         $('#publicacoes').html('Oops! Não encontramos esse guia.')
@@ -85,12 +82,14 @@ function buscarDesafiosGuia(guiaId, corPrincipal) {
     });
 }
 
-function buscarCriador(criadorId) {
+function buscarCriador(criadorId, guiaId) {
     $.ajax({
         url: `../Controller/MembroController.class.php?membroId=${criadorId}`,
         type: 'GET',
         dataType: 'JSON',
-        success: sucessoAoBuscarCriador,
+        success: (response) => {
+            buscarColaboradores(guiaId, response);
+        },
         error: erroNaRequisicao
     });
 }
@@ -113,14 +112,43 @@ async function sucessoAoBuscarCriador(response) {
     }
 }
 
-function buscarColaboradores(guiaId) {
+function buscarColaboradores(guiaId, responseCriador) {
     $.ajax({
         url: `../Controller/GuiaController.class.php?guiaId=${guiaId}&acao=buscarColaboradores`,
         type: 'GET',
         dataType: 'JSON',
-        success: sucessoAoBuscarColaboradores,
+        success: (responseColaborador) => {
+            sucessoAoBuscarColaboradoresECriador(responseCriador, responseColaborador);
+        },
         error: erroNaRequisicao
     });
+}
+
+async function sucessoAoBuscarColaboradoresECriador(responseCriador, responseColaborador) {
+    if (!$.isEmptyObject(responseCriador) && !$.isEmptyObject(responseColaborador)) {
+        const membroId = await buscarIdMembroLogado();
+        
+        $('#numeroColaboradores').html(responseColaborador.length);
+        $('#colaboradoresContent').html('');
+        let ehColaborador = false;
+        responseColaborador.forEach((colaborador) => {
+            if(colaborador.membroId == membroId) ehColaborador = true;
+            buscarColaborador(colaborador.membroId);
+        });
+        
+        $('#nomeCriador').html(responseCriador[0].email);
+        $('#fotoCriador').attr('src', responseCriador[0].foto);
+        if(responseCriador[0].id == membroId || ehColaborador) {
+            $('#botaoSeguir').css('display', 'none');
+            $('#botaoEditar').css('display', 'block');
+        } else {
+            $('#botaoSeguir').css('display', 'block');
+            $('#botaoEditar').css('display', 'none');
+        }
+    } else {
+        $('#colaboradoresContainer').html('');
+        $('#nomeCriador').html('Erro ao buscar nome');
+    }
 }
 
 async function sucessoAoBuscarColaboradores(response) {

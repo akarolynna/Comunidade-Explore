@@ -57,6 +57,7 @@ function erroNaRequisicao(error) {
     console.log(error);
     console.log(error.responseText);
 }
+
 function sucessoAoBuscarPosts(response) {
     $('#publicacoes').html('');
     $.isEmptyObject(response)
@@ -269,7 +270,7 @@ async function sucessoAoBuscarGuias(response) {
         ? $('#publicacoes').html('Oops! Não encontramos nenhum guia com esses filtros.')
         : response.forEach((guia, index) => {
             const botaoAcao = guia.criadorId == membroId
-            ? `<button class="btn botaoPrimario botaoEditar" onclick="editarGuia(${guia.id})">Editar</button>`
+            ? ``
             : `<button class="btn botaoPrimario" onclick="seguirGuia(${guia.id})">Seguir</button>`;
 
             $('#publicacoes').append(`
