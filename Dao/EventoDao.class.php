@@ -97,7 +97,6 @@ class EventoDao
                 horaInicio = :horaInicio, 
                 dataTermino = :dataTermino, 
                 horaTermino = :horaTermino, 
-                descricao = :descricao, 
                 maxParticipantes = :maxParticipantes, 
                 categoriaId = :categoriaId
             WHERE
@@ -111,7 +110,6 @@ class EventoDao
             'horaInicio' => $evento->getHoraInicio(),
             'dataTermino' => $evento->getDataTermino(),
             'horaTermino' => $evento->getHoraTermino(),
-            'descricao' => $evento->getDescricao(),
             'maxParticipantes' => $evento->getMaxParticipantes(),
             'categoriaId' => $evento->getCategoriaId(),
             'id' => $eventoId,
@@ -135,10 +133,8 @@ class EventoDao
                 horaInicio, 
                 dataTermino, 
                 horaTermino, 
-                descricao, 
                 fotoCapa, 
                 maxParticipantes, 
-                arquivado, 
                 categoriaId, 
                 criadorId
             ) VALUES (
@@ -148,10 +144,8 @@ class EventoDao
                 :horaInicio, 
                 :dataTermino, 
                 :horaTermino, 
-                :descricao, 
                 :fotoCapa, 
                 :maxParticipantes, 
-                :arquivado, 
                 :categoriaId, 
                 :criadorId
             );';
@@ -163,10 +157,8 @@ class EventoDao
             'horaInicio' => $evento->getHoraInicio(),
             'dataTermino' => $evento->getDataTermino(),
             'horaTermino' => $evento->getHoraTermino(),
-            'descricao' => $evento->getDescricao(),
             'fotoCapa' => $evento->getFotoCapa(),
             'maxParticipantes' => $evento->getMaxParticipantes(),
-            'arquivado' => $evento->getArquivado(),
             'categoriaId' => $evento->getCategoriaId(),
             'criadorId' => $evento->getCriadorId()
         );

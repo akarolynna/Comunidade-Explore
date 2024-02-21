@@ -10,6 +10,8 @@ function preencherCampos() {
     var searchParams = new URLSearchParams(queryString);
     var eventoId = searchParams.get('eventoId');
 
+    $('#btnEditar').css('display', 'none');
+
     if(eventoId != null) {
         $('.inputfotoContainer').css('display', 'none');
         $('.inputColaboradoresContainer').css('display', 'none');
@@ -36,7 +38,6 @@ function sucessoAoBuscarEvento(response) {
         $('.inputHoraInicio').val(response[0].horaInicio.slice(0, 5));
         $('#inputDataTermino').val(response[0].dataTermino);
         $('.inputHoraTermino').val(response[0].horaTermino.slice(0, 5));
-        $('#inputDescricao').val(response[0].descricao);
         $('#selectCategoria').val(response[0].categoriaId);
         $('#inputMaxParticipantes').val(response[0].maxParticipantes);
         $('#inputFotoCapaEdicao').val(response[0].fotoCapa);
@@ -120,7 +121,10 @@ function editar(evt) {
         processData: false, 
         contentType: false,
         success: sucessoAoSalvar,
-        error: erroNaRequisicao
+        error: (error) => {
+            alert('Nenhuma alteração encontrada');
+            console.log(error);
+        }
     }); 
 }
 

@@ -6,7 +6,6 @@ class Evento {
     private $horaInicio;
     private $dataTermino;
     private $horaTermino;
-    private $descricao;
     private $fotoCapa;
     private $maxParticipantes;
     private $arquivado;
@@ -22,7 +21,6 @@ class Evento {
         $horaInicio,
         $dataTermino,
         $horaTermino,
-        $descricao,
         $fotoCapa = null,
         $maxParticipantes,
         $arquivado = null,
@@ -37,7 +35,6 @@ class Evento {
         $this->horaInicio = $horaInicio;
         $this->dataTermino = $dataTermino;
         $this->horaTermino = $horaTermino;
-        $this->descricao = $descricao;
         $this->fotoCapa = $fotoCapa;
         $this->maxParticipantes = $maxParticipantes;
         $this->arquivado = $arquivado;
@@ -77,11 +74,6 @@ class Evento {
     public function getHoraTermino()
     {
         return $this->horaTermino;
-    }
-
-    public function getDescricao()
-    {
-        return $this->descricao;
     }
 
     public function getFotoCapa()
@@ -149,11 +141,6 @@ class Evento {
     public function setHoraTermino($horaTermino)
     {
         $this->horaTermino = $horaTermino;
-    }
-
-    public function setDescricao($descricao)
-    {
-        $this->descricao = $descricao;
     }
 
     public function setFotoCapa($fotoCapa)
