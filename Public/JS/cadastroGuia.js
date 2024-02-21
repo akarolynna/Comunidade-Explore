@@ -1,10 +1,11 @@
 $(document).ready(preencherDados);
 $('#btnCancelar').click(cancelar);
 $('#btnSalvarRascunho').click(salvarRascunho);
-$('#btnPublicar').click(cadastrar);
+$('#btnCadastrar').click(cadastrar);
 $('#btnEditar').click(editar);
 $('#btnEditarPublicar').click(editarPublicar);
 $('#btnArquivar').click(arquivar);
+$('#btnPublicar').click(publicar);
 
 const formCadastro = $('#formCadGuia');
 
@@ -13,16 +14,17 @@ function preencherDados() {
     let searchParams = new URLSearchParams(queryString);
     let guiaId = searchParams.get('guiaId');
 
+    $('#btnEditar').css('display', 'none');
     $('#btnEditarPublicar').css('display', 'none');
     $('#btnArquivar').css('display', 'none');
-    $('#btnEditar').css('display', 'none');
+    $('#btnPublicar').css('display', 'none');
 
     if (guiaId != null) {
         $('.inputFotoContainer').css('display', 'none');
         $('.inputColaboradorContainer').css('display', 'none');
         $('.inputDesafioContainer').css('display', 'none');
         $('#btnSalvarRascunho').css('display', 'none');
-        $('#btnPublicar').css('display', 'none');
+        $('#btnCadastrar').css('display', 'none');
 
         $('#btnEditar').css('display', 'block');
 
@@ -41,6 +43,7 @@ function sucessoAoBuscarGuia(response) {
     if (!$.isEmptyObject(response)) {
         if(response[0].publico == 0) {
             $('#btnEditarPublicar').css('display', 'block');
+            $('#btnPublicar').css('display', 'block');
         } else if(response[0].publico == 1) {
             $('#btnArquivar').css('display', 'block');
         }
@@ -98,7 +101,10 @@ function editarPublicar(evt) {
         processData: false,
         contentType: false,
         success: sucessoNaRequisicao,
-        error: erroNaRequisicao
+        error: (error) => {
+            alert('Nenhum dado alterado');
+            console.log(error);
+        }
         });
 }
 
@@ -108,6 +114,22 @@ function arquivar() {
     const guiaId = searchParams.get('guiaId');
 
     const controllerURL = "../controller/GuiaController.class.php?_acao=arquivar&guiaId=" + guiaId;
+    
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        success: sucessoNaRequisicao,
+        error: erroNaRequisicao
+    });
+}
+
+function publicar() {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    const guiaId = searchParams.get('guiaId');
+
+    const controllerURL = "../controller/GuiaController.class.php?_acao=publicar&guiaId=" + guiaId;
     
     $.ajax({
         type: "POST",
@@ -142,12 +164,15 @@ function editar(evt) {
         processData: false,
         contentType: false,
         success: sucessoNaRequisicao,
-        error: erroNaRequisicao
+        error: (error) => {
+            alert('Nenhum dado alterado');
+            console.log(error);
+        }
     });
 }
 
 function cadastrar(evt) {
-    const controllerURL = "../Controller/GuiaController.class.php?_acao=publicar";
+    const controllerURL = "../Controller/GuiaController.class.php?_acao=cadastrarPublicar";
     const dados = new FormData($(formCadastro)[0]);
     let areasContribuicao = [];
     let desafios = [];

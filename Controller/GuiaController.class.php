@@ -40,11 +40,12 @@ class GuiaController
             case 'POST':
                 if (isset($_GET['_acao'])) {
                     if($_GET['_acao'] == 'seguir') $this->adicionarSeguidor();
-                    if($_GET['_acao'] == 'publicar') $this->cadastrar('publicar');
+                    if($_GET['_acao'] == 'cadastrarPublicar') $this->cadastrar('cadastrarPublicar');
                     if($_GET['_acao'] == 'salvarRascunho') $this->cadastrar('salvarRascunho');
                     if($_GET['_acao'] == 'editar') $this->editar();
                     if($_GET['_acao'] == 'editarPublicar') $this->editarPublicar();
                     if($_GET['_acao'] == 'arquivar') $this->arquivar();
+                    if($_GET['_acao'] == 'publicar') $this->publicar();
                 }               
                 break;
             default:
@@ -113,6 +114,18 @@ class GuiaController
                 echo json_encode('Guia arquivado com sucesso');
             } else {
                 echo 'Erro ao arquivar guia';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    private function publicar() {
+        try {
+            if ($this->guiaDao->publicarGuia($_GET['guiaId'])) {
+                echo json_encode('Guia publicado com sucesso');
+            } else {
+                echo 'Erro ao publicar guia';
             }
         } catch (Exception $ex) {
             echo $ex->getMessage();
@@ -229,7 +242,7 @@ class GuiaController
                     $areasContribuicao,
                     $caminhoFotoCapa,
                     $fotosSecundarias,
-                    $acao == 'publicar' ? 1 : 0,
+                    $acao == 'cadastrarPublicar' ? 1 : 0,
                     0,
                     $categoria,
                     $_SESSION['usuario']['id'],

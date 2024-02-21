@@ -254,8 +254,9 @@ require_once '../Model/Categoria.enum.php';
         <div class="d-flex justify-content-center mt-4 buttonContainer">
             <button class="btn btnTertiary" id="btnCancelar">Cancelar</button>
             <button class="btn btnSecundary mx-2" id="btnSalvarRascunho">Salvar rascunho</button>
-            <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
+            <button class="btn btnPrimary" id="btnCadastrar">Publicar</button>
             <button class="btn btnSecundary" id="btnArquivar">Arquivar</button>
+            <button class="btn btnSecundary" id="btnPublicar">Publicar</button>
             <button class="btn btnPrimary" id="btnEditar">Salvar alterações</button>
             <button class="btn btnPrimary" id="btnEditarPublicar">Salvar e publicar</button>
         </div>
