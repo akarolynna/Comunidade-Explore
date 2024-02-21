@@ -98,10 +98,6 @@ function buscarCriador(criadorId) {
 async function sucessoAoBuscarCriador(response) {
     const membroId = await buscarIdMembroLogado();
 
-    console.log('criador');
-    console.log(response[0].id );
-    console.log(membroId );
-
     if (!$.isEmptyObject(response)) {
         $('#nomeCriador').html(response[0].email);
         $('#fotoCriador').attr('src', response[0].foto);
@@ -145,8 +141,6 @@ async function sucessoAoBuscarColaboradores(response) {
             $('#botaoSeguir').css('display', 'block');
             $('#botaoEditar').css('display', 'none');
         }
-        console.log('Colaborador');
-        console.log(ehColaborador);
     } else {
         $('#colaboradoresContainer').html('');
     }
@@ -188,7 +182,23 @@ function abrirPerfil(membroId) {
 }
 
 function seguirGuia() {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    let guiaId = searchParams.get('guiaId');
 
+    $.ajax({
+        dataType: "JSON",
+        url: '../controller/GuiaController.class.php?_acao=seguir&guiaId=' + guiaId,
+        type: "POST",
+        success: (response) => {
+            alert('Agora você está seguindo esta página!');
+            window.location.reload();
+        },
+        error: (error) => {
+            alert('Você já está seguindo essa página');
+            console.log(error);
+        }
+    }); 
 }
 
 function buscarIdMembroLogado() {

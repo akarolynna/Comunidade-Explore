@@ -196,7 +196,6 @@ function membroEstaInscrito(eventos, membroId) {
     return eventos.filter(evento => evento.membroId === membroId).length > 0;
 }
 
-
 async function sucessoAoBuscarEventos(response) {
     try {
         const membroId = await buscarIdMembroLogado();
