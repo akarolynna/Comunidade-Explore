@@ -24,6 +24,12 @@ create table membro(
  foto varchar(255) not null,
  email varchar(150) not null,
  senha varchar(255) not null,
+ nome VARCHAR(255),
+ aniversario VARCHAR(10),
+ melhor_viagem VARCHAR(255),
+ instagram VARCHAR(100),
+ telefone VARCHAR(13),
+ descricao VARCHAR(512)
  CONSTRAINT PK_MEMBRO PRIMARY KEY(id) 
 );
 
