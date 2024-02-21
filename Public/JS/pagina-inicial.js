@@ -288,11 +288,11 @@ async function sucessoAoBuscarGuias(response) {
                             <div class="infoGuia">
                                 <div class="tag">
                                     <i class="fas fa-users"></i>
-                                    <span>469 seguidores</span>
+                                    <span>0 seguidores</span>
                                 </div>
                                 <div class="tag">
                                     <i class="fas fa-hands-helping"></i>
-                                    <span>8 colaboradores</span>
+                                    <span>3 colaboradores</span>
                                 </div>
                             </div>
                             <div class="tag">
