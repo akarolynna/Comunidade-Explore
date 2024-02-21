@@ -86,8 +86,8 @@
                     Encontre o refúgio perfeito para a sua estadia dos sonhos! Nesta seção, mergulhe em recomendações cuidadosamente selecionadas de hotéis, pousadas e locações encantadoras. Compartilhe suas experiências de hospedagem para ajudar outros viajantes a escolherem o lugar perfeito.
                 </p>
                 <div class="botoesContainer">
-                    <button class="btn botaoPrimario">Explorar</button>
-                    <button class="btn botaoSecundario">Contribuir</button>
+                    <button class="btn botaoPrimario customBackgroundColor">Explorar</button>
+                    <button class="btn botaoSecundario customBorderColor customColor">Contribuir</button>
                 </div>
             </div>
         </section>
@@ -98,8 +98,8 @@
                     Descubra o lado aventureiro do seu destino favorito! Explore as atividades que farão seu coração acelerar e trarão uma nova dimensão à sua viagem. Se você já teve uma experiência emocionante, compartilhe suas histórias e dicas para inspirar outros exploradores
                 </p>
                 <div class="botoesContainer">
-                    <button class="btn botaoPrimario">Explorar</button>
-                    <button class="btn botaoSecundario">Contribuir</button>
+                    <button class="btn botaoPrimario customBackgroundColor">Explorar</button>
+                    <button class="btn botaoSecundario customBorderColor customColor">Contribuir</button>
                 </div>
             </div>
             <img src="../Public/Imagens/areaContribuicaoAventura.png" alt="itens de aventureiro" class="imagem">
