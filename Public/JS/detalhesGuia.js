@@ -1,5 +1,6 @@
 $(document).ready(buscarGuia);
 $('#botaoEditar').click(abrirEdicaoGuia);
+$('#botaoSeguir').click(seguirGuia);
 let guiaId = 0;
 
 function buscarGuia() {
@@ -20,8 +21,8 @@ function sucessoAoBuscarGuia(response) {
     console.log(response);
 
     if(!$.isEmptyObject(response)) {
-        $('#botaoSeguir').css('display', 'none');
-        $('#botaoEditar').css('display', 'block');
+        $('#botaoSeguir').css('display', 'block');
+        $('#botaoEditar').css('display', 'none');
 
         $('#nomeDestino').html(response[0].nomeDestino);
         $('#localizacao').html(response[0].localizacao);
@@ -41,8 +42,8 @@ function sucessoAoBuscarGuia(response) {
         });
 
         buscarDesafiosGuia(response[0].id, response[0].corPrincipal);
-        buscarCriador(response[0].criadorId);
         buscarColaboradores(response[0].id);
+        buscarCriador(response[0].criadorId);
 
     } else {
         $('#publicacoes').html('Oops! Não encontramos esse guia.')
@@ -94,10 +95,23 @@ function buscarCriador(criadorId) {
     });
 }
 
-function sucessoAoBuscarCriador(response) {
+async function sucessoAoBuscarCriador(response) {
+    const membroId = await buscarIdMembroLogado();
+
+    console.log('criador');
+    console.log(response[0].id );
+    console.log(membroId );
+
     if (!$.isEmptyObject(response)) {
         $('#nomeCriador').html(response[0].email);
         $('#fotoCriador').attr('src', response[0].foto);
+        if(response[0].id == membroId) {
+            $('#botaoSeguir').css('display', 'none');
+            $('#botaoEditar').css('display', 'block');
+        } else {
+            $('#botaoSeguir').css('display', 'block');
+            $('#botaoEditar').css('display', 'none');
+        }
     } else {
         $('#nomeCriador').html('Erro ao buscar nome');
     }
@@ -113,15 +127,26 @@ function buscarColaboradores(guiaId) {
     });
 }
 
-function sucessoAoBuscarColaboradores(response) {
-    console.log('colaboradores');
-    console.log(response);
+async function sucessoAoBuscarColaboradores(response) {
+    const membroId = await buscarIdMembroLogado();
+    
     if (!$.isEmptyObject(response)) {
         $('#numeroColaboradores').html(response.length);
         $('#colaboradoresContent').html('');
+        let ehColaborador = false;
         response.forEach((colaborador) => {
+            if(colaborador.membroId == membroId) ehColaborador = true;
             buscarColaborador(colaborador.membroId);
         });
+        if(ehColaborador) {
+            $('#botaoSeguir').css('display', 'none');
+            $('#botaoEditar').css('display', 'block');
+        } else {
+            $('#botaoSeguir').css('display', 'block');
+            $('#botaoEditar').css('display', 'none');
+        }
+        console.log('Colaborador');
+        console.log(ehColaborador);
     } else {
         $('#colaboradoresContainer').html('');
     }
@@ -160,4 +185,24 @@ function abrirDetalhesDesafio(desafioId) {
 
 function abrirPerfil(membroId) {
     console.log(membroId);
+}
+
+function seguirGuia() {
+
+}
+
+function buscarIdMembroLogado() {
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            url: '../Controller/MembroController.class.php?_acao=membroLogado',
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(response) {
+                resolve(response);
+            },
+            error: function(error) {
+                reject(error);
+            }
+        });
+    });
 }

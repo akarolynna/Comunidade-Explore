@@ -262,7 +262,6 @@ function buscarGuias(categoria, pesquisa) {
 }
 
 function sucessoAoBuscarGuias(response) {
-    console.log(response);
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum guia com esses filtros.')
@@ -311,7 +310,7 @@ function seguirGuia(guiaId) {
             window.location.href = './pagina-inicial.php';
         },
         error: () => {
-            alert('Você já está inscrito nesse evento');
+            alert('Você já está seguindo essa página');
             window.location.href = './pagina-inicial.php';
         }
     }); 

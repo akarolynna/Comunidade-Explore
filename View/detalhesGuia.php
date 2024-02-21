@@ -27,10 +27,10 @@
             <div class="filtro">
                 <div class="tituloContainer">
                     <h1 class="tituloMenor">Bem vindo a</h1>
-                    <h1 class="tituloMaior" id="nomeDestino">Costa Dourada</h1>
+                    <h1 class="tituloMaior" id="nomeDestino"></h1>
                     <div class="localizacaoContainer customBackGroundColor">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p class="localizacao" id="localizacao">Região Costeira do Nordeste, Brasil.</p>
+                        <p class="localizacao" id="localizacao"></p>
                     </div>
                 </div>
                 <button id="botaoSeguir" class="btn botaoPrimario">Seguir</button>
