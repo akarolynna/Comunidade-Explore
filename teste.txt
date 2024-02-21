@@ -1,9 +1,1 @@
-"<br />
-<b>Warning</b>:  Undefined array key "fotoCapa" in <b>C:\DevTools\xampp\htdocs\Comunidade-Explore\Controller\EventoController.class.php</b> on line <b>118</b><br />
-<br />
-<b>Warning</b>:  Trying to access array offset on value of type null in <b>C:\DevTools\xampp\htdocs\Comunidade-Explore\Controller\EventoController.class.php</b> on line <b>118</b><br />
-<br />
-<b>Warning</b>:  Undefined array key "fotoCapa" in <b>C:\DevTools\xampp\htdocs\Comunidade-Explore\Controller\EventoController.class.php</b> on line <b>120</b><br />
-<br />
-<b>Warning</b>:  Trying to access array offset on value of type null in <b>C:\DevTools\xampp\htdocs\Comunidade-Explore\Controller\EventoController.class.php</b> on line <b>120</b><br />
-Falha no upload da foto."
+"[{"eventoId":"5","membroId":"5"},{"eventoId":"7","membroId":"5"}][]"

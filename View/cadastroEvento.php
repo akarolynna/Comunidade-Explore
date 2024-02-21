@@ -45,7 +45,7 @@ require_once '../Model/Categoria.enum.php';
                     <div class="inputContainer">
                         <label class="label" for="inputHoraInicio">Hora</label>
                         <div id="inputHoraInicio" class="input-group time">
-                            <input type="text" class="form-control inputHora" id="inputHoraInicio" name="horaInicio" placeholder="HH:MM" required>
+                            <input type="text" class="form-control inputHora inputHoraInicio" id="inputHoraInicio" name="horaInicio" placeholder="HH:MM" required>
                             <div class="input-group-append input-group-addon">
                                 <div class="input-group-text">
                                     <i class="far fa-clock"></i>
@@ -63,7 +63,7 @@ require_once '../Model/Categoria.enum.php';
                     <div class="inputContainer">
                         <label class="label" for="inputHoraTermino">Hora</label>
                         <div id="inputHoraTermino" class="input-group time">
-                            <input type="text" class="form-control inputHora" id="inputHoraTermino" name="horaTermino" placeholder="HH:MM" required>
+                            <input type="text" class="form-control inputHora inputHoraTermino" id="inputHoraTermino" name="horaTermino" placeholder="HH:MM" required>
                             <div class="input-group-append input-group-addon">
                                 <div class="input-group-text">
                                     <i class="far fa-clock"></i>
@@ -77,10 +77,11 @@ require_once '../Model/Categoria.enum.php';
                 <label class="label" for="inputDescricao">Descrição</label>
                 <textarea class="form-control" id="inputDescricao" name="descricao" required></textarea>
             </div>
-            <div class="inputContainer mt-3">
+            <div class="inputContainer mt-3 inputfotoContainer">
                 <label for="inputFotoCapa">Foto de capa</label>
                 <br>
                 <input type="file" class="form-control-file" id="inputFotoCapa" name="fotoCapa">
+                <input type="hidden" id="inputFotoCapaEdicao" name="fotoCapaEdicao">
             </div>
 
             <label class="label mt-3">Categoria</label>
@@ -119,25 +120,24 @@ require_once '../Model/Categoria.enum.php';
             </select>
 
             <div class="form-check mt-4">
-                <input class="form-check-input" type="checkbox" id="checkMaxParticipantes">
                 <label class="checkLabel" for="checkMaxParticipantes">
                     Capacidade máxima de participantes
                 </label>
             </div>
             <input type="number" min="0" class="form-control mb-3" id="inputMaxParticipantes" name="maxParticipantes" value="0" />
 
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="checkColaboradores">
+            <div class="form-check inputColaboradoresContainer">
                 <label class="checkLabel" for="checkColaboradores">
                     Colaboradores
                 </label>
             </div>
-            <select multiple class="form-control" id="multiselectColaboradores"></select>
+            <select multiple class="form-control inputColaboradoresContainer" id="multiselectColaboradores"></select>
         </form>
 
         <div class="d-flex justify-content-center mt-5 buttonContainer">
             <button class="btn btnSecundary mx-2" id="btnCancelar">Cancelar</button>
             <button class="btn btnPrimary" id="btnPublicar">Publicar</button>
+            <button class="btn btnPrimary" id="btnEditar">Salvar alterações</button>
         </div>
     </div>
     <div class="modalDiarioViagem" id="modalEditarUsuario"></div>

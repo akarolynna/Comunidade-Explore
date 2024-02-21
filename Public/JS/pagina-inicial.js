@@ -144,13 +144,28 @@ function buscarIdMembroLogado() {
     });
 }
 
+function buscarInscricoesMembro(membroId) {
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            url: '../Controller/EventoController.class.php?_acao=buscarInscricoes&membroId=' + membroId,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(response) {
+                resolve(response);
+            },
+            error: function(error) {
+                reject(error);
+            }
+        });
+    });
+}
+
 function excluirEvento(eventoId) {
     alert('Tem certeza que deseja excluir esse evento? Todos os dados relacionados a ele serão perdidos');  
-    console.log(eventoId);
+
     $.ajax({
         url: '../Controller/EventoController.class.php?eventoId=' + eventoId,
         type: 'DELETE',
-        dataType: 'JSON',
         success: function(response) {
             window.location.reload();
         },
@@ -159,16 +174,33 @@ function excluirEvento(eventoId) {
 }
 
 function editarEvento(eventoId) {
-    console.log(`Editar ${eventoId}`);
+    window.location.href = './cadastroEvento.php?eventoId=' + eventoId;
 }
 
 function inscreverEmEvento(eventoId) {
-    console.log(`inscrever ${eventoId}`);
+    $.ajax({
+        dataType: "JSON",
+        url: '../controller/EventoController.class.php?_acao=inscrever&eventoId=' + eventoId,
+        type: "POST",
+        success: (response) => {
+            alert('Inscrição realizada com sucesso!!');
+            window.location.reload();
+        },
+        error: () => {
+            alert('Você já está inscrito nesse evento');
+        }
+    }); 
+}
+
+function membroEstaInscrito(eventos, membroId) {
+    return eventos.filter(evento => evento.membroId === membroId).length > 0;
 }
 
 async function sucessoAoBuscarEventos(response) {
     try {
         const membroId = await buscarIdMembroLogado();
+        // const eventosMembro = await buscarInscricoesMembro(membroId);
+        // console.log(eventosMembro);
 
         $('#publicacoes').html('');
         $.isEmptyObject(response)
@@ -229,7 +261,6 @@ function buscarGuias(categoria, pesquisa) {
 }
 
 function sucessoAoBuscarGuias(response) {
-    console.log(response);
     $('#publicacoes').html('');
     $.isEmptyObject(response)
         ? $('#publicacoes').html('Oops! Não encontramos nenhum guia com esses filtros.')
@@ -239,7 +270,7 @@ function sucessoAoBuscarGuias(response) {
                     <div class="filtro">
                         <div class="cabecalho">
                             <h3 class="titulo">${guia.nomeDestino}</h3>
-                            <button class="btn botaoPrimario">Seguir</button>
+                            <button class="btn botaoPrimario" onclick="seguirGuia(${guia.id})">Seguir</button>
                         </div>
                         <div class="conteudo">
                             <div class="tag criador">
@@ -266,6 +297,22 @@ function sucessoAoBuscarGuias(response) {
             `);
             $(`#cardGuia${guia.id}`).css("background-image", `url('${guia.fotoCapa}')`);
     });
+}
+
+function seguirGuia(guiaId) {
+    $.ajax({
+        dataType: "JSON",
+        url: '../controller/GuiaController.class.php?_acao=seguir&guiaId=' + guiaId,
+        type: "POST",
+        success: (response) => {
+            alert('Agora você está seguindo esta página!');
+            window.location.href = './pagina-inicial.php';
+        },
+        error: () => {
+            alert('Você já está seguindo essa página');
+            window.location.href = './pagina-inicial.php';
+        }
+    }); 
 }
 
 function formatarCategoria(categoria) {

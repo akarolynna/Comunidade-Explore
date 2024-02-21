@@ -23,13 +23,16 @@ class GuiaDao
     public function buscar($categoria, $pesquisa)
     {
         if ($categoria == strtolower(Categoria::TODOS)) {
-            $query = "SELECT * FROM Guia WHERE Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
+            $query = "SELECT * FROM Guia 
+                WHERE Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%')
+                AND Guia.publico = 1;";
             $fields = array('pesquisa' => $pesquisa);
         } else {
             $query = "SELECT * FROM Guia
                     INNER JOIN Categoria ON Guia.categoriaId = Categoria.id
                     WHERE Categoria.categoria = :categoria
-                    AND Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%');";
+                    AND Guia.nomeDestino LIKE CONCAT('%', :pesquisa, '%')
+                    AND Guia.publico = 1;";
             $fields = array(
                 'categoria' => $categoria,
                 'pesquisa' => $pesquisa
@@ -72,6 +75,42 @@ class GuiaDao
         } catch (Exception $ex) {
             throw new Exception("Erro ao tentar recuperar guias de viagem do banco de dados: " . $ex->getMessage());
         }
+    }
+
+    public function editarGuia($guia, $guiaId)
+    {
+        $query = "UPDATE Guia SET 
+                nomeDestino = :nomeDestino,
+                localizacao = :localizacao,
+                corPrincipal = :corPrincipal,
+                descricao = :descricao,
+                clima = :clima,
+                epocaVisita = :epocaVisita,
+                culturaHistoria = :culturaHistoria,
+                areasContribuicao = :areasContribuicao,
+                categoriaId = :categoriaId
+            WHERE 
+                id = :id ";
+        $fields = array(
+            'nomeDestino' => $guia->getNomeDestino(),
+            'localizacao' => $guia->getLocalizacao(),
+            'corPrincipal' => strval($guia->getCorPrincipal()),
+            'descricao' => $guia->getDescricao(),
+            'clima' => $guia->getClima(),
+            'epocaVisita' => $guia->getEpocaVisita(),
+            'culturaHistoria' => $guia->getCulturaHistoria(),
+            'areasContribuicao' => json_encode($guia->getAreasContribuicao()),
+            'categoriaId' => $guia->getCategoria(),
+            'id' => $guiaId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
     }
 
     public function cadastrarGuia($guia)
@@ -195,6 +234,22 @@ class GuiaDao
         return $result > 0;
     }
 
+    public function adicionarSeguidor($guiaId, $membroId) {
+        $query = 'INSERT INTO Guia_Seguidor (guiaId, membroId) VALUES (:guiaId, :membroId)';
+        $fields = array(
+            'guiaId' => $guiaId,
+            'membroId' => $membroId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
+
     public function buscarDesafios($guiaId)
     {
         $query = 'SELECT * FROM Desafio WHERE guiaId = :guiaId';
@@ -221,5 +276,35 @@ class GuiaDao
             throw new Exception($ex->getMessage());
         }
         return $result;
+    }
+
+    public function publicarGuia($guiaId) {
+        $query = 'UPDATE Guia SET publico = 1 where id = :guiaId';
+        $fields = array(
+            'guiaId' => $guiaId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
+
+    public function arquivarGuia($guiaId) {
+        $query = 'UPDATE Guia SET publico = 0 where id = :guiaId';
+        $fields = array(
+            'guiaId' => $guiaId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
     }
 }

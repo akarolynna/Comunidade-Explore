@@ -22,7 +22,7 @@ class GuiaController
     public function tratarRequisicao()
     {
         switch ($_SERVER['REQUEST_METHOD']) {
-            case 'GET':
+            case 'GET':                
                 if (isset($_GET['acao']) && $_GET['acao'] == 'exibirGuiasUsuario') {
                     $this->exibirGuiasUsuario();
                 } else if (!isset($_GET['guiaId'])) {
@@ -36,29 +36,33 @@ class GuiaController
                         $this->buscarColaboradores();
                     }
                 }
-                // if(!isset($_GET['guiaId'])) {
-                //     $this->buscar();
-                // } else if(!isset($_GET['acao'])) {
-                //     $this->buscarPorId();
-                // } else {
-                //     if(isset($_GET['acao']) && $_GET['acao'] == 'buscarDesafios') {
-                //         $this->buscarDesafios();
-                //     } else if(isset($_GET['acao']) && $_GET['acao'] == 'buscarColaboradores') {
-                //         $this->buscarColaboradores();
-                //     }else{
-                //     $this->exibirGuiasUsuario();
-                //     }
-                // }
                 break;
             case 'POST':
-                if (!isset($_GET['acao'])) {
-                    $this->cadastrar();
-                } else {
-                    $this->editar();
-                }
+                if (isset($_GET['_acao'])) {
+                    if($_GET['_acao'] == 'seguir') $this->adicionarSeguidor();
+                    if($_GET['_acao'] == 'cadastrarPublicar') $this->cadastrar('cadastrarPublicar');
+                    if($_GET['_acao'] == 'salvarRascunho') $this->cadastrar('salvarRascunho');
+                    if($_GET['_acao'] == 'editar') $this->editar();
+                    if($_GET['_acao'] == 'editarPublicar') $this->editarPublicar();
+                    if($_GET['_acao'] == 'arquivar') $this->arquivar();
+                    if($_GET['_acao'] == 'publicar') $this->publicar();
+                }               
                 break;
             default:
                 throw new Exception('Erro ao tentar realizar a operação.<br> Requisição desconhecida');
+        }
+    }
+
+    private function adicionarSeguidor() {
+        try {
+            session_start();
+            if ($this->guiaDao->adicionarSeguidor($_GET['guiaId'], $_SESSION['usuario']['id'])) {
+                echo json_encode('Guia cadastrado com sucesso');
+            } else {
+                echo 'Erro ao cadastrar guia';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
     }
 
@@ -104,33 +108,97 @@ class GuiaController
         return $caminhoFoto;
     }
 
+    private function arquivar() {
+        try {
+            if ($this->guiaDao->arquivarGuia($_GET['guiaId'])) {
+                echo json_encode('Guia arquivado com sucesso');
+            } else {
+                echo 'Erro ao arquivar guia';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    private function publicar() {
+        try {
+            if ($this->guiaDao->publicarGuia($_GET['guiaId'])) {
+                echo json_encode('Guia publicado com sucesso');
+            } else {
+                echo 'Erro ao publicar guia';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
+    private function editarPublicar() {
+        try {
+            extract($_POST);
+            $guia = new Guia(
+                $nomeDestino,
+                $localizacao,
+                $corPrincipal,
+                $descricao,
+                $clima,
+                $epocaVisita,
+                $culturaHistoria,
+                $areasContribuicao,
+                null,
+                null,
+                null,
+                null,
+                $categoria,
+                null,
+                null,
+                null,
+            );
+
+            if ($this->guiaDao->editarGuia($guia, $_GET['guiaId'])) {
+                if ($this->guiaDao->publicarGuia($_GET['guiaId'])) {
+                    echo json_encode('Guia editado e publicado com sucesso');
+                } else {
+                    echo 'Erro ao publicar guia';
+                }
+            } else {
+                echo 'Erro ao editar guia';
+            }
+
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+
     private function editar()
     {
         try {
             extract($_POST);
-
-            $caminhoFotoCapa = $this->getCaminhoFoto(
+            
+            $guia = new Guia(
                 $nomeDestino,
-                'fotoCapa',
-                $fotoCapaEdicao
-            );
-            $caminhoFotoSecundaria1 = $this->getCaminhoFoto(
-                $nomeDestino,
-                'fotoSecundaria1',
-                $fotoSecundaria1Edicao
-            );
-            $caminhoFotoSecundaria2 = $this->getCaminhoFoto(
-                $nomeDestino,
-                'fotoSecundaria2',
-                $fotoSecundaria2Edicao
-            );
-            $caminhoFotoSecundaria3 = $this->getCaminhoFoto(
-                $nomeDestino,
-                'fotoSecundaria3',
-                $fotoSecundaria3Edicao
+                $localizacao,
+                $corPrincipal,
+                $descricao,
+                $clima,
+                $epocaVisita,
+                $culturaHistoria,
+                $areasContribuicao,
+                null,
+                null,
+                null,
+                null,
+                $categoria,
+                null,
+                null,
+                null,
             );
 
-            $fotosSecundarias = array($caminhoFotoSecundaria1, $caminhoFotoSecundaria2, $caminhoFotoSecundaria3);
+            if ($this->guiaDao->editarGuia($guia, $_GET['guiaId'])) {
+                echo json_encode('Guia editado com sucesso');
+            } else {
+                echo 'Erro ao editar guia';
+            }
+
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
@@ -144,7 +212,7 @@ class GuiaController
         };
     }
 
-    private function cadastrar()
+    private function cadastrar($acao)
     {
         try {
             extract($_POST);
@@ -174,7 +242,7 @@ class GuiaController
                     $areasContribuicao,
                     $caminhoFotoCapa,
                     $fotosSecundarias,
-                    0,
+                    $acao == 'cadastrarPublicar' ? 1 : 0,
                     0,
                     $categoria,
                     $_SESSION['usuario']['id'],

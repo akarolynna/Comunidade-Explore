@@ -23,13 +23,13 @@ class Evento {
         $dataTermino,
         $horaTermino,
         $descricao,
-        $fotoCapa,
+        $fotoCapa = null,
         $maxParticipantes,
-        $arquivado,
+        $arquivado = null,
         $categoriaId,
-        $criadorId,
+        $criadorId = null,
         $colaboradores,
-        $inscritos,
+        $inscritos = null,
     ) {
         $this->titulo = $titulo;
         $this->localizacao = $localizacao;
@@ -48,6 +48,7 @@ class Evento {
     }
     
     // Getters and se
+
     public function getTitulo()
     {
         return $this->titulo;
@@ -119,6 +120,7 @@ class Evento {
     }
 
     // Setters
+
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
