@@ -1,3 +1,6 @@
+<?php
+ session_start();
+ ?>
 <div class="modalCriarDiario" id="modalCriarDiario">
     <div class="botoes">
         <div class="btn-selecionarDiario">

@@ -1,4 +1,6 @@
-
+<?php
+ session_start();
+ ?>
 <div class="post">
     <div class="imagemPost">
         <img src="../Public/Imagens/CategoriaPraia.jpg" alt="Imagem do Post">
