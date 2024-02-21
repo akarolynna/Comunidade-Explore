@@ -41,6 +41,7 @@ class GuiaController
                 if (isset($_GET['_acao'])) {
                     if($_GET['_acao'] == 'seguir') $this->adicionarSeguidor();
                     if($_GET['_acao'] == 'editarPublicar') $this->editarPublicar();
+                    if($_GET['_acao'] == 'arquivar') $this->arquivar();
                 } else {
                     if (!isset($_GET['acao'])) {
                         $this->cadastrar();
@@ -107,6 +108,18 @@ class GuiaController
             move_uploaded_file($_FILES[$nomeArquivo]["tmp_name"], $caminhoFoto);
         }
         return $caminhoFoto;
+    }
+
+    private function arquivar() {
+        try {
+            if ($this->guiaDao->arquivarGuia($_GET['guiaId'])) {
+                echo json_encode('Guia arquivado com sucesso');
+            } else {
+                echo 'Erro ao arquivar guia';
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 
     private function editarPublicar() {

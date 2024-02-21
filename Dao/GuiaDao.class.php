@@ -292,4 +292,19 @@ class GuiaDao
         }
         return $result > 0;
     }
+
+    public function arquivarGuia($guiaId) {
+        $query = 'UPDATE Guia SET publico = 0 where id = :guiaId';
+        $fields = array(
+            'guiaId' => $guiaId
+        );
+        $result = 0;
+
+        try {
+            $result = $this->getResult($query, $fields);
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+        return $result > 0;
+    }
 }

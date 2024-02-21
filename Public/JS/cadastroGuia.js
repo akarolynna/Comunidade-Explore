@@ -4,6 +4,7 @@ $('#btnSalvarRascunho').click(salvarRascunho);
 $('#btnPublicar').click(cadastrar);
 $('#btnEditar').click(editar);
 $('#btnEditarPublicar').click(editarPublicar);
+$('#btnArquivar').click(arquivar);
 
 function editarPublicar(evt) {
     let queryString = window.location.search;
@@ -33,6 +34,25 @@ function editarPublicar(evt) {
         },
         error: erroNaRequisicao
         });
+}
+
+function arquivar() {
+    let queryString = window.location.search;
+    let searchParams = new URLSearchParams(queryString);
+    const guiaId = searchParams.get('guiaId');
+
+    const controllerURL = "../controller/GuiaController.class.php?_acao=arquivar&guiaId=" + guiaId;
+    
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: controllerURL,
+        success: () => {
+            alert('Guia arquivado com sucesso!');
+            window.location.href = './pagina-inicial.php';
+        },
+        error: erroNaRequisicao
+    });
 }
 
 const formCadastro = $('#formCadGuia');
