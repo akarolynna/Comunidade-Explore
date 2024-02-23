@@ -1,6 +1,5 @@
 CREATE DATABASE comunidadeexplore;
 use comunidadeexplore;
-show tables;
 
 CREATE TABLE Categoria (
     id INT AUTO_INCREMENT,
@@ -21,46 +20,61 @@ CREATE TABLE Categoria (
 
 create table membro(
  id INTEGER NOT NULL AUTO_INCREMENT,
- foto varchar(255) not null,
- email varchar(150) not null,
- senha varchar(255) not null,
  nome VARCHAR(255),
- aniversario VARCHAR(10),
+ email varchar(255) not null,
+ senha varchar(255) not null,
+ apresentacao varchar(600),
+ aniversario DATE,
+ telefone VARCHAR(255),
  melhor_viagem VARCHAR(255),
+ foto varchar(255) not null,
  instagram VARCHAR(100),
- telefone VARCHAR(13),
- descricao VARCHAR(512)
  CONSTRAINT PK_MEMBRO PRIMARY KEY(id) 
 );
 
-ALTER TABLE membro
- ADD COLUMN nome VARCHAR(255),
- ADD COLUMN aniversario VARCHAR(10),
- ADD COLUMN melhor_viagem VARCHAR(255),
- ADD COLUMN instagram VARCHAR(100),
- ADD COLUMN telefone VARCHAR(13),
- ADD COLUMN descricao VARCHAR(512)
-;
+CREATE TABLE DiarioViagem (
+	id INT NOT NULL AUTO_INCREMENT,
+    foto VARCHAR(255) NOT NULL,
+    titulo VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255),
+    arquivado BOOL,
+    localizacao VARCHAR(120),
+    categoria_id INT,
+    criador_id INT NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (categoria_id) REFERENCES Categoria(id),
+    FOREIGN KEY (criador_id) REFERENCES Membro(id)
+);
+
+CREATE TABLE Post (
+	id INT NOT NULL AUTO_INCREMENT,
+    fotos JSON NOT NULL,
+    descricao VARCHAR(500) NOT NULL,
+    titulo VARCHAR(100) NOT NULL,
+    diario_id INT NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (diario_id) REFERENCES DiarioViagem(id)
+);
+
 CREATE TABLE Guia (
     id INT AUTO_INCREMENT,
     nomeDestino VARCHAR(255) NOT NULL,
     localizacao VARCHAR(255) NOT NULL,
     corPrincipal VARCHAR(255) NOT NULL,
-    descricao VARCHAR(255) NOT NULL,
-    clima VARCHAR(255) NOT NULL,
-    epocaVisita VARCHAR(255) NOT NULL,
-    culturaHistoria VARCHAR(255) NOT NULL,
-    areasContribuicao VARCHAR(255) NOT NULL,
-    fotoCapa VARCHAR(255) NOT NULL,
+    descricao VARCHAR(1000) NOT NULL,
+    clima VARCHAR(1000) NOT NULL,
+    epocaVisita VARCHAR(1000) NOT NULL,
+    culturaHistoria VARCHAR(1000) NOT NULL,
+    areasContribuicao VARCHAR(1000) NOT NULL,
+    fotoCapa VARCHAR(1000) NOT NULL,
     fotosSecundarias JSON NOT NULL,
     publico BOOLEAN NOT NULL,
-    arquivado BOOLEAN NOT NULL,
     categoriaId INT NOT NULL,
     criadorId INT NOT NULL,
-
+    
     PRIMARY KEY(id),
     FOREIGN KEY (categoriaId) REFERENCES Categoria(id),
-    FOREIGN KEY (criadorId) REFERENCES Membro(id)
+    FOREIGN KEY (criadorId) REFERENCES Membro(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Guia_Colaborador (
@@ -68,8 +82,17 @@ CREATE TABLE Guia_Colaborador (
     membroId INT NOT NULL,
 
     PRIMARY KEY (guiaId, membroId),
-    FOREIGN KEY (guiaId) REFERENCES Guia(id),
-    FOREIGN KEY (membroId) REFERENCES Membro(id)
+    FOREIGN KEY (guiaId) REFERENCES Guia(id) ON DELETE CASCADE,
+    FOREIGN KEY (membroId) REFERENCES Membro(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Guia_Seguidor (
+    guiaId INT NOT NULL,
+    membroId INT NOT NULL,
+
+    PRIMARY KEY (guiaId, membroId),
+    FOREIGN KEY (guiaId) REFERENCES Guia(id) ON DELETE CASCADE,
+    FOREIGN KEY (membroId) REFERENCES Membro(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Desafio (
@@ -79,7 +102,7 @@ CREATE TABLE Desafio (
     guiaId INT NOT NULL,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (guiaId) REFERENCES Guia(id)
+    FOREIGN KEY (guiaId) REFERENCES Guia(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Evento (
@@ -90,29 +113,28 @@ CREATE TABLE Evento (
     horaInicio TIME NOT NULL,
     dataTermino DATE NOT NULL,
     horaTermino TIME NOT NULL,
-    descricao VARCHAR(255) NOT NULL,
     fotoCapa VARCHAR(255) NOT NULL,
     maxParticipantes INT,
-    arquivado BOOL DEFAULT false,
     categoriaId INT NOT NULL,
-    criadorId INT NOT NULL,
+    criadorId INT NOT NULL,    
+    
     PRIMARY KEY(id),
     FOREIGN KEY (categoriaId) REFERENCES Categoria(id),
-    FOREIGN KEY (criadorId) REFERENCES Membro(id)
+    FOREIGN KEY (criadorId) REFERENCES Membro(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Evento_Colaborador (
     eventoId INT NOT NULL,
     membroId INT NOT NULL,
     PRIMARY KEY (eventoId, membroId),
-    FOREIGN KEY (eventoId) REFERENCES Evento(id),
-    FOREIGN KEY (membroId) REFERENCES Membro(id)
+    FOREIGN KEY (eventoId) REFERENCES Evento(id) ON DELETE CASCADE,
+    FOREIGN KEY (membroId) REFERENCES Membro(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Evento_Inscrito (
     eventoId INT NOT NULL,
     membroId INT NOT NULL,
     PRIMARY KEY (eventoId, membroId),
-    FOREIGN KEY (eventoId) REFERENCES Evento(id),
-    FOREIGN KEY (membroId) REFERENCES Membro(id)
+    FOREIGN KEY (eventoId) REFERENCES Evento(id) ON DELETE CASCADE,
+    FOREIGN KEY (membroId) REFERENCES Membro(id) ON DELETE CASCADE
 );
