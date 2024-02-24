@@ -53,17 +53,17 @@ function sucessoAoBuscarDiario(dados) {
 function sucessoAoBuscarPosts(posts) {
   // Limpar o conteúdo existente antes de adicionar os novos posts
   $('.posts').empty();
-  
+
   posts.forEach(post => {
     const fotos = JSON.parse(post.fotos);
 
-     // Corrigido 'session' para 'section'
+    // Corrigido 'session' para 'section'
     const divPost = $('<div>').addClass('post');
     const divImagem = $('<div>').addClass('imagens');
     const divImagemFundo = $('<div>').addClass('imagem-fundo');
     const imagemFundo = $('<img>').attr('src', fotos[0]);
     divImagemFundo.append(imagemFundo);
-    
+
     const divImagemFrente = $('<div>').addClass('imagem-frente');
     const imagemFrente = $('<img>').attr('src', fotos[1]);
     divImagemFrente.append(imagemFrente);
@@ -85,7 +85,7 @@ function sucessoAoBuscarPosts(posts) {
     divPost.append(divImagem, divTextos);
     $('#posts').append(divPost);
 
-   
+
   });
 }
 
@@ -101,15 +101,15 @@ function erroNaRequisicao(xhr, status, error) {
 }
 
 function deletarPost(postId) {
-  alert('Tem certeza que deseja excluir esse POST? Todos os dados relacionados a ele serão perdidos');  
+  alert('Tem certeza que deseja excluir esse POST? Todos os dados relacionados a ele serão perdidos');
   $.ajax({
     url: '../Controller/PostController.class.php?postId=' + postId,
     type: 'DELETE',
-    success: function(response) {
-        window.location.reload();
+    success: function (response) {
+      window.location.reload();
     },
     error: erroNaRequisicao
-});
+  });
 }
 
 

@@ -19,16 +19,6 @@ class MembroModel
 	private $contribuicoes = [];
 	private $desafios = [];
 
-
-	// public function __construct($id, $foto, $nome, $email, $senha)
-	// {
-	// 	$this->id = $id;
-	// 	$this->foto = $foto;
-	// 	$this->nome = $nome;
-	// 	$this->email = $email;
-	// 	$this->senha = $senha;
-	// }
-
 	public function __construct($id, $foto, $nome, $email, $senha, $aniversario = null, $melhorViagem = null, $instagram = null, $telefone = null, $apresentacao = null)
 	{
 		$this->id = $id;

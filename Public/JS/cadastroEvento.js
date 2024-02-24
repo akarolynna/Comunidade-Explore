@@ -12,12 +12,12 @@ function preencherCampos() {
 
     $('#btnEditar').css('display', 'none');
 
-    if(eventoId != null) {
+    if (eventoId != null) {
         $('.inputfotoContainer').css('display', 'none');
         $('.inputColaboradoresContainer').css('display', 'none');
         $('#btnPublicar').css('display', 'none');
         $('#btnEditar').css('display', 'inline');
-        
+
         $.ajax({
             url: `../Controller/EventoController.class.php?eventoId=${eventoId}`,
             type: 'GET',
@@ -31,7 +31,7 @@ function preencherCampos() {
 function sucessoAoBuscarEvento(response) {
     if (!$.isEmptyObject(response)) {
         eventoId = response[0].id;
-        
+
         $('#inputTitulo').val(response[0].titulo);
         $('#inputLocalizacao').val(response[0].localizacao);
         $('#inputDataInicio').val(response[0].dataInicio);
@@ -41,7 +41,7 @@ function sucessoAoBuscarEvento(response) {
         $('#selectCategoria').val(response[0].categoriaId);
         $('#inputMaxParticipantes').val(response[0].maxParticipantes);
         $('#inputFotoCapaEdicao').val(response[0].fotoCapa);
-        
+
         preencherColaboradores(response[0].id);
 
     } else {
@@ -71,27 +71,27 @@ function cancelar() {
 
 function publicar(evt) {
     const formCadastro = $('#formCadEvento');
-    const controllerURL = "../controller/EventoController.class.php"; 
+    const controllerURL = "../controller/EventoController.class.php";
     const dados = new FormData($(formCadastro)[0]);
     let colaboradores = [];
-    
-    $("#multiselectColaboradores option:selected").each(function() {
+
+    $("#multiselectColaboradores option:selected").each(function () {
         colaboradores.push($(this).val());
     });
-    
+
     dados.append('colaboradores', JSON.stringify(colaboradores));
-    
-    evt.preventDefault();   
+
+    evt.preventDefault();
     $.ajax({
         type: "POST",
         dataType: "JSON",
         url: controllerURL,
         data: dados,
-        processData: false, 
+        processData: false,
         contentType: false,
         success: sucessoAoSalvar,
         error: erroNaRequisicao
-    }); 
+    });
 }
 
 function sucessoAoSalvar(response) {
@@ -102,30 +102,30 @@ function sucessoAoSalvar(response) {
 
 function editar(evt) {
     const formCadastro = $('#formCadEvento');
-    const controllerURL = "../controller/EventoController.class.php?_acao=editar&eventoId=" + eventoId; 
+    const controllerURL = "../controller/EventoController.class.php?_acao=editar&eventoId=" + eventoId;
     const dados = new FormData($(formCadastro)[0]);
     let colaboradores = [];
-    
-    $("#multiselectColaboradores option:selected").each(function() {
+
+    $("#multiselectColaboradores option:selected").each(function () {
         colaboradores.push($(this).val());
     });
-    
+
     dados.append('colaboradores', JSON.stringify(colaboradores));
-    
-    evt.preventDefault();   
+
+    evt.preventDefault();
     $.ajax({
         type: "POST",
         dataType: "JSON",
         url: controllerURL,
         data: dados,
-        processData: false, 
+        processData: false,
         contentType: false,
         success: sucessoAoSalvar,
         error: (error) => {
             alert('Nenhuma alteração encontrada');
             console.log(error);
         }
-    }); 
+    });
 }
 
 function erroNaRequisicao(error) {

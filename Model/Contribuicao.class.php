@@ -1,5 +1,6 @@
 <?php
-class Contribuicao {
+class Contribuicao
+{
     private $titulo;
     private $descricao;
     private $foto;
@@ -24,53 +25,64 @@ class Contribuicao {
     }
 
     // Métodos Set
-    public function setTitulo($titulo) {
+    public function setTitulo($titulo)
+    {
         $this->titulo = $titulo;
     }
 
-    public function setDescricao($descricao) {
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
     }
 
-    public function setFoto($foto) {
+    public function setFoto($foto)
+    {
         $this->foto = $foto;
     }
 
-    public function setPaginaDestino($paginaDestino) {
+    public function setPaginaDestino($paginaDestino)
+    {
         $this->paginaDestino = $paginaDestino;
     }
 
-    public function setCriador($criador) {
+    public function setCriador($criador)
+    {
         $this->criador = $criador;
     }
 
-    public function setArquivado($arquivado) {
+    public function setArquivado($arquivado)
+    {
         $this->arquivado = $arquivado;
     }
 
     // Métodos Get
-    public function getTitulo() {
+    public function getTitulo()
+    {
         return $this->titulo;
     }
 
-    public function getDescricao() {
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 
-    public function getFoto() {
+    public function getFoto()
+    {
         return $this->foto;
     }
 
-    public function getPaginaDestino() {
+    public function getPaginaDestino()
+    {
         return $this->paginaDestino;
     }
 
-    public function getCriador() {
+    public function getCriador()
+    {
         return $this->criador;
     }
 
-    public function getArquivado() {
+    public function getArquivado()
+    {
         return $this->arquivado;
     }
 }
-?>

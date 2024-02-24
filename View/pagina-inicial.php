@@ -19,55 +19,55 @@
 
 <body>
     <?php require_once './Componentes/menu2.php'; ?>
-        <article>
-            <div class="blocoPrincipal">
+    <article>
+        <div class="blocoPrincipal">
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control inputPesquisa" placeholder="Pesquisar" id="inputPesquisa">
-                    <div class="input-group-append" id="botaoPesquisa">
-                        <button class="botaoPesquisa">
-                            <img src="../Public/Imagens/IconePesquisa.png" alt="Icone de pesquisa">
-                        </button>
-                    </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control inputPesquisa" placeholder="Pesquisar" id="inputPesquisa">
+                <div class="input-group-append" id="botaoPesquisa">
+                    <button class="botaoPesquisa">
+                        <img src="../Public/Imagens/IconePesquisa.png" alt="Icone de pesquisa">
+                    </button>
                 </div>
+            </div>
 
-                <div class="blocoCategorias">
-                    <h2 class="titulo">Categorias</h2>
-                    <div class="opcoesCategorias">
-                        <?php
-                        require_once "../Model/Categoria.enum.php";
-                        $i = 0;
-                        $categoria = Categoria::getNome($i);
-                        while ($categoria != null) {
-                            echo
-                            "<div class='itemCategoria' id='categoria$categoria'>
+            <div class="blocoCategorias">
+                <h2 class="titulo">Categorias</h2>
+                <div class="opcoesCategorias">
+                    <?php
+                    require_once "../Model/Categoria.enum.php";
+                    $i = 0;
+                    $categoria = Categoria::getNome($i);
+                    while ($categoria != null) {
+                        echo
+                        "<div class='itemCategoria' id='categoria$categoria'>
                                 <div class='imagemCategoria'>                        
                                     <img src='../Public/Imagens/Categoria$categoria.jpg' alt='$categoria'>
                                 </div>
                                 <p class='nomeCategoria'>$categoria</p>
                             </div>";
 
-                            $i++;
-                            $categoria = Categoria::getNome($i);
-                        }
-                        ?>
-                    </div>
+                        $i++;
+                        $categoria = Categoria::getNome($i);
+                    }
+                    ?>
                 </div>
-
-                <div class="blocoPosts">
-                    <div class="menuPublicacoes">
-                        <p class="itemMenuPublicacoes titulo itemMenuAtivo" id="diarios">Diários</p>
-                        <p class="itemMenuPublicacoes titulo" id="eventos">Eventos</p>
-                        <p class="itemMenuPublicacoes titulo" id="guias">Guias</p>
-                    </div>
-                    <div id="publicacoes">
-                    </div>
-                </div>
-
             </div>
-        </article>
-        <div class="modalDiarioViagem" id="modalEditarUsuario"></div>
-        <div id="overlay" class="overlay"></div>
+
+            <div class="blocoPosts">
+                <div class="menuPublicacoes">
+                    <p class="itemMenuPublicacoes titulo itemMenuAtivo" id="diarios">Diários</p>
+                    <p class="itemMenuPublicacoes titulo" id="eventos">Eventos</p>
+                    <p class="itemMenuPublicacoes titulo" id="guias">Guias</p>
+                </div>
+                <div id="publicacoes">
+                </div>
+            </div>
+
+        </div>
+    </article>
+    <div class="modalDiarioViagem" id="modalEditarUsuario"></div>
+    <div id="overlay" class="overlay"></div>
 </body>
 
 <script src="../Public/JS/pagina-inicial.js"></script>

@@ -9,14 +9,7 @@ try {
 } catch (Exception $ex) {
     echo $ex;
 }
-// $diarioController = new DiarioController();
 
-// // Chama a função buscarDiario()
-// $diarios = $diarioController->buscarDiario();
-
-// // Imprime os dados retornados
-// header('Content-Type: application/json');
-// echo $diarios;
 class DiarioController
 {
     private $diarioDao;

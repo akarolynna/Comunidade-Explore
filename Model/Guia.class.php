@@ -1,5 +1,6 @@
 <?php
-class Guia {
+class Guia
+{
     private $nomeDestino;
     private $localizacao;
     private $corPrincipal;
@@ -51,73 +52,89 @@ class Guia {
         // $this->arquivado = $arquivado;
         $this->categoria = $categoria;
         $this->criadorId = $criadorId;
-        $this->desafios = $desafios; 
+        $this->desafios = $desafios;
         $this->colaboradores = $colaboradores;
         // $this->seguidores = $seguidores;
     }
 
-     // Getters
-     public function getNomeDestino() {
+    // Getters
+    public function getNomeDestino()
+    {
         return $this->nomeDestino;
     }
 
-    public function getLocalizacao() {
+    public function getLocalizacao()
+    {
         return $this->localizacao;
     }
 
-    public function getCorPrincipal() {
+    public function getCorPrincipal()
+    {
         return $this->corPrincipal;
     }
 
-    public function getDescricao() {
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 
-    public function getClima() {
+    public function getClima()
+    {
         return $this->clima;
     }
 
-    public function getEpocaVisita() {
+    public function getEpocaVisita()
+    {
         return $this->epocaVisita;
     }
 
-    public function getCulturaHistoria() {
+    public function getCulturaHistoria()
+    {
         return $this->culturaHistoria;
     }
 
-    public function getAreasContribuicao() {
+    public function getAreasContribuicao()
+    {
         return $this->areasContribuicao;
     }
 
-    public function getDesafios() {
+    public function getDesafios()
+    {
         return $this->desafios;
     }
 
-    public function getFotoCapa() {
+    public function getFotoCapa()
+    {
         return $this->fotoCapa;
     }
 
-    public function getFotosSecundarias() {
+    public function getFotosSecundarias()
+    {
         return $this->fotosSecundarias;
     }
 
-    public function getCategoria() {
+    public function getCategoria()
+    {
         return $this->categoria;
     }
 
-    public function getColaboradores() {
+    public function getColaboradores()
+    {
         return $this->colaboradores;
     }
 
-    public function getSeguidores() {
+    public function getSeguidores()
+    {
         return $this->seguidores;
     }
 
-    public function getCriadorId() {
+    public function getCriadorId()
+    {
         return $this->criadorId;
     }
 
-    public function getPublico() {
+    public function getPublico()
+    {
         return $this->publico;
     }
 
@@ -126,67 +143,83 @@ class Guia {
     // }
 
     // Setters
-    public function setNomeDestino($nomeDestino) {
+    public function setNomeDestino($nomeDestino)
+    {
         $this->nomeDestino = $nomeDestino;
     }
 
-    public function setLocalizacao($localizacao) {
+    public function setLocalizacao($localizacao)
+    {
         $this->localizacao = $localizacao;
     }
 
-    public function setCorPrincipal($corPrincipal) {
+    public function setCorPrincipal($corPrincipal)
+    {
         $this->corPrincipal = $corPrincipal;
     }
 
-    public function setDescricao($descricao) {
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
     }
 
-    public function setClima($clima) {
+    public function setClima($clima)
+    {
         $this->clima = $clima;
     }
 
-    public function setEpocaVisita($epocaVisita) {
+    public function setEpocaVisita($epocaVisita)
+    {
         $this->epocaVisita = $epocaVisita;
     }
 
-    public function setCulturaHistoria($culturaHistoria) {
+    public function setCulturaHistoria($culturaHistoria)
+    {
         $this->culturaHistoria = $culturaHistoria;
     }
 
-    public function setAreasContribuicao($areasContribuicao) {
+    public function setAreasContribuicao($areasContribuicao)
+    {
         $this->areasContribuicao = $areasContribuicao;
     }
 
-    public function setDesafios($desafios) {
+    public function setDesafios($desafios)
+    {
         $this->desafios = $desafios;
     }
 
-    public function setFotoCapa($fotoCapa) {
+    public function setFotoCapa($fotoCapa)
+    {
         $this->fotoCapa = $fotoCapa;
     }
 
-    public function setFotosSecundarias($fotosSecundarias) {
+    public function setFotosSecundarias($fotosSecundarias)
+    {
         $this->fotosSecundarias = $fotosSecundarias;
     }
 
-    public function setCategoria($categoria) {
+    public function setCategoria($categoria)
+    {
         $this->categoria = $categoria;
     }
 
-    public function setColaboradores($colaboradores) {
+    public function setColaboradores($colaboradores)
+    {
         $this->colaboradores = $colaboradores;
     }
 
-    public function setSeguidores($seguidores) {
+    public function setSeguidores($seguidores)
+    {
         $this->seguidores = $seguidores;
     }
 
-    public function setCriadorId($criadorId) {
+    public function setCriadorId($criadorId)
+    {
         $this->criadorId = $criadorId;
     }
 
-    public function setPublico($publico) {
+    public function setPublico($publico)
+    {
         $this->publico = $publico;
     }
 
@@ -194,4 +227,3 @@ class Guia {
     //     $this->arquivado = $arquivado;
     // }
 }
-?>

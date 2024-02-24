@@ -1,5 +1,6 @@
 <?php
-class Desafio {
+class Desafio
+{
     private $titulo;
     private $descricao;
     private $guia;
@@ -15,29 +16,34 @@ class Desafio {
     }
 
     // Métodos Set
-    public function setTitulo($titulo) {
+    public function setTitulo($titulo)
+    {
         $this->titulo = $titulo;
     }
 
-    public function setDescricao($descricao) {
+    public function setDescricao($descricao)
+    {
         $this->descricao = $descricao;
     }
 
-    public function setGuia($guia) {
+    public function setGuia($guia)
+    {
         $this->guia = $guia;
     }
 
     // Métodos Get
-    public function getTitulo() {
+    public function getTitulo()
+    {
         return $this->titulo;
     }
 
-    public function getDescricao() {
+    public function getDescricao()
+    {
         return $this->descricao;
     }
 
-    public function getGuia() {
+    public function getGuia()
+    {
         return $this->guia;
     }
 }
-?>

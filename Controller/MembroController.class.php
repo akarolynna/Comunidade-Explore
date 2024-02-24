@@ -53,20 +53,18 @@ class MembroController
             case 'editar':
                 $this->atualizarMembro();
                 break;
-
-                //outras funções como o login que usam o método POST
             default:
                 throw new Exception("Erro ao processar a requisição");
         }
     }
 
-    public function buscarIdMembroLogado() {
+    public function buscarIdMembroLogado()
+    {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
         try {
             echo json_encode($_SESSION['usuario']['id']);
-
         } catch (Exception $ex) {
             echo json_encode(array('error' => 'Erro nao buscar id do membro logado: ' . $ex->getMessage()));
         }

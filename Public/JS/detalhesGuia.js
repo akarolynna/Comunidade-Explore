@@ -7,7 +7,7 @@ function buscarGuia() {
     let queryString = window.location.search;
     let searchParams = new URLSearchParams(queryString);
     guiaId = searchParams.get('guiaId');
-    
+
     $.ajax({
         url: `../Controller/GuiaController.class.php?guiaId=${guiaId}`,
         type: 'GET',
@@ -20,7 +20,7 @@ function buscarGuia() {
 function sucessoAoBuscarGuia(response) {
     console.log(response);
 
-    if(!$.isEmptyObject(response)) {
+    if (!$.isEmptyObject(response)) {
         $('#nomeDestino').html(response[0].nomeDestino);
         $('#localizacao').html(response[0].localizacao);
         $('#secaoCapa').css('background-image', `url("${response[0].fotoCapa}")`);
@@ -44,7 +44,7 @@ function sucessoAoBuscarGuia(response) {
 
     } else {
         $('#publicacoes').html('Oops! Não encontramos esse guia.')
-    }    
+    }
 }
 
 function erroNaRequisicao(error) {
@@ -62,8 +62,8 @@ function buscarDesafiosGuia(guiaId, corPrincipal) {
             if (!$.isEmptyObject(response)) {
                 $('#desafiosContainer').html('');
                 response.forEach((desafio, index) => {
-                    classeDesafio = index % 2 == 0 
-                        ? 'desafioCanto customBorderColor customColor' 
+                    classeDesafio = index % 2 == 0
+                        ? 'desafioCanto customBorderColor customColor'
                         : 'desafioCentro customBackgroundColor';
 
                     $('#desafiosContainer').append(`
@@ -100,7 +100,7 @@ async function sucessoAoBuscarCriador(response) {
     if (!$.isEmptyObject(response)) {
         $('#nomeCriador').html(response[0].email);
         $('#fotoCriador').attr('src', response[0].foto);
-        if(response[0].id == membroId) {
+        if (response[0].id == membroId) {
             $('#botaoSeguir').css('display', 'none');
             $('#botaoEditar').css('display', 'block');
         } else {
@@ -127,18 +127,18 @@ function buscarColaboradores(guiaId, responseCriador) {
 async function sucessoAoBuscarColaboradoresECriador(responseCriador, responseColaborador) {
     if (!$.isEmptyObject(responseCriador) && !$.isEmptyObject(responseColaborador)) {
         const membroId = await buscarIdMembroLogado();
-        
+
         $('#numeroColaboradores').html(responseColaborador.length);
         $('#colaboradoresContent').html('');
         let ehColaborador = false;
         responseColaborador.forEach((colaborador) => {
-            if(colaborador.membroId == membroId) ehColaborador = true;
+            if (colaborador.membroId == membroId) ehColaborador = true;
             buscarColaborador(colaborador.membroId);
         });
-        
+
         $('#nomeCriador').html(responseCriador[0].email);
         $('#fotoCriador').attr('src', responseCriador[0].foto);
-        if(responseCriador[0].id == membroId || ehColaborador) {
+        if (responseCriador[0].id == membroId || ehColaborador) {
             $('#botaoSeguir').css('display', 'none');
             $('#botaoEditar').css('display', 'block');
         } else {
@@ -153,16 +153,16 @@ async function sucessoAoBuscarColaboradoresECriador(responseCriador, responseCol
 
 async function sucessoAoBuscarColaboradores(response) {
     const membroId = await buscarIdMembroLogado();
-    
+
     if (!$.isEmptyObject(response)) {
         $('#numeroColaboradores').html(response.length);
         $('#colaboradoresContent').html('');
         let ehColaborador = false;
         response.forEach((colaborador) => {
-            if(colaborador.membroId == membroId) ehColaborador = true;
+            if (colaborador.membroId == membroId) ehColaborador = true;
             buscarColaborador(colaborador.membroId);
         });
-        if(ehColaborador) {
+        if (ehColaborador) {
             $('#botaoSeguir').css('display', 'none');
             $('#botaoEditar').css('display', 'block');
         } else {
@@ -226,19 +226,19 @@ function seguirGuia() {
             alert('Você já está seguindo essa página');
             console.log(error);
         }
-    }); 
+    });
 }
 
 function buscarIdMembroLogado() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         $.ajax({
             url: '../Controller/MembroController.class.php?_acao=membroLogado',
             type: 'GET',
             dataType: 'JSON',
-            success: function(response) {
+            success: function (response) {
                 resolve(response);
             },
-            error: function(error) {
+            error: function (error) {
                 reject(error);
             }
         });

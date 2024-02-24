@@ -31,7 +31,7 @@
     <section class="containnerPricipal">
       <div class="divTextos">
         <div class="titulo">
-          <h1><a>Comece sua  Jornada</a></h1>
+          <h1><a>Comece sua Jornada</a></h1>
         </div>
         <div class="mensagem">
           <p>Bem-vindo ao nosso espaço virtual dedicado a amantes de viagens, onde novatos e experientes trocam ideias, compartilham roteiros e vivenciam histórias inspiradoras. </p>

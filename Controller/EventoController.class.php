@@ -24,25 +24,25 @@ class EventoController
     {
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET':
-                if(isset($_GET['_acao'])) {
-                    if($_GET['_acao'] == 'buscarInscricoes') $this->buscarInscricoesMembro();
-                } 
-                
+                if (isset($_GET['_acao'])) {
+                    if ($_GET['_acao'] == 'buscarInscricoes') $this->buscarInscricoesMembro();
+                }
+
                 if (isset($_GET['categoria']) && isset($_GET['pesquisa'])) {
                     $this->buscar();
-                } else if(isset($_GET['eventoId']) && isset($_GET['_acao'])) {
+                } else if (isset($_GET['eventoId']) && isset($_GET['_acao'])) {
                     $this->buscarColaboradores();
-                } else if(isset($_GET['eventoId'])) {
+                } else if (isset($_GET['eventoId'])) {
                     $this->buscarPorId();
                 } else {
                     $this->buscarEventoUsuario();
                 }
                 break;
             case 'POST':
-                if(isset($_GET['_acao'])) {
-                    if($_GET['_acao'] == 'editar') $this->editar();
-                    if($_GET['_acao'] == 'inscrever') $this->inscrever();
-                    if($_GET['_acao'] == 'cancelarInscricao') $this->cancelarInscricao();
+                if (isset($_GET['_acao'])) {
+                    if ($_GET['_acao'] == 'editar') $this->editar();
+                    if ($_GET['_acao'] == 'inscrever') $this->inscrever();
+                    if ($_GET['_acao'] == 'cancelarInscricao') $this->cancelarInscricao();
                 } else {
                     $this->cadastrar();
                 }
@@ -61,12 +61,14 @@ class EventoController
         echo json_encode($eventos);
     }
 
-    private function buscarInscricoesMembro() {  
+    private function buscarInscricoesMembro()
+    {
         $eventos = $this->eventoDao->buscarInscricoes($_GET['membroId']);
         echo json_encode($eventos);
     }
 
-    private function excluir() {
+    private function excluir()
+    {
         try {
             if ($this->eventoDao->excluirEvento($_GET['eventoId'])) {
                 echo json_encode('Evento excluido com sucesso');
@@ -78,7 +80,8 @@ class EventoController
         }
     }
 
-    private function buscarPorId() {
+    private function buscarPorId()
+    {
         try {
             $evento = $this->eventoDao->buscarEventoPorId($_GET['eventoId']);
             echo json_encode($evento);
@@ -87,7 +90,8 @@ class EventoController
         }
     }
 
-    private function buscarColaboradores() {
+    private function buscarColaboradores()
+    {
         try {
             $colaboradores = $this->eventoDao->buscarColaboradores($_GET['eventoId']);
             echo json_encode($colaboradores);
@@ -112,7 +116,8 @@ class EventoController
         }
     }
 
-    private function inscrever() {
+    private function inscrever()
+    {
         try {
             session_start();
             if ($this->eventoDao->inscrever($_GET['eventoId'], $_SESSION['usuario']['id'])) {
@@ -125,7 +130,8 @@ class EventoController
         }
     }
 
-    private function cancelarInscricao() {
+    private function cancelarInscricao()
+    {
         try {
             session_start();
             if ($this->eventoDao->cancelarInscricao($_GET['eventoId'], $_SESSION['usuario']['id'])) {
@@ -138,7 +144,8 @@ class EventoController
         }
     }
 
-    private function editar() {
+    private function editar()
+    {
         try {
             extract($_POST);
 
@@ -162,12 +169,11 @@ class EventoController
             } else {
                 echo 'Erro ao editar evento';
             }
-
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
     }
-    
+
     private function cadastrar()
     {
         try {

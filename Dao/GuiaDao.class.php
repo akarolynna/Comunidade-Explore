@@ -231,7 +231,8 @@ class GuiaDao
         return $result > 0;
     }
 
-    public function adicionarSeguidor($guiaId, $membroId) {
+    public function adicionarSeguidor($guiaId, $membroId)
+    {
         $query = 'INSERT INTO Guia_Seguidor (guiaId, membroId) VALUES (:guiaId, :membroId)';
         $fields = array(
             'guiaId' => $guiaId,
@@ -275,7 +276,8 @@ class GuiaDao
         return $result;
     }
 
-    public function publicarGuia($guiaId) {
+    public function publicarGuia($guiaId)
+    {
         $query = 'UPDATE Guia SET publico = 1 where id = :guiaId';
         $fields = array(
             'guiaId' => $guiaId
@@ -290,7 +292,8 @@ class GuiaDao
         return $result > 0;
     }
 
-    public function arquivarGuia($guiaId) {
+    public function arquivarGuia($guiaId)
+    {
         $query = 'UPDATE Guia SET publico = 0 where id = :guiaId';
         $fields = array(
             'guiaId' => $guiaId

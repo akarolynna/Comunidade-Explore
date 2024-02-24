@@ -1,5 +1,5 @@
 $(document).ready(
-    function() {
+    function () {
         $('#categoriaTodos').addClass('categoriaAtiva');
         buscarPublicacoes();
     }
@@ -10,7 +10,7 @@ $('.itemMenuPublicacoes').click(selecionarTipoPublicacao);
 $('#botaoPesquisa').click(buscarPublicacoes);
 
 function selecionarCategoria() {
-    let categoria = $(this).attr('id');    
+    let categoria = $(this).attr('id');
     $('.itemCategoria').removeClass('categoriaAtiva');
     $('#' + categoria).addClass('categoriaAtiva');
     buscarPublicacoes();
@@ -27,7 +27,7 @@ function buscarPublicacoes() {
     let tipo = $('.itemMenuAtivo').attr('id');
     let categoria = $('.categoriaAtiva').attr('id');
     let pesquisa = $('#inputPesquisa').val();
-    switch(tipo) {
+    switch (tipo) {
         case 'diarios':
             buscarPosts(categoria, pesquisa);
             break;
@@ -93,14 +93,14 @@ function sucessoAoBuscarPosts(response) {
                 </div>
             `);
         });
-}  
+}
 
 function buscarTituloDiarioViagem(diarioId, postIndex) {
     $.ajax({
         url: `../Controller/DiarioController.class.php?diarioId=${diarioId}`,
         type: 'GET',
         dataType: 'JSON',
-        success:  (response) =>{
+        success: (response) => {
             $(`#tituloPost${postIndex}`).html(response[0].titulo);
             buscarNomeCriador(response[0].criadorId, postIndex);
         },
@@ -113,7 +113,7 @@ function buscarNomeCriador(membroId, postIndex) {
         url: `../Controller/MembroController.class.php?membroId=${membroId}`,
         type: 'GET',
         dataType: 'JSON',
-        success:  (response) =>{
+        success: (response) => {
             $(`#nomeCriador${postIndex}`).html(response[0].email);
         },
         error: erroNaRequisicao
@@ -131,15 +131,15 @@ function buscarEventos(categoria, pesquisa) {
 }
 
 function buscarIdMembroLogado() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         $.ajax({
             url: '../Controller/MembroController.class.php?_acao=membroLogado',
             type: 'GET',
             dataType: 'JSON',
-            success: function(response) {
+            success: function (response) {
                 resolve(response);
             },
-            error: function(error) {
+            error: function (error) {
                 reject(error);
             }
         });
@@ -147,15 +147,15 @@ function buscarIdMembroLogado() {
 }
 
 function buscarInscricoesMembro(membroId) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         $.ajax({
             url: '../Controller/EventoController.class.php?_acao=buscarInscricoes&membroId=' + membroId,
             type: 'GET',
             dataType: 'JSON',
-            success: function(response) {
+            success: function (response) {
                 resolve(response);
             },
-            error: function(error) {
+            error: function (error) {
                 reject(error);
             }
         });
@@ -163,12 +163,12 @@ function buscarInscricoesMembro(membroId) {
 }
 
 function excluirEvento(eventoId) {
-    alert('Tem certeza que deseja excluir esse evento? Todos os dados relacionados a ele serão perdidos');  
+    alert('Tem certeza que deseja excluir esse evento? Todos os dados relacionados a ele serão perdidos');
 
     $.ajax({
         url: '../Controller/EventoController.class.php?eventoId=' + eventoId,
         type: 'DELETE',
-        success: function(response) {
+        success: function (response) {
             window.location.reload();
         },
         error: erroNaRequisicao
@@ -191,7 +191,7 @@ function inscreverEmEvento(eventoId) {
         error: () => {
             alert('Você já está inscrito nesse evento');
         }
-    }); 
+    });
 }
 
 function membroEstaInscrito(eventos, membroId) {
@@ -214,7 +214,7 @@ async function sucessoAoBuscarEventos(response) {
                         <button class="btn botaoPrimario botaoExcluir" onclick="excluirEvento(${evento.id})">Excluir</button>
                     `
                     : `<button class="btn botaoPrimario" onclick="inscreverEmEvento(${evento.id})">Me inscrever</button>`;
-            
+
                 $('#publicacoes').append(`
                     <div class="cardEvento" id="cardEvento${index}">
                         <div class="filtro">
@@ -246,7 +246,7 @@ async function sucessoAoBuscarEventos(response) {
                     </div>
                 `);
                 $(`#cardEvento${index}`).css("background-image", `url('${evento.fotoCapa}')`);
-        });
+            });
     } catch (error) {
         console.error('Erro ao buscar ID do membro logado:', error);
     }
@@ -270,8 +270,8 @@ async function sucessoAoBuscarGuias(response) {
         ? $('#publicacoes').html('Oops! Não encontramos nenhum guia com esses filtros.')
         : response.forEach((guia, index) => {
             const botaoAcao = guia.criadorId == membroId
-            ? ``
-            : `<button class="btn botaoPrimario" onclick="seguirGuia(${guia.id})">Seguir</button>`;
+                ? ``
+                : `<button class="btn botaoPrimario" onclick="seguirGuia(${guia.id})">Seguir</button>`;
 
             $('#publicacoes').append(`
                 <div class="cardPublicacao cardImagem cardGuia" id="cardGuia${guia.id}" onclick="abrirDetalhesGuia(${guia.id})">
@@ -304,7 +304,7 @@ async function sucessoAoBuscarGuias(response) {
                 </div>
             `);
             $(`#cardGuia${guia.id}`).css("background-image", `url('${guia.fotoCapa}')`);
-    });
+        });
 }
 
 function seguirGuia(guiaId) {
@@ -320,7 +320,7 @@ function seguirGuia(guiaId) {
             alert('Você já está seguindo essa página');
             window.location.href = './pagina-inicial.php';
         }
-    }); 
+    });
 }
 
 function formatarCategoria(categoria) {

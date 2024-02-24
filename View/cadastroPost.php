@@ -18,39 +18,40 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
     <title>Cadastrar Post Diário de Viagem</title>
 </head>
+
 <body class="pagina">
-        <?php require_once './Componentes/menu2.php'; ?>
-<div class="blocoPrincipal">
-    <h1 class="titulo">Cadastrar Post</h1>
+    <?php require_once './Componentes/menu2.php'; ?>
+    <div class="blocoPrincipal">
+        <h1 class="titulo">Cadastrar Post</h1>
 
-    <div class="Divformulario">
-        <form method="post" enctype="multipart/form-data" id="formCadastroPost">
-            <label for="titulo">Título:</label><br>
-            <input type="text" id="titulo" name="titulo" required class="form-control-file"><br>
+        <div class="Divformulario">
+            <form method="post" enctype="multipart/form-data" id="formCadastroPost">
+                <label for="titulo">Título:</label><br>
+                <input type="text" id="titulo" name="titulo" required class="form-control-file"><br>
 
-            <label for="descricao">Descrição:</label><br>
-            <textarea id="descricao" name="descricao" rows="4" maxlength="255" class="form-control-file" required></textarea><br>
+                <label for="descricao">Descrição:</label><br>
+                <textarea id="descricao" name="descricao" rows="4" maxlength="255" class="form-control-file" required></textarea><br>
 
-            <div class="divImagens">
-                <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria1" name="fotoSecundaria1">
-                <input type="hidden" id="inputHiddenFotoSecundaria1" name="fotoSecundaria1Edicao">
-                <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria2" name="fotoSecundaria2">
-                <input type="hidden" id="inputHiddenFotoSecundaria2" name="fotoSecundaria2Edicao">
-                <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria3" name="fotoSecundaria3">
-                <input type="hidden" id="inputHiddenFotoSecundaria3" name="fotoSecundaria3Edicao">
-                <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria4" name="fotoSecundaria4">
-                <input type="hidden" id="inputHiddenFotoSecundaria4" name="fotoSecundaria4Edicao">
-                <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria5" name="fotoSecundaria5">
-                <input type="hidden" id="inputHiddenFotoSecundaria5" name="fotoSecundari5Edicao">
-            </div>
+                <div class="divImagens">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria1" name="fotoSecundaria1">
+                    <input type="hidden" id="inputHiddenFotoSecundaria1" name="fotoSecundaria1Edicao">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria2" name="fotoSecundaria2">
+                    <input type="hidden" id="inputHiddenFotoSecundaria2" name="fotoSecundaria2Edicao">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria3" name="fotoSecundaria3">
+                    <input type="hidden" id="inputHiddenFotoSecundaria3" name="fotoSecundaria3Edicao">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria4" name="fotoSecundaria4">
+                    <input type="hidden" id="inputHiddenFotoSecundaria4" name="fotoSecundaria4Edicao">
+                    <input type="file" class="form-control-file mt-2" id="inputFotoSecundaria5" name="fotoSecundaria5">
+                    <input type="hidden" id="inputHiddenFotoSecundaria5" name="fotoSecundari5Edicao">
+                </div>
 
-            <div class="divBotao">
-                <button type="submit" class="btn btnPrimary" id="cadastrarPost">Enviar</button>
-                <button class="btn btnSecundary mx-2" id="btnCancelar">Cancelar</button>
-            </div>
-        </form>
+                <div class="divBotao">
+                    <button type="submit" class="btn btnPrimary" id="cadastrarPost">Enviar</button>
+                    <button class="btn btnSecundary mx-2" id="btnCancelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
 </body>
 <script src="../Public/JS/cadastrarPost.js"></script>

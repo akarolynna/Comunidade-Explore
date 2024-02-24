@@ -35,16 +35,16 @@ function preencherDados() {
             success: sucessoAoBuscarGuia,
             error: erroNaRequisicao
         });
-    } 
+    }
 
 }
 
 function sucessoAoBuscarGuia(response) {
     if (!$.isEmptyObject(response)) {
-        if(response[0].publico == 0) {
+        if (response[0].publico == 0) {
             $('#btnEditarPublicar').css('display', 'block');
             $('#btnPublicar').css('display', 'block');
-        } else if(response[0].publico == 1) {
+        } else if (response[0].publico == 1) {
             $('#btnArquivar').css('display', 'block');
         }
 
@@ -105,7 +105,7 @@ function editarPublicar(evt) {
             alert('Nenhum dado alterado');
             console.log(error);
         }
-        });
+    });
 }
 
 function arquivar() {
@@ -114,7 +114,7 @@ function arquivar() {
     const guiaId = searchParams.get('guiaId');
 
     const controllerURL = "../controller/GuiaController.class.php?_acao=arquivar&guiaId=" + guiaId;
-    
+
     $.ajax({
         type: "POST",
         dataType: "JSON",
@@ -130,7 +130,7 @@ function publicar() {
     const guiaId = searchParams.get('guiaId');
 
     const controllerURL = "../controller/GuiaController.class.php?_acao=publicar&guiaId=" + guiaId;
-    
+
     $.ajax({
         type: "POST",
         dataType: "JSON",

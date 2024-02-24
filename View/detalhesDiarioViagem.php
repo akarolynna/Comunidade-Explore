@@ -28,7 +28,7 @@ $diarioId = $_GET['diarioId'];
                 </div>
             </div>
             <div class="botoes">
-                <button class="btn botaoAdd" id="botaoAddPost" >Add Post</button>
+                <button class="btn botaoAdd" id="botaoAddPost">Add Post</button>
                 <button class="btn bbotaoEditar" id="botaoEditar">Editar</button>
                 <button class="btn btn-danger" id="botaoExcluir">Exluir</button>
             </div>

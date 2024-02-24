@@ -8,7 +8,7 @@ $("#inputHoraInicio").datetimepicker({
 
 $("#inputHoraTermino").datetimepicker({
   format: "HH:mm",
-  icons: {  
+  icons: {
     up: "fa fa-chevron-up",
     down: "fa fa-chevron-down"
   }

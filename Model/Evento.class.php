@@ -1,5 +1,6 @@
 <?php
-class Evento {
+class Evento
+{
     private $titulo;
     private $localizacao;
     private $dataInicio;
@@ -40,7 +41,7 @@ class Evento {
         $this->colaboradores = $colaboradores;
         $this->inscritos = $inscritos;
     }
-    
+
     // Getters and se
 
     public function getTitulo()
@@ -164,6 +165,4 @@ class Evento {
     {
         $this->criadorId = $criadorId;
     }
-
 }
-?>

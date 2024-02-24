@@ -14,7 +14,7 @@ function sucessoAoBuscarMembros(response) {
     response.forEach((membro) => {
         $('#multiselectColaboradores').append(`<option value="${membro.id}">${membro.email}</option>`);
     });
-} 
+}
 
 function erroNaRequisicao(error) {
     console.log('ERRO!');
